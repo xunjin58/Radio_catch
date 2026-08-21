@@ -1,0 +1,322 @@
+"""Clip understanding for OpenAI-compatible frames and native video providers."""
+
+from __future__ import annotations
+
+import base64
+import json
+import time
+from pathlib import Path
+from typing import Any
+
+import httpx
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from .models import Clip, ClipAnalysis, ModelConfig, ModelTaskAssignment, ModelUsage
+from .security import decrypt_api_key
+
+
+class IntelligenceError(RuntimeError):
+    pass
+
+
+SYSTEM_PROMPT = """你是短视频美食素材标注助手。只输出 JSON，不能输出 Markdown。
+返回字段：summary(string), segment_role(head|middle|tail), dish(string数组), actions(string数组),
+visual_hooks(string数组), audio_hooks(string数组), shot_type(string), climax_time(number),
+usable_range({start:number,end:number}), quality_score(0-1), confidence(0-1)。
+不确定时降低 confidence，禁止编造不可见内容。"""
+
+GEMINI_RESPONSE_SCHEMA = {
+    "type": "OBJECT",
+    "properties": {
+        "summary": {"type": "STRING"},
+        "segment_role": {"type": "STRING", "enum": ["head", "middle", "tail"]},
+        "dish": {"type": "ARRAY", "items": {"type": "STRING"}},
+        "actions": {"type": "ARRAY", "items": {"type": "STRING"}},
+        "visual_hooks": {"type": "ARRAY", "items": {"type": "STRING"}},
+        "audio_hooks": {"type": "ARRAY", "items": {"type": "STRING"}},
+        "shot_type": {"type": "STRING"},
+        "climax_time": {"type": "NUMBER"},
+        "usable_range": {
+            "type": "OBJECT",
+            "properties": {"start": {"type": "NUMBER"}, "end": {"type": "NUMBER"}},
+            "required": ["start", "end"],
+        },
+        "quality_score": {"type": "NUMBER"},
+        "confidence": {"type": "NUMBER"},
+    },
+    "required": [
+        "summary", "segment_role", "dish", "actions", "visual_hooks", "audio_hooks", "shot_type",
+        "climax_time", "usable_range", "quality_score", "confidence",
+    ],
+}
+
+VIDEO_MIME_TYPES = {
+    ".mp4": "video/mp4",
+    ".m4v": "video/x-m4v",
+    ".mov": "video/quicktime",
+    ".webm": "video/webm",
+    ".avi": "video/x-msvideo",
+    ".mkv": "video/x-matroska",
+    ".wmv": "video/x-ms-wmv",
+}
+MIMO_VIDEO_SUFFIXES = {".mp4", ".mov", ".avi", ".wmv"}
+MIMO_MAX_BASE64_VIDEO_BYTES = 50 * 1024 * 1024
+
+
+def _default_model(session: Session) -> ModelConfig:
+    config = session.scalar(
+        select(ModelConfig)
+        .join(ModelTaskAssignment)
+        .where(ModelTaskAssignment.task_type == "clip_understanding", ModelConfig.is_active.is_(True))
+    )
+    if config is None:
+        config = session.scalar(select(ModelConfig).where(ModelConfig.is_default.is_(True), ModelConfig.is_active.is_(True)))
+    if config is None:
+        raise IntelligenceError("尚未配置默认素材理解模型")
+    return config
+
+
+def _evidence_frames(clip: Clip, cap: int) -> list[dict[str, Any]]:
+    rows = list(clip.analyses or [])
+    evidence = next((row for row in reversed(rows) if row.mode == "adaptive_frames" and row.evidence_frames), None)
+    if evidence is None:
+        return []
+    return [item for item in evidence.evidence_frames if Path(str(item.get("path", ""))).is_file()][:cap]
+
+
+def _image_data(path: str) -> str:
+    suffix = Path(path).suffix.lower()
+    mime = "image/png" if suffix == ".png" else "image/jpeg"
+    return f"data:{mime};base64,{base64.b64encode(Path(path).read_bytes()).decode('ascii')}"
+
+
+def _native_video_data(clip: Clip, limit: int) -> tuple[str, str, int]:
+    path = Path(clip.file_path)
+    if not path.is_file():
+        raise IntelligenceError("原始视频文件已不存在，无法进行原生视频理解")
+    mime = VIDEO_MIME_TYPES.get(path.suffix.lower())
+    if mime is None:
+        raise IntelligenceError("当前原生视频适配器不支持该视频格式")
+    try:
+        size = path.stat().st_size
+    except OSError as exc:
+        raise IntelligenceError("无法读取原始视频文件") from exc
+    if size > limit:
+        raise IntelligenceError(f"原始视频超过当前模型的 {limit // (1024 * 1024)} MB 原生媒体上限")
+    try:
+        encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+    except OSError as exc:
+        raise IntelligenceError("无法读取原始视频文件") from exc
+    return mime, encoded, size
+
+
+def _gemini_response_text(payload: Any) -> str:
+    if not isinstance(payload, dict):
+        raise IntelligenceError("Gemini 响应格式无效")
+    body = payload.get("data", payload)
+    if not isinstance(body, dict):
+        raise IntelligenceError("Gemini 响应格式无效")
+    candidates = body.get("candidates")
+    if not isinstance(candidates, list):
+        raise IntelligenceError("Gemini 未返回可用候选结果")
+    for candidate in candidates:
+        if not isinstance(candidate, dict):
+            continue
+        content = candidate.get("content")
+        parts = content.get("parts") if isinstance(content, dict) else None
+        if not isinstance(parts, list):
+            continue
+        text = "".join(str(part["text"]) for part in parts if isinstance(part, dict) and isinstance(part.get("text"), str))
+        if text:
+            return text
+    raise IntelligenceError("Gemini 未返回文本结果")
+
+
+def _record_usage(session: Session, config: ModelConfig, started: float, status: str, error: str | None = None) -> None:
+    session.add(ModelUsage(
+        model_config_id=config.id,
+        operation="material_understanding",
+        latency_ms=round((time.perf_counter() - started) * 1000),
+        status=status,
+        error_message=error,
+    ))
+
+
+def _parse(content: str, clip: Clip) -> dict[str, Any]:
+    try:
+        value = json.loads(content)
+    except json.JSONDecodeError as exc:
+        raise IntelligenceError("模型没有返回有效 JSON") from exc
+    if not isinstance(value, dict):
+        raise IntelligenceError("模型响应必须是 JSON 对象")
+    duration = clip.duration_seconds or 0
+    usable = value.get("usable_range") or {"start": 0, "end": duration}
+    try:
+        start, end = float(usable.get("start", 0)), float(usable.get("end", duration))
+        usable = {"start": max(0, start), "end": min(duration, max(start + 0.1, end))}
+    except (TypeError, ValueError):
+        usable = {"start": 0, "end": duration}
+    role = value.get("segment_role") if value.get("segment_role") in {"head", "middle", "tail"} else "middle"
+    return {
+        "summary": str(value.get("summary", ""))[:2000], "segment_role": role,
+        "tags": {key: value.get(key, []) for key in ("dish", "actions", "visual_hooks", "audio_hooks", "shot_type")},
+        "climax_time": _number(value.get("climax_time"), min(max(duration / 2, 0), duration)),
+        "usable_range": usable, "quality_score": _score(value.get("quality_score")), "confidence": _score(value.get("confidence")),
+    }
+
+
+def _number(value: Any, fallback: float) -> float:
+    try: return float(value)
+    except (TypeError, ValueError): return fallback
+
+
+def _score(value: Any) -> float:
+    try: return max(0.0, min(1.0, float(value)))
+    except (TypeError, ValueError): return 0.0
+
+
+async def understand_clip(session: Session, clip_id: str, mode: str = "auto") -> ClipAnalysis:
+    clip = session.get(Clip, clip_id)
+    if clip is None: raise IntelligenceError("素材不存在")
+    config = _default_model(session)
+    if config.protocol.lower() == "gemini":
+        return await _understand_gemini_video(session, clip, config, mode)
+    if config.protocol.lower() == "mimo":
+        return await _understand_mimo_video(session, clip, config, mode)
+    return await _understand_openai_frames(session, clip, config, mode)
+
+
+async def _understand_gemini_video(session: Session, clip: Clip, config: ModelConfig, mode: str) -> ClipAnalysis:
+    if not config.supports_native_video:
+        raise IntelligenceError("当前 Gemini 配置未启用原生视频能力")
+    if mode not in {"auto", "native"}:
+        raise IntelligenceError("当前 Gemini 配置仅支持 auto 或 native 原生视频理解")
+    started = time.perf_counter()
+    try:
+        mime, encoded, size = _native_video_data(clip, config.max_native_media_bytes)
+        request = {
+            "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
+            "contents": [{"role": "user", "parts": [
+                {"text": f"素材时长 {clip.duration_seconds or 0:.2f}s。请直接分析该原始视频及其内嵌音轨。"},
+                {"inline_data": {"mime_type": mime, "data": encoded}},
+            ]}],
+            "generationConfig": {
+                "temperature": 0.1,
+                "responseMimeType": "application/json",
+                "responseSchema": GEMINI_RESPONSE_SCHEMA,
+            },
+        }
+        async with httpx.AsyncClient(timeout=config.timeout_seconds) as client:
+            response = await client.post(
+                f"{config.base_url.rstrip('/')}/v1beta/models/{config.model_name}:generateContent",
+                headers={"Authorization": f"Bearer {decrypt_api_key(config.api_key_encrypted)}", "Content-Type": "application/json"},
+                json=request,
+            )
+        response.raise_for_status()
+        parsed = _parse(_gemini_response_text(response.json()), clip)
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
+        _record_usage(session, config, started, "failed", type(exc).__name__)
+        session.commit()
+        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
+    evidence = [{
+        "source": "native_video", "mime_type": mime, "file_size_bytes": size,
+        "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
+    }]
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status="pending", **parsed)
+    clip.import_status = "understood"; clip.review_status = "pending"
+    session.add(analysis); _record_usage(session, config, started, "success")
+    session.commit(); session.refresh(analysis)
+    return analysis
+
+
+async def _understand_mimo_video(session: Session, clip: Clip, config: ModelConfig, mode: str) -> ClipAnalysis:
+    """Send a complete local video to MiMo's OpenAI-compatible video endpoint."""
+    if not config.supports_native_video:
+        raise IntelligenceError("当前 MiMo 配置未启用原生视频能力")
+    if mode not in {"auto", "native"}:
+        raise IntelligenceError("当前 MiMo 配置仅支持 auto 或 native 原生视频理解")
+    started = time.perf_counter()
+    try:
+        if Path(clip.file_path).suffix.lower() not in MIMO_VIDEO_SUFFIXES:
+            raise IntelligenceError("MiMo 原生视频仅支持 MP4、MOV、AVI 或 WMV 文件")
+        mime, encoded, size = _native_video_data(clip, config.max_native_media_bytes)
+        video_data_url = f"data:{mime};base64,{encoded}"
+        if len(video_data_url.encode("ascii")) > MIMO_MAX_BASE64_VIDEO_BYTES:
+            raise IntelligenceError("MiMo Base64 视频请求超过 50 MB 上限")
+        content: list[dict[str, Any]] = [
+            {"type": "text", "text": f"素材时长 {clip.duration_seconds or 0:.2f}s。请直接分析该原始视频及其内嵌音轨。"},
+            {
+                "type": "video_url",
+                "video_url": {"url": video_data_url},
+                "fps": 2,
+                "media_resolution": "default",
+            },
+        ]
+        request: dict[str, Any] = {
+            "model": config.model_name,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": content},
+            ],
+            "temperature": 0.1,
+        }
+        if config.supports_structured_json:
+            request["response_format"] = {"type": "json_object"}
+        async with httpx.AsyncClient(timeout=config.timeout_seconds) as client:
+            response = await client.post(
+                f"{config.base_url.rstrip('/')}/chat/completions",
+                headers={"Authorization": f"Bearer {decrypt_api_key(config.api_key_encrypted)}", "Content-Type": "application/json"},
+                json=request,
+            )
+        response.raise_for_status()
+        payload = response.json()
+        raw = payload["choices"][0]["message"]["content"]
+        if not isinstance(raw, str):
+            raise IntelligenceError("MiMo 未返回文本结果")
+        parsed = _parse(raw, clip)
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
+        _record_usage(session, config, started, "failed", type(exc).__name__)
+        session.commit()
+        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
+    evidence = [{
+        "source": "mimo_native_video", "mime_type": mime, "file_size_bytes": size,
+        "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
+    }]
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status="pending", **parsed)
+    clip.import_status = "understood"; clip.review_status = "pending"
+    session.add(analysis); _record_usage(session, config, started, "success")
+    session.commit(); session.refresh(analysis)
+    return analysis
+
+
+async def _understand_openai_frames(session: Session, clip: Clip, config: ModelConfig, mode: str) -> ClipAnalysis:
+    effective_mode = "adaptive_frames"
+    frames = _evidence_frames(clip, config.max_frames_per_video)
+    if not frames: raise IntelligenceError("关键帧尚未生成，请等待媒体任务完成")
+    content: list[dict[str, Any]] = [{"type": "text", "text": f"素材时长 {clip.duration_seconds or 0:.2f}s。按时间顺序分析以下关键帧。"}]
+    for frame in frames:
+        content.append({"type": "text", "text": f"时间戳：{frame.get('time', 0)} 秒"})
+        content.append({"type": "image_url", "image_url": {"url": _image_data(frame["path"]), "detail": "low"}})
+    # Native video formats are provider-specific. For OpenAI-compatible APIs the
+    # portable default is evidence images; 'auto' records this transparent fallback.
+    if mode == "native" and not config.supports_native_video:
+        raise IntelligenceError("当前模型未启用原生视频能力")
+    request = {"model": config.model_name, "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": content}], "temperature": 0.1}
+    if config.supports_structured_json: request["response_format"] = {"type": "json_object"}
+    started = time.perf_counter()
+    try:
+        async with httpx.AsyncClient(timeout=config.timeout_seconds) as client:
+            response = await client.post(f"{config.base_url.rstrip('/')}/chat/completions", headers={"Authorization": f"Bearer {decrypt_api_key(config.api_key_encrypted)}", "Content-Type": "application/json"}, json=request)
+        response.raise_for_status()
+        payload = response.json(); raw = payload["choices"][0]["message"]["content"]
+        parsed = _parse(raw, clip)
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
+        _record_usage(session, config, started, "failed", type(exc).__name__)
+        session.commit()
+        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode=effective_mode, evidence_frames=frames, review_status="pending", **parsed)
+    clip.import_status = "understood"; clip.review_status = "pending"
+    session.add(analysis); _record_usage(session, config, started, "success")
+    session.commit(); session.refresh(analysis)
+    return analysis

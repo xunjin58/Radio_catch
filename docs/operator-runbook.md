@@ -1,0 +1,52 @@
+# 本地运维手册
+
+## 配置
+
+复制 `.env.example` 为 `.env`，并在启动 API 的 shell 中加载所需值。
+
+| 变量 | 用途 | 默认值 |
+| --- | --- | --- |
+| `RADIO_CATCH_SECRET_KEY` | API Key 加密派生密钥；生产/长期使用时必须替换。 | 开发用固定值 |
+| `RADIO_CATCH_ENCRYPTION_KEY` | 可选 Fernet 密钥，优先于 `RADIO_CATCH_SECRET_KEY`。 | 未设置 |
+| `RADIO_CATCH_DATABASE_URL` | SQLAlchemy SQLite 或外部数据库 URL。 | `backend/data/radio_catch.db` |
+| `RADIO_CATCH_STORAGE_DIR` | 上传素材和派生帧目录。 | `backend/storage` |
+| `RADIO_CATCH_EXPORT_DIR` | 成片导出目录。 | `backend/data/exports` |
+
+## 启动与验证
+
+```bash
+npm run dev:api
+npm run dev
+curl http://127.0.0.1:8000/api/health
+curl http://127.0.0.1:8000/api/media/health
+npm run build
+```
+
+`/api/media/health` 会返回 FFmpeg 和 FFprobe 的可用性。需要系统 PATH 中存在两个可执行文件。
+
+## Gemini 原生视频
+
+兔子 API Gemini 3 配置的 Base URL 必须是根地址 `https://api.tu-zi.com`。原生媒体默认上限为 100 MB，按单个模型配置存储；视频会连同内嵌音轨以一次请求发送给供应商，因此不要将原始请求体、Base64 数据或 API Key 写入终端、日志或故障单。
+
+“测试连接”只读取模型列表，成功不代表模型的视频、音频或结构化输出调用已经验证。使用小型、含音轨的 MP4 完成一次素材分析和审核，才是实际链路验证。
+
+## MiMo Token Plan 原生视频
+
+MiMo 预设使用 `https://token-plan-cn.xiaomimimo.com/v1` 和 `mimo-v2.5`。完整视频及其内嵌音轨会以 OpenAI 兼容的 `video_url` Base64 数据发送；不得将原始请求体、Base64、视频或 API Key 写入终端、日志或故障单。MiMo 请求的 Base64 数据 URL 上限为 50 MB，因此界面将原文件大小限制在 37 MB，并在发送前再次校验。
+
+原生输入仅接受 MP4、MOV、AVI、WMV；`auto` 和 `native` 可用，`adaptive`、`dense` 不会触发关键帧回退。连接测试只读取 `/models`，不代表视频、音轨或结构化输出已验证。应使用小型、含音轨的 MP4 执行一次真实素材分析；若失败，确认模型名为 `mimo-v2.5`、Token Plan Key 仍有效、文件格式与大小符合限制。
+
+## 排障
+
+| 现象 | 检查与处理 |
+| --- | --- |
+| 上传返回 `503` | 安装 FFmpeg，重开终端后调用 `/api/media/health`。 |
+| 媒体任务失败 | 查询 `/api/media/jobs/{job_id}`；确认磁盘空间、视频是否可解码、存储目录是否可写。 |
+| Gemini 原生理解失败 | 确认配置的 Base URL 为 `https://api.tu-zi.com`、模型开启原生视频、文件仍在本地且不超过上限；连接测试仅验证模型列表。 |
+| MiMo 原生理解失败 | 确认 Token Plan Base URL、模型名、API Key，以及视频为 MP4/MOV/AVI/WMV 且原文件不超过 37 MB；连接测试仅验证模型列表。 |
+| OpenAI 兼容模型理解失败 | 在模型配置上调用 `test-connection`；确认 `base_url` 包含供应商需要的版本路径，且模型接受图像输入。 |
+| 导出失败 | 检查每段素材是否已审核、同菜品、时间范围有效，及 `RADIO_CATCH_EXPORT_DIR` 是否可写。 |
+| 下载成片返回 409/404 | 先确认成片状态为 `completed`，并确认导出文件仍在 `RADIO_CATCH_EXPORT_DIR` 中。 |
+| CSV 跳过数据 | 查看导入响应中的 `errors`；确认 `video_id` 是本系统 Render 返回的值。 |
+
+本地数据目录未纳入版本控制。升级前应备份 `backend/data/` 和 `backend/storage/`。
