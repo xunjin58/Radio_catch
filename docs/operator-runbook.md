@@ -25,6 +25,8 @@ npm run build
 `/api/media/health` 会返回 FFmpeg 和 FFprobe 的可用性。需要系统 PATH 中存在两个可执行文件。
 
 素材库详情播放使用 `GET /api/media/clips/<clip_id>/video`。它只会提供仍位于 `RADIO_CATCH_STORAGE_DIR` 内、且已在数据库登记的原视频；若详情显示视频无法播放，先确认原文件未被手动移动或删除，并确认浏览器支持该视频编码。
+成片管理使用 `GET /api/renders/<render_id>/video` 播放最终 MP4，并通过 `GET /api/renders/<render_id>/thumbnail` 读取宫格封面。封面由 FFmpeg 从最终成片约 15% 时刻提取，存放在 `RADIO_CATCH_EXPORT_DIR` 中，属于可再生派生文件；历史成片首次请求封面时会自动补生成。两个接口都只允许读取已完成且仍位于导出目录内的成片。
+
 
 ## Gemini 原生视频
 ## 商家业务背景
@@ -56,6 +58,7 @@ MiMo 预设使用 `https://token-plan-cn.xiaomimimo.com/v1` 和 `mimo-v2.5`。�
 | OpenAI 兼容模型理解失败 | 在模型配置上调用 `test-connection`；确认 `base_url` 包含供应商需要的版本路径，且模型接受图像输入。 |
 | 导出失败 | 检查每段素材是否已审核、同菜品、时间范围有效，及 `RADIO_CATCH_EXPORT_DIR` 是否可写。 |
 | 下载成片返回 409/404 | 先确认成片状态为 `completed`，并确认导出文件仍在 `RADIO_CATCH_EXPORT_DIR` 中。 |
+| 成片宫格没有封面 | 确认 FFmpeg 可用、成片文件仍在 `RADIO_CATCH_EXPORT_DIR` 且可解码；刷新宫格会再次请求并补生成封面。封面失败不影响 MP4 下载或播放。 |
 | CSV 跳过数据 | 查看导入响应中的 `errors`；确认 `video_id` 是本系统 Render 返回的值。 |
 
 本地数据目录未纳入版本控制。升级前应备份 `backend/data/` 和 `backend/storage/`。

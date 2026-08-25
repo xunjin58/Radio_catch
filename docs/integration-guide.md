@@ -87,7 +87,15 @@ curl -X PATCH http://127.0.0.1:8000/api/clips/<clip_id>/review \
 
 创建实验的 `variants[].clips` 必须提供审核通过的 `clip_id`、`start`、`end` 和可选 `speed`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行导出。
 
-导出完成后，可通过 `GET /api/renders/<render_id>/download` 下载 MP4。该接口只会返回已完成且位于本地导出目录内的成片，不接受任意文件路径。
+导出完成后，可通过以下接口查看或下载成片：
+
+```bash
+curl -I http://127.0.0.1:8001/api/renders/<render_id>/video
+curl -I http://127.0.0.1:8001/api/renders/<render_id>/thumbnail
+curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/download
+```
+
+`video` 供浏览器内联播放并支持范围请求，`thumbnail` 返回由最终 MP4 在约 15% 时刻生成的 JPEG 封面。封面缺失时会为历史已完成成片按需补生成；若 FFmpeg 不可用或视频无法解码，封面接口返回 `404`，但已完成的 MP4 仍可下载或播放。三个接口只会返回已完成且位于本地导出目录内的成片，不接受任意文件路径。
 
 ### 4. 导入平台数据
 

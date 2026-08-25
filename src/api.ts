@@ -9,7 +9,8 @@ export type Render = {
   id: string; video_id: string; experiment_id: string | null; dish: string; title: string | null
   status: string; output_path: string | null; duration_seconds: number | null
   edit_decision_list: Array<{ clip_id: string; start: number; end: number; speed: number; role: string }>
-  published_at: string | null; created_at: string
+  width: number; height: number; experiment_values: Record<string, unknown>
+  published_at: string | null; created_at: string; updated_at: string
 }
 export type Pattern = { dimension: string; value: string; sample_size: number; experiment_count: number; average_score: number; relative_lift: number; confidence: number; status: string }
 export type ModelConfig = { id: string; name: string; provider: string; protocol: string; base_url: string; api_key_masked: string; model_name: string; supports_images: boolean; supports_native_video: boolean; supports_structured_json: boolean; max_native_media_bytes: number; is_default: boolean; is_active: boolean; last_error: string | null }
@@ -40,7 +41,10 @@ export const api = {
   experiments: () => request<unknown[]>('/experiments'),
   createExperiment: (payload: ExperimentRequest) => request<{ renders: Render[] }>('/experiments', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),
   renders: () => request<Render[]>('/renders'),
+  render: (id: string) => request<Render>(`/renders/${id}`),
   runRender: (id: string) => request<Render>(`/renders/${id}/run`, { method: 'POST' }),
+  renderVideoUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/video`,
+  renderThumbnailUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/thumbnail`,
   renderDownloadUrl: (id: string) => `${origin}/api/renders/${id}/download`,
   metrics: (file: File) => { const data = new FormData(); data.append('file', file); return request<unknown>('/metrics/import', { method: 'POST', body: data }) },
   patterns: () => request<{ sample_size: number; global_score: number | null; patterns: Pattern[]; message?: string }>('/analysis/patterns'),

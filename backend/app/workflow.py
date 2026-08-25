@@ -331,6 +331,33 @@ def _render_manifest(render: Any) -> list[dict[str, Any]]:
     return _as_list(_get(render, "edit_decision_list", "manifest", "timeline", "clip_manifest", "recipe", default=[]))
 
 
+def render_thumbnail_path(output_path: str | Path) -> Path:
+    """Return the local, derived cover path for an exported render."""
+    return Path(output_path).with_suffix(".thumbnail.jpg")
+
+
+def create_render_thumbnail(output_path: str | Path, duration_seconds: float | None = None) -> Path:
+    """Extract a representative JPEG from a finished render with FFmpeg."""
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise WorkflowError("未找到 ffmpeg，无法生成成片封面")
+    output = Path(output_path).expanduser().resolve()
+    if not output.is_file():
+        raise WorkflowError("导出文件不存在，无法生成成片封面")
+    thumbnail = render_thumbnail_path(output).resolve()
+    thumbnail.parent.mkdir(parents=True, exist_ok=True)
+    timestamp = max(0.0, float(duration_seconds or 0) * 0.15)
+    command = [
+        ffmpeg, "-y", "-hide_banner", "-loglevel", "error",
+        "-ss", f"{timestamp:.3f}", "-i", str(output),
+        "-frames:v", "1", "-q:v", "3", str(thumbnail),
+    ]
+    completed = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    if completed.returncode or not thumbnail.is_file() or thumbnail.stat().st_size == 0:
+        raise WorkflowError("无法从成片生成封面")
+    return thumbnail
+
+
 def render_with_ffmpeg(
     manifest: list[dict[str, Any]], output_path: str | Path, *, progress: Callable[[int], None] | None = None
 ) -> Path:
@@ -405,6 +432,13 @@ def run_render(session: Any, render_id: Any, output_dir: str | Path) -> Any:
     target = Path(output_dir) / filename
     try:
         output = render_with_ffmpeg(manifest, target, progress=lambda value: _set(job, value, "progress") if job else None)
+        # The cover is derived data: a failed frame extraction must not discard
+        # an otherwise valid export, and historical exports are backfilled when
+        # their thumbnail endpoint is first requested.
+        try:
+            create_render_thumbnail(output, _get(render, "duration_seconds"))
+        except Exception:
+            pass
         _set(render, str(output), "output_path", "file_path", "path")
         _set(render, "completed", "status")
         _set(render, utcnow(), "rendered_at", "completed_at")

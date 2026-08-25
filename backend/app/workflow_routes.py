@@ -17,9 +17,11 @@ from .models import Clip, Experiment, Job, PlatformMetric, Render
 from .workflow import (
     WorkflowError,
     analyze_patterns,
+    create_render_thumbnail,
     create_experiment,
     import_metrics_csv,
     recommend_next_experiments,
+    render_thumbnail_path,
     review_clip,
     run_render,
     serialize_clip,
@@ -212,18 +214,53 @@ def get_render(render_id: str, session: Session = Depends(get_session)) -> dict[
     return _serialize_render(render)
 
 
-@router.get("/renders/{render_id}/download")
-def download_render(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
-    """Download a completed local render without exposing arbitrary file paths."""
-    render = session.get(Render, render_id)
-    if render is None:
-        raise HTTPException(status_code=404, detail="成片不存在")
+def _completed_render_output(render: Render) -> Path:
+    """Resolve a completed export while keeping file access scoped locally."""
     if render.status != "completed" or not render.output_path:
         raise HTTPException(status_code=409, detail="成片尚未导出完成")
     output = Path(render.output_path).resolve()
     export_root = EXPORT_DIR.resolve()
     if export_root not in output.parents or not output.is_file():
         raise HTTPException(status_code=404, detail="导出文件不存在")
+    return output
+
+
+def _get_completed_render(render_id: str, session: Session) -> tuple[Render, Path]:
+    render = session.get(Render, render_id)
+    if render is None:
+        raise HTTPException(status_code=404, detail="成片不存在")
+    return render, _completed_render_output(render)
+
+
+@router.get("/renders/{render_id}/video")
+def play_render(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Stream a completed local render for the in-app player."""
+    _, output = _get_completed_render(render_id, session)
+    return FileResponse(output, media_type="video/mp4")
+
+
+@router.get("/renders/{render_id}/thumbnail")
+def render_thumbnail(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Return a derived cover image, backfilling legacy finished renders."""
+    render, output = _get_completed_render(render_id, session)
+    thumbnail = render_thumbnail_path(output).resolve()
+    export_root = EXPORT_DIR.resolve()
+    if export_root not in thumbnail.parents:
+        raise HTTPException(status_code=404, detail="成片封面不可用")
+    if not thumbnail.is_file():
+        try:
+            thumbnail = create_render_thumbnail(output, render.duration_seconds).resolve()
+        except Exception as exc:
+            raise HTTPException(status_code=404, detail="成片封面不可用") from exc
+    if not thumbnail.is_file():
+        raise HTTPException(status_code=404, detail="成片封面不可用")
+    return FileResponse(thumbnail, media_type="image/jpeg")
+
+
+@router.get("/renders/{render_id}/download")
+def download_render(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Download a completed local render without exposing arbitrary file paths."""
+    render, output = _get_completed_render(render_id, session)
     return FileResponse(output, media_type="video/mp4", filename=f"{render.video_id}.mp4")
 
 

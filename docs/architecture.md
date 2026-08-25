@@ -40,7 +40,8 @@ OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini �
 ## 成片与分析规则
 
 - `POST /api/experiments` 校验素材存在、审核通过、同菜品、截取区间、速度和总时长（10–15 秒）。
-- `POST /api/renders/{render_id}/run` 用硬切生成 1080×1920、H.264/AAC MP4，并保留 `edit_decision_list`。
-- `GET /api/renders/{render_id}/download` 仅在成片完成后提供对应 MP4 下载；服务端校验文件仍位于配置的导出目录中。
+- `POST /api/renders/{render_id}/run` 用硬切生成 1080×1920、H.264/AAC MP4，并保留 `edit_decision_list`；导出后会从约 15% 时刻提取 JPEG 成片封面。封面是可再生的本地派生文件，提取失败不会使成片导出失败。
+- `GET /api/renders/{render_id}/video` 仅在成片完成后以内联方式播放对应 MP4；`GET /api/renders/{render_id}/thumbnail` 返回成片封面，并会为历史成片按需补生成封面。
+- `GET /api/renders/{render_id}/download` 仅在成片完成后提供对应 MP4 下载。上述成片媒体接口均校验文件仍位于配置的导出目录中，不接受任意本地路径。
 - 数据分析优先使用与发布后 72 小时差值最小的观察记录；播放量低于 500 的记录不进入规律评估。
 - 同一方向需在至少 3 个独立实验中重复才标记为“已验证规律”，其余为“候选规律”。
