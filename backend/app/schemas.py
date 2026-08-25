@@ -8,7 +8,7 @@ from typing import Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 
-ModelTaskType = Literal["clip_understanding", "tag_cleanup", "data_analysis", "copywriting"]
+ModelTaskType = Literal["clip_understanding", "remix_planning", "tag_cleanup", "data_analysis", "copywriting"]
 
 
 class ModelConfigCreate(BaseModel):

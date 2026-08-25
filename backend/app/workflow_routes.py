@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 from .database import get_session
 from .models import Clip, Experiment, Job, PlatformMetric, Render
+from .remix_planning import RemixPlanningError, plan_remix
 from .workflow import (
     WorkflowError,
     analyze_patterns,
@@ -62,10 +63,19 @@ class RenderVariant(BaseModel):
 class ExperimentCreateRequest(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     dish: str = Field(min_length=1, max_length=120)
+    target_duration_seconds: float = Field(default=12.0, ge=9.5, le=15.5)
+    generation_count: int = Field(default=1, ge=1, le=100)
     variables: dict[str, Any] = Field(default_factory=dict)
     notes: Optional[str] = None
     status: str = "draft"
     variants: list[RenderVariant] = Field(min_length=1, max_length=100)
+
+
+class RemixPlanRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=200)
+    dish: str = Field(min_length=1, max_length=120)
+    requested_count: int = Field(ge=1, le=10)
+    target_duration_seconds: float = Field(default=12.0, ge=9.5, le=15.5)
 
 
 def _error(exc: WorkflowError) -> HTTPException:
@@ -212,6 +222,19 @@ def create_experiment_endpoint(
         return {"experiment": _serialize_experiment(experiment), "renders": [_serialize_render(row) for row in renders]}
     except WorkflowError as exc:
         raise _error(exc) from exc
+
+
+@router.post("/remix-plans")
+async def create_remix_plan_endpoint(
+    payload: RemixPlanRequest, session: Session = Depends(get_session)
+) -> dict[str, Any]:
+    try:
+        return await plan_remix(
+            session, dish=payload.dish, requested_count=payload.requested_count,
+            target_duration_seconds=payload.target_duration_seconds,
+        )
+    except RemixPlanningError as exc:
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)) from exc
 
 
 @router.get("/renders")

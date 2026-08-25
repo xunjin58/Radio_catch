@@ -16,6 +16,9 @@ export type Pattern = { dimension: string; value: string; sample_size: number; e
 export type ModelConfig = { id: string; name: string; provider: string; protocol: string; base_url: string; api_key_masked: string; model_name: string; supports_images: boolean; supports_native_video: boolean; supports_structured_json: boolean; max_native_media_bytes: number; is_default: boolean; is_active: boolean; last_error: string | null }
 export type ProjectSettings = { business_context: string }
 export type ExperimentRequest = { name: string; dish: string; target_duration_seconds: number; generation_count: number; variables: Record<string, unknown>; variants: Array<{ name: string; clips: Array<{ clip_id: string; start?: number; end?: number; speed?: number }>; values?: Record<string, unknown> }> }
+export type RemixStrategy = { id: string; name: string; reason: string; allocation: number }
+export type RemixVariant = { id: string; strategy_id: string; name: string; reason: string; substitution_note: string; clips: Array<{ clip_id: string; start: number; end: number; speed: number }> }
+export type RemixPlan = { candidate_count: number; included_candidate_count: number; excluded_candidate_count: number; candidate_selection_note: string; requested_count: number; planned_count: number; target_duration_seconds: number; strategies: RemixStrategy[]; variants: RemixVariant[]; shortfall_reason: string | null; planner_model_config_id: string }
 
 const origin = import.meta.env.VITE_API_URL ?? ''
 
@@ -41,6 +44,7 @@ export const api = {
   analyzeClip: (id: string) => request<unknown>(`/clips/${id}/analyze`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ mode: 'auto' }) }),
   experiments: () => request<unknown[]>('/experiments'),
   createExperiment: (payload: ExperimentRequest) => request<{ renders: Render[] }>('/experiments', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),
+  planRemix: (payload: { name: string; dish: string; requested_count: number; target_duration_seconds: number }) => request<RemixPlan>('/remix-plans', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),
   renders: () => request<Render[]>('/renders'),
   render: (id: string) => request<Render>(`/renders/${id}`),
   runRender: (id: string) => request<Render>(`/renders/${id}/run`, { method: 'POST' }),

@@ -24,6 +24,7 @@ flowchart LR
 6. 人工审核修改或确认分析结果。`tags.commerce_roles` 可标记 `hook`、`product_proof`、`usage`、`cta`，但必须由画面或音频证据支持。只有审核通过的素材可进入实验时间线。
 7. `PATCH /api/clips/{clip_id}/metadata` 只修改最新分析的摘要、菜品、片段角色、可用区间和结构化标签，不改变审核状态。`tags` 为完整替换（本地缩略图路径由服务端保留）；`POST /api/clips/{clip_id}/analyze` 会新增一版分析并继承当前审核状态。素材详情与列表始终投影最新分析版本，旧版本仍保留用于追溯。
 8. 素材库详情通过 `GET /api/media/clips/{clip_id}/video` 播放完整原视频。接口只能按已登记的素材 ID 读取仍位于本地媒体存储目录内的文件，不返回或接受任意本地路径。
+9. `POST /api/remix-plans` 为同菜品的已审核素材生成多模态混剪计划：服务端先按标签、角色、质量和置信度预筛最多 24 条候选，再临时向规划模型发送摘要、结构化标签、封面和最多 3 张关键帧。模型返回少量叙事策略及其实际 EDL 变体；图片 Base64 只存在于本次模型请求，不写入数据库、响应、日志或用量记录。
 
 OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini 与小米 MiMo 原生适配器仅接受 `auto` 或 `native` 模式，不回退关键帧；它们会在本地检查配置的媒体大小，且不会持久化或记录原始视频 Base64 数据。MiMo 仅接受 MP4、MOV、AVI 或 WMV，并额外将包含数据 URL 前缀的 Base64 请求限制在 50 MB；界面默认将原文件限制为 37 MB，以在编码膨胀后保留余量。
 
@@ -41,6 +42,7 @@ OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini �
 ## 成片与分析规则
 
 - `POST /api/experiments` 校验素材存在、审核通过、同菜品、截取区间、速度和总时长（10–15 秒）。
+- `POST /api/remix-plans` 使用 `remix_planning` 任务模型（未分配时回退默认模型），且该模型必须支持图片输入。策略是高层叙事模板；变体是实际导出的 EDL。同一策略可替换不同 source clip 生成多个变体，但完全相同的 EDL 会被丢弃；素材不足时返回较小的规划数和说明，不硬凑数量。
 - `POST /api/renders/{render_id}/run` 用硬切生成 1080×1920、H.264/AAC MP4，并保留 `edit_decision_list`；导出后会从约 15% 时刻提取 JPEG 成片封面。封面是可再生的本地派生文件，提取失败不会使成片导出失败。
 - `GET /api/renders/{render_id}/video` 仅在成片完成后以内联方式播放对应 MP4；`GET /api/renders/{render_id}/thumbnail` 返回成片封面，并会为历史成片按需补生成封面。
 - `GET /api/renders/{render_id}/download` 仅在成片完成后提供对应 MP4 下载。上述成片媒体接口均校验文件仍位于配置的导出目录中，不接受任意本地路径。
