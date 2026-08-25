@@ -25,6 +25,15 @@ class Timestamped:
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, onupdate=utcnow, nullable=False)
 
 
+class ProjectSettings(Timestamped, Base):
+    """Single local workspace setting record, kept separate from model credentials."""
+
+    __tablename__ = "project_settings"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    business_context: Mapped[str] = mapped_column(Text, nullable=False)
+
+
 class ModelConfig(Timestamped, Base):
     __tablename__ = "model_configs"
 

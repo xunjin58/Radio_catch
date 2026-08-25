@@ -102,3 +102,11 @@ class TestConnectionResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: Literal["ok"] = "ok"
     database: Literal["ok"] = "ok"
+
+
+class ProjectSettingsUpdate(BaseModel):
+    business_context: str = Field(min_length=1, max_length=2000)
+
+
+class ProjectSettingsResponse(BaseModel):
+    business_context: str

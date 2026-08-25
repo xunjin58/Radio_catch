@@ -25,6 +25,12 @@ npm run build
 `/api/media/health` 会返回 FFmpeg 和 FFprobe 的可用性。需要系统 PATH 中存在两个可执行文件。
 
 ## Gemini 原生视频
+## 商家业务背景
+
+“模型与接口”页面的“商家业务背景 / AI 提示词补充说明”保存于本地数据库的 `ProjectSettings`，不属于 `ModelConfig`，也不保存 API Key。新项目默认使用柠檬商家背景；修改后只影响之后发起的素材分析，不会重写历史标签。
+
+背景中的销售描述不是视频事实。审核时应移除没有画面或音频证据的 `commerce_roles`，并且不要把价格、产地、甜度、农残等不可验证声明作为素材标签或成片卖点。
+
 
 兔子 API Gemini 3 配置的 Base URL 必须是根地址 `https://api.tu-zi.com`。原生媒体默认上限为 100 MB，按单个模型配置存储；视频会连同内嵌音轨以一次请求发送给供应商，因此不要将原始请求体、Base64 数据或 API Key 写入终端、日志或故障单。
 

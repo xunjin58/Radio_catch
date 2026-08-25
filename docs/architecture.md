@@ -19,8 +19,9 @@ flowchart LR
 1. `POST /api/media/imports` 接收视频，计算 SHA-256；相同哈希直接返回已存在素材。
 2. 媒体任务用 FFprobe 读取时长、帧率、尺寸、方向和音轨，再用 FFmpeg 生成缩略图与自适应关键帧。
 3. 关键帧路径和时间戳保存为 `ClipAnalysis(mode=adaptive_frames)`，作为审核和模型理解的证据。
-4. `POST /api/clips/{clip_id}/analyze` 默认将关键帧和时间戳发送至 OpenAI 兼容模型；`protocol=gemini` 将原始视频及其内嵌音轨作为 Gemini 原生 `inline_data` 发送；`protocol=mimo` 通过 MiMo 的 OpenAI 兼容 Chat Completions 接口发送 `video_url` Base64 数据，保存结构化 `ClipAnalysis`。
-5. 人工审核修改或确认分析结果。只有审核通过的素材可进入实验时间线。
+4. `GET/PATCH /api/project-settings` 读取或保存项目级 `business_context`。新项目默认使用柠檬商家背景；该背景仅说明标签用途，不能作为模型判断画面事实或宣传卖点的依据。
+5. `POST /api/clips/{clip_id}/analyze` 默认将关键帧和时间戳发送至 OpenAI 兼容模型；`protocol=gemini` 将原始视频及其内嵌音轨作为 Gemini 原生 `inline_data` 发送；`protocol=mimo` 通过 MiMo 的 OpenAI 兼容 Chat Completions 接口发送 `video_url` Base64 数据，保存结构化 `ClipAnalysis`。三种协议均使用项目级业务背景。
+6. 人工审核修改或确认分析结果。`tags.commerce_roles` 可标记 `hook`、`product_proof`、`usage`、`cta`，但必须由画面或音频证据支持。只有审核通过的素材可进入实验时间线。
 
 OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini 与小米 MiMo 原生适配器仅接受 `auto` 或 `native` 模式，不回退关键帧；它们会在本地检查配置的媒体大小，且不会持久化或记录原始视频 Base64 数据。MiMo 仅接受 MP4、MOV、AVI 或 WMV，并额外将包含数据 URL 前缀的 Base64 请求限制在 50 MB；界面默认将原文件限制为 37 MB，以在编码膨胀后保留余量。
 
@@ -28,6 +29,7 @@ OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini �
 
 | 实体 | 作用 |
 | --- | --- |
+| `ProjectSettings` | 项目级商家业务背景；不保存模型连接信息或密钥。 |
 | `ModelConfig` / `ModelTaskAssignment` / `ModelUsage` | 加密的模型配置、任务路由与调用记录；原生媒体上限按配置保存。 |
 | `Clip` / `ClipAnalysis` | 原始视频与可追溯的媒体证据、AI/人工标签。 |
 | `BackgroundTask` | 可查询的持久化工作流任务。 |

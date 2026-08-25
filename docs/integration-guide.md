@@ -26,6 +26,19 @@ curl -X POST http://127.0.0.1:8000/api/clips/<clip_id>/analyze \
 
 模型配置读取接口只返回 `api_key_masked`，不会返回原始密钥。
 
+### 2a. 设置商家业务背景
+
+新项目默认以“销售新鲜柠檬的商家”为素材标注背景。该背景会同时用于 Gemini、MiMo 和关键帧理解；它只帮助模型理解标签的后续用途，不能让模型编造产地、价格、甜度、农残等画面不可证实的卖点。
+
+```bash
+curl http://127.0.0.1:8000/api/project-settings
+curl -X PATCH http://127.0.0.1:8000/api/project-settings \
+  -H 'content-type: application/json' \
+  -d '{"business_context":"我是柠檬商家；只标注视频或音频中可证实的信息，并为可见镜头标注带货角色。"}'
+```
+
+素材分析的 `tags.commerce_roles` 可能包含 `hook`（开场吸引）、`product_proof`（品质展示）、`usage`（使用场景）和 `cta`（明确行动引导）。人工审核可删除不具备画面或音频证据的角色。
+
 ### 兔子 API Gemini 3 原生视频配置
 
 在“模型与接口”中选择“添加 Gemini 3”，填写兔子 API Key 即可创建预设。该预设固定使用根地址 `https://api.tu-zi.com`、协议 `gemini` 和模型 `gemini-3-flash-preview`；默认原生媒体大小上限为 100 MB，可按配置调整。
@@ -59,7 +72,7 @@ curl -X POST http://127.0.0.1:8000/api/model-configs \
 ```bash
 curl -X PATCH http://127.0.0.1:8000/api/clips/<clip_id>/review \
   -H 'content-type: application/json' \
-  -d '{"status":"approved","updates":{"dish":"烤鱼","segment_role":"middle","usable_range":{"start":0.2,"end":2.4}}}'
+  -d '{"status":"approved","updates":{"dish":"柠檬","segment_role":"middle","usable_range":{"start":0.2,"end":2.4},"tags":{"commerce_roles":["product_proof"]}}}'
 ```
 
 创建实验的 `variants[].clips` 必须提供审核通过的 `clip_id`、`start`、`end` 和可选 `speed`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行导出。

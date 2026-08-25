@@ -14,9 +14,10 @@ from sqlalchemy.orm import Session
 
 from app.config_routes import test_connection
 from app.database import Base
-from app.intelligence import IntelligenceError, _gemini_response_text, understand_clip
+from app.intelligence import GEMINI_RESPONSE_SCHEMA, IntelligenceError, _gemini_response_text, understand_clip
 from app.models import Clip, ClipAnalysis, ModelConfig, ModelTaskAssignment, ModelUsage
-from app.schemas import TestConnectionRequest
+from app.project_routes import DEFAULT_BUSINESS_CONTEXT, get_project_settings, update_project_settings
+from app.schemas import ProjectSettingsUpdate, TestConnectionRequest
 from app.security import encrypt_api_key
 
 
@@ -61,6 +62,7 @@ def gemini_payload(summary: str = "原生视频") -> dict:
         "candidates": [{"content": {"parts": [{"text": """{
             "summary": "%s", "segment_role": "head", "dish": ["烤鱼"],
             "actions": ["翻动"], "visual_hooks": ["火焰"], "audio_hooks": ["滋滋声"],
+            "commerce_roles": ["hook", "product_proof", "not-a-role", "hook"],
             "shot_type": "特写", "climax_time": 1, "usable_range": {"start": 0, "end": 2},
             "quality_score": 0.8, "confidence": 0.9
         }""" % summary}]}}]
@@ -119,12 +121,22 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(inline["mime_type"], "video/mp4")
         self.assertEqual(inline["data"], base64.b64encode(b"video-with-audio").decode("ascii"))
         self.assertEqual(call["json"]["generationConfig"]["responseMimeType"], "application/json")
+        self.assertIn("销售新鲜柠檬", call["json"]["system_instruction"]["parts"][0]["text"])
+        self.assertIn("commerce_roles", call["json"]["generationConfig"]["responseSchema"]["required"])
         self.assertEqual(row.mode, "native_video")
+        self.assertEqual(row.tags["commerce_roles"], ["hook", "product_proof"])
         self.assertEqual(row.evidence_frames[0]["has_audio"], True)
         self.assertNotIn("data", row.evidence_frames[0])
 
     def test_gemini_wrapped_response_is_supported(self) -> None:
         self.assertIn("原生视频", _gemini_response_text({"data": gemini_payload()}))
+
+    def test_project_settings_returns_default_and_persists_context(self) -> None:
+        self.assertEqual(get_project_settings(self.session).business_context, DEFAULT_BUSINESS_CONTEXT)
+        updated = update_project_settings(ProjectSettingsUpdate(business_context="只标注可见的柠檬切片。"), self.session)
+        self.assertEqual(updated.business_context, "只标注可见的柠檬切片。")
+        self.assertEqual(get_project_settings(self.session).business_context, "只标注可见的柠檬切片。")
+        self.assertIn("commerce_roles", GEMINI_RESPONSE_SCHEMA["properties"])
 
     def test_gemini_over_limit_fails_without_frame_fallback(self) -> None:
         self.add_config("gemini", max_native_media_bytes=3)
@@ -166,6 +178,7 @@ class GeminiIntelligenceTests(unittest.TestCase):
         with patch("app.intelligence.httpx.AsyncClient", FakeAsyncClient):
             row = asyncio.run(understand_clip(self.session, clip.id))
         self.assertEqual(FakeAsyncClient.calls[-1]["url"], "https://api.example.test/v1/chat/completions")
+        self.assertIn("销售新鲜柠檬", FakeAsyncClient.calls[-1]["json"]["messages"][0]["content"])
         self.assertEqual(row.mode, "adaptive_frames")
 
     def test_gemini_connection_test_uses_model_list_only(self) -> None:
@@ -194,6 +207,7 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(video["video_url"]["url"], f"data:video/mp4;base64,{base64.b64encode(b'video-with-audio').decode('ascii')}")
         self.assertEqual(video["fps"], 2)
         self.assertEqual(call["json"]["response_format"], {"type": "json_object"})
+        self.assertIn("销售新鲜柠檬", call["json"]["messages"][0]["content"])
         self.assertEqual(row.mode, "native_video")
         self.assertEqual(row.evidence_frames[0]["source"], "mimo_native_video")
         self.assertNotIn("data", row.evidence_frames[0])

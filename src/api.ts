@@ -13,6 +13,7 @@ export type Render = {
 }
 export type Pattern = { dimension: string; value: string; sample_size: number; experiment_count: number; average_score: number; relative_lift: number; confidence: number; status: string }
 export type ModelConfig = { id: string; name: string; provider: string; protocol: string; base_url: string; api_key_masked: string; model_name: string; supports_images: boolean; supports_native_video: boolean; supports_structured_json: boolean; max_native_media_bytes: number; is_default: boolean; is_active: boolean; last_error: string | null }
+export type ProjectSettings = { business_context: string }
 export type ExperimentRequest = { name: string; dish: string; target_duration_seconds: number; generation_count: number; variables: Record<string, unknown>; variants: Array<{ name: string; clips: Array<{ clip_id: string; start?: number; end?: number; speed?: number }>; values?: Record<string, unknown> }> }
 
 const origin = import.meta.env.VITE_API_URL ?? ''
@@ -43,6 +44,8 @@ export const api = {
   metrics: (file: File) => { const data = new FormData(); data.append('file', file); return request<unknown>('/metrics/import', { method: 'POST', body: data }) },
   patterns: () => request<{ sample_size: number; global_score: number | null; patterns: Pattern[]; message?: string }>('/analysis/patterns'),
   recommendations: () => request<{ recommendations: Array<{ suggestion: string; reason: string }> }>('/analysis/recommendations'),
+  projectSettings: () => request<ProjectSettings>('/project-settings'),
+  updateProjectSettings: (payload: ProjectSettings) => request<ProjectSettings>('/project-settings', { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),
   modelConfigs: () => request<ModelConfig[]>('/model-configs'),
   createModelConfig: (payload: Record<string, unknown>) => request<ModelConfig>('/model-configs', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),
   testModelConfig: (id: string) => request<{ ok: boolean; detail: string; latency_ms: number }>(`/model-configs/${id}/test-connection`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' }),

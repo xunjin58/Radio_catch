@@ -16,6 +16,7 @@ from .media import LocalMediaService, MediaJobService, SQLAlchemyClipRepository
 from .media_routes import create_media_router
 from .models import Clip
 from .intelligence_routes import router as intelligence_router
+from .project_routes import router as project_settings_router
 from .workflow_routes import router as workflow_router
 
 
@@ -58,6 +59,7 @@ _media_jobs = MediaJobService(max_workers=2)
 app.state.media_jobs = _media_jobs
 app.include_router(create_media_router(_media_service, _media_jobs))
 app.include_router(model_config_router)
+app.include_router(project_settings_router)
 app.include_router(workflow_router)
 app.include_router(intelligence_router)
 
