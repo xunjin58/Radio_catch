@@ -123,8 +123,10 @@ def _clip_path(clip: Any) -> str | None:
 def _clip_meta(clip: Any) -> dict[str, Any]:
     analysis = _latest_analysis(clip)
     if analysis:
-        return _as_dict(_get(analysis, "tags", "analysis", "analysis_json", "metadata", default={}))
-    return _as_dict(_get(clip, "analysis", "analysis_json", "metadata", "tags", default={}))
+        # Return a fresh mapping so review edits are detected by SQLAlchemy's
+        # plain JSON column instead of mutating its existing value in place.
+        return dict(_as_dict(_get(analysis, "tags", "analysis", "analysis_json", "metadata", default={})))
+    return dict(_as_dict(_get(clip, "analysis", "analysis_json", "metadata", "tags", default={})))
 
 
 def _latest_analysis(clip: Any) -> Any | None:
@@ -212,6 +214,78 @@ def review_clip(session: Any, clip_id: Any, status: str, updates: dict[str, Any]
         _json_value(analysis or clip, merged, "tags", "analysis", "analysis_json", "metadata")
     if analysis is not None:
         _set(analysis, status, "review_status")
+    _commit(session)
+    return clip
+
+
+def update_clip_metadata(session: Any, clip_id: Any, updates: dict[str, Any]) -> Any:
+    """Amend the latest analysis without changing its review decision.
+
+    Unlike :func:`review_clip`, this is deliberately status-neutral so the
+    material-library inspector can correct model output without approving,
+    rejecting, or re-queuing the source clip.
+    """
+    clip = _by_id(session, _models().Clip, clip_id)
+    if not clip:
+        raise WorkflowError("素材不存在")
+    if not updates:
+        return clip
+
+    analysis = _latest_analysis(clip)
+    if analysis is None:
+        ClipAnalysis = getattr(_models(), "ClipAnalysis", None)
+        if ClipAnalysis is not None:
+            analysis = ClipAnalysis()
+            _set(analysis, _get(clip, "id"), "clip_id")
+            _set(analysis, _get(clip, "review_status", default="pending"), "review_status")
+            if hasattr(clip, "analyses"):
+                clip.analyses.append(analysis)
+            session.add(analysis)
+
+    target = analysis or clip
+    if "summary" in updates:
+        summary = updates["summary"]
+        if summary is not None and not isinstance(summary, str):
+            raise WorkflowError("summary 必须是字符串或 null")
+        _set(target, summary, "summary")
+    if "segment_role" in updates:
+        role = updates["segment_role"]
+        if role not in {"head", "middle", "tail"}:
+            raise WorkflowError("segment_role 必须是 head、middle 或 tail")
+        _set(target, role, "segment_role", "role")
+    if "usable_range" in updates:
+        usable = updates["usable_range"]
+        if usable is not None:
+            if not isinstance(usable, dict) or float(usable.get("end", -1)) <= float(usable.get("start", 0)):
+                raise WorkflowError("usable_range 需要有效的 start 和 end")
+            usable = {"start": float(usable["start"]), "end": float(usable["end"])}
+        _json_value(target, usable, "usable_range")
+
+    existing_tags = _clip_meta(clip)
+    tags = existing_tags
+    if "tags" in updates:
+        tag_value = updates["tags"]
+        if not isinstance(tag_value, dict):
+            raise WorkflowError("tags 必须是对象")
+        # Metadata edits replace the full JSON payload so deleted keys stay
+        # deleted; review updates intentionally retain their merge semantics.
+        tags = dict(tag_value)
+        # The thumbnail is local media plumbing rather than a semantic label;
+        # keep it when the user replaces the editable label document.
+        if existing_tags.get("thumbnail_path"):
+            tags["thumbnail_path"] = existing_tags["thumbnail_path"]
+    if "dish" in updates:
+        dish = updates["dish"]
+        if dish is not None and not isinstance(dish, str):
+            raise WorkflowError("dish 必须是字符串或 null")
+        if dish and dish.strip():
+            tags["dish"] = dish.strip()
+        else:
+            tags.pop("dish", None)
+    if "tags" in updates or "dish" in updates:
+        _json_value(target, tags, "tags", "analysis", "analysis_json", "metadata")
+
+    _set(target, utcnow(), "updated_at")
     _commit(session)
     return clip
 

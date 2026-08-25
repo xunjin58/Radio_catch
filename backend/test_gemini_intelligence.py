@@ -108,6 +108,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
     def test_gemini_sends_original_video_with_structured_output(self) -> None:
         self.add_config("gemini")
         clip = self.add_clip()
+        clip.review_status = "approved"
+        self.session.commit()
         FakeAsyncClient.calls = []
         FakeAsyncClient.response = FakeResponse(gemini_payload())
         with patch("app.intelligence.httpx.AsyncClient", FakeAsyncClient):
@@ -127,6 +129,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(row.tags["commerce_roles"], ["hook", "product_proof"])
         self.assertEqual(row.evidence_frames[0]["has_audio"], True)
         self.assertNotIn("data", row.evidence_frames[0])
+        self.assertEqual(row.review_status, "approved")
+        self.assertEqual(self.session.get(Clip, clip.id).review_status, "approved")
 
     def test_gemini_wrapped_response_is_supported(self) -> None:
         self.assertIn("原生视频", _gemini_response_text({"data": gemini_payload()}))
@@ -169,6 +173,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
     def test_openai_compatible_frames_still_use_chat_completions(self) -> None:
         self.add_config("openai")
         clip = self.add_clip()
+        clip.review_status = "needs_review"
+        self.session.commit()
         frame = Path(self.tempdir.name) / "frame.png"
         frame.write_bytes(b"frame")
         self.session.add(ClipAnalysis(clip_id=clip.id, mode="adaptive_frames", evidence_frames=[{"path": str(frame), "time": 0}]))
@@ -180,6 +186,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(FakeAsyncClient.calls[-1]["url"], "https://api.example.test/v1/chat/completions")
         self.assertIn("销售新鲜柠檬", FakeAsyncClient.calls[-1]["json"]["messages"][0]["content"])
         self.assertEqual(row.mode, "adaptive_frames")
+        self.assertEqual(row.review_status, "needs_review")
+        self.assertEqual(self.session.get(Clip, clip.id).review_status, "needs_review")
 
     def test_gemini_connection_test_uses_model_list_only(self) -> None:
         config = self.add_config("gemini")
@@ -194,6 +202,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
     def test_mimo_sends_original_video_to_openai_compatible_endpoint(self) -> None:
         self.add_config("mimo")
         clip = self.add_clip()
+        clip.review_status = "approved"
+        self.session.commit()
         FakeAsyncClient.calls = []
         FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": _gemini_response_text(gemini_payload("MiMo 原生视频"))}}]})
         with patch("app.intelligence.httpx.AsyncClient", FakeAsyncClient):
@@ -211,6 +221,8 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(row.mode, "native_video")
         self.assertEqual(row.evidence_frames[0]["source"], "mimo_native_video")
         self.assertNotIn("data", row.evidence_frames[0])
+        self.assertEqual(row.review_status, "approved")
+        self.assertEqual(self.session.get(Clip, clip.id).review_status, "approved")
 
     def test_mimo_rejects_frame_modes_without_calling_provider(self) -> None:
         self.add_config("mimo")

@@ -1,14 +1,14 @@
 # API 集成指南
 
-基础地址：`http://127.0.0.1:8000`。交互式接口定义位于 `/docs`。
+基础地址：`http://127.0.0.1:8001`。交互式接口定义位于 `/docs`；如设置了 `RADIO_CATCH_API_PORT`，请替换为对应端口。
 
 ## 常用流程
 
 ### 1. 导入并等待媒体处理
 
 ```bash
-curl -F 'file=@/absolute/path/clip.mp4' http://127.0.0.1:8000/api/media/imports
-curl http://127.0.0.1:8000/api/media/jobs/<job_id>
+curl -F 'file=@/absolute/path/clip.mp4' http://127.0.0.1:8001/api/media/imports
+curl http://127.0.0.1:8001/api/media/jobs/<job_id>
 ```
 
 当任务 `state` 为 `succeeded` 时，素材的缩略图与关键帧已就绪。相同文件会返回 `duplicate: true`，不会创建重复素材。
@@ -26,11 +26,11 @@ curl -I http://127.0.0.1:8001/api/media/clips/<clip_id>/video
 ### 2. 配置模型并理解素材
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/model-configs \
+curl -X POST http://127.0.0.1:8001/api/model-configs \
   -H 'content-type: application/json' \
   -d '{"name":"vision","provider":"OpenAI-compatible","protocol":"openai","base_url":"https://provider.example/v1","api_key":"YOUR_KEY","model_name":"vision-model","supports_images":true,"supports_structured_json":true,"is_default":true}'
 
-curl -X POST http://127.0.0.1:8000/api/clips/<clip_id>/analyze \
+curl -X POST http://127.0.0.1:8001/api/clips/<clip_id>/analyze \
   -H 'content-type: application/json' -d '{"mode":"auto"}'
 ```
 
@@ -41,8 +41,8 @@ curl -X POST http://127.0.0.1:8000/api/clips/<clip_id>/analyze \
 新项目默认以“销售新鲜柠檬的商家”为素材标注背景。该背景会同时用于 Gemini、MiMo 和关键帧理解；它只帮助模型理解标签的后续用途，不能让模型编造产地、价格、甜度、农残等画面不可证实的卖点。
 
 ```bash
-curl http://127.0.0.1:8000/api/project-settings
-curl -X PATCH http://127.0.0.1:8000/api/project-settings \
+curl http://127.0.0.1:8001/api/project-settings
+curl -X PATCH http://127.0.0.1:8001/api/project-settings \
   -H 'content-type: application/json' \
   -d '{"business_context":"我是柠檬商家；只标注视频或音频中可证实的信息，并为可见镜头标注带货角色。"}'
 ```
@@ -56,7 +56,7 @@ curl -X PATCH http://127.0.0.1:8000/api/project-settings \
 也可通过 API 创建：
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/model-configs \
+curl -X POST http://127.0.0.1:8001/api/model-configs \
   -H 'content-type: application/json' \
   -d '{"name":"tuzi-gemini","provider":"兔子 API","protocol":"gemini","base_url":"https://api.tu-zi.com","api_key":"YOUR_KEY","model_name":"gemini-3-flash-preview","supports_images":true,"supports_native_video":true,"supports_structured_json":true,"max_native_media_bytes":104857600}'
 ```
@@ -72,7 +72,7 @@ MiMo 原生适配器只接受 `auto` 或 `native`，不会回退关键帧；`ada
 也可通过 API 创建：
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/model-configs \
+curl -X POST http://127.0.0.1:8001/api/model-configs \
   -H 'content-type: application/json' \
   -d '{"name":"mimo-native","provider":"小米 MiMo Token Plan","protocol":"mimo","base_url":"https://token-plan-cn.xiaomimimo.com/v1","api_key":"YOUR_KEY","model_name":"mimo-v2.5","supports_images":true,"supports_native_video":true,"supports_structured_json":true,"max_native_media_bytes":38797312}'
 ```
@@ -80,10 +80,20 @@ curl -X POST http://127.0.0.1:8000/api/model-configs \
 ### 3. 审核并创建实验
 
 ```bash
-curl -X PATCH http://127.0.0.1:8000/api/clips/<clip_id>/review \
+curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/review \
   -H 'content-type: application/json' \
   -d '{"status":"approved","updates":{"dish":"柠檬","segment_role":"middle","usable_range":{"start":0.2,"end":2.4},"tags":{"commerce_roles":["product_proof"]}}}'
 ```
+
+素材库详情中的“编辑素材”使用独立的状态中性接口；所有字段均可选，未提交的字段保持原值。`tags` 必须是 JSON 对象，且采用完整替换语义，因此可删除或重构任意业务标签；服务端会保留内部 `thumbnail_path`。`dish` 作为独立字段优先写入标签中的 `dish`。
+
+```bash
+curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/metadata \
+  -H 'content-type: application/json' \
+  -d '{"summary":"人工修订的镜头摘要","dish":"柠檬","segment_role":"head","usable_range":{"start":0.2,"end":2.4},"tags":{"actions":["切片"],"commerce_roles":["product_proof"]}}'
+```
+
+重新调用 `POST /api/clips/<clip_id>/analyze` 会创建新的分析版本并让详情展示它，但会保留素材原有审核状态；它不会自动重新抽帧或重新处理原视频。
 
 创建实验的 `variants[].clips` 必须提供审核通过的 `clip_id`、`start`、`end` 和可选 `speed`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行导出。
 
@@ -102,9 +112,9 @@ curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/download
 上传 UTF-8 或 GB18030 编码的 CSV 至 `POST /api/metrics/import`。必填列为 `video_id`，可用英文或中文别名：`views/播放量`、`retention_2s/2秒留存率`、`retention_5s/5秒留存率`、`completion_rate/完播率`、`observation_hours/观察小时数` 等。
 
 ```bash
-curl -F 'file=@metrics.csv' http://127.0.0.1:8000/api/metrics/import
-curl http://127.0.0.1:8000/api/analysis/patterns
-curl http://127.0.0.1:8000/api/analysis/recommendations
+curl -F 'file=@metrics.csv' http://127.0.0.1:8001/api/metrics/import
+curl http://127.0.0.1:8001/api/analysis/patterns
+curl http://127.0.0.1:8001/api/analysis/recommendations
 ```
 
 ## 错误约定
@@ -115,3 +125,5 @@ curl http://127.0.0.1:8000/api/analysis/recommendations
 | `409` | 重复配置或不允许的配置状态。 |
 | `422` | 素材、审核、时间线或 CSV 数据未通过业务校验。 |
 | `503` | FFmpeg/FFprobe 不可用。 |
+
+对于 `PATCH /api/clips/<clip_id>/metadata`，非法 `segment_role`、结束时间不大于开始时间的 `usable_range`、或非对象的 `tags` 均返回 `422`。

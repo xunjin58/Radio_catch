@@ -25,6 +25,7 @@ from .workflow import (
     review_clip,
     run_render,
     serialize_clip,
+    update_clip_metadata,
 )
 
 
@@ -35,6 +36,14 @@ EXPORT_DIR = Path(os.getenv("RADIO_CATCH_EXPORT_DIR", Path(__file__).resolve().p
 class ClipReviewRequest(BaseModel):
     status: Literal["approved", "rejected", "needs_review", "pending"]
     updates: dict[str, Any] = Field(default_factory=dict)
+
+
+class ClipMetadataUpdateRequest(BaseModel):
+    summary: Optional[str] = Field(default=None, max_length=2000)
+    dish: Optional[str] = Field(default=None, max_length=120)
+    segment_role: Optional[Literal["head", "middle", "tail"]] = None
+    usable_range: Optional[dict[str, float]] = None
+    tags: Optional[dict[str, Any]] = None
 
 
 class TimelineSegment(BaseModel):
@@ -166,6 +175,18 @@ def update_clip_review(
 ) -> dict[str, Any]:
     try:
         return serialize_clip(review_clip(session, clip_id, payload.status, payload.updates))
+    except WorkflowError as exc:
+        if str(exc) == "素材不存在":
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        raise _error(exc) from exc
+
+
+@router.patch("/clips/{clip_id}/metadata")
+def update_clip_metadata_endpoint(
+    clip_id: str, payload: ClipMetadataUpdateRequest, session: Session = Depends(get_session)
+) -> dict[str, Any]:
+    try:
+        return serialize_clip(update_clip_metadata(session, clip_id, payload.model_dump(exclude_unset=True)))
     except WorkflowError as exc:
         if str(exc) == "素材不存在":
             raise HTTPException(status_code=404, detail=str(exc)) from exc

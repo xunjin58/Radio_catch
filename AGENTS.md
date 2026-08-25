@@ -1,7 +1,7 @@
 # 项目约定
 
 - 前端位于 `src/`，使用 Vite + React + TypeScript；后端位于 `backend/app/`，使用 FastAPI + SQLAlchemy。
-- 默认运行命令为 `npm run dev` 和 `npm run dev:api`；后端依赖安装在 `backend/.venv`。
+- 默认运行命令为 `npm run dev` 和 `npm run dev:api`；前端固定监听 `localhost:5174`，后端默认监听 8001，可用 `RADIO_CATCH_API_PORT` 调整，依赖安装在 `backend/.venv`。
 - SQLite、上传素材、抽帧和导出文件均为本地运行时数据，位于 `backend/data/`、`backend/storage/`，不得提交。
 - 模型 API Key 只能经 `ModelConfig` 的加密字段保存；不得写入前端、响应日志、README 或测试输出。
 - 商家业务背景只能保存在 `ProjectSettings.business_context`，不得与模型密钥混存；背景仅说明标签用途，不能作为产地、价格、甜度、农残等不可见卖点的证据。

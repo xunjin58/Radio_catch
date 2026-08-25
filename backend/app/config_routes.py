@@ -41,13 +41,22 @@ def health_check(session: Session = Depends(get_session)) -> HealthResponse:
 
 
 def _serialize_config(config: ModelConfig) -> ModelConfigResponse:
+    try:
+        api_key_masked = mask_api_key(decrypt_api_key(config.api_key_encrypted))
+        credential_error = None
+    except RuntimeError:
+        # A deployment secret may have changed since this local record was
+        # created. Keep the record visible without exposing or attempting to
+        # recover its credential, so a user can replace the key deliberately.
+        api_key_masked = "密钥需要重新保存"
+        credential_error = "已保存的 API Key 无法解密，请重新保存该配置的密钥。"
     return ModelConfigResponse(
         id=config.id,
         name=config.name,
         provider=config.provider,
         protocol=config.protocol,
         base_url=config.base_url,
-        api_key_masked=mask_api_key(decrypt_api_key(config.api_key_encrypted)),
+        api_key_masked=api_key_masked,
         model_name=config.model_name,
         supports_images=config.supports_images,
         supports_native_video=config.supports_native_video,
@@ -59,7 +68,7 @@ def _serialize_config(config: ModelConfig) -> ModelConfigResponse:
         max_native_media_bytes=config.max_native_media_bytes,
         is_default=config.is_default,
         is_active=config.is_active,
-        last_error=config.last_error,
+        last_error=credential_error or config.last_error,
         last_tested_at=config.last_tested_at,
         created_at=config.created_at,
         updated_at=config.updated_at,
@@ -171,7 +180,13 @@ async def test_connection(
     config_id: str, payload: TestConnectionRequest, session: Session = Depends(get_session)
 ) -> TestConnectionResponse:
     config = _get_config_or_404(session, config_id)
-    api_key = decrypt_api_key(config.api_key_encrypted)
+    try:
+        api_key = decrypt_api_key(config.api_key_encrypted)
+    except RuntimeError as exc:
+        raise HTTPException(
+            status_code=409,
+            detail="Saved API key cannot be decrypted; save a replacement key before testing the connection",
+        ) from exc
     timeout = payload.timeout_seconds or config.timeout_seconds
     base_url = config.base_url.rstrip("/")
     protocol = config.protocol.lower()

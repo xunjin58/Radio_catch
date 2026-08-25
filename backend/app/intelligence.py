@@ -233,15 +233,17 @@ async def _understand_gemini_video(session: Session, clip: Clip, config: ModelCo
         response.raise_for_status()
         parsed = _parse(_gemini_response_text(response.json()), clip)
     except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
-        _record_usage(session, config, started, "failed", type(exc).__name__)
+        error = f"HTTP {exc.response.status_code}" if isinstance(exc, httpx.HTTPStatusError) else type(exc).__name__
+        _record_usage(session, config, started, "failed", error)
         session.commit()
-        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
+        raise IntelligenceError(f"模型理解失败：{error}") from exc
     evidence = [{
         "source": "native_video", "mime_type": mime, "file_size_bytes": size,
         "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
     }]
-    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status="pending", **parsed)
-    clip.import_status = "understood"; clip.review_status = "pending"
+    preserved_status = clip.review_status
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status=preserved_status, **parsed)
+    clip.import_status = "understood"
     session.add(analysis); _record_usage(session, config, started, "success")
     session.commit(); session.refresh(analysis)
     return analysis
@@ -293,15 +295,17 @@ async def _understand_mimo_video(session: Session, clip: Clip, config: ModelConf
             raise IntelligenceError("MiMo 未返回文本结果")
         parsed = _parse(raw, clip)
     except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
-        _record_usage(session, config, started, "failed", type(exc).__name__)
+        error = f"HTTP {exc.response.status_code}" if isinstance(exc, httpx.HTTPStatusError) else type(exc).__name__
+        _record_usage(session, config, started, "failed", error)
         session.commit()
-        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
+        raise IntelligenceError(f"模型理解失败：{error}") from exc
     evidence = [{
         "source": "mimo_native_video", "mime_type": mime, "file_size_bytes": size,
         "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
     }]
-    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status="pending", **parsed)
-    clip.import_status = "understood"; clip.review_status = "pending"
+    preserved_status = clip.review_status
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode="native_video", evidence_frames=evidence, review_status=preserved_status, **parsed)
+    clip.import_status = "understood"
     session.add(analysis); _record_usage(session, config, started, "success")
     session.commit(); session.refresh(analysis)
     return analysis
@@ -329,11 +333,13 @@ async def _understand_openai_frames(session: Session, clip: Clip, config: ModelC
         payload = response.json(); raw = payload["choices"][0]["message"]["content"]
         parsed = _parse(raw, clip)
     except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
-        _record_usage(session, config, started, "failed", type(exc).__name__)
+        error = f"HTTP {exc.response.status_code}" if isinstance(exc, httpx.HTTPStatusError) else type(exc).__name__
+        _record_usage(session, config, started, "failed", error)
         session.commit()
-        raise IntelligenceError(f"模型理解失败：{type(exc).__name__}") from exc
-    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode=effective_mode, evidence_frames=frames, review_status="pending", **parsed)
-    clip.import_status = "understood"; clip.review_status = "pending"
+        raise IntelligenceError(f"模型理解失败：{error}") from exc
+    preserved_status = clip.review_status
+    analysis = ClipAnalysis(clip_id=clip.id, model_config_id=config.id, mode=effective_mode, evidence_frames=frames, review_status=preserved_status, **parsed)
+    clip.import_status = "understood"
     session.add(analysis); _record_usage(session, config, started, "success")
     session.commit(); session.refresh(analysis)
     return analysis
