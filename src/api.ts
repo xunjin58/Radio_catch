@@ -32,6 +32,7 @@ export const api = {
   dashboard: () => request<Record<string, number>>('/dashboard'),
   clips: (query = '') => request<Clip[]>(`/clips${query}`),
   clip: (id: string) => request<Clip>(`/clips/${id}`),
+  clipVideoUrl: (id: string) => `${origin}/api/media/clips/${encodeURIComponent(id)}/video`,
   jobs: () => request<ApiJob[]>('/jobs'),
   upload: (file: File) => { const data = new FormData(); data.append('file', file); return request<unknown>('/media/imports', { method: 'POST', body: data }) },
   approveClip: (id: string, payload: unknown) => request<unknown>(`/clips/${id}/review`, { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) }),

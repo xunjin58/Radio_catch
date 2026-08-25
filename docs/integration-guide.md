@@ -13,6 +13,16 @@ curl http://127.0.0.1:8000/api/media/jobs/<job_id>
 
 当任务 `state` 为 `succeeded` 时，素材的缩略图与关键帧已就绪。相同文件会返回 `duplicate: true`，不会创建重复素材。
 
+### 1a. 查看素材原视频
+
+素材库详情使用以下接口播放完整原视频：
+
+```bash
+curl -I http://127.0.0.1:8001/api/media/clips/<clip_id>/video
+```
+
+接口仅接受已登记的 `clip_id`，并在服务端确认原文件仍在 `RADIO_CATCH_STORAGE_DIR` 内；不会暴露、返回或接受任意本地文件路径。素材不存在、文件已删除或记录指向存储目录外时返回 `404`。
+
 ### 2. 配置模型并理解素材
 
 ```bash

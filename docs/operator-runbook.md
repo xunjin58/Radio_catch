@@ -24,6 +24,8 @@ npm run build
 
 `/api/media/health` 会返回 FFmpeg 和 FFprobe 的可用性。需要系统 PATH 中存在两个可执行文件。
 
+素材库详情播放使用 `GET /api/media/clips/<clip_id>/video`。它只会提供仍位于 `RADIO_CATCH_STORAGE_DIR` 内、且已在数据库登记的原视频；若详情显示视频无法播放，先确认原文件未被手动移动或删除，并确认浏览器支持该视频编码。
+
 ## Gemini 原生视频
 ## 商家业务背景
 
@@ -48,6 +50,7 @@ MiMo 预设使用 `https://token-plan-cn.xiaomimimo.com/v1` 和 `mimo-v2.5`。�
 | --- | --- |
 | 上传返回 `503` | 安装 FFmpeg，重开终端后调用 `/api/media/health`。 |
 | 媒体任务失败 | 查询 `/api/media/jobs/{job_id}`；确认磁盘空间、视频是否可解码、存储目录是否可写。 |
+| 素材详情视频返回 404 或无法播放 | 确认素材 ID 存在、原文件仍在 `RADIO_CATCH_STORAGE_DIR` 内；若文件存在但浏览器不支持编码，重新导入兼容编码的 MP4。 |
 | Gemini 原生理解失败 | 确认配置的 Base URL 为 `https://api.tu-zi.com`、模型开启原生视频、文件仍在本地且不超过上限；连接测试仅验证模型列表。 |
 | MiMo 原生理解失败 | 确认 Token Plan Base URL、模型名、API Key，以及视频为 MP4/MOV/AVI/WMV 且原文件不超过 37 MB；连接测试仅验证模型列表。 |
 | OpenAI 兼容模型理解失败 | 在模型配置上调用 `test-connection`；确认 `base_url` 包含供应商需要的版本路径，且模型接受图像输入。 |

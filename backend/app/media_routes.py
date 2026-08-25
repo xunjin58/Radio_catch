@@ -1,6 +1,7 @@
 """FastAPI router for local video ingestion and asynchronous media preparation."""
 from __future__ import annotations
 
+import mimetypes
 from pathlib import Path
 from typing import Any, Callable
 
@@ -61,6 +62,23 @@ def _thumbnail_path(clip: Any) -> str | None:
     candidates = [entry for entry in analyses if object_value(entry, "mode") == "adaptive_frames"]
     tags = object_value(candidates[-1], "tags", default={}) if candidates else {}
     return str(tags.get("thumbnail_path")) if isinstance(tags, dict) and tags.get("thumbnail_path") else None
+
+
+def _local_video_path(clip: Any, storage_root: Path) -> Path:
+    """Return a playable source only when it remains inside local media storage."""
+    raw_path = object_value(clip, "storage_path", "file_path", "source_path", "path")
+    if not raw_path:
+        raise HTTPException(status_code=404, detail="Video file is unavailable.")
+    source = Path(str(raw_path)).resolve()
+    root = storage_root.resolve()
+    try:
+        source.relative_to(root)
+    except ValueError as exc:
+        # Do not use a database path as an arbitrary local file server.
+        raise HTTPException(status_code=404, detail="Video file is unavailable.") from exc
+    if not source.is_file():
+        raise HTTPException(status_code=404, detail="Video file is unavailable.")
+    return source
 
 
 def create_media_router(
@@ -157,6 +175,14 @@ def create_media_router(
         payload = public_clip(clip)
         payload["keyframes"] = _evidence_frames(clip)
         return payload
+
+    @router.get("/clips/{clip_id}/video")
+    def get_video(clip_id: str) -> FileResponse:
+        """Serve an imported source video for local browser playback by clip id."""
+        clip = _get_clip_or_404(repository(), clip_id)
+        path = _local_video_path(clip, media_service.root)
+        media_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+        return FileResponse(path, media_type=media_type)
 
     @router.get("/clips/{clip_id}/thumbnail")
     def get_thumbnail(clip_id: str) -> FileResponse:

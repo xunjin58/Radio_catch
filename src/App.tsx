@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { api, Clip, ModelConfig, Pattern, Render } from './api'
-import { Activity, ArrowUpRight, BarChart3, Check, ChevronRight, Clapperboard, CloudUpload, Database, FileVideo, FolderOpen, Gauge, LayoutDashboard, Lightbulb, LoaderCircle, MoreHorizontal, Play, Plus, Search, Settings2, Sparkles, Upload, WandSparkles, X } from 'lucide-react'
+import { Activity, ArrowUpRight, BarChart3, Check, ChevronRight, Clapperboard, CloudUpload, Database, FileVideo, FolderOpen, Gauge, LayoutDashboard, Lightbulb, LoaderCircle, Play, Plus, Search, Settings2, Sparkles, Upload, WandSparkles, X } from 'lucide-react'
 
 type Page = '工作台' | '素材库' | '标签审核' | '混剪工作台' | '成片管理' | '数据回传' | '规律分析' | '模型与接口'
 type Notice = { text: string; error?: boolean } | null
@@ -28,6 +28,24 @@ function ClipThumb({ clip, small = false }: { clip: Clip; small?: boolean }) {
   return <div className={`real-thumb ${small ? 'small' : ''}`}><img src={clipImage(clip.id)} alt={clip.filename} onError={event => { event.currentTarget.style.display = 'none' }}/><FileVideo size={small ? 15 : 26}/></div>
 }
 
+function reviewLabel(status: string) { return ({ approved: '已审核', pending: '待审核', rejected: '已驳回' } as Record<string, string>)[status] ?? status }
+function tagLabel(key: string) { return ({ commerce_roles: '带货镜头角色', actions: '画面动作', visual_hooks: '视觉钩子', audio_hooks: '音频钩子', shot_type: '镜头类型', dish: '菜品', climax_time: '高潮时间', quality_score: '质量评分', confidence: '置信度' } as Record<string, string>)[key] ?? key }
+function tagValue(value: unknown) {
+  if (value == null) return '—'
+  if (Array.isArray(value)) return value.map(item => String(item)).join('、') || '—'
+  if (typeof value === 'object') return Object.entries(value as Record<string, unknown>).map(([key, item]) => `${key}: ${String(item)}`).join('；') || '—'
+  return String(value)
+}
+
+function ClipDetailModal({ clipId, fallback, close }: { clipId: string; fallback: Clip; close: () => void }) {
+  const [clip, setClip] = useState<Clip | null>(null); const [error, setError] = useState<string | null>(null); const [videoError, setVideoError] = useState(false)
+  useEffect(() => { let active = true; setClip(null); setError(null); setVideoError(false); void api.clip(clipId).then(result => { if (active) setClip(result) }).catch(reason => { if (active) setError(errorText(reason)) }); return () => { active = false } }, [clipId])
+  useEffect(() => { const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') close() }; window.addEventListener('keydown', onKeyDown); return () => window.removeEventListener('keydown', onKeyDown) }, [close])
+  const current = clip ?? fallback
+  const tags = Object.entries(current.tags ?? {}).filter(([key]) => key !== 'thumbnail_path')
+  return <div className="modal-backdrop detail-backdrop" onMouseDown={close}><section className="modal clip-detail-modal" role="dialog" aria-modal="true" aria-labelledby="clip-detail-title" onMouseDown={event => event.stopPropagation()}><button className="close" type="button" onClick={close} aria-label="关闭素材详情"><X size={18}/></button><div className="clip-detail-head"><div><p className="eyebrow">MEDIA INSPECTION / LOCAL</p><h2 id="clip-detail-title">{current.filename}</h2><span className="clipid">{current.id}</span></div><span className={`detail-status ${current.review_status}`}>{reviewLabel(current.review_status)}</span></div>{error ? <div className="detail-error"><FileVideo size={26}/><b>无法读取最新素材详情</b><span>{error}</span></div> : !clip ? <Loading/> : <div className="clip-detail-layout"><section className="clip-detail-video">{videoError ? <div className="video-fallback"><ClipThumb clip={current}/><div><b>此视频暂时无法在浏览器中播放</b><span>请确认原始文件仍在本地，或使用兼容编码重新导入。</span></div></div> : <video controls preload="metadata" poster={clipImage(current.id)} onError={() => setVideoError(true)} aria-label={`播放素材 ${current.filename}`}><source src={api.clipVideoUrl(current.id)}/>当前浏览器不支持视频播放。</video>}<div className="video-caption"><Play size={15}/><span>完整原视频 · {current.usable_range ? `可用区间 ${current.usable_range.start}s — ${current.usable_range.end}s` : '可用区间待处理'}</span></div></section><aside className="clip-detail-info"><div className="detail-summary"><span>模型摘要</span><p>{current.summary ?? '暂无模型摘要。'}</p></div><dl className="detail-meta"><div><dt>菜品</dt><dd>{current.dish ?? '未标注菜品'}</dd></div><div><dt>片段角色</dt><dd>{roleLabel(current.segment_role)}</dd></div><div><dt>审核状态</dt><dd>{reviewLabel(current.review_status)}</dd></div><div><dt>可用区间</dt><dd>{current.usable_range ? `${current.usable_range.start}s — ${current.usable_range.end}s` : '等待处理'}</dd></div></dl><div className="detail-tags"><span>对应标签</span>{tags.length ? <div>{tags.map(([key, value]) => <section key={key}><b>{tagLabel(key)}</b><p>{tagValue(value)}</p></section>)}</div> : <small>暂无结构化标签</small>}</div></aside></div>}</section></div>
+}
+
 function Dashboard({ clips, renders, loading, go }: { clips: Clip[]; renders: Render[]; loading: boolean; go: (page: Page) => void }) {
   const pending = clips.filter(c => c.review_status !== 'approved')
   const completed = renders.filter(r => r.status === 'completed')
@@ -35,10 +53,10 @@ function Dashboard({ clips, renders, loading, go }: { clips: Clip[]; renders: Re
 }
 
 function Library({ clips, loading, reload }: { clips: Clip[]; loading: boolean; reload: () => void }) {
-  const [query, setQuery] = useState(''); const [dish, setDish] = useState('全部')
+  const [query, setQuery] = useState(''); const [dish, setDish] = useState('全部'); const [selectedClip, setSelectedClip] = useState<Clip | null>(null)
   const dishes = useMemo(() => Array.from(new Set(clips.map(c => c.dish).filter(Boolean) as string[])), [clips])
   const visible = clips.filter(c => (!query || `${c.filename} ${c.dish ?? ''} ${JSON.stringify(c.tags)}`.toLowerCase().includes(query.toLowerCase())) && (dish === '全部' || c.dish === dish))
-  return <main className="main library"><div className="page-heading"><div><p className="eyebrow">MEDIA ARCHIVE / LIVE</p><h1>素材库</h1></div><button className="outline" onClick={reload}><Activity size={16}/> 刷新</button></div><div className="filterbar"><div className="search"><Search size={16}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="搜索文件名、菜品或标签"/></div>{['全部', ...dishes].map(item => <button onClick={() => setDish(item)} className={dish === item ? 'selected' : ''} key={item}>{item}</button>)}<span className="result-count">显示 {visible.length} 条</span></div>{loading ? <Loading/> : visible.length ? <div className="library-grid">{visible.map(clip => <article className="media-card" key={clip.id}><div className="media-frame"><ClipThumb clip={clip}/><span className="duration">{clip.usable_range ? `${clip.usable_range.end - clip.usable_range.start}s` : '处理中'}</span></div><div className="media-info"><div><span className="clipid">{clip.id.slice(0, 8)}</span><h3>{clip.filename}</h3></div><button title="刷新详情" onClick={reload}><MoreHorizontal size={17}/></button></div><div className="media-foot"><span className="role-pill">{roleLabel(clip.segment_role)}</span><i>{clip.dish ?? '未标注菜品'}</i><span className="media-score">{clip.review_status === 'approved' ? '已审核' : '待审核'}</span></div></article>)}</div> : <Empty>没有符合筛选条件的素材。</Empty>}</main>
+  return <><main className="main library"><div className="page-heading"><div><p className="eyebrow">MEDIA ARCHIVE / LIVE</p><h1>素材库</h1></div><button className="outline" onClick={reload}><Activity size={16}/> 刷新</button></div><div className="filterbar"><div className="search"><Search size={16}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="搜索文件名、菜品或标签"/></div>{['全部', ...dishes].map(item => <button onClick={() => setDish(item)} className={dish === item ? 'selected' : ''} key={item}>{item}</button>)}<span className="result-count">显示 {visible.length} 条</span></div>{loading ? <Loading/> : visible.length ? <div className="library-grid">{visible.map(clip => <button className="media-card" type="button" key={clip.id} onClick={() => setSelectedClip(clip)} aria-label={`查看素材详情：${clip.filename}`}><div className="media-frame"><ClipThumb clip={clip}/><span className="duration">{clip.usable_range ? `${clip.usable_range.end - clip.usable_range.start}s` : '处理中'}</span></div><div className="media-info"><div><span className="clipid">{clip.id.slice(0, 8)}</span><h3>{clip.filename}</h3></div></div><div className="media-foot"><span className="role-pill">{roleLabel(clip.segment_role)}</span><i>{clip.dish ?? '未标注菜品'}</i><span className="media-score">{reviewLabel(clip.review_status)}</span></div></button>)}</div> : <Empty>没有符合筛选条件的素材。</Empty>}</main>{selectedClip && <ClipDetailModal clipId={selectedClip.id} fallback={selectedClip} close={() => setSelectedClip(null)}/>}</>
 }
 
 function Review({ clips, loading, reload, notice }: { clips: Clip[]; loading: boolean; reload: () => void; notice: (value: Notice) => void }) {
