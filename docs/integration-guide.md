@@ -90,14 +90,14 @@ curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/review \
 ```bash
 curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/metadata \
   -H 'content-type: application/json' \
-  -d '{"summary":"人工修订的镜头摘要","dish":"柠檬","segment_role":"head","usable_range":{"start":0.2,"end":2.4},"tags":{"actions":["切片"],"commerce_roles":["product_proof"]}}'
+  -d '{"summary":"人工修订的镜头摘要","dish":"柠檬","segment_role":"head","climax_time":0.8,"usable_range":{"start":0.2,"end":2.4},"tags":{"actions":["切片"],"commerce_roles":["product_proof"]}}'
 ```
 
 重新调用 `POST /api/clips/<clip_id>/analyze` 会创建新的分析版本并让详情展示它，但会保留素材原有审核状态；它不会自动重新抽帧或重新处理原视频。
 
 ### 4. AI 规划混剪并确认导出
 
-先请求规划。服务端会从所选菜品的全部已审核素材中挑选最多 24 条代表性候选，并只将元数据、封面和最多 3 张关键帧临时发送给支持图片输入的 `remix_planning` 模型。
+先请求规划。服务端会从所选菜品的全部已审核素材中挑选最多 24 条代表性候选，并只将元数据、封面和最多 3 张关键帧临时发送给支持图片输入的 `remix_planning` 模型。图片会优先在内存中缩放为最长边 512 像素、最大 256 KiB 的 JPEG；转换失败时仅接受本已不超过该上限的图片。压缩图和 Base64 不会进入响应、数据库或日志。
 
 ```bash
 curl -X POST http://127.0.0.1:8001/api/remix-plans \
@@ -105,7 +105,7 @@ curl -X POST http://127.0.0.1:8001/api/remix-plans \
   -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":12}'
 ```
 
-响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
+响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；每个片段均包含候选中原样给出的 `clip_id`、数值 `start`、`end` 和 `speed`。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
 
 创建实验的 `variants[].clips` 必须提供审核通过的 `clip_id`、`start`、`end` 和可选 `speed`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行导出。
 

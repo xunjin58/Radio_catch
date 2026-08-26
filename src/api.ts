@@ -3,7 +3,7 @@ export type ApiJob = { id: string; status: string; task_type: string; progress: 
 export type Clip = {
   id: string; clip_id: string; filename: string; dish: string | null; segment_role: string
   review_status: string; summary: string | null; tags: Record<string, unknown>
-  confidence: number | null; usable_range: { start: number; end: number } | null; created_at: string
+  climax_time: number | null; confidence: number | null; usable_range: { start: number; end: number } | null; created_at: string
 }
 export type Render = {
   id: string; video_id: string; experiment_id: string | null; dish: string; title: string | null

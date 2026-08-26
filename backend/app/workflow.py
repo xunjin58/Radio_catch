@@ -129,11 +129,19 @@ def _clip_meta(clip: Any) -> dict[str, Any]:
     return dict(_as_dict(_get(clip, "analysis", "analysis_json", "metadata", "tags", default={})))
 
 
+def _analysis_updated_at(analysis: Any) -> datetime:
+    """Provide a SQLite-safe ordering key for historical and new analyses."""
+    value = _get(analysis, "updated_at", "created_at", default=datetime.min)
+    if not isinstance(value, datetime):
+        return datetime.min
+    return value.replace(tzinfo=None) if value.tzinfo is not None else value
+
+
 def _latest_analysis(clip: Any) -> Any | None:
     analyses = list(_get(clip, "analyses", default=[]) or [])
     if not analyses:
         return None
-    return max(analyses, key=lambda analysis: _get(analysis, "updated_at", "created_at", default=datetime.min))
+    return max(analyses, key=_analysis_updated_at)
 
 
 def _clip_role(clip: Any) -> str:
@@ -161,6 +169,7 @@ def serialize_clip(clip: Any) -> dict[str, Any]:
         "review_status": _get(clip, "review_status", "status", default="pending"),
         "summary": _get(analysis, "summary", default=_get(clip, "summary", default=meta.get("summary"))),
         "tags": meta,
+        "climax_time": _get(analysis, "climax_time", default=_get(clip, "climax_time", default=meta.get("climax_time"))),
         "quality_score": _get(analysis, "quality_score", default=_get(clip, "quality_score", default=meta.get("quality_score"))),
         "confidence": _get(analysis, "confidence", default=_get(clip, "confidence", default=meta.get("confidence"))),
         "usable_range": _get(analysis, "usable_range", default=_get(clip, "usable_range", default=meta.get("usable_range"))),
@@ -253,6 +262,19 @@ def update_clip_metadata(session: Any, clip_id: Any, updates: dict[str, Any]) ->
         if role not in {"head", "middle", "tail"}:
             raise WorkflowError("segment_role 必须是 head、middle 或 tail")
         _set(target, role, "segment_role", "role")
+    if "climax_time" in updates:
+        climax_time = updates["climax_time"]
+        if climax_time is not None:
+            try:
+                climax_time = float(climax_time)
+            except (TypeError, ValueError) as exc:
+                raise WorkflowError("climax_time 必须是非负秒数或 null") from exc
+            if not math.isfinite(climax_time) or climax_time < 0:
+                raise WorkflowError("climax_time 必须是非负秒数或 null")
+            duration = _get(clip, "duration_seconds")
+            if duration is not None and climax_time > float(duration):
+                raise WorkflowError("climax_time 不能超过素材时长")
+        _set(target, climax_time, "climax_time")
     if "usable_range" in updates:
         usable = updates["usable_range"]
         if usable is not None:

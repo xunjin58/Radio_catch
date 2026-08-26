@@ -43,6 +43,7 @@ class ClipMetadataUpdateRequest(BaseModel):
     summary: Optional[str] = Field(default=None, max_length=2000)
     dish: Optional[str] = Field(default=None, max_length=120)
     segment_role: Optional[Literal["head", "middle", "tail"]] = None
+    climax_time: Optional[float] = Field(default=None, ge=0)
     usable_range: Optional[dict[str, float]] = None
     tags: Optional[dict[str, Any]] = None
 

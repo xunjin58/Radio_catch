@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import unittest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -38,7 +38,7 @@ class ClipMetadataRouteTests(unittest.TestCase):
         )
         analysis = ClipAnalysis(
             clip=clip, mode="adaptive_frames", review_status=status, summary="旧摘要",
-            segment_role="middle", usable_range={"start": 0.0, "end": 1.0},
+            segment_role="middle", climax_time=0.5, usable_range={"start": 0.0, "end": 1.0},
             tags={"dish": "旧菜", "nested": {"before": True}, "thumbnail_path": "/tmp/thumb.jpg"},
         )
         self.session.add_all([clip, analysis])
@@ -50,6 +50,7 @@ class ClipMetadataRouteTests(unittest.TestCase):
 
         response = self.client.patch(f"/api/clips/{clip.id}/metadata", json={
             "summary": "人工修订的摘要", "dish": "新菜", "segment_role": "head",
+            "climax_time": 0.8,
             "usable_range": {"start": 0.2, "end": 2.5},
             "tags": {"nested": {"after": ["ok"]}, "actions": ["翻动"]},
         })
@@ -59,6 +60,7 @@ class ClipMetadataRouteTests(unittest.TestCase):
         self.assertEqual(body["summary"], "人工修订的摘要")
         self.assertEqual(body["dish"], "新菜")
         self.assertEqual(body["segment_role"], "head")
+        self.assertEqual(body["climax_time"], 0.8)
         self.assertEqual(body["usable_range"], {"start": 0.2, "end": 2.5})
         self.assertEqual(body["tags"]["nested"], {"after": ["ok"]})
         self.assertNotIn("before", body["tags"]["nested"])
@@ -83,6 +85,15 @@ class ClipMetadataRouteTests(unittest.TestCase):
         self.assertEqual(self.client.patch(f"/api/clips/{clip.id}/metadata", json={"segment_role": "intro"}).status_code, 422)
         self.assertEqual(self.client.patch(f"/api/clips/{clip.id}/metadata", json={"usable_range": {"start": 2, "end": 1}}).status_code, 422)
         self.assertEqual(self.client.patch(f"/api/clips/{clip.id}/metadata", json={"tags": ["not", "an", "object"]}).status_code, 422)
+        self.assertEqual(self.client.patch(f"/api/clips/{clip.id}/metadata", json={"climax_time": -0.1}).status_code, 422)
+
+    def test_metadata_can_clear_best_appearance_time(self) -> None:
+        clip, _ = self.add_clip()
+
+        response = self.client.patch(f"/api/clips/{clip.id}/metadata", json={"climax_time": None})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIsNone(response.json()["climax_time"])
 
     def test_clip_detail_uses_latest_analysis_only(self) -> None:
         clip, _ = self.add_clip()
@@ -100,6 +111,22 @@ class ClipMetadataRouteTests(unittest.TestCase):
         self.assertEqual(response.json()["summary"], "最新摘要")
         self.assertEqual(response.json()["dish"], "新菜")
         self.assertEqual(response.json()["segment_role"], "tail")
+
+    def test_clip_detail_tolerates_mixed_timezone_analysis_times(self) -> None:
+        clip, _ = self.add_clip()
+        latest = ClipAnalysis(
+            clip_id=clip.id, mode="native_video", review_status="approved", summary="最新摘要",
+            segment_role="head", tags={"dish": "新菜"}, usable_range={"start": 0.0, "end": 2.0},
+            created_at=datetime.utcnow() + timedelta(seconds=1), updated_at=datetime.utcnow() + timedelta(seconds=1),
+        )
+        self.session.add(latest)
+        self.session.commit()
+        latest.updated_at = datetime.now(timezone.utc)
+
+        response = self.client.get(f"/api/clips/{clip.id}")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["summary"], "最新摘要")
 
 
 if __name__ == "__main__":

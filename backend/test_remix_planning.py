@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import json
 import os
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -18,7 +20,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.database import Base
 from app.models import Clip, ClipAnalysis, ModelConfig, ModelTaskAssignment, ModelUsage
-from app.remix_planning import RemixPlanningError, _candidate_pool, plan_remix
+from app.remix_planning import PLANNER_IMAGE_MAX_BYTES, RemixPlanningError, _candidate_pool, _image_data, plan_remix
 from app.security import encrypt_api_key
 from app.workflow_routes import router as workflow_router
 
@@ -103,6 +105,18 @@ class RemixPlanningTests(unittest.TestCase):
         with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}):
             total, candidates = _candidate_pool(self.session, "柠檬")
         self.assertEqual(total, 25); self.assertEqual(len(candidates), 24)
+
+    def test_planner_image_is_jpeg_and_capped(self) -> None:
+        image = self.storage / "derived" / "image.png"; image.parent.mkdir()
+        subprocess.run(
+            ["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "color=c=red:s=2x2", "-frames:v", "1", str(image)],
+            check=True,
+        )
+
+        mime, encoded = _image_data(image)
+
+        self.assertEqual(mime, "image/jpeg")
+        self.assertLessEqual(len(base64.b64decode(encoded)), PLANNER_IMAGE_MAX_BYTES)
 
     def test_planning_requires_an_image_capable_model(self) -> None:
         self.add_clip(1); self.add_config(supports_images=False)

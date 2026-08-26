@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import json
 import os
+import subprocess
 import time
 from pathlib import Path
 from typing import Any
@@ -22,11 +23,14 @@ from .workflow import WorkflowError, serialize_clip, validate_manifest
 
 MAX_PLANNER_CANDIDATES = 24
 MAX_IMAGES_PER_CANDIDATE = 4  # one thumbnail plus up to three evidence frames
+PLANNER_IMAGE_MAX_EDGE = 512
+PLANNER_IMAGE_MAX_BYTES = 256 * 1024
 
 PLANNER_SYSTEM_PROMPT = """你是短视频混剪规划师。基于候选素材的结构化标签、摘要和静态画面，规划可实际执行的短视频 EDL。
 标签用于硬约束和筛选，摘要与画面用于判断视觉差异。不得编造素材 ID、画面内容、时间区间或卖点。
 先识别少量自然成立的叙事策略，再为每种策略产出不同的具体变体。相同策略可以替换同一叙事槽位的不同素材；素材不足时可使用同菜品、叙事功能相近但展示方式不同的镜头补位。不要为了凑数量输出完全相同的 EDL。
-每条变体总时长必须在 9.5 到 15.5 秒之间，所有片段均须使用候选素材列出的 usable_range。只输出 JSON。"""
+每条变体总时长必须在 9.5 到 15.5 秒之间，所有片段均须使用候选素材列出的 usable_range。只输出 JSON。
+输出对象必须包含 `strategies` 和 `variants`；每个 `variants` 项必须直接包含 `strategy_id`、`reason` 和 `clips`。`clips` 是按播放顺序排列的对象数组，每项只用候选中原样给出的 `clip_id`，并包含数值 `start`、`end`、`speed`。不得改用 `structure`、`title`、`target_duration` 或 `total_duration` 代替 `clips`，也不得只描述镜头而不列出片段。"""
 
 PLANNER_RESPONSE_SCHEMA = {
     "type": "OBJECT",
@@ -129,8 +133,35 @@ def _evidence_paths(clip: Clip) -> list[Path]:
 
 
 def _image_data(path: Path) -> tuple[str, str]:
-    mime = "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
-    return mime, base64.b64encode(path.read_bytes()).decode("ascii")
+    """Return a bounded, transient JPEG for the planning-model request.
+
+    Derived frames are deliberately kept at their review resolution on disk,
+    which can make a multi-clip Base64 request too large for a model gateway.
+    FFmpeg performs the conversion in memory; neither the JPEG nor its Base64
+    representation is persisted.
+    """
+    source = path.read_bytes()
+    decoder = "png" if path.suffix.lower() == ".png" else "mjpeg"
+    try:
+        completed = subprocess.run(
+            [
+                "ffmpeg", "-v", "error", "-f", "image2pipe", "-vcodec", decoder,
+                "-i", "pipe:0", "-vf", f"scale={PLANNER_IMAGE_MAX_EDGE}:{PLANNER_IMAGE_MAX_EDGE}:force_original_aspect_ratio=decrease",
+                "-frames:v", "1", "-f", "image2pipe", "-vcodec", "mjpeg", "-q:v", "5", "pipe:1",
+            ],
+            input=source,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=True,
+        )
+        if completed.stdout and len(completed.stdout) <= PLANNER_IMAGE_MAX_BYTES:
+            return "image/jpeg", base64.b64encode(completed.stdout).decode("ascii")
+    except (OSError, subprocess.SubprocessError):
+        pass
+    if len(source) <= PLANNER_IMAGE_MAX_BYTES:
+        mime = "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
+        return mime, base64.b64encode(source).decode("ascii")
+    raise RemixPlanningError("规划图片无法压缩到安全请求大小，请确认 FFmpeg 可用")
 
 
 def _score(item: dict[str, Any]) -> float:
