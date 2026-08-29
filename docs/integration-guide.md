@@ -119,6 +119,23 @@ curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/download
 
 `video` 供浏览器内联播放并支持范围请求，`thumbnail` 返回由最终 MP4 在约 15% 时刻生成的 JPEG 封面。封面缺失时会为历史已完成成片按需补生成；若 FFmpeg 不可用或视频无法解码，封面接口返回 `404`，但已完成的 MP4 仍可下载或播放。三个接口只会返回已完成且位于本地导出目录内的成片，不接受任意文件路径。
 
+### 4a. MiMo 音画后期交付
+
+基础 Render 不能直接作为默认交付。后期操作者先从 `GET /api/renders/<render_id>` 读取 `video_id` 和完整 `edit_decision_list`，再依照 [MiMo 音画后期流程](mimo-postproduction.md)创建独立输出目录。流程使用已启用的 MiMo 原生配置进行 2 fps、`media_resolution=default` 的视频审核，并要求 JSON 形式的分段画面事实；审核连接与 TTS 均只在运行时从加密的 `ModelConfig` 读取凭据。
+
+交付目录的 manifest 至少要包含以下字段，供后续复查或平台数据回溯：
+
+| 字段 | 内容 |
+| --- | --- |
+| `video_id` / `source_edl` | 基础成片标识及完整镜头 EDL。 |
+| `vision_review` | 不含视频 Base64 的 MiMo 分段画面事实文件。 |
+| `script` / `cues` | 经事实审核的口播全文与逐句时间轴。 |
+| `tts` | 模型、音色、风格、实际语速和对应音频路径。 |
+| `music` | 本地授权素材路径、授权来源/凭证引用、音量和 ducking 参数。 |
+| `output` / `media_probe` | 后期 MP4 路径及 FFprobe、响度和解码验证结果。 |
+
+该流程不新增 HTTP 接口；Base64 请求体、原视频内容和 API Key 绝不能写入 manifest、日志或响应。
+
 ### 5. 导入平台数据
 
 上传 UTF-8 或 GB18030 编码的 CSV 至 `POST /api/metrics/import`。必填列为 `video_id`，可用英文或中文别名：`views/播放量`、`retention_2s/2秒留存率`、`retention_5s/5秒留存率`、`completion_rate/完播率`、`observation_hours/观察小时数` 等。

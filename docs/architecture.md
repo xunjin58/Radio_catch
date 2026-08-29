@@ -28,6 +28,8 @@ flowchart LR
 
 OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini 与小米 MiMo 原生适配器仅接受 `auto` 或 `native` 模式，不回退关键帧；它们会在本地检查配置的媒体大小，且不会持久化或记录原始视频 Base64 数据。MiMo 仅接受 MP4、MOV、AVI 或 WMV，并额外将包含数据 URL 前缀的 Base64 请求限制在 50 MB；界面默认将原文件限制为 37 MB，以在编码膨胀后保留余量。
 
+面向交付的基础 `Render` 进入音画后期：先由 MiMo 原生视频审核生成仅含画面事实的分段结果，再经人工确认编写口播；随后生成 TTS、低于人声的授权配乐和无底板字幕。后期版本不得覆盖基础 Render，并和原 `video_id`、完整 EDL、画面审核、脚本、字幕 cues、音轨映射、音乐授权信息及媒体校验结果一起写入运行时 manifest。详细执行约定见 [MiMo 音画后期流程](mimo-postproduction.md)。
+
 ## 数据模型
 
 | 实体 | 作用 |

@@ -7,10 +7,10 @@
 首次安装依赖：
 
 ```bash
-cd /Users/xunjin/Desktop/vibe/Radio_catch
+cd <project-root>
 npm install
 
-cd /Users/xunjin/Desktop/vibe/Radio_catch/backend
+cd <project-root>/backend
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
@@ -43,4 +43,5 @@ npm run dev
 - [架构](docs/architecture.md)：组件、数据模型和处理状态。
 - [集成指南](docs/integration-guide.md)：API 使用、数据格式和错误处理。
 - [运维手册](docs/operator-runbook.md)：启动、配置、验证和排障。
+- [MiMo 音画后期流程](docs/mimo-postproduction.md)：原生看片、TTS、配乐、字幕与交付追溯。
 - [交接说明](docs/handoff.md)：已完成范围与下一步工作。
