@@ -50,9 +50,6 @@ class ClipMetadataUpdateRequest(BaseModel):
 
 class TimelineSegment(BaseModel):
     clip_id: str
-    start: Optional[float] = Field(default=None, ge=0)
-    end: Optional[float] = Field(default=None, gt=0)
-    speed: float = Field(default=1, ge=0.25, le=4)
 
 
 class RenderVariant(BaseModel):

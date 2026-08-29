@@ -86,7 +86,7 @@ MiMo 预设使用 `https://token-plan-cn.xiaomimimo.com/v1` 和 `mimo-v2.5`。�
 | Gemini 原生理解失败 | 确认配置的 Base URL 为 `https://api.tu-zi.com`、模型开启原生视频、文件仍在本地且不超过上限；连接测试仅验证模型列表。 |
 | MiMo 原生理解失败 | 确认 Token Plan Base URL、模型名、API Key，以及视频为 MP4/MOV/AVI/WMV 且原文件不超过 37 MB；连接测试仅验证模型列表。 |
 | OpenAI 兼容模型理解失败 | 在模型配置上调用 `test-connection`；确认 `base_url` 包含供应商需要的版本路径，且模型接受图像输入。 |
-| 导出失败 | 检查每段素材是否已审核、同菜品、时间范围有效，及 `RADIO_CATCH_EXPORT_DIR` 是否可写。 |
+| 导出失败 | 检查每段完整原视频是否已审核、同菜品、具有有效时长，及 `RADIO_CATCH_EXPORT_DIR` 是否可写。 |
 | 下载成片返回 409/404 | 先确认成片状态为 `completed`，并确认导出文件仍在 `RADIO_CATCH_EXPORT_DIR` 中。 |
 | 成片宫格没有封面 | 确认 FFmpeg 可用、成片文件仍在 `RADIO_CATCH_EXPORT_DIR` 且可解码；刷新宫格会再次请求并补生成封面。封面失败不影响 MP4 下载或播放。 |
 | CSV 跳过数据 | 查看导入响应中的 `errors`；确认 `video_id` 是本系统 Render 返回的值。 |

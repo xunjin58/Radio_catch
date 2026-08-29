@@ -105,9 +105,9 @@ curl -X POST http://127.0.0.1:8001/api/remix-plans \
   -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":22}'
 ```
 
-响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；每个片段均包含候选中原样给出的 `clip_id`、数值 `start`、`end` 和 `speed`。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
+响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；规划请求只选择和排列候选中的 `clip_id`，每个入选素材都会完整保留，系统不支持截取或变速。响应和最终 EDL 仍展示服务端写入的 `start: 0`、`end: 原片时长`、`speed: 1` 以便追溯。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
 
-创建实验的 `variants[].clips` 必须提供审核通过的 `clip_id`、`start`、`end` 和可选 `speed`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行导出。
+创建实验的 `variants[].clips` 只需提供审核通过的 `clip_id`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行完整原片拼接导出。
 
 导出完成后，可通过以下接口查看或下载成片：
 

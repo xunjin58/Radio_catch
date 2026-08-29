@@ -43,9 +43,9 @@ OpenAI 兼容模型继续使用可移植的关键帧理解。兔子 API Gemini �
 
 ## 成片与分析规则
 
-- `POST /api/experiments` 校验素材存在、审核通过、同菜品、截取区间、速度和总时长（20–60 秒）。
+- `POST /api/experiments` 校验素材存在、审核通过、同菜品、完整原视频时长和总时长（20–60 秒）；时间线只接收 `clip_id`，服务端固定以原片 `0–duration`、`1×` 写入 EDL。
 - `POST /api/remix-plans` 使用 `remix_planning` 任务模型（未分配时回退默认模型），且该模型必须支持图片输入。策略是高层叙事模板；变体是实际导出的 EDL。同一策略可替换不同 source clip 生成多个变体，但完全相同的 EDL 会被丢弃；素材不足时返回较小的规划数和说明，不硬凑数量。
-- `POST /api/renders/{render_id}/run` 用硬切生成 1080×1920、H.264/AAC MP4，并保留 `edit_decision_list`；导出后会从约 15% 时刻提取 JPEG 成片封面。封面是可再生的本地派生文件，提取失败不会使成片导出失败。
+- `POST /api/renders/{render_id}/run` 用完整原视频的硬切拼接生成 1080×1920、H.264/AAC MP4，不会裁剪或变速，并保留 `edit_decision_list`；导出后会从约 15% 时刻提取 JPEG 成片封面。封面是可再生的本地派生文件，提取失败不会使成片导出失败。
 - 后期审核使用 MiMo 原生视频时，完整媒体只在请求内存中以 `video_url` 发送；每个文件须先通过配置的原文件上限与 50 MB Base64 data URL 上限校验。审核结果可以保存为事实摘要，但不得保存请求体、原视频 Base64 或 API Key。
 - `GET /api/renders/{render_id}/video` 仅在成片完成后以内联方式播放对应 MP4；`GET /api/renders/{render_id}/thumbnail` 返回成片封面，并会为历史成片按需补生成封面。
 - `GET /api/renders/{render_id}/download` 仅在成片完成后提供对应 MP4 下载。上述成片媒体接口均校验文件仍位于配置的导出目录中，不接受任意本地路径。

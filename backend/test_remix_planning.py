@@ -22,6 +22,7 @@ from app.database import Base
 from app.models import Clip, ClipAnalysis, ModelConfig, ModelTaskAssignment, ModelUsage
 from app.remix_planning import PLANNER_IMAGE_MAX_BYTES, RemixPlanningError, _candidate_pool, _image_data, plan_remix
 from app.security import encrypt_api_key
+from app.workflow import render_with_ffmpeg, validate_manifest
 from app.workflow_routes import router as workflow_router
 
 
@@ -82,9 +83,9 @@ class RemixPlanningTests(unittest.TestCase):
         FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": json.dumps({
             "strategies": [{"id": "slice", "name": "切片展示", "reason": "两种镜头角度", "allocation": 3}],
             "variants": [
-                {"strategy_id": "slice", "reason": "俯拍切片", "clips": [{"clip_id": first.id, "start": 0, "end": 22}]},
-                {"strategy_id": "slice", "reason": "侧拍切片", "substitution_note": "替换为侧拍", "clips": [{"clip_id": second.id, "start": 0, "end": 22}]},
-                {"strategy_id": "slice", "reason": "重复", "clips": [{"clip_id": first.id, "start": 0, "end": 22}]},
+                {"strategy_id": "slice", "reason": "俯拍切片", "clips": [{"clip_id": first.id}]},
+                {"strategy_id": "slice", "reason": "侧拍切片", "substitution_note": "替换为侧拍", "clips": [{"clip_id": second.id}]},
+                {"strategy_id": "slice", "reason": "重复", "clips": [{"clip_id": first.id}]},
             ], "shortfall_reason": "只有两种有效展示方式",
         }, ensure_ascii=False)}}]})
 
@@ -95,10 +96,43 @@ class RemixPlanningTests(unittest.TestCase):
         self.assertEqual(plan["shortfall_reason"], "只有两种有效展示方式")
         self.assertNotIn("data:image", json.dumps(plan))
         content = FakeAsyncClient.calls[-1]["json"]["messages"][1]["content"]
+        candidate_text = next(block["text"] for block in content if block["type"] == "text" and "clip_id" in block["text"])
+        self.assertIn('"duration_seconds": 22', candidate_text)
         image_blocks = [block for block in content if block["type"] == "image_url"]
         self.assertEqual(len(image_blocks), 8)  # thumbnail + three evidence frames for each clip
         self.assertTrue(all("data:image" in block["image_url"]["url"] for block in image_blocks))
         usage = self.session.scalar(select(ModelUsage)); self.assertEqual(usage.operation, "remix_planning")
+
+    def test_manifest_always_uses_the_complete_source_clip(self) -> None:
+        clip = self.add_clip(1)
+
+        manifest = validate_manifest(self.session, "柠檬", [{
+            "clip_id": clip.id, "start": 4, "end": 8, "speed": 2,
+        }])
+
+        self.assertEqual(manifest[0]["start"], 0.0)
+        self.assertEqual(manifest[0]["end"], 22.0)
+        self.assertEqual(manifest[0]["speed"], 1.0)
+
+    def test_renderer_never_passes_a_trim_or_speed_option(self) -> None:
+        source = self.storage / "clips" / "source.mp4"
+        source.parent.mkdir(exist_ok=True); source.write_bytes(b"video")
+        output = self.storage / "exports" / "render.mp4"
+
+        def fake_run(command: list[str], **_kwargs: object) -> subprocess.CompletedProcess[str]:
+            Path(command[-1]).parent.mkdir(parents=True, exist_ok=True)
+            Path(command[-1]).write_bytes(b"render")
+            return subprocess.CompletedProcess(command, 0, "", "")
+
+        with patch("app.workflow.shutil.which", return_value="ffmpeg"), patch(
+            "app.workflow.subprocess.run", side_effect=fake_run
+        ) as mocked:
+            render_with_ffmpeg([{"source_path": str(source), "start": 4, "end": 8, "speed": 2}], output)
+
+        command = mocked.call_args.args[0]
+        self.assertNotIn("-ss", command)
+        self.assertNotIn("-t", command)
+        self.assertNotIn("setpts=PTS/", command[command.index("-filter_complex") + 1])
 
     def test_candidate_pool_caps_at_twenty_four(self) -> None:
         for index in range(25): self.add_clip(index + 1, f"镜头-{index}")

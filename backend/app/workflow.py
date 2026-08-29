@@ -164,6 +164,7 @@ def serialize_clip(clip: Any) -> dict[str, Any]:
         "id": _get(clip, "id"),
         "filename": _get(clip, "filename", "original_filename", "original_name", "name"),
         "path": _clip_path(clip),
+        "duration_seconds": _get(clip, "duration_seconds"),
         "segment_role": _clip_role(clip),
         "dish": _clip_dish(clip),
         "review_status": _get(clip, "review_status", "status", default="pending"),
@@ -403,19 +404,16 @@ def validate_manifest(session: Any, dish: str, entries: Any) -> list[dict[str, A
         path = _clip_path(clip)
         if not path or not Path(path).is_file():
             raise WorkflowError(f"素材 {item['clip_id']} 的文件不存在")
-        usable = _get(clip, "usable_range", default=_clip_meta(clip).get("usable_range")) or {}
-        selected_start = item.get("start")
-        selected_end = item.get("end")
-        start = float(usable.get("start", 0) if selected_start is None else selected_start)
-        end = float(usable.get("end", 0) if selected_end is None else selected_end)
-        if end <= start:
-            raise WorkflowError(f"素材 {item['clip_id']} 的截取区间无效")
-        speed = float(item.get("speed", 1))
-        if not 0.25 <= speed <= 4:
-            raise WorkflowError("speed 必须介于 0.25 和 4")
+        try:
+            end = float(_get(clip, "duration_seconds"))
+        except (TypeError, ValueError):
+            raise WorkflowError(f"素材 {item['clip_id']} 缺少有效时长，无法整段拼接")
+        if end <= 0:
+            raise WorkflowError(f"素材 {item['clip_id']} 缺少有效时长，无法整段拼接")
         normalized.append({
-            "clip_id": _get(clip, "id"), "source_path": path, "start": start, "end": end,
-            "speed": speed, "role": _clip_role(clip), "dish": dish,
+            # Full source only: callers cannot select a subrange or alter speed.
+            "clip_id": _get(clip, "id"), "source_path": path, "start": 0.0, "end": end,
+            "speed": 1.0, "role": _clip_role(clip), "dish": dish,
         })
     duration = sum((row["end"] - row["start"]) / row["speed"] for row in normalized)
     if not 20.0 <= duration <= 60.0:
@@ -457,7 +455,7 @@ def create_render_thumbnail(output_path: str | Path, duration_seconds: float | N
 def render_with_ffmpeg(
     manifest: list[dict[str, Any]], output_path: str | Path, *, progress: Callable[[int], None] | None = None
 ) -> Path:
-    """Render a vertical, hard-cut H.264/AAC MP4 from a persisted manifest.
+    """Render a vertical, hard-cut H.264/AAC MP4 from complete source clips.
 
     FFmpeg runs without a shell. Audio is intentionally a silent AAC track in V1:
     it makes mixed source audio deterministic and lets a later voice-over pass
@@ -476,13 +474,10 @@ def render_with_ffmpeg(
         path = Path(str(segment["source_path"])).expanduser()
         if not path.is_file():
             raise WorkflowError(f"源文件不存在：{path}")
-        start, end = float(segment["start"]), float(segment["end"])
-        if end <= start:
-            raise WorkflowError("片段截取区间无效")
-        cmd.extend(["-ss", f"{start:.3f}", "-t", f"{end - start:.3f}", "-i", str(path)])
-        speed = float(segment.get("speed", 1))
+        # Never seek, limit duration, or change speed: every input is whole.
+        cmd.extend(["-i", str(path)])
         chain = (
-            f"[{i}:v]setpts=PTS/{speed},scale=1080:1920:force_original_aspect_ratio=decrease,"
+            f"[{i}:v]setpts=PTS-STARTPTS,scale=1080:1920:force_original_aspect_ratio=decrease,"
             "pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=black,fps=30,format=yuv420p[v"
             f"{i}]"
         )
