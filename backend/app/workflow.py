@@ -356,7 +356,7 @@ def create_experiment(session: Any, data: dict[str, Any]) -> Any:
     _set(experiment, str(data.get("status") or "draft"), "status")
     _json_value(experiment, data.get("variables") or {}, "variables", "variables_json", "experiment_variables")
     _set(experiment, data.get("notes"), "notes")
-    _set(experiment, float(data.get("target_duration_seconds") or 12), "target_duration_seconds")
+    _set(experiment, float(data.get("target_duration_seconds") or 22), "target_duration_seconds")
     _set(experiment, int(data.get("generation_count") or len(variants)), "generation_count")
     _set(experiment, utcnow(), "created_at")
     session.add(experiment)
@@ -418,8 +418,8 @@ def validate_manifest(session: Any, dish: str, entries: Any) -> list[dict[str, A
             "speed": speed, "role": _clip_role(clip), "dish": dish,
         })
     duration = sum((row["end"] - row["start"]) / row["speed"] for row in normalized)
-    if not 9.5 <= duration <= 15.5:
-        raise WorkflowError(f"成片时长为 {duration:.1f} 秒，应控制在 10–15 秒")
+    if not 20.0 <= duration <= 60.0:
+        raise WorkflowError(f"成片时长为 {duration:.1f} 秒，应控制在 20–60 秒")
     return normalized
 
 

@@ -102,7 +102,7 @@ curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/metadata \
 ```bash
 curl -X POST http://127.0.0.1:8001/api/remix-plans \
   -H 'content-type: application/json' \
-  -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":12}'
+  -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":22}'
 ```
 
 响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；每个片段均包含候选中原样给出的 `clip_id`、数值 `start`、`end` 和 `speed`。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。

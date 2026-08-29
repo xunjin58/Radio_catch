@@ -64,7 +64,7 @@ class RenderVariant(BaseModel):
 class ExperimentCreateRequest(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     dish: str = Field(min_length=1, max_length=120)
-    target_duration_seconds: float = Field(default=12.0, ge=9.5, le=15.5)
+    target_duration_seconds: float = Field(default=22.0, ge=20.0, le=60.0)
     generation_count: int = Field(default=1, ge=1, le=100)
     variables: dict[str, Any] = Field(default_factory=dict)
     notes: Optional[str] = None
@@ -76,7 +76,7 @@ class RemixPlanRequest(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     dish: str = Field(min_length=1, max_length=120)
     requested_count: int = Field(ge=1, le=10)
-    target_duration_seconds: float = Field(default=12.0, ge=9.5, le=15.5)
+    target_duration_seconds: float = Field(default=22.0, ge=20.0, le=60.0)
 
 
 def _error(exc: WorkflowError) -> HTTPException:

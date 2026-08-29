@@ -68,11 +68,11 @@ class RemixPlanningTests(unittest.TestCase):
         for frame_index in range(4):
             frame = derived / f"frame-{frame_index}.png"; frame.write_bytes(f"frame-{frame_index}".encode())
             frames.append({"time": frame_index * 3, "path": str(frame)})
-        clip = Clip(original_filename=source.name, file_path=str(source), sha256=f"{index:064x}", file_size_bytes=5, duration_seconds=12, review_status="approved")
+        clip = Clip(original_filename=source.name, file_path=str(source), sha256=f"{index:064x}", file_size_bytes=5, duration_seconds=22, review_status="approved")
         analysis = ClipAnalysis(
             clip=clip, mode="adaptive_frames", summary=f"{hook}切柠檬", segment_role="middle",
             tags={"dish": ["柠檬"], "actions": ["切片"], "visual_hooks": [hook], "thumbnail_path": str(thumbnail)},
-            usable_range={"start": 0, "end": 12}, quality_score=0.8, confidence=0.9, evidence_frames=frames, review_status="approved",
+            usable_range={"start": 0, "end": 22}, quality_score=0.8, confidence=0.9, evidence_frames=frames, review_status="approved",
         )
         self.session.add_all([clip, analysis]); self.session.commit(); return clip
 
@@ -82,14 +82,14 @@ class RemixPlanningTests(unittest.TestCase):
         FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": json.dumps({
             "strategies": [{"id": "slice", "name": "切片展示", "reason": "两种镜头角度", "allocation": 3}],
             "variants": [
-                {"strategy_id": "slice", "reason": "俯拍切片", "clips": [{"clip_id": first.id, "start": 0, "end": 12}]},
-                {"strategy_id": "slice", "reason": "侧拍切片", "substitution_note": "替换为侧拍", "clips": [{"clip_id": second.id, "start": 0, "end": 12}]},
-                {"strategy_id": "slice", "reason": "重复", "clips": [{"clip_id": first.id, "start": 0, "end": 12}]},
+                {"strategy_id": "slice", "reason": "俯拍切片", "clips": [{"clip_id": first.id, "start": 0, "end": 22}]},
+                {"strategy_id": "slice", "reason": "侧拍切片", "substitution_note": "替换为侧拍", "clips": [{"clip_id": second.id, "start": 0, "end": 22}]},
+                {"strategy_id": "slice", "reason": "重复", "clips": [{"clip_id": first.id, "start": 0, "end": 22}]},
             ], "shortfall_reason": "只有两种有效展示方式",
         }, ensure_ascii=False)}}]})
 
         with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), patch("app.remix_planning.httpx.AsyncClient", FakeAsyncClient):
-            plan = asyncio.run(plan_remix(self.session, dish="柠檬", requested_count=3, target_duration_seconds=12))
+            plan = asyncio.run(plan_remix(self.session, dish="柠檬", requested_count=3, target_duration_seconds=22))
 
         self.assertEqual(plan["candidate_count"], 2); self.assertEqual(plan["planned_count"], 2)
         self.assertEqual(plan["shortfall_reason"], "只有两种有效展示方式")
@@ -121,16 +121,16 @@ class RemixPlanningTests(unittest.TestCase):
     def test_planning_requires_an_image_capable_model(self) -> None:
         self.add_clip(1); self.add_config(supports_images=False)
         with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), self.assertRaisesRegex(RemixPlanningError, "图片输入"):
-            asyncio.run(plan_remix(self.session, dish="柠檬", requested_count=1, target_duration_seconds=12))
+            asyncio.run(plan_remix(self.session, dish="柠檬", requested_count=1, target_duration_seconds=22))
 
     def test_remix_plan_endpoint_exposes_planning_result(self) -> None:
         from app.database import get_session
         app = FastAPI(); app.include_router(workflow_router); app.dependency_overrides[get_session] = lambda: self.session
-        expected = {"candidate_count": 2, "included_candidate_count": 2, "excluded_candidate_count": 0, "candidate_selection_note": "ok", "requested_count": 2, "planned_count": 1, "target_duration_seconds": 12, "strategies": [], "variants": [{"id": "variant_1"}], "shortfall_reason": "素材不足", "planner_model_config_id": "model"}
+        expected = {"candidate_count": 2, "included_candidate_count": 2, "excluded_candidate_count": 0, "candidate_selection_note": "ok", "requested_count": 2, "planned_count": 1, "target_duration_seconds": 22, "strategies": [], "variants": [{"id": "variant_1"}], "shortfall_reason": "素材不足", "planner_model_config_id": "model"}
         with TestClient(app) as client, patch("app.workflow_routes.plan_remix", AsyncMock(return_value=expected)) as planner:
-            response = client.post("/api/remix-plans", json={"name": "测试", "dish": "柠檬", "requested_count": 2, "target_duration_seconds": 12})
+            response = client.post("/api/remix-plans", json={"name": "测试", "dish": "柠檬", "requested_count": 2, "target_duration_seconds": 22})
         self.assertEqual(response.status_code, 200); self.assertEqual(response.json()["planned_count"], 1)
-        planner.assert_awaited_once_with(self.session, dish="柠檬", requested_count=2, target_duration_seconds=12.0)
+        planner.assert_awaited_once_with(self.session, dish="柠檬", requested_count=2, target_duration_seconds=22.0)
 
 
 if __name__ == "__main__":

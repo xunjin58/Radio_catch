@@ -157,7 +157,7 @@ class Experiment(Timestamped, Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
     name: Mapped[str] = mapped_column(String(200), nullable=False, index=True)
     dish: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
-    target_duration_seconds: Mapped[float] = mapped_column(Float, default=12.0, nullable=False)
+    target_duration_seconds: Mapped[float] = mapped_column(Float, default=22.0, nullable=False)
     generation_count: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
     experiment_ratio: Mapped[str] = mapped_column(String(32), default="controlled", nullable=False)
     variables: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict, nullable=False)

@@ -29,7 +29,7 @@ PLANNER_IMAGE_MAX_BYTES = 256 * 1024
 PLANNER_SYSTEM_PROMPT = """你是短视频混剪规划师。基于候选素材的结构化标签、摘要和静态画面，规划可实际执行的短视频 EDL。
 标签用于硬约束和筛选，摘要与画面用于判断视觉差异。不得编造素材 ID、画面内容、时间区间或卖点。
 先识别少量自然成立的叙事策略，再为每种策略产出不同的具体变体。相同策略可以替换同一叙事槽位的不同素材；素材不足时可使用同菜品、叙事功能相近但展示方式不同的镜头补位。不要为了凑数量输出完全相同的 EDL。
-每条变体总时长必须在 9.5 到 15.5 秒之间，所有片段均须使用候选素材列出的 usable_range。只输出 JSON。
+每条变体总时长必须在 20 到 60 秒之间，所有片段均须使用候选素材列出的 usable_range。只输出 JSON。
 输出对象必须包含 `strategies` 和 `variants`；每个 `variants` 项必须直接包含 `strategy_id`、`reason` 和 `clips`。`clips` 是按播放顺序排列的对象数组，每项只用候选中原样给出的 `clip_id`，并包含数值 `start`、`end`、`speed`。不得改用 `structure`、`title`、`target_duration` 或 `total_duration` 代替 `clips`，也不得只描述镜头而不列出片段。"""
 
 PLANNER_RESPONSE_SCHEMA = {
