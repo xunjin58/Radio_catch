@@ -1,0 +1,1284 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": "backend/data/exports/2026-08-29_lemon_new6_20s/mimo_vision_analysis.json",
+  "exports": [
+    {
+      "video_id": "RC-a350c3d4b273",
+      "source": "backend/data/exports/RC-a350c3d4b273.mp4",
+      "source_edl": [
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.47,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "7b16a6b5-54c7-429a-ae3d-02e5c7a72f20",
+          "source_path": "backend/storage/clips/04/04c4d36919c0ba40fa4584ac27f1b15047512872276f1f75ea19eccdce597384.mp4",
+          "start": 0.0,
+          "end": 2.5,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "ac73e669-b54b-43d3-9d63-f2c699460313",
+          "source_path": "backend/storage/clips/9e/9ebfa268e30d08a33a6893bb77754b50e0a390db76fbe2fe8cbe0b9ab80b6407.mp4",
+          "start": 0.0,
+          "end": 0.95,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d52c0d9a-f3ca-4c56-b475-5693f4e1ea87",
+          "source_path": "backend/storage/clips/7e/7e47db79e1948dd87875145647515f048fc618d403cbfe42391b061e7fa9625f.mp4",
+          "start": 0.0,
+          "end": 2.8,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b6d1ed46-e731-4aad-bfc8-c55cf521ac70",
+          "source_path": "backend/storage/clips/1b/1bd1a612bef63f4aa7a7ffe5faa8156315450badda8e5c01cc7e4b333b47ca82.mp4",
+          "start": 0.0,
+          "end": 0.75,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-a350c3d4b273.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-a350c3d4b273.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-a350c3d4b273.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-a350c3d4b273.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-1.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-2.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-3.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-4.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-5.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-6.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-7.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-8.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-9.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-a350c3d4b273-10.png"
+      ],
+      "script": "家人们谁懂啊，这黄柠檬切开，一颗籽都没有！九块九两斤，水果店一个要十几块手一挤，汁水哗哗全出来！冰杯放几片，可乐一倒，气泡咕噜咕噜，跟奶茶店十几块一杯没差！三片纹理超好看，整颗黄柠檬，清爽又解腻！夏天全靠它续命，姐妹们VC水喝起来呀！",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.549,
+          "text": "家人们谁懂啊，这黄柠檬切开，"
+        },
+        {
+          "start": 2.549,
+          "end": 4.656,
+          "text": "一颗籽都没有！九块九两斤，"
+        },
+        {
+          "start": 4.656,
+          "end": 6.381,
+          "text": "水果店一个要十几块"
+        },
+        {
+          "start": 6.381,
+          "end": 8.296,
+          "text": "手一挤，汁水哗哗全出来！"
+        },
+        {
+          "start": 8.296,
+          "end": 10.021,
+          "text": "冰杯放几片，可乐一倒，"
+        },
+        {
+          "start": 10.021,
+          "end": 11.17,
+          "text": "气泡咕噜咕噜，"
+        },
+        {
+          "start": 11.17,
+          "end": 13.277,
+          "text": "跟奶茶店十几块一杯没差！"
+        },
+        {
+          "start": 13.277,
+          "end": 15.576,
+          "text": "三片纹理超好看，整颗黄柠檬，"
+        },
+        {
+          "start": 15.576,
+          "end": 17.875,
+          "text": "清爽又解腻！夏天全靠它续命，"
+        },
+        {
+          "start": 17.875,
+          "end": 19.791,
+          "text": "姐妹们VC水喝起来呀！"
+        }
+      ],
+      "video_duration_seconds": 20.033,
+      "speech_duration_seconds": 19.541,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.791,
+      "effective_speech_speed": 1.2041,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "reviews": {
+        "overall_summary": "视频展示了制作柠檬饮品的过程，包括切柠檬、展示柠檬内部、将深色液体倒入装有柠檬片和冰块的杯子、展示切好的柠檬片以及最后将整颗柠檬放入碗中。",
+        "segments": [
+          {
+            "start": 0,
+            "end": 3,
+            "visual_facts": [
+              "一个戴手套的手用菜刀在木质砧板上切黄色柠檬",
+              "砧板上已有多片切好的柠檬片",
+              "背景中有装有深色液体（顶部有柠檬片）的玻璃杯",
+              "背景中有装有黄色柠檬和绿色柠檬（或青柠）的碗",
+              "背景中有一块生姜"
+            ],
+            "narrative_role": "展示制作过程的初始步骤——切柠檬。"
+          },
+          {
+            "start": 3,
+            "end": 7,
+            "visual_facts": [
+              "双手拿着一片黄色柠檬的横截面",
+              "双手挤压柠檬片，有汁液流出",
+              "背景中有多片柠檬片"
+            ],
+            "narration_role": "特写展示柠檬的多汁状态。"
+          },
+          {
+            "start": 7,
+            "end": 12,
+            "visual_facts": [
+              "一个透明玻璃杯，内有冰块和两片黄色柠檬",
+              "深色液体从上方倒入杯中",
+              "倒入液体后杯中产生大量气泡",
+              "背景中有切好的柠檬片和整颗的黄色柠檬和绿色柠檬（或青柠）"
+            ],
+            "narrative_role": "展示制作饮品的核心步骤——混合液体。"
+          },
+          {
+            "start": 12,
+            "end": 16,
+            "visual_facts": [
+              "手指拿着三片重叠的黄色柠檬片",
+              "特写展示柠檬片的内部纹理和中心白色部分",
+              "背景模糊，可见玻璃杯和柠檬"
+            ],
+            "narrative_role": "再次特写展示柠檬片的细节。"
+          },
+          {
+            "start": 16,
+            "end": 19,
+            "visual_facts": [
+              "一个白色碗放在木质砧板上",
+              "碗中放有一片黄色柠檬",
+              "碗周围有许多切好的柠檬片",
+              "背景中有装有深色液体的玻璃杯和装有整颗柠檬的碗"
+            ],
+            "narrative_role": "展示另一种饮品的准备或陈列方式。"
+          },
+          {
+            "start": 19,
+            "end": 20,
+            "visual_facts": [
+              "一个黑色碗中放入多颗完整的黄色柠檬",
+              "背景中有装有深色液体的玻璃杯和装有整颗柠檬及绿色柠檬（或青柠）的碗"
+            ],
+            "narrative_role": "展示原始食材（整颗柠檬）。"
+          }
+        ],
+        "safe_copy_facts": [
+          "视频展示了切柠檬、挤压柠檬片出汁、将深色液体倒入装有柠檬片和冰块的杯子、展示柠檬片内部以及整颗柠檬的过程。",
+          "杯中装有冰块和柠檬片，倒入深色液体后产生气泡。",
+          "柠檬为黄色，背景中同时出现绿色柠檬或青柠以及生姜。"
+        ],
+        "avoid_claims": [
+          "避免声称柠檬无籽（视频未明确展示所有柠檬片的籽的情况）。",
+          "避免声称饮品具体成分（如是否为咖啡、茶或糖浆）。",
+          "避免声称柠檬产地、价格或任何营养/健康功效。",
+          "避免声称饮品制作完成后的具体口味（如酸、甜）。"
+        ]
+      }
+    },
+    {
+      "video_id": "RC-e7fca10d600b",
+      "source": "backend/data/exports/RC-e7fca10d600b.mp4",
+      "source_edl": [
+        {
+          "clip_id": "23fa4bdd-cb4b-4ddb-9575-145a598b05e1",
+          "source_path": "backend/storage/clips/71/71553d7292224d04d4add1ad3ed5c42f41d1c7aa1f9c81da22d8ada88c9539a0.mp4",
+          "start": 0.0,
+          "end": 0.78,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "52e5a8ac-ce36-4c24-aa95-b4ce46aaf800",
+          "source_path": "backend/storage/clips/56/56e247a857330fffcd6032d054b1e5974f8c2e7083b5a6e69466cddb65bcdb3c.mp4",
+          "start": 0.0,
+          "end": 0.62,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "6855e4e6-0f79-44be-9413-db91c0970f54",
+          "source_path": "backend/storage/clips/5f/5fe41b07f787f843562c344b580c5e00b5f388b27d48773fca03ed9038c15ece.mp4",
+          "start": 0.0,
+          "end": 1.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e263a06d-87db-4435-9785-823564b3b204",
+          "source_path": "backend/storage/clips/05/05b216d53ab4d666ddc778cdba103ca7d8f2069f4a5e087a6f698b7b9e75af5a.mp4",
+          "start": 0.0,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.07,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1daf5388-0d20-4016-873a-0958ff3d7db0",
+          "source_path": "backend/storage/clips/f6/f65dcdb68f107cdf943a7fcab4c0e73313cfb1b61451f3e22cb53cb4e11ee316.mp4",
+          "start": 0.0,
+          "end": 2.6,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-e7fca10d600b.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-e7fca10d600b.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-e7fca10d600b.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-e7fca10d600b.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-1.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-2.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-3.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-4.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-5.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-6.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-7.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-8.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-9.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-10.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-e7fca10d600b-11.png"
+      ],
+      "script": "救命，这柠檬也太新鲜了吧，水珠还挂着呢！九块九两斤，比水果店划算太多手一挤，汁水哗哗往下滴掰开绿柠檬，果肉饱满还没籽杯里挤点汁，气泡水一倒，咕噜咕噜冒黄绿柠檬片同杯，清爽解腻，跟奶茶店十几块一杯没差夏天VC水必须喝起来，姐妹们冲吧！",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.317,
+          "text": "救命，这柠檬也太新鲜了吧，"
+        },
+        {
+          "start": 2.317,
+          "end": 4.384,
+          "text": "水珠还挂着呢！九块九两斤，"
+        },
+        {
+          "start": 4.384,
+          "end": 5.887,
+          "text": "比水果店划算太多"
+        },
+        {
+          "start": 5.887,
+          "end": 7.767,
+          "text": "手一挤，汁水哗哗往下滴"
+        },
+        {
+          "start": 7.767,
+          "end": 10.022,
+          "text": "掰开绿柠檬，果肉饱满还没籽"
+        },
+        {
+          "start": 10.022,
+          "end": 11.901,
+          "text": "杯里挤点汁，气泡水一倒，"
+        },
+        {
+          "start": 11.901,
+          "end": 12.84,
+          "text": "咕噜咕噜冒"
+        },
+        {
+          "start": 12.84,
+          "end": 14.907,
+          "text": "黄绿柠檬片同杯，清爽解腻，"
+        },
+        {
+          "start": 14.907,
+          "end": 16.975,
+          "text": "跟奶茶店十几块一杯没差"
+        },
+        {
+          "start": 16.975,
+          "end": 18.854,
+          "text": "夏天VC水必须喝起来，"
+        },
+        {
+          "start": 18.854,
+          "end": 19.793,
+          "text": "姐妹们冲吧！"
+        }
+      ],
+      "video_duration_seconds": 20.033,
+      "speech_duration_seconds": 19.543,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.793,
+      "effective_speech_speed": 1.13857,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "reviews": {
+        "overall_summary": "视频通过一系列静态和动态镜头，展示了黄色柠檬和绿色柠檬的特写、切片、挤压出汁以及制作柠檬水的过程。",
+        "segments": [
+          {
+            "start": 0,
+            "end": 4,
+            "visual_facts": [
+              "画面展示一堆带水滴的黄色柠檬特写",
+              "柠檬表皮呈鲜黄色，有凹凸纹理和水珠"
+            ],
+            "narrative_role": "展示原材料外观"
+          },
+          {
+            "start": 4,
+            "end": 7,
+            "visual_facts": [
+              "画面切换为一片片切好的圆形黄色柠檬片",
+              "柠檬片中心可见白色髓心，果肉呈放射状纹理"
+            ],
+            "narrative_role": "展示切片状态"
+          },
+          {
+            "start": 7,
+            "end": 12,
+            "visual_facts": [
+              "一双手拿起一片黄色柠檬片，对着镜头",
+              "双手用力挤压柠檬片，有汁水从果肉中渗出并滴落"
+            ],
+            "narrative_role": "展示柠檬汁水丰富"
+          },
+          {
+            "start": 12,
+            "end": 16,
+            "visual_facts": [
+              "画面显示一颗完整的绿色柠檬",
+              "一双手将绿色柠檬从中间掰开，展示其内部结构",
+              "掰开的两半绿色柠檬果肉呈浅黄色，中心有白色髓心"
+            ],
+            "narrative_role": "展示另一种柠檬品种的外观和内部"
+          },
+          {
+            "start": 16,
+            "end": 20,
+            "visual_facts": [
+              "一个透明玻璃杯中装有浅色液体和一片黄色柠檬片",
+              "一只手拿着半个绿色柠檬，将其汁水挤入杯中",
+              "有透明液体被倒入装有绿色柠檬片的杯中，产生气泡",
+              "最终成品是一杯装有液体、黄色柠檬片和绿色柠檬片的柠檬水"
+            ],
+            "narrative_role": "展示使用两种柠檬制作饮品的过程"
+          }
+        ],
+        "safe_copy_facts": [
+          "视频展示了黄色和绿色两种柠檬",
+          "柠檬可以切片并挤出汁水",
+          "柠檬片可以放入水中制作饮品"
+        ],
+        "avoid_claims": [
+          "无籽（视频中未明确展示或声明）",
+          "特定产地",
+          "特定价格",
+          "营养价值或健康功效",
+          "特定口感（如‘酸甜’）"
+        ]
+      }
+    },
+    {
+      "video_id": "RC-bcbccc09e7ed",
+      "source": "backend/data/exports/RC-bcbccc09e7ed.mp4",
+      "source_edl": [
+        {
+          "clip_id": "7b16a6b5-54c7-429a-ae3d-02e5c7a72f20",
+          "source_path": "backend/storage/clips/04/04c4d36919c0ba40fa4584ac27f1b15047512872276f1f75ea19eccdce597384.mp4",
+          "start": 0.0,
+          "end": 2.5,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 0.0,
+          "end": 4.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "953c18de-8b58-4107-9314-d33d88401f45",
+          "source_path": "backend/storage/clips/f7/f79f00c6898b084fea71d22681422c45d5c1a0e767ee1b2e9c7005a785885970.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b001fbd0-35ee-454a-a744-735013eb3ea5",
+          "source_path": "backend/storage/clips/33/333df70a1c5dfb9f2966289a6911fca7649599d7b5db50987ada447148085ce3.mp4",
+          "start": 0.0,
+          "end": 2.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1df8c120-5a92-46f2-a850-f38d2b7fa8b3",
+          "source_path": "backend/storage/clips/e1/e1eca94348fb8539e9ff677f41db3f4bf375450f8718f5509d634428e3f7c3e7.mp4",
+          "start": 0.0,
+          "end": 2.4,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-bcbccc09e7ed.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-bcbccc09e7ed.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-bcbccc09e7ed.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-bcbccc09e7ed.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-1.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-2.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-3.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-4.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-5.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-6.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-7.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-8.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-9.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-10.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-bcbccc09e7ed-11.png"
+      ],
+      "script": "家人们快看，九块九两斤的广东香水柠檬，这价钱还有谁！冰杯放柠檬片，可乐一倒，气泡咕噜咕噜，分层贼好看换杯泡矿泉水，手一挤，汁水哗哗全出来成品挂满水珠，清爽又解腻，跟奶茶店十几块一杯没差！夏天全靠它续命，姐妹们想喝就照着泡一杯！",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.226,
+          "text": "家人们快看，"
+        },
+        {
+          "start": 1.226,
+          "end": 3.567,
+          "text": "九块九两斤的广东香水柠檬，"
+        },
+        {
+          "start": 3.567,
+          "end": 5.909,
+          "text": "这价钱还有谁！冰杯放柠檬片，"
+        },
+        {
+          "start": 5.909,
+          "end": 7.861,
+          "text": "可乐一倒，气泡咕噜咕噜，"
+        },
+        {
+          "start": 7.861,
+          "end": 8.836,
+          "text": "分层贼好看"
+        },
+        {
+          "start": 8.836,
+          "end": 10.593,
+          "text": "换杯泡矿泉水，手一挤，"
+        },
+        {
+          "start": 10.593,
+          "end": 11.959,
+          "text": "汁水哗哗全出来"
+        },
+        {
+          "start": 11.959,
+          "end": 14.105,
+          "text": "成品挂满水珠，清爽又解腻，"
+        },
+        {
+          "start": 14.105,
+          "end": 16.252,
+          "text": "跟奶茶店十几块一杯没差！"
+        },
+        {
+          "start": 16.252,
+          "end": 17.618,
+          "text": "夏天全靠它续命，"
+        },
+        {
+          "start": 17.618,
+          "end": 19.764,
+          "text": "姐妹们想喝就照着泡一杯！"
+        }
+      ],
+      "video_duration_seconds": 20.0,
+      "speech_duration_seconds": 19.514,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.764,
+      "effective_speech_speed": 1.08308,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "reviews": {
+        "overall_summary": "视频展示了使用柠檬片制作两种不同饮品的过程。第一部分（约00:00-00:08）制作了一杯含有冰块、柠檬片和深褐色液体的饮品。第二部分（约00:09-00:20）制作了一杯含有透明液体、柠檬片，并由手挤入新鲜柠檬汁的饮品。",
+        "segments": [
+          {
+            "start": 0,
+            "end": 8,
+            "visual_facts": [
+              "一只手将数片黄色柠檬片放入一个透明玻璃杯中。",
+              "杯中含有冰块。",
+              "深褐色液体从上方倒入杯中，与冰块和柠檬片混合，产生气泡。",
+              "最终形成一杯含有冰块、柠檬片和深褐色液体的分层饮品。"
+            ],
+            "narrative_role": "展示制作第一种饮品的步骤和成品外观。"
+          },
+          {
+            "start": 9,
+            "end": 12,
+            "visual_facts": [
+              "场景切换到一个空的透明玻璃杯。",
+              "多片黄色柠檬片被放入杯中。",
+              "杯中已含有透明液体。",
+              "背景可见黄色柠檬和绿色柠檬。"
+            ],
+            "narrative_role": "展示制作第二种饮品的初始步骤。"
+          },
+          {
+            "start": 13,
+            "end": 15,
+            "visual_facts": [
+              "一只戴着透明塑料手套的手，将一片柠檬用力挤压，将汁液挤入装有透明液体和柠檬片的玻璃杯中。",
+              "挤出的汁液呈浑浊状态。"
+            ],
+            "narrative_role": "展示向第二种饮品中添加新鲜柠檬汁的过程。"
+          },
+          {
+            "start": 16,
+            "end": 20,
+            "visual_facts": [
+              "最终的饮品呈淡黄色，杯壁外侧有凝结的水珠。",
+              "杯中插有一片柠檬作为装饰。",
+              "一只手拿起杯子，展示杯中悬浮的多片柠檬（包括黄色和绿色柠檬片）。"
+            ],
+            "narrative_role": "展示第二种饮品的成品和饮用前的呈现。"
+          }
+        ],
+        "safe_copy_facts": [
+          "视频展示了使用柠檬片制作饮品的过程。",
+          "饮品中使用了黄色柠檬片，部分饮品中还使用了绿色柠檬片。",
+          "饮品中加入了冰块和透明液体。",
+          "深褐色液体被倒入其中一杯饮品中。",
+          "新鲜柠檬汁被挤入另一杯饮品中。"
+        ],
+        "avoid_claims": [
+          "避免提及任何具体的饮品名称（如“冰红茶”、“柠檬水”等）。",
+          "避免声称饮品具有解渴、提神、补充维生素等功效。",
+          "避免提及柠檬的品种、产地、价格或营养价值。",
+          "避免声称饮品是“无籽”或“纯天然”的。",
+          "避免描述饮品的口感（如“酸甜可口”、“清爽”）。"
+        ]
+      }
+    },
+    {
+      "video_id": "RC-03d9653931c8",
+      "source": "backend/data/exports/RC-03d9653931c8.mp4",
+      "source_edl": [
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "911a15cf-ee6f-4d4e-b544-e78798cac58c",
+          "source_path": "backend/storage/clips/72/721c76cf63852ab68e5f979d8dc04c6c60a4a4c7b5a4cb72227e3899d1c84349.mp4",
+          "start": 0.0,
+          "end": 5.09,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "89f1dce5-c942-4e9b-b8fc-fb13069e090d",
+          "source_path": "backend/storage/clips/46/46a9ee43f20c462d231cc045722bbf0736fe04cf948823dc046d637316e8d884.mp4",
+          "start": 0.0,
+          "end": 2.87,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "fb4a39dc-289c-437a-aacf-a8226c884c52",
+          "source_path": "backend/storage/clips/97/97142995a0f1874a713d040318d59368fd9d2f02a4b5b027cbf6b3b7fe6854ad.mp4",
+          "start": 2.5,
+          "end": 7.11,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "55a86bd9-f6a1-4a21-8cdf-d0245270078a",
+          "source_path": "backend/storage/clips/c1/c131742e3f2155e7c78666afbb5370d5c04341222c8f60d33c111bc21e397548.mp4",
+          "start": 0.0,
+          "end": 2.4,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "05d89323-1bf7-4e17-a47c-9c819d45f6c9",
+          "source_path": "backend/storage/clips/66/66d8d77eb56c89ab27286e363c65fd98ec458fbed1dc0f71293727313552f986.mp4",
+          "start": 0.0,
+          "end": 1.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-03d9653931c8.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-03d9653931c8.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-03d9653931c8.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-03d9653931c8.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-1.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-2.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-3.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-4.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-5.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-6.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-7.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-8.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-9.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-10.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-03d9653931c8-11.png"
+      ],
+      "script": "这摆盘，颜值直接拉满！满盘黄柠檬青柠檬九块九两斤，水果店买一个都要十几块倒进白盘滚啊滚，汁水多到不行，皮薄还没籽冰杯放两片柠檬，矿泉水一倒，杯壁全是水珠，清爽又解腻一刀切开，果肉露出来了，跟奶茶店十几块一杯没差！姐妹们，多喝VC水呀",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.941,
+          "text": "这摆盘，颜值直接拉满！"
+        },
+        {
+          "start": 1.941,
+          "end": 3.444,
+          "text": "满盘黄柠檬青柠檬"
+        },
+        {
+          "start": 3.444,
+          "end": 4.384,
+          "text": "九块九两斤，"
+        },
+        {
+          "start": 4.384,
+          "end": 6.451,
+          "text": "水果店买一个都要十几块"
+        },
+        {
+          "start": 6.451,
+          "end": 7.766,
+          "text": "倒进白盘滚啊滚，"
+        },
+        {
+          "start": 7.766,
+          "end": 9.833,
+          "text": "汁水多到不行，皮薄还没籽"
+        },
+        {
+          "start": 9.833,
+          "end": 12.088,
+          "text": "冰杯放两片柠檬，矿泉水一倒，"
+        },
+        {
+          "start": 12.088,
+          "end": 14.154,
+          "text": "杯壁全是水珠，清爽又解腻"
+        },
+        {
+          "start": 14.154,
+          "end": 16.033,
+          "text": "一刀切开，果肉露出来了，"
+        },
+        {
+          "start": 16.033,
+          "end": 18.1,
+          "text": "跟奶茶店十几块一杯没差！"
+        },
+        {
+          "start": 18.1,
+          "end": 19.791,
+          "text": "姐妹们，多喝VC水呀"
+        }
+      ],
+      "video_duration_seconds": 20.033,
+      "speech_duration_seconds": 19.541,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.791,
+      "effective_speech_speed": 1.22867,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "reviews": {
+        "overall_summary": "视频展示了一系列关于黄色和青色柠檬的静态与动态画面，包括完整的柠檬、切片柠檬、柠檬水制作以及切割青柠檬的特写。",
+        "segments": [
+          {
+            "start": 0,
+            "end": 3,
+            "visual_facts": [
+              "画面显示多颗黄色的柠檬（带有些许绿色斑点）在白色平面上排列。",
+              "一只手拿着一片切开的黄色柠檬进入画面。",
+              "随后，多片切开的黄色柠檬片被层叠放置在平面上，覆盖了部分画面。",
+              "柠檬片呈圆形，果肉呈浅黄色，果皮为黄色，中心可见果籽的白色隔膜。"
+            ],
+            "narrative_role": "开篇展示，呈现大量黄色柠檬及其切片的外观。"
+          },
+          {
+            "start": 4,
+            "end": 8,
+            "visual_facts": [
+              "画面切换，展示了一个黑色圆盘，上面层叠摆放着大量切好的圆形青柠檬片。",
+              "柠檬片果肉呈淡绿色，果皮为绿色。",
+              "背景中有几颗完整的青柠檬放在白色容器中。",
+              "一只手扶住黑色圆盘的边缘。"
+            ],
+            "narrate_role": "展示青柠檬切片的摆盘效果。"
+          },
+          {
+            "start": 9,
+            "end": 11,
+            "visual_facts": [
+              "一个白色深盘置于前景，背景货架上有黄色的礼盒和多颗完整的黄色及青色柠檬。",
+              "多颗完整的黄色和青色柠檬被倒入白色盘中，柠檬在盘中滚动。"
+            ],
+            "narrative_role": "动态展示将完整的黄、青柠檬放入容器中。"
+          },
+          {
+            "start": 12,
+            "end": 16,
+            "visual_facts": [
+              "一个透明玻璃杯置于木质案板上，杯内装有冰块和几片黄色柠檬片。",
+              "案板周围散落着多片黄色柠檬片，背景有完整的黄、青柠檬。",
+              "一只手将透明液体从水壶倒入杯中，液体逐渐淹没冰块和柠檬片，杯壁出现水珠。"
+            ],
+            "narrative_role": "展示制作柠檬水（加冰块和柠檬片）的过程。"
+          },
+          {
+            "start": 17,
+            "end": 20,
+            "visual_facts": [
+              "特写镜头，一只手用刀在木质案板上切一颗完整的青柠檬。",
+              "刀切下后，青柠檬被分成两半，露出内部果肉和白色隔膜。",
+              "最终画面是双手各持一半切开的青柠檬，展示其切面。"
+            ],
+            "narrative_role": "特写展示切割青柠檬的动作和内部结构。"
+          }
+        ],
+        "safe_copy_facts": [
+          "视频中包含黄色和青色柠檬。",
+          "柠檬被切片。",
+          "柠檬片与冰块一起放入杯中。",
+          "向杯中倒入透明液体（水）。",
+          "有手在切柠檬。"
+        ],
+        "avoid_claims": [
+          "柠檬的具体品种（如香水柠檬）。",
+          "柠檬的产地。",
+          "柠檬是否无籽。",
+          "柠檬的营养价值或健康功效。",
+          "柠檬饮品的价格。",
+          "柠檬水的具体配方或比例。"
+        ]
+      }
+    },
+    {
+      "video_id": "RC-0e7b153e9794",
+      "source": "backend/data/exports/RC-0e7b153e9794.mp4",
+      "source_edl": [
+        {
+          "clip_id": "d52c0d9a-f3ca-4c56-b475-5693f4e1ea87",
+          "source_path": "backend/storage/clips/7e/7e47db79e1948dd87875145647515f048fc618d403cbfe42391b061e7fa9625f.mp4",
+          "start": 0.0,
+          "end": 2.8,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.47,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.07,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b6d1ed46-e731-4aad-bfc8-c55cf521ac70",
+          "source_path": "backend/storage/clips/1b/1bd1a612bef63f4aa7a7ffe5faa8156315450badda8e5c01cc7e4b333b47ca82.mp4",
+          "start": 0.0,
+          "end": 0.95,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "ac73e669-b54b-43d3-9d63-f2c699460313",
+          "source_path": "backend/storage/clips/9e/9ebfa268e30d08a33a6893bb77754b50e0a390db76fbe2fe8cbe0b9ab80b6407.mp4",
+          "start": 0.0,
+          "end": 0.62,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "23fa4bdd-cb4b-4ddb-9575-145a598b05e1",
+          "source_path": "backend/storage/clips/71/71553d7292224d04d4add1ad3ed5c42f41d1c7aa1f9c81da22d8ada88c9539a0.mp4",
+          "start": 0.0,
+          "end": 0.46,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-0e7b153e9794.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-0e7b153e9794.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-0e7b153e9794.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new6_20s/RC-0e7b153e9794.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-1.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-2.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-3.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-4.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-5.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-6.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-7.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-8.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-9.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-10.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-11.png",
+        "backend/data/exports/2026-08-29_lemon_new6_20s/caption_layers/RC-0e7b153e9794-12.png"
+      ],
+      "script": "可乐柠檬水摆一块，我肯定选柠檬水！九块九两斤的香水柠檬，产地直发真新鲜切片叠一块，皮薄没籽，手一挤，汁水哗哗往外冒气泡水一倒，杯壁全是小水珠薄片丢进杯里飘起来，清爽又解腻，跟奶茶店十几块一杯没差夏天全靠它续命，姐妹们VC水喝起来！",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.754,
+          "text": "可乐柠檬水摆一块，"
+        },
+        {
+          "start": 1.754,
+          "end": 3.069,
+          "text": "我肯定选柠檬水！"
+        },
+        {
+          "start": 3.069,
+          "end": 4.948,
+          "text": "九块九两斤的香水柠檬，"
+        },
+        {
+          "start": 4.948,
+          "end": 6.264,
+          "text": "产地直发真新鲜"
+        },
+        {
+          "start": 6.264,
+          "end": 7.956,
+          "text": "切片叠一块，皮薄没籽，"
+        },
+        {
+          "start": 7.956,
+          "end": 9.835,
+          "text": "手一挤，汁水哗哗往外冒"
+        },
+        {
+          "start": 9.835,
+          "end": 12.09,
+          "text": "气泡水一倒，杯壁全是小水珠"
+        },
+        {
+          "start": 12.09,
+          "end": 13.782,
+          "text": "薄片丢进杯里飘起来，"
+        },
+        {
+          "start": 13.782,
+          "end": 14.721,
+          "text": "清爽又解腻，"
+        },
+        {
+          "start": 14.721,
+          "end": 16.789,
+          "text": "跟奶茶店十几块一杯没差"
+        },
+        {
+          "start": 16.789,
+          "end": 18.104,
+          "text": "夏天全靠它续命，"
+        },
+        {
+          "start": 18.104,
+          "end": 19.796,
+          "text": "姐妹们VC水喝起来！"
+        }
+      ],
+      "video_duration_seconds": 20.033,
+      "speech_duration_seconds": 19.546,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.796,
+      "effective_speech_speed": 1.11399,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "reviews": {
+        "overall_summary": "视频展示了制作柠檬饮品的过程，主要包含准备柠檬、切片、以及将柠檬片放入杯中加水等步骤。",
+        "segments": [
+          {
+            "start": 0.0,
+            "end": 2.0,
+            "visual_facts": [
+              "画面中央有一个深色碗。",
+              "碗后方有一个装有多个完整黄柠檬的玻璃碗。",
+              "黄柠檬旁边有一些青柠檬。",
+              "背景右侧有一杯装有深色液体的玻璃杯，杯口插有一片黄柠檬。",
+              "有黄柠檬被投入中央的深色碗中。"
+            ],
+            "narrative_role": "展示原材料和初步准备"
+          },
+          {
+            "start": 2.0,
+            "end": 3.0,
+            "visual_facts": [
+              "特写镜头，多个黄柠檬横切面切片层叠放置。",
+              "切片中心可见白色髓质，果肉呈淡黄色。"
+            ],
+            "narrative_role": "展示柠檬切片的内部结构"
+          },
+          {
+            "start": 3.0,
+            "end": 6.5,
+            "visual_facts": [
+              "一双手拿着一片厚黄柠檬切片。",
+              "双手用力挤压切片，大量透明汁液从果肉中渗出并滴落。",
+              "下方背景是其他柠檬切片。"
+            ],
+            "narrative_role": "演示柠檬多汁"
+          },
+          {
+            "start": 6.5,
+            "end": 11.5,
+            "visual_facts": [
+              "一个透明玻璃杯置于白色碟子上。",
+              "杯中已有两三片带绿色皮的柠檬切片。",
+              "有透明液体（看起来像水）从上方倒入杯中，直至接近杯口。",
+              "液体倒入后，杯壁上出现水珠，液体表面有气泡。"
+            ],
+            "narrative_role": "展示向装有柠檬片的杯中加水的过程"
+          },
+          {
+            "start": 11.5,
+            "end": 15.0,
+            "visual_facts": [
+              "木质案板上摆放着切好的黄柠檬薄片。",
+              "一把菜刀正在切一个完整的黄柠檬。",
+              "背景中可见整颗的黄柠檬、青柠檬以及一杯深色饮品。",
+              "操作者戴着透明塑料手套。"
+            ],
+            "narrative_role": "展示切柠檬片的过程"
+          },
+          {
+            "start": 15.0,
+            "end": 18.0,
+            "visual_facts": [
+              "一个装满液体（看起来像水）和冰块的玻璃杯。",
+              "一片黄柠檬被投入杯中，漂浮在液体表面。",
+              "杯壁有凝结的水珠。"
+            ],
+            "narrative_role": "展示将柠檬片放入成品饮品中"
+          },
+          {
+            "start": 18.0,
+            "end": 20.0,
+            "visual_facts": [
+              "木质案板上铺满黄柠檬薄片。",
+              "背景有整颗黄柠檬、青柠檬和深色饮品杯。",
+              "一只手拿着一个装有白色颗粒状物质（类似盐或糖）的小碗，向柠檬片上撒去。",
+              "最后特写镜头展示多个带水珠的完整黄柠檬。"
+            ],
+            "narrative_role": "展示向柠檬片添加白色颗粒状物质及展示完整柠檬"
+          }
+        ],
+        "safe_copy_facts": [
+          "视频中出现了黄柠檬和青柠檬。",
+          "展示了挤压柠檬片出汁的过程。",
+          "展示了将柠檬片放入杯中并加水的过程。",
+          "展示了用刀切柠檬片的过程。",
+          "展示了向柠檬片撒白色颗粒状物质的过程。",
+          "杯中的液体外观为透明或深色。"
+        ],
+        "avoid_claims": [
+          "避免宣称柠檬具有任何特定的健康功效（如美白、减肥、抗氧化等）。",
+          "避免宣称柠檬的产地（如“来自XX地的优质柠檬”）。",
+          "避免宣称柠檬的具体品种特性（如“无籽柠檬”、“香水柠檬”）。",
+          "避免宣称饮品的营养价值或健康益处。",
+          "避免对价格进行任何推断或比较。",
+          "避免宣称白色颗粒状物质的具体成分（如“这是海盐”或“这是冰糖”）。"
+        ]
+      }
+    }
+  ],
+  "media_probe": {
+    "RC-a350c3d4b273": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.033000"
+      }
+    },
+    "RC-e7fca10d600b": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.033000"
+      }
+    },
+    "RC-bcbccc09e7ed": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.000000"
+      }
+    },
+    "RC-03d9653931c8": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.033000"
+      }
+    },
+    "RC-0e7b153e9794": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.033000"
+      }
+    }
+  },
+  "product_facts": {
+    "lemon_facts": "用户确认：广东香水柠檬、维C含量高、果园现摘现发；价格卖点九块九两斤（参考上批确认文案，本批按用户要求使用）；无籽/皮薄等按用户明确指示使用（不回避此类表述）。",
+    "beverage_mapping": "用户确认：深色饮品为可乐；明显气泡的清澈饮品为气泡水；未见明显气泡的清澈饮品为矿泉水。",
+    "style_reference": "用户提供两篇小红书参考文案，要求模仿小红书爆款文风；5条开头各不相同。"
+  }
+}

@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,3,8,0,2,96,96,250,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.35,0:00:05.01,Caption,,0,0,0,,你看这杯里，青柠黄柠都已经切好了，水\N一倒，颜色马上就出来了。
+Dialogue: 0,0:00:05.01,0:00:10.75,Caption,,0,0,0,,平时在家想喝点带柠檬香的饮品，拿两片\N放进去，再加点冰，做法一点都不复杂。
+Dialogue: 0,0:00:10.75,0:00:15.96,Caption,,0,0,0,,喜欢这种随手泡、随手喝的朋友呀，今天\N可以带几颗回家，慢慢换着搭配。

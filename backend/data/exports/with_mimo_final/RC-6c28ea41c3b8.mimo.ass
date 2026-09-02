@@ -1,0 +1,16 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:05.18,Caption,,0,0,0,,这一刀切下去，你看柠檬片切得透透的，\N桌上黄的青的果子也都摆得满满当当。
+Dialogue: 0,0:00:05.18,0:00:10.41,Caption,,0,0,0,,想在家做一杯简单的柠檬饮品，先放切片\N，再倒水加冰，杯子一下就有了清爽的样\N子。
+Dialogue: 0,0:00:10.41,0:00:15.80,Caption,,0,0,0,,后面还可以看到把绿色柠檬挤进杯里，喜\N欢果香明显一点的，就按自己的口味慢慢\N搭。
+Dialogue: 0,0:00:15.80,0:00:21.49,Caption,,0,0,0,,平时喜欢自己泡一杯的朋友，广东香水柠\N檬备一些在家里，想喝的时候拿出来切两\N片就行。

@@ -1,0 +1,911 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": null,
+  "exports": [
+    {
+      "video_id": "RC-05b2c2bbac5a",
+      "source": "backend/data/exports/RC-05b2c2bbac5a.mp4",
+      "source_edl": [
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-05b2c2bbac5a.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-05b2c2bbac5a.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-05b2c2bbac5a.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-05b2c2bbac5a.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-1.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-2.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-3.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-4.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-5.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-6.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-7.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-8.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-9.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-10.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-11.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-12.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-05b2c2bbac5a-13.png"
+      ],
+      "script": "吃一颗就惦记上的葡萄，你吃过吗？这就是湖南阳光玫瑰，香甜脆爽，带着很有辨识度的玫瑰香。每天现采摘现发，顺丰空运包邮到家。下午茶、饭后或者家里来客，端上一盘都合适。一个人慢慢吃很舒服，想和家人分享也方便，给家里备一份也很省心，想吃直接点下方小黄车。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.111,
+          "text": "吃一颗就惦记上的葡萄，"
+        },
+        {
+          "start": 2.111,
+          "end": 2.855,
+          "text": "你吃过吗？"
+        },
+        {
+          "start": 2.855,
+          "end": 4.529,
+          "text": "这就是湖南阳光玫瑰，"
+        },
+        {
+          "start": 4.529,
+          "end": 5.274,
+          "text": "香甜脆爽，"
+        },
+        {
+          "start": 5.274,
+          "end": 7.32,
+          "text": "带着很有辨识度的玫瑰香。"
+        },
+        {
+          "start": 7.32,
+          "end": 8.623,
+          "text": "每天现采摘现发，"
+        },
+        {
+          "start": 8.623,
+          "end": 10.111,
+          "text": "顺丰空运包邮到家。"
+        },
+        {
+          "start": 10.111,
+          "end": 12.158,
+          "text": "下午茶、饭后或者家里来客，"
+        },
+        {
+          "start": 12.158,
+          "end": 13.461,
+          "text": "端上一盘都合适。"
+        },
+        {
+          "start": 13.461,
+          "end": 15.135,
+          "text": "一个人慢慢吃很舒服，"
+        },
+        {
+          "start": 15.135,
+          "end": 16.81,
+          "text": "想和家人分享也方便，"
+        },
+        {
+          "start": 16.81,
+          "end": 18.67,
+          "text": "给家里备一份也很省心，"
+        },
+        {
+          "start": 18.67,
+          "end": 20.531,
+          "text": "想吃直接点下方小黄车。"
+        }
+      ],
+      "video_duration_seconds": 20.767,
+      "speech_duration_seconds": 20.281,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.531,
+      "effective_speech_speed": 1.14474,
+      "raw_to_coverage_speed": 1.14474,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -24.66,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "湖南阳光玫瑰": "用户于 2026-09-01 确认",
+        "香甜脆爽": "用户于 2026-09-01 确认",
+        "玫瑰香": "用户于 2026-09-01 确认",
+        "每天现采摘现发": "用户于 2026-09-01 确认",
+        "顺丰空运包邮到家": "用户于 2026-09-01 确认"
+      }
+    },
+    {
+      "video_id": "RC-328f5cdfb08c",
+      "source": "backend/data/exports/RC-328f5cdfb08c.mp4",
+      "source_edl": [
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-328f5cdfb08c.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-328f5cdfb08c.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-328f5cdfb08c.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-328f5cdfb08c.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-1.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-2.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-3.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-4.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-5.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-6.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-7.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-8.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-9.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-10.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-11.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-328f5cdfb08c-12.png"
+      ],
+      "script": "买阳光玫瑰别只看价格，挑的时候记住三点：颜色别太青，果粒要饱满紧实，凑近要有玫瑰香，别买到没香没味的。满足这几点，吃起来才会香甜脆爽。湖南阳光玫瑰现采现发，顺丰空运包邮到家，自己吃当水果，送人也方便，家里常备，想吃就取呢，直接点下方小黄车。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.182,
+          "text": "买阳光玫瑰别只看价格，"
+        },
+        {
+          "start": 2.182,
+          "end": 3.727,
+          "text": "挑的时候记住三点："
+        },
+        {
+          "start": 3.727,
+          "end": 6.045,
+          "text": "颜色别太青，果粒要饱满紧实，"
+        },
+        {
+          "start": 6.045,
+          "end": 7.397,
+          "text": "凑近要有玫瑰香，"
+        },
+        {
+          "start": 7.397,
+          "end": 8.942,
+          "text": "别买到没香没味的。"
+        },
+        {
+          "start": 8.942,
+          "end": 9.908,
+          "text": "满足这几点，"
+        },
+        {
+          "start": 9.908,
+          "end": 11.647,
+          "text": "吃起来才会香甜脆爽。"
+        },
+        {
+          "start": 11.647,
+          "end": 13.578,
+          "text": "湖南阳光玫瑰现采现发，"
+        },
+        {
+          "start": 13.578,
+          "end": 15.124,
+          "text": "顺丰空运包邮到家，"
+        },
+        {
+          "start": 15.124,
+          "end": 17.248,
+          "text": "自己吃当水果，送人也方便，"
+        },
+        {
+          "start": 17.248,
+          "end": 18.987,
+          "text": "家里常备，想吃就取呢，"
+        },
+        {
+          "start": 18.987,
+          "end": 20.532,
+          "text": "直接点下方小黄车。"
+        }
+      ],
+      "video_duration_seconds": 20.767,
+      "speech_duration_seconds": 20.282,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.532,
+      "effective_speech_speed": 1.14474,
+      "raw_to_coverage_speed": 1.14474,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -24.66,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "湖南阳光玫瑰": "用户于 2026-09-01 确认",
+        "香甜脆爽": "用户于 2026-09-01 确认",
+        "玫瑰香": "用户于 2026-09-01 确认",
+        "每天现采摘现发": "用户于 2026-09-01 确认",
+        "顺丰空运包邮到家": "用户于 2026-09-01 确认"
+      }
+    },
+    {
+      "video_id": "RC-fdcb663d21e7",
+      "source": "backend/data/exports/RC-fdcb663d21e7.mp4",
+      "source_edl": [
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-fdcb663d21e7.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-fdcb663d21e7.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-fdcb663d21e7.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-fdcb663d21e7.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-1.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-2.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-3.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-4.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-5.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-6.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-7.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-8.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-9.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-10.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-11.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-12.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-fdcb663d21e7-13.png"
+      ],
+      "script": "很多人买葡萄，最在意的其实不是包装，而是新不新鲜。湖南阳光玫瑰每天现采摘现发，顺丰空运包邮到家。香甜脆爽，还有玫瑰香，自己吃或者给家里人尝尝都合适，冰箱里备上一份，下午嘴馋就能吃，周末追剧或下午茶都很搭呀，平时也能吃。想吃新鲜葡萄的，去小黄车看看。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.356,
+          "text": "很多人买葡萄，"
+        },
+        {
+          "start": 1.356,
+          "end": 3.199,
+          "text": "最在意的其实不是包装，"
+        },
+        {
+          "start": 3.199,
+          "end": 4.305,
+          "text": "而是新不新鲜。"
+        },
+        {
+          "start": 4.305,
+          "end": 6.702,
+          "text": "湖南阳光玫瑰每天现采摘现发，"
+        },
+        {
+          "start": 6.702,
+          "end": 8.176,
+          "text": "顺丰空运包邮到家。"
+        },
+        {
+          "start": 8.176,
+          "end": 9.835,
+          "text": "香甜脆爽，还有玫瑰香，"
+        },
+        {
+          "start": 9.835,
+          "end": 12.416,
+          "text": "自己吃或者给家里人尝尝都合适"
+        },
+        {
+          "start": 12.416,
+          "end": 13.706,
+          "text": "，冰箱里备上一份，"
+        },
+        {
+          "start": 13.706,
+          "end": 14.997,
+          "text": "下午嘴馋就能吃，"
+        },
+        {
+          "start": 14.997,
+          "end": 17.209,
+          "text": "周末追剧或下午茶都很搭呀，"
+        },
+        {
+          "start": 17.209,
+          "end": 18.13,
+          "text": "平时也能吃。"
+        },
+        {
+          "start": 18.13,
+          "end": 19.421,
+          "text": "想吃新鲜葡萄的，"
+        },
+        {
+          "start": 19.421,
+          "end": 20.527,
+          "text": "去小黄车看看。"
+        }
+      ],
+      "video_duration_seconds": 20.767,
+      "speech_duration_seconds": 20.277,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.527,
+      "effective_speech_speed": 1.23158,
+      "raw_to_coverage_speed": 1.23158,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -24.66,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "湖南阳光玫瑰": "用户于 2026-09-01 确认",
+        "香甜脆爽": "用户于 2026-09-01 确认",
+        "玫瑰香": "用户于 2026-09-01 确认",
+        "每天现采摘现发": "用户于 2026-09-01 确认",
+        "顺丰空运包邮到家": "用户于 2026-09-01 确认"
+      }
+    },
+    {
+      "video_id": "RC-5d22549cf46e",
+      "source": "backend/data/exports/RC-5d22549cf46e.mp4",
+      "source_edl": [
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-5d22549cf46e.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-5d22549cf46e.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-5d22549cf46e.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-5d22549cf46e.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-1.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-2.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-3.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-4.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-5.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-6.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-7.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-8.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-9.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-10.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-11.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-5d22549cf46e-12.png"
+      ],
+      "script": "不是只有甜才叫好葡萄，香气也很重要。湖南阳光玫瑰一入口香甜脆爽，后面还有玫瑰香，吃着不是单一的甜味。下午茶、饭后来几颗都合适。每天现采现发，顺丰空运包邮，喜欢这一口就点击小黄车，给家里备点也很合适，自己吃解馋，和家人分享也合适，平时吃也方便。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.145,
+          "text": "不是只有甜才叫好葡萄，"
+        },
+        {
+          "start": 2.145,
+          "end": 3.282,
+          "text": "香气也很重要。"
+        },
+        {
+          "start": 3.282,
+          "end": 5.746,
+          "text": "湖南阳光玫瑰一入口香甜脆爽，"
+        },
+        {
+          "start": 5.746,
+          "end": 7.073,
+          "text": "后面还有玫瑰香，"
+        },
+        {
+          "start": 7.073,
+          "end": 8.779,
+          "text": "吃着不是单一的甜味。"
+        },
+        {
+          "start": 8.779,
+          "end": 10.864,
+          "text": "下午茶、饭后来几颗都合适。"
+        },
+        {
+          "start": 10.864,
+          "end": 13.138,
+          "text": "每天现采现发，顺丰空运包邮，"
+        },
+        {
+          "start": 13.138,
+          "end": 15.223,
+          "text": "喜欢这一口就点击小黄车，"
+        },
+        {
+          "start": 15.223,
+          "end": 16.929,
+          "text": "给家里备点也很合适，"
+        },
+        {
+          "start": 16.929,
+          "end": 17.876,
+          "text": "自己吃解馋，"
+        },
+        {
+          "start": 17.876,
+          "end": 19.393,
+          "text": "和家人分享也合适，"
+        },
+        {
+          "start": 19.393,
+          "end": 20.53,
+          "text": "平时吃也方便。"
+        }
+      ],
+      "video_duration_seconds": 20.767,
+      "speech_duration_seconds": 20.28,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.53,
+      "effective_speech_speed": 1.20789,
+      "raw_to_coverage_speed": 1.20789,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -24.66,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "湖南阳光玫瑰": "用户于 2026-09-01 确认",
+        "香甜脆爽": "用户于 2026-09-01 确认",
+        "玫瑰香": "用户于 2026-09-01 确认",
+        "每天现采摘现发": "用户于 2026-09-01 确认",
+        "顺丰空运包邮到家": "用户于 2026-09-01 确认"
+      }
+    },
+    {
+      "video_id": "RC-4cd88f86ef87",
+      "source": "backend/data/exports/RC-4cd88f86ef87.mp4",
+      "source_edl": [
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-4cd88f86ef87.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-4cd88f86ef87.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-4cd88f86ef87.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_hunan_shine_muscat_five/RC-4cd88f86ef87.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-1.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-2.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-3.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-4.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-5.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-6.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-7.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-8.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-9.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-10.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-11.png",
+        "backend/data/exports/2026-09-01_hunan_shine_muscat_five/caption_layers/RC-4cd88f86ef87-12.png"
+      ],
+      "script": "想给家里买葡萄的，先看看这款湖南阳光玫瑰。香甜脆爽，玫瑰香明显，自己吃很满足，拿出来待客也有面子。每天现采摘现发，顺丰空运包邮到家。我从湖南给您发货，平时当水果吃，家人一起分享也合适，周末聚餐也能一起分享更开心呀，想尝尝直接去下方小黄车呢。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.766,
+          "text": "想给家里买葡萄的，"
+        },
+        {
+          "start": 1.766,
+          "end": 3.851,
+          "text": "先看看这款湖南阳光玫瑰。"
+        },
+        {
+          "start": 3.851,
+          "end": 5.557,
+          "text": "香甜脆爽，玫瑰香明显，"
+        },
+        {
+          "start": 5.557,
+          "end": 6.694,
+          "text": "自己吃很满足，"
+        },
+        {
+          "start": 6.694,
+          "end": 8.399,
+          "text": "拿出来待客也有面子。"
+        },
+        {
+          "start": 8.399,
+          "end": 9.726,
+          "text": "每天现采摘现发，"
+        },
+        {
+          "start": 9.726,
+          "end": 11.242,
+          "text": "顺丰空运包邮到家。"
+        },
+        {
+          "start": 11.242,
+          "end": 12.758,
+          "text": "我从湖南给您发货，"
+        },
+        {
+          "start": 12.758,
+          "end": 13.896,
+          "text": "平时当水果吃，"
+        },
+        {
+          "start": 13.896,
+          "end": 15.601,
+          "text": "家人一起分享也合适，"
+        },
+        {
+          "start": 15.601,
+          "end": 18.255,
+          "text": "周末聚餐也能一起分享更开心呀"
+        },
+        {
+          "start": 18.255,
+          "end": 20.529,
+          "text": "，想尝尝直接去下方小黄车呢。"
+        }
+      ],
+      "video_duration_seconds": 20.767,
+      "speech_duration_seconds": 20.279,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.529,
+      "effective_speech_speed": 1.16842,
+      "raw_to_coverage_speed": 1.16842,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -24.66,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "湖南阳光玫瑰": "用户于 2026-09-01 确认",
+        "香甜脆爽": "用户于 2026-09-01 确认",
+        "玫瑰香": "用户于 2026-09-01 确认",
+        "每天现采摘现发": "用户于 2026-09-01 确认",
+        "顺丰空运包邮到家": "用户于 2026-09-01 确认"
+      }
+    }
+  ],
+  "media_probe": {
+    "RC-05b2c2bbac5a": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.767000"
+      }
+    },
+    "RC-328f5cdfb08c": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.767000"
+      }
+    },
+    "RC-fdcb663d21e7": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.767000"
+      }
+    },
+    "RC-5d22549cf46e": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.767000"
+      }
+    },
+    "RC-4cd88f86ef87": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.767000"
+      }
+    }
+  }
+}

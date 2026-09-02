@@ -1,0 +1,955 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": "backend/data/exports/2026-08-29_lemon_new5_copy_review/mimo_vision_analysis.json",
+  "product_facts": {
+    "lemon_facts": "用户确认：广东香水柠檬、维C含量高、果园现摘现发；本批第4条画面可见种子，未使用无籽。",
+    "beverage_mapping": "用户确认：深色饮品为可乐；明显气泡的清澈饮品为气泡水；未见明显气泡的清澈饮品为矿泉水。"
+  },
+  "exports": [
+    {
+      "video_id": "RC-f4737cfa9e36",
+      "source": "backend/data/exports/RC-f4737cfa9e36.mp4",
+      "source_edl": [
+        {
+          "clip_id": "e049727d-cbfc-46ce-8f42-676fe2f9e229",
+          "source_path": "backend/storage/clips/4b/4bd315f66b2984e0e1d8a654f7d92f5278230fe057a5c4d8388c12167986af79.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "4809c284-115c-430a-86c8-2c00dfcae364",
+          "source_path": "backend/storage/clips/80/807ff5181ba1c9907be3e2725656beec1407f468120bd5101567cff0472c5539.mp4",
+          "start": 0.0,
+          "end": 2.23,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e263a06d-87db-4435-9785-823564b3b204",
+          "source_path": "backend/storage/clips/05/05b216d53ab4d666ddc778cdba103ca7d8f2069f4a5e087a6f698b7b9e75af5a.mp4",
+          "start": 0.0,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1df8c120-5a92-46f2-a850-f38d2b7fa8b3",
+          "source_path": "backend/storage/clips/e1/e1eca94348fb8539e9ff677f41db3f4bf375450f8718f5509d634428e3f7c3e7.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-f4737cfa9e36.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-f4737cfa9e36.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-f4737cfa9e36.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-f4737cfa9e36.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-1.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-2.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-3.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-4.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-5.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-6.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-7.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-8.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-9.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-10.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-11.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-12.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-13.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-f4737cfa9e36-14.png"
+      ],
+      "script": "一盘柠檬切片先备好，黄色切面铺满盘子，绿色整果也摆在旁边。广东香水柠檬切开以后，切片、挤汁的过程都给你看，汁水顺着果肉落进杯中。冰块和柠檬片放进杯里，接着倒入可乐，气泡随着液面一起升起来。再换一杯矿泉水，把柠檬片放进去，端起来就是两种不同的喝法。想在家做柠檬饮，就照着画面慢慢泡一杯。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.772,
+          "text": "一盘柠檬切片先备好，"
+        },
+        {
+          "start": 1.772,
+          "end": 3.125,
+          "text": "黄色切面铺满盘子，"
+        },
+        {
+          "start": 3.125,
+          "end": 4.646,
+          "text": "绿色整果也摆在旁边。"
+        },
+        {
+          "start": 4.646,
+          "end": 6.676,
+          "text": "广东香水柠檬切开以后，切片、"
+        },
+        {
+          "start": 6.676,
+          "end": 8.197,
+          "text": "挤汁的过程都给你看，"
+        },
+        {
+          "start": 8.197,
+          "end": 9.888,
+          "text": "汁水顺着果肉落进杯中。"
+        },
+        {
+          "start": 9.888,
+          "end": 11.579,
+          "text": "冰块和柠檬片放进杯里，"
+        },
+        {
+          "start": 11.579,
+          "end": 12.594,
+          "text": "接着倒入可乐，"
+        },
+        {
+          "start": 12.594,
+          "end": 14.454,
+          "text": "气泡随着液面一起升起来。"
+        },
+        {
+          "start": 14.454,
+          "end": 15.638,
+          "text": "再换一杯矿泉水，"
+        },
+        {
+          "start": 15.638,
+          "end": 16.821,
+          "text": "把柠檬片放进去，"
+        },
+        {
+          "start": 16.821,
+          "end": 18.851,
+          "text": "端起来就是两种不同的喝法。"
+        },
+        {
+          "start": 18.851,
+          "end": 20.034,
+          "text": "想在家做柠檬饮，"
+        },
+        {
+          "start": 20.034,
+          "end": 21.725,
+          "text": "就照着画面慢慢泡一杯。"
+        }
+      ],
+      "video_duration_seconds": 21.967,
+      "speech_duration_seconds": 21.475,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 21.725,
+      "effective_speech_speed": 1.16273,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-c17df470a8fb",
+      "source": "backend/data/exports/RC-c17df470a8fb.mp4",
+      "source_edl": [
+        {
+          "clip_id": "197c628f-53ef-4236-83be-45d801fa14e6",
+          "source_path": "backend/storage/clips/0c/0c922ac5faabdfc8c223707b384de4c307fce9627c6b70b346c5dccfd08df318.mp4",
+          "start": 0.0,
+          "end": 2.0,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "953c18de-8b58-4107-9314-d33d88401f45",
+          "source_path": "backend/storage/clips/f7/f79f00c6898b084fea71d22681422c45d5c1a0e767ee1b2e9c7005a785885970.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 0.0,
+          "end": 9.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b001fbd0-35ee-454a-a744-735013eb3ea5",
+          "source_path": "backend/storage/clips/33/333df70a1c5dfb9f2966289a6911fca7649599d7b5db50987ada447148085ce3.mp4",
+          "start": 0.0,
+          "end": 2.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-c17df470a8fb.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-c17df470a8fb.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-c17df470a8fb.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-c17df470a8fb.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-1.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-2.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-3.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-4.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-5.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-6.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-7.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-8.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-9.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-10.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-11.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-12.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-c17df470a8fb-13.png"
+      ],
+      "script": "青柠和黄柠檬先切成薄片，放进加了冰块的杯里，慢慢倒入矿泉水。柠檬片浮在杯中，水珠慢慢挂上杯壁，最后在杯口放一片黄柠檬。切片放进去，冰块在杯里碰一碰，再慢慢倒满，画面里每一步都看得清楚。从切片到装饰，想在家做杯冰饮照着这样泡就行。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.358,
+          "text": "青柠和黄柠檬先切成薄片，"
+        },
+        {
+          "start": 2.358,
+          "end": 4.083,
+          "text": "放进加了冰块的杯里，"
+        },
+        {
+          "start": 4.083,
+          "end": 5.424,
+          "text": "慢慢倒入矿泉水。"
+        },
+        {
+          "start": 5.424,
+          "end": 6.766,
+          "text": "柠檬片浮在杯中，"
+        },
+        {
+          "start": 6.766,
+          "end": 8.299,
+          "text": "水珠慢慢挂上杯壁，"
+        },
+        {
+          "start": 8.299,
+          "end": 10.407,
+          "text": "最后在杯口放一片黄柠檬。"
+        },
+        {
+          "start": 10.407,
+          "end": 11.365,
+          "text": "切片放进去，"
+        },
+        {
+          "start": 11.365,
+          "end": 12.898,
+          "text": "冰块在杯里碰一碰，"
+        },
+        {
+          "start": 12.898,
+          "end": 13.856,
+          "text": "再慢慢倒满，"
+        },
+        {
+          "start": 13.856,
+          "end": 15.964,
+          "text": "画面里每一步都看得清楚。"
+        },
+        {
+          "start": 15.964,
+          "end": 17.06,
+          "text": "从切片到装饰，"
+        },
+        {
+          "start": 17.06,
+          "end": 19.615,
+          "text": "想在家做杯冰饮照着这样泡就行"
+        },
+        {
+          "start": 19.615,
+          "end": 19.797,
+          "text": "。"
+        }
+      ],
+      "video_duration_seconds": 20.033,
+      "speech_duration_seconds": 19.547,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 19.797,
+      "effective_speech_speed": 1.14676,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-9ac4c7583318",
+      "source": "backend/data/exports/RC-9ac4c7583318.mp4",
+      "source_edl": [
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "953c18de-8b58-4107-9314-d33d88401f45",
+          "source_path": "backend/storage/clips/f7/f79f00c6898b084fea71d22681422c45d5c1a0e767ee1b2e9c7005a785885970.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 0.0,
+          "end": 5.5,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1df8c120-5a92-46f2-a850-f38d2b7fa8b3",
+          "source_path": "backend/storage/clips/e1/e1eca94348fb8539e9ff677f41db3f4bf375450f8718f5509d634428e3f7c3e7.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9ac4c7583318.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9ac4c7583318.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9ac4c7583318.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9ac4c7583318.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-1.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-2.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-3.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-4.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-5.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-6.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-7.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-8.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-9.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-10.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-11.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-12.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-13.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-14.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9ac4c7583318-15.png"
+      ],
+      "script": "黄色柠檬一片片叠在碗里，圆圆的切面看得很清楚，现切几片放进杯中，准备一杯简单的柠檬饮。维C含量高的柠檬，配上气泡水一倒，泡泡从杯底往上冒，柠檬片也跟着浮起来。镜头换到绿色果皮的柠檬片，另一只杯子里也冒着细小气泡，两种颜色换着泡。看着一杯接一杯完成，最后端起成品，想喝的时候自己动手泡一杯就行。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.215,
+          "text": "黄色柠檬一片片叠在碗里，"
+        },
+        {
+          "start": 2.215,
+          "end": 4.001,
+          "text": "圆圆的切面看得很清楚，"
+        },
+        {
+          "start": 4.001,
+          "end": 5.43,
+          "text": "现切几片放进杯中，"
+        },
+        {
+          "start": 5.43,
+          "end": 7.216,
+          "text": "准备一杯简单的柠檬饮。"
+        },
+        {
+          "start": 7.216,
+          "end": 8.645,
+          "text": "维C含量高的柠檬，"
+        },
+        {
+          "start": 8.645,
+          "end": 9.895,
+          "text": "配上气泡水一倒，"
+        },
+        {
+          "start": 9.895,
+          "end": 11.324,
+          "text": "泡泡从杯底往上冒，"
+        },
+        {
+          "start": 11.324,
+          "end": 12.931,
+          "text": "柠檬片也跟着浮起来。"
+        },
+        {
+          "start": 12.931,
+          "end": 15.074,
+          "text": "镜头换到绿色果皮的柠檬片，"
+        },
+        {
+          "start": 15.074,
+          "end": 17.396,
+          "text": "另一只杯子里也冒着细小气泡，"
+        },
+        {
+          "start": 17.396,
+          "end": 18.647,
+          "text": "两种颜色换着泡。"
+        },
+        {
+          "start": 18.647,
+          "end": 20.2,
+          "text": "看着一杯接一杯完成，"
+        },
+        {
+          "start": 20.2,
+          "end": 21.236,
+          "text": "最后端起成品，"
+        },
+        {
+          "start": 21.236,
+          "end": 23.654,
+          "text": "想喝的时候自己动手泡一杯就行"
+        },
+        {
+          "start": 23.654,
+          "end": 23.826,
+          "text": "。"
+        }
+      ],
+      "video_duration_seconds": 24.067,
+      "speech_duration_seconds": 23.576,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.826,
+      "effective_speech_speed": 1.09307,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-9f03cb859154",
+      "source": "backend/data/exports/RC-9f03cb859154.mp4",
+      "source_edl": [
+        {
+          "clip_id": "6855e4e6-0f79-44be-9413-db91c0970f54",
+          "source_path": "backend/storage/clips/5f/5fe41b07f787f843562c344b580c5e00b5f388b27d48773fca03ed9038c15ece.mp4",
+          "start": 0.0,
+          "end": 1.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "59f77c2c-1cc9-411b-a6d2-92a6d22f5a93",
+          "source_path": "backend/storage/clips/4f/4fff295f76d89fa48d501053eb5a4cac8040a6a26e365397bf2242d9372a7ffa.mp4",
+          "start": 0.0,
+          "end": 3.167,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 4.0,
+          "end": 9.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.067,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9f03cb859154.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9f03cb859154.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9f03cb859154.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9f03cb859154.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-1.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-2.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-3.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-4.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-5.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-6.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-7.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-8.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-9.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-10.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-11.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-12.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-13.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-9f03cb859154-14.png"
+      ],
+      "script": "绿色果皮的切片先拿在手上，青柠切成片，黄柠檬再挤出汁水，切面和果肉都在镜头里。第一杯放进冰块和柠檬片，倒入可乐，深色饮品和气泡慢慢往上冒。接着换另一只杯子，放入黄柠檬，再倒上气泡水，最后用一片柠檬做杯口装饰，杯口水珠也慢慢显出来。两杯一前一后做出来，想喝哪一杯就照着画面泡哪一杯。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.34,
+          "text": "绿色果皮的切片先拿在手上，"
+        },
+        {
+          "start": 2.34,
+          "end": 3.21,
+          "text": "青柠切成片，"
+        },
+        {
+          "start": 3.21,
+          "end": 4.603,
+          "text": "黄柠檬再挤出汁水，"
+        },
+        {
+          "start": 4.603,
+          "end": 6.345,
+          "text": "切面和果肉都在镜头里。"
+        },
+        {
+          "start": 6.345,
+          "end": 8.26,
+          "text": "第一杯放进冰块和柠檬片，"
+        },
+        {
+          "start": 8.26,
+          "end": 8.957,
+          "text": "倒入可乐，"
+        },
+        {
+          "start": 8.957,
+          "end": 11.046,
+          "text": "深色饮品和气泡慢慢往上冒。"
+        },
+        {
+          "start": 11.046,
+          "end": 12.439,
+          "text": "接着换另一只杯子，"
+        },
+        {
+          "start": 12.439,
+          "end": 14.355,
+          "text": "放入黄柠檬，再倒上气泡水，"
+        },
+        {
+          "start": 14.355,
+          "end": 16.444,
+          "text": "最后用一片柠檬做杯口装饰，"
+        },
+        {
+          "start": 16.444,
+          "end": 18.186,
+          "text": "杯口水珠也慢慢显出来。"
+        },
+        {
+          "start": 18.186,
+          "end": 19.687,
+          "text": "两杯一前一后做出来，"
+        },
+        {
+          "start": 19.687,
+          "end": 22.024,
+          "text": "想喝哪一杯就照着画面泡哪一杯"
+        },
+        {
+          "start": 22.024,
+          "end": 22.191,
+          "text": "。"
+        }
+      ],
+      "video_duration_seconds": 22.433,
+      "speech_duration_seconds": 21.941,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 22.191,
+      "effective_speech_speed": 1.19635,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-fb3315e86f47",
+      "source": "backend/data/exports/RC-fb3315e86f47.mp4",
+      "source_edl": [
+        {
+          "clip_id": "e049727d-cbfc-46ce-8f42-676fe2f9e229",
+          "source_path": "backend/storage/clips/4b/4bd315f66b2984e0e1d8a654f7d92f5278230fe057a5c4d8388c12167986af79.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "2a26bf0a-c396-465e-8640-3bda5f04f04c",
+          "source_path": "backend/storage/clips/6b/6bd25e49fb8e6d99d4bb62e00a9c340ab4addba071300565caba87e12d2d5c45.mp4",
+          "start": 0.0,
+          "end": 3.33,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "953c18de-8b58-4107-9314-d33d88401f45",
+          "source_path": "backend/storage/clips/f7/f79f00c6898b084fea71d22681422c45d5c1a0e767ee1b2e9c7005a785885970.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "911a15cf-ee6f-4d4e-b544-e78798cac58c",
+          "source_path": "backend/storage/clips/72/721c76cf63852ab68e5f979d8dc04c6c60a4a4c7b5a4cb72227e3899d1c84349.mp4",
+          "start": 0.0,
+          "end": 5.088,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-fb3315e86f47.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-fb3315e86f47.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-fb3315e86f47.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-fb3315e86f47.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-1.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-2.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-3.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-4.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-5.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-6.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-7.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-8.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-9.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-10.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-11.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-12.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-13.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-14.png",
+        "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/caption_layers/RC-fb3315e86f47-15.png"
+      ],
+      "script": "黑盘里的绿色柠檬片铺满一盘，整果和切片前后都在画面里，拿一颗放到砧板上，黄色柠檬也切成薄片备用。取一片放进杯里，再倒入气泡水，细小的泡泡在杯中不断升起，杯子放在小盘上。小小一杯慢慢装满，镜头回到整盘切片，绿色果皮和圆圆的切面都看得清楚。想做一杯柠檬饮，在家照着这样的步骤慢慢泡就行。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.591,
+          "text": "黑盘里的绿色柠檬片铺满一盘，"
+        },
+        {
+          "start": 2.591,
+          "end": 4.752,
+          "text": "整果和切片前后都在画面里，"
+        },
+        {
+          "start": 4.752,
+          "end": 6.192,
+          "text": "拿一颗放到砧板上，"
+        },
+        {
+          "start": 6.192,
+          "end": 8.173,
+          "text": "黄色柠檬也切成薄片备用。"
+        },
+        {
+          "start": 8.173,
+          "end": 9.433,
+          "text": "取一片放进杯里，"
+        },
+        {
+          "start": 9.433,
+          "end": 10.514,
+          "text": "再倒入气泡水，"
+        },
+        {
+          "start": 10.514,
+          "end": 12.674,
+          "text": "细小的泡泡在杯中不断升起，"
+        },
+        {
+          "start": 12.674,
+          "end": 13.935,
+          "text": "杯子放在小盘上。"
+        },
+        {
+          "start": 13.935,
+          "end": 15.375,
+          "text": "小小一杯慢慢装满，"
+        },
+        {
+          "start": 15.375,
+          "end": 16.816,
+          "text": "镜头回到整盘切片，"
+        },
+        {
+          "start": 16.816,
+          "end": 19.337,
+          "text": "绿色果皮和圆圆的切面都看得清"
+        },
+        {
+          "start": 19.337,
+          "end": 19.517,
+          "text": "楚。"
+        },
+        {
+          "start": 19.517,
+          "end": 20.72,
+          "text": "想做一杯柠檬饮，"
+        },
+        {
+          "start": 20.72,
+          "end": 23.126,
+          "text": "在家照着这样的步骤慢慢泡就行"
+        },
+        {
+          "start": 23.126,
+          "end": 23.298,
+          "text": "。"
+        }
+      ],
+      "video_duration_seconds": 23.533,
+      "speech_duration_seconds": 23.048,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.298,
+      "effective_speech_speed": 1.17395,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    }
+  ],
+  "media_probe": {
+    "RC-f4737cfa9e36": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.967000"
+      }
+    },
+    "RC-c17df470a8fb": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.033000"
+      }
+    },
+    "RC-9ac4c7583318": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "24.067000"
+      }
+    },
+    "RC-9f03cb859154": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "22.433000"
+      }
+    },
+    "RC-fb3315e86f47": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "23.533000"
+      }
+    }
+  }
+}

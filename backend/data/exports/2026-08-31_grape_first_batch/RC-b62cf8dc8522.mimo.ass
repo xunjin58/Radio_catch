@@ -1,0 +1,30 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:01.49,Caption,,0,0,0,,给家里备水果时，
+Dialogue: 0,0:00:01.49,0:00:03.43,Caption,,0,0,0,,葡萄一直是很自然的一项。
+Dialogue: 0,0:00:03.43,0:00:05.20,Caption,,0,0,0,,人多时装一盘放在桌上，
+Dialogue: 0,0:00:05.20,0:00:06.96,Caption,,0,0,0,,大家聊天就能慢慢分享；
+Dialogue: 0,0:00:06.96,0:00:08.90,Caption,,0,0,0,,一个人住，也可以分成小份，
+Dialogue: 0,0:00:08.90,0:00:10.14,Caption,,0,0,0,,按自己的节奏吃。
+Dialogue: 0,0:00:10.14,0:00:12.08,Caption,,0,0,0,,周末看电影、平时下班休息，
+Dialogue: 0,0:00:12.08,0:00:13.32,Caption,,0,0,0,,都不用专门安排，
+Dialogue: 0,0:00:13.32,0:00:15.79,Caption,,0,0,0,,给生活留一点有水果的空当就很
+Dialogue: 0,0:00:15.79,0:00:15.97,Caption,,0,0,0,,好。
+Dialogue: 0,0:00:15.97,0:00:17.73,Caption,,0,0,0,,不必追求特别的仪式感，
+Dialogue: 0,0:00:17.73,0:00:19.15,Caption,,0,0,0,,日常一餐一茶之间，
+Dialogue: 0,0:00:19.15,0:00:20.56,Caption,,0,0,0,,也能留住一点松弛。
+Dialogue: 0,0:00:20.56,0:00:21.97,Caption,,0,0,0,,慢一点，也没有关系。
+Dialogue: 0,0:00:21.97,0:00:23.56,Caption,,0,0,0,,不用把生活排得很满，
+Dialogue: 0,0:00:23.56,0:00:24.44,Caption,,0,0,0,,留一点空当，
+Dialogue: 0,0:00:24.44,0:00:26.03,Caption,,0,0,0,,慢慢吃水果也很舒服。
+Dialogue: 0,0:00:26.03,0:00:27.62,Caption,,0,0,0,,照自己的节奏就很好。

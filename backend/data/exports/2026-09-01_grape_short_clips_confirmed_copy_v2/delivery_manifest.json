@@ -1,0 +1,393 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": null,
+  "exports": [
+    {
+      "video_id": "RC-7551b7720837",
+      "source": "backend/data/exports/RC-7551b7720837.mp4",
+      "source_edl": [
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "28f83d2c-794f-441d-815e-c68ed646052a",
+          "source_path": "backend/storage/clips/cc/cc01761475d5cc6b9d68e5369d77e1c5d88887e2ab17142ce25adf256d0f437b.mp4",
+          "start": 0.0,
+          "end": 10.999,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-7551b7720837.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-7551b7720837.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-7551b7720837.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-7551b7720837.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-1.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-2.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-3.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-4.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-5.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-6.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-7.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-8.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-9.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-10.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-11.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-12.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-13.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-14.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-15.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-7551b7720837-16.png"
+      ],
+      "script": "吃一颗就会上瘾的葡萄，你吃过吗？这就是阳光玫瑰，来自云南高海拔种植，香甜脆爽，还带着浓浓的玫瑰香。每天现采摘、现发货，从广东阳江发出，顺丰空运包邮到家。平时自己吃、下午茶或者招待朋友都很合适。冰镇一下做下午茶，清清爽爽，和家人一起分享也很舒服。想吃阳光玫瑰的，点击下方小黄车，直接带一箱回家。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.045,
+          "text": "吃一颗就会上瘾的葡萄，"
+        },
+        {
+          "start": 2.045,
+          "end": 2.763,
+          "text": "你吃过吗？"
+        },
+        {
+          "start": 2.763,
+          "end": 4.02,
+          "text": "这就是阳光玫瑰，"
+        },
+        {
+          "start": 4.02,
+          "end": 5.636,
+          "text": "来自云南高海拔种植，"
+        },
+        {
+          "start": 5.636,
+          "end": 6.354,
+          "text": "香甜脆爽，"
+        },
+        {
+          "start": 6.354,
+          "end": 7.97,
+          "text": "还带着浓浓的玫瑰香。"
+        },
+        {
+          "start": 7.97,
+          "end": 9.406,
+          "text": "每天现采摘、现发货，"
+        },
+        {
+          "start": 9.406,
+          "end": 10.663,
+          "text": "从广东阳江发出，"
+        },
+        {
+          "start": 10.663,
+          "end": 12.099,
+          "text": "顺丰空运包邮到家。"
+        },
+        {
+          "start": 12.099,
+          "end": 12.997,
+          "text": "平时自己吃、"
+        },
+        {
+          "start": 12.997,
+          "end": 15.331,
+          "text": "下午茶或者招待朋友都很合适。"
+        },
+        {
+          "start": 15.331,
+          "end": 17.485,
+          "text": "冰镇一下做下午茶，清清爽爽，"
+        },
+        {
+          "start": 17.485,
+          "end": 19.46,
+          "text": "和家人一起分享也很舒服。"
+        },
+        {
+          "start": 19.46,
+          "end": 20.717,
+          "text": "想吃阳光玫瑰的，"
+        },
+        {
+          "start": 20.717,
+          "end": 21.973,
+          "text": "点击下方小黄车，"
+        },
+        {
+          "start": 21.973,
+          "end": 23.23,
+          "text": "直接带一箱回家。"
+        }
+      ],
+      "video_duration_seconds": 23.467,
+      "speech_duration_seconds": 22.98,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.23,
+      "effective_speech_speed": 1.18433,
+      "raw_to_coverage_speed": 1.18433,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "商品事实": {
+          "阳光玫瑰": true,
+          "云南高海拔种植": true,
+          "香甜脆爽": true,
+          "浓郁玫瑰香": true,
+          "每天现采摘、现发货": true,
+          "顺丰空运包邮": true,
+          "广东阳江发货": true,
+          "source": "用户于 2026-09-01 提供并授权模仿的参考文案"
+        }
+      }
+    },
+    {
+      "video_id": "RC-92dd118b21dd",
+      "source": "backend/data/exports/RC-92dd118b21dd.mp4",
+      "source_edl": [
+        {
+          "clip_id": "11f700f0-584d-4dd5-99a2-81ace009c16a",
+          "source_path": "backend/storage/clips/24/246a6d678ad6c0b6baf9b25d8aed751fa2dd0c0dcd355c300aff0406e82a8da1.mp4",
+          "start": 0.0,
+          "end": 1.667,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "28f83d2c-794f-441d-815e-c68ed646052a",
+          "source_path": "backend/storage/clips/cc/cc01761475d5cc6b9d68e5369d77e1c5d88887e2ab17142ce25adf256d0f437b.mp4",
+          "start": 0.0,
+          "end": 10.999,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-92dd118b21dd.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-92dd118b21dd.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-92dd118b21dd.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/RC-92dd118b21dd.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-1.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-2.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-3.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-4.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-5.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-6.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-7.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-8.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-9.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-10.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-11.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-12.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-13.png",
+        "backend/data/exports/2026-09-01_grape_short_clips_confirmed_copy_v2/caption_layers/RC-92dd118b21dd-14.png"
+      ],
+      "script": "买阳光玫瑰，别只挑颜色好看的。真正好吃的，得是香甜脆爽、带着玫瑰香的这一口。这款来自云南高海拔种植，每天现采摘、现发货，从广东阳江顺丰空运包邮到家。家里备水果、下午茶分享，或者朋友来时端上一盘都合适。冰镇后吃起来更清爽，饭后想吃水果时随手拿一串就很满足。想试试的，点击下方小黄车，带一箱慢慢吃。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.154,
+          "text": "买阳光玫瑰，"
+        },
+        {
+          "start": 1.154,
+          "end": 2.601,
+          "text": "别只挑颜色好看的。"
+        },
+        {
+          "start": 2.601,
+          "end": 4.59,
+          "text": "真正好吃的，得是香甜脆爽、"
+        },
+        {
+          "start": 4.59,
+          "end": 6.218,
+          "text": "带着玫瑰香的这一口。"
+        },
+        {
+          "start": 6.218,
+          "end": 8.207,
+          "text": "这款来自云南高海拔种植，"
+        },
+        {
+          "start": 8.207,
+          "end": 9.654,
+          "text": "每天现采摘、现发货，"
+        },
+        {
+          "start": 9.654,
+          "end": 12.005,
+          "text": "从广东阳江顺丰空运包邮到家。"
+        },
+        {
+          "start": 12.005,
+          "end": 13.814,
+          "text": "家里备水果、下午茶分享，"
+        },
+        {
+          "start": 13.814,
+          "end": 16.165,
+          "text": "或者朋友来时端上一盘都合适。"
+        },
+        {
+          "start": 16.165,
+          "end": 17.792,
+          "text": "冰镇后吃起来更清爽，"
+        },
+        {
+          "start": 17.792,
+          "end": 20.324,
+          "text": "饭后想吃水果时随手拿一串就很"
+        },
+        {
+          "start": 20.324,
+          "end": 20.686,
+          "text": "满足。"
+        },
+        {
+          "start": 20.686,
+          "end": 22.675,
+          "text": "想试试的，点击下方小黄车，"
+        },
+        {
+          "start": 22.675,
+          "end": 23.76,
+          "text": "带一箱慢慢吃。"
+        }
+      ],
+      "video_duration_seconds": 24.0,
+      "speech_duration_seconds": 23.51,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.76,
+      "effective_speech_speed": 1.1983,
+      "raw_to_coverage_speed": 1.1983,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "商品事实": {
+          "阳光玫瑰": true,
+          "云南高海拔种植": true,
+          "香甜脆爽": true,
+          "浓郁玫瑰香": true,
+          "每天现采摘、现发货": true,
+          "顺丰空运包邮": true,
+          "广东阳江发货": true,
+          "source": "用户于 2026-09-01 提供并授权模仿的参考文案"
+        }
+      }
+    }
+  ],
+  "media_probe": {
+    "RC-7551b7720837": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "23.467000"
+      }
+    },
+    "RC-92dd118b21dd": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "24.000000"
+      }
+    }
+  }
+}

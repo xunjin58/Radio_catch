@@ -2,8 +2,11 @@ node_modules/
 dist/
 *.tsbuildinfo
 backend/.venv/
-backend/data/
-backend/storage/
+# Keep source assets and non-video delivery artifacts under version control so a
+# checkout can reproduce the working project. The local SQLite database may hold
+# encrypted model credentials, and rendered exports are intentionally excluded.
+backend/data/radio_catch.db
+backend/data/exports/**/*.mp4
 __pycache__/
 *.py[cod]
 .env

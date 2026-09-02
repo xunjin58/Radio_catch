@@ -1,0 +1,225 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": "backend/data/exports/2026-08-29_lemon_mimo_final/mimo_vision_analysis.json",
+  "exports": [
+    {
+      "video_id": "RC-ab9c3c3a3621",
+      "source": "backend/data/exports/RC-ab9c3c3a3621.mp4",
+      "source_edl": [
+        {
+          "clip_id": "7b16a6b5-54c7-429a-ae3d-02e5c7a72f20",
+          "source_path": "backend/storage/clips/04/04c4d36919c0ba40fa4584ac27f1b15047512872276f1f75ea19eccdce597384.mp4",
+          "start": 0.0,
+          "end": 2.5,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.63,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "23fa4bdd-cb4b-4ddb-9575-145a598b05e1",
+          "source_path": "backend/storage/clips/71/71553d7292224d04d4add1ad3ed5c42f41d1c7aa1f9c81da22d8ada88c9539a0.mp4",
+          "start": 0.0,
+          "end": 0.78,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "52e5a8ac-ce36-4c24-aa95-b4ce46aaf800",
+          "source_path": "backend/storage/clips/56/56e247a857330fffcd6032d054b1e5974f8c2e7083b5a6e69466cddb65bcdb3c.mp4",
+          "start": 0.0,
+          "end": 0.62,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "8cd5872a-0cac-4d29-9173-0480f257f5ea",
+          "source_path": "backend/storage/clips/5b/5b376fb8add0929cb72923a7e856e9266e959dbec547b5a9b89387f805918558.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b6d1ed46-e731-4aad-bfc8-c55cf521ac70",
+          "source_path": "backend/storage/clips/1b/1bd1a612bef63f4aa7a7ffe5faa8156315450badda8e5c01cc7e4b333b47ca82.mp4",
+          "start": 0.0,
+          "end": 0.95,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d52c0d9a-f3ca-4c56-b475-5693f4e1ea87",
+          "source_path": "backend/storage/clips/7e/7e47db79e1948dd87875145647515f048fc618d403cbfe42391b061e7fa9625f.mp4",
+          "start": 0.0,
+          "end": 2.8,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "ac73e669-b54b-43d3-9d63-f2c699460313",
+          "source_path": "backend/storage/clips/9e/9ebfa268e30d08a33a6893bb77754b50e0a390db76fbe2fe8cbe0b9ab80b6407.mp4",
+          "start": 0.0,
+          "end": 0.95,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-29_lemon_mimo_final_v3/RC-ab9c3c3a3621.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-29_lemon_mimo_final_v3/RC-ab9c3c3a3621.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-29_lemon_mimo_final_v3/RC-ab9c3c3a3621.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-29_lemon_mimo_final_v3/RC-ab9c3c3a3621.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-1.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-2.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-3.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-4.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-5.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-6.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-7.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-8.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-9.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-10.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-11.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-12.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-13.png",
+        "backend/data/exports/2026-08-29_lemon_mimo_final_v3/caption_layers/RC-ab9c3c3a3621-14.png"
+      ],
+      "script": "镜头先把切开的柠檬片拿到近处，果肉纹理、切面和叠在一起的果片都能看清。接着杯里放好了冰块和柠檬片，深色饮品沿着杯壁倒进去，气泡跟着冒出来。随后镜头把柠檬片轻轻挤一挤，汁水从果肉里流出来。最后，切片、整果和冰饮一起摆在案板上，想在家做杯冰饮，就切两片、放点冰块，再按自己喜欢的方式搭配饮品。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.479,
+          "text": "镜头先把切开的柠檬片拿到近处"
+        },
+        {
+          "start": 2.479,
+          "end": 3.115,
+          "text": "，果肉纹理、"
+        },
+        {
+          "start": 3.115,
+          "end": 5.344,
+          "text": "切面和叠在一起的果片都能看清"
+        },
+        {
+          "start": 5.344,
+          "end": 5.503,
+          "text": "。"
+        },
+        {
+          "start": 5.503,
+          "end": 7.637,
+          "text": "接着杯里放好了冰块和柠檬片，"
+        },
+        {
+          "start": 7.637,
+          "end": 9.443,
+          "text": "深色饮品沿着杯壁倒进去，"
+        },
+        {
+          "start": 9.443,
+          "end": 10.592,
+          "text": "气泡跟着冒出来。"
+        },
+        {
+          "start": 10.592,
+          "end": 12.726,
+          "text": "随后镜头把柠檬片轻轻挤一挤，"
+        },
+        {
+          "start": 12.726,
+          "end": 14.203,
+          "text": "汁水从果肉里流出来。"
+        },
+        {
+          "start": 14.203,
+          "end": 14.86,
+          "text": "最后，切片、"
+        },
+        {
+          "start": 14.86,
+          "end": 16.83,
+          "text": "整果和冰饮一起摆在案板上，"
+        },
+        {
+          "start": 16.83,
+          "end": 18.635,
+          "text": "想在家做杯冰饮，就切两片、"
+        },
+        {
+          "start": 18.635,
+          "end": 19.292,
+          "text": "放点冰块，"
+        },
+        {
+          "start": 19.292,
+          "end": 21.426,
+          "text": "再按自己喜欢的方式搭配饮品。"
+        }
+      ],
+      "video_duration_seconds": 21.667,
+      "speech_duration_seconds": 21.176,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 21.426,
+      "effective_speech_speed": 1.30016,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    }
+  ],
+  "media_probe": {
+    "RC-ab9c3c3a3621": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.667000"
+      }
+    }
+  }
+}

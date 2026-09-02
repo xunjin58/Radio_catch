@@ -1,0 +1,16 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:04.79,Caption,,0,0,0,,你看这杯广东香水柠檬水，刚把水倒进去\N，杯里一下就清清爽爽的。
+Dialogue: 0,0:00:04.79,0:00:10.17,Caption,,0,0,0,,桌上黄的青的切片都备好了，想在家做点\N有味道的喝的，拿两片放进杯里就行。
+Dialogue: 0,0:00:10.17,0:00:14.88,Caption,,0,0,0,,再加几块冰，慢慢泡出柠檬香，画面里这\N一步一步做下来真的不麻烦。
+Dialogue: 0,0:00:14.88,0:00:20.42,Caption,,0,0,0,,下班回家或者周末休息，想换个喝法的朋\N友，带些广东香水柠檬回去自己慢慢搭。

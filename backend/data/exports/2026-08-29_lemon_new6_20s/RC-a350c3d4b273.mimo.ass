@@ -1,0 +1,22 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:02.55,Caption,,0,0,0,,家人们谁懂啊，这黄柠檬切开，
+Dialogue: 0,0:00:02.55,0:00:04.66,Caption,,0,0,0,,一颗籽都没有！九块九两斤，
+Dialogue: 0,0:00:04.66,0:00:06.38,Caption,,0,0,0,,水果店一个要十几块
+Dialogue: 0,0:00:06.38,0:00:08.30,Caption,,0,0,0,,手一挤，汁水哗哗全出来！
+Dialogue: 0,0:00:08.30,0:00:10.02,Caption,,0,0,0,,冰杯放几片，可乐一倒，
+Dialogue: 0,0:00:10.02,0:00:11.17,Caption,,0,0,0,,气泡咕噜咕噜，
+Dialogue: 0,0:00:11.17,0:00:13.28,Caption,,0,0,0,,跟奶茶店十几块一杯没差！
+Dialogue: 0,0:00:13.28,0:00:15.58,Caption,,0,0,0,,三片纹理超好看，整颗黄柠檬，
+Dialogue: 0,0:00:15.58,0:00:17.88,Caption,,0,0,0,,清爽又解腻！夏天全靠它续命，
+Dialogue: 0,0:00:17.88,0:00:19.79,Caption,,0,0,0,,姐妹们VC水喝起来呀！

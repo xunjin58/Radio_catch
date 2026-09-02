@@ -1,0 +1,25 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:02.21,Caption,,0,0,0,,九块九两斤的广东香水柠檬，
+Dialogue: 0,0:00:02.21,0:00:03.52,Caption,,0,0,0,,像这样一层层切好，
+Dialogue: 0,0:00:03.52,0:00:05.32,Caption,,0,0,0,,光看着就很适合夏天泡饮。
+Dialogue: 0,0:00:05.32,0:00:06.80,Caption,,0,0,0,,你看这整果个头也大，
+Dialogue: 0,0:00:06.80,0:00:08.27,Caption,,0,0,0,,黄的青的家里换着泡，
+Dialogue: 0,0:00:08.27,0:00:09.58,Caption,,0,0,0,,喝法一点都不单调。
+Dialogue: 0,0:00:09.58,0:00:11.54,Caption,,0,0,0,,杯里已经放了切片，带冰一端，
+Dialogue: 0,0:00:11.54,0:00:12.85,Caption,,0,0,0,,整杯看着特别清爽。
+Dialogue: 0,0:00:12.85,0:00:14.81,Caption,,0,0,0,,黄柠檬的切面、整果都在这儿，
+Dialogue: 0,0:00:14.81,0:00:16.45,Caption,,0,0,0,,多汁、有维C，泡着喝不苦。
+Dialogue: 0,0:00:16.45,0:00:17.92,Caption,,0,0,0,,最后再倒进透明饮品，
+Dialogue: 0,0:00:17.92,0:00:19.23,Caption,,0,0,0,,想做自己的柠檬饮，
+Dialogue: 0,0:00:19.23,0:00:21.19,Caption,,0,0,0,,趁九块九两斤带回去慢慢喝。

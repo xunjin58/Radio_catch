@@ -1,0 +1,23 @@
+{
+  "RC-7551b7720837": {
+    "script": "我最近想把日常吃水果这件事，安排得更有一点心意，葡萄就很适合放进清单。成串的葡萄、近一点的果粒，还有套袋的葡萄园，让日常水果多了些层次。放在餐桌上，不用复杂搭配，洗好装一盘，就是很轻松的一份分享。周末和家人一起吃，或者给朋友带一份，都很自然，也很顺手。不用等到特别的日子，平常的一餐一茶之间，也能留一点自己的慢节奏。",
+    "fact_assertions": ["葡萄近景", "葡萄园与成串绿葡萄", "套袋葡萄"],
+    "evidence": {
+      "葡萄近景": {"clip_ids": ["11f700f0-584d-4dd5-99a2-81ace009c16a"], "shot_capabilities": ["closeup_grapes"]},
+      "葡萄园与成串绿葡萄": {"clip_ids": ["0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f", "28f83d2c-794f-441d-815e-c68ed646052a"], "shot_capabilities": ["vineyard_grapes", "grape_cluster"]},
+      "套袋葡萄": {"clip_ids": ["b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab"], "shot_capabilities": ["bagged_grapes"]}
+    },
+    "product_facts": {"葡萄": {"value": "葡萄", "source": "用户在本次任务中确认"}}
+  },
+  "RC-92dd118b21dd": {
+    "script": "今天吃点什么水果，葡萄可以先放进备选清单。近一点的果粒、整箱的葡萄，再到藤上成串葡萄和套袋的园子，让这份日常选择显得更有画面感。准备水果盘不用过度安排，洗好装盘就能分享给身边的人。家里平常备一点，午后、饭后或聊天时，都有一份不必费心的简单陪伴。不必把生活排得很满，简单准备一点水果，日子也会多出一点轻松。",
+    "fact_assertions": ["葡萄近景", "整箱葡萄", "葡萄园与成串绿葡萄", "套袋葡萄"],
+    "evidence": {
+      "葡萄近景": {"clip_ids": ["11f700f0-584d-4dd5-99a2-81ace009c16a", "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d"], "shot_capabilities": ["closeup_grapes"]},
+      "整箱葡萄": {"clip_ids": ["2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d"], "shot_capabilities": ["boxed_grapes"]},
+      "葡萄园与成串绿葡萄": {"clip_ids": ["28f83d2c-794f-441d-815e-c68ed646052a"], "shot_capabilities": ["vineyard_grapes", "grape_cluster"]},
+      "套袋葡萄": {"clip_ids": ["b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab"], "shot_capabilities": ["bagged_grapes"]}
+    },
+    "product_facts": {"葡萄": {"value": "葡萄", "source": "用户在本次任务中确认"}}
+  }
+}

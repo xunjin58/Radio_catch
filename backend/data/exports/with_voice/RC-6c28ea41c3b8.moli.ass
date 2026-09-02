@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,3,8,0,2,96,96,250,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.35,0:00:05.37,Caption,,0,0,0,,这一刀下去，柠檬片切得透透的，桌上黄\N柠檬和青柠都摆得满满当当。
+Dialogue: 0,0:00:05.37,0:00:10.04,Caption,,0,0,0,,想做饮品时，先放切片，再倒水加冰，杯\N子一下就有了清爽的样子。
+Dialogue: 0,0:00:10.04,0:00:15.95,Caption,,0,0,0,,平时喜欢自己泡一杯的朋友，可以按口味\N多放一片、少放一片，带几颗回家慢慢搭\N。

@@ -1,0 +1,27 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:02.59,Caption,,0,0,0,,黑盘里的绿色柠檬片铺满一盘，
+Dialogue: 0,0:00:02.59,0:00:04.75,Caption,,0,0,0,,整果和切片前后都在画面里，
+Dialogue: 0,0:00:04.75,0:00:06.19,Caption,,0,0,0,,拿一颗放到砧板上，
+Dialogue: 0,0:00:06.19,0:00:08.17,Caption,,0,0,0,,黄色柠檬也切成薄片备用。
+Dialogue: 0,0:00:08.17,0:00:09.43,Caption,,0,0,0,,取一片放进杯里，
+Dialogue: 0,0:00:09.43,0:00:10.51,Caption,,0,0,0,,再倒入气泡水，
+Dialogue: 0,0:00:10.51,0:00:12.67,Caption,,0,0,0,,细小的泡泡在杯中不断升起，
+Dialogue: 0,0:00:12.67,0:00:13.94,Caption,,0,0,0,,杯子放在小盘上。
+Dialogue: 0,0:00:13.94,0:00:15.38,Caption,,0,0,0,,小小一杯慢慢装满，
+Dialogue: 0,0:00:15.38,0:00:16.82,Caption,,0,0,0,,镜头回到整盘切片，
+Dialogue: 0,0:00:16.82,0:00:19.34,Caption,,0,0,0,,绿色果皮和圆圆的切面都看得清
+Dialogue: 0,0:00:19.34,0:00:19.52,Caption,,0,0,0,,楚。
+Dialogue: 0,0:00:19.52,0:00:20.72,Caption,,0,0,0,,想做一杯柠檬饮，
+Dialogue: 0,0:00:20.72,0:00:23.13,Caption,,0,0,0,,在家照着这样的步骤慢慢泡就行
+Dialogue: 0,0:00:23.13,0:00:23.30,Caption,,0,0,0,,。

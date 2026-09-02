@@ -1,0 +1,27 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:02.22,Caption,,0,0,0,,黄色柠檬一片片叠在碗里，
+Dialogue: 0,0:00:02.22,0:00:04.00,Caption,,0,0,0,,圆圆的切面看得很清楚，
+Dialogue: 0,0:00:04.00,0:00:05.43,Caption,,0,0,0,,现切几片放进杯中，
+Dialogue: 0,0:00:05.43,0:00:07.22,Caption,,0,0,0,,准备一杯简单的柠檬饮。
+Dialogue: 0,0:00:07.22,0:00:08.64,Caption,,0,0,0,,维C含量高的柠檬，
+Dialogue: 0,0:00:08.64,0:00:09.90,Caption,,0,0,0,,配上气泡水一倒，
+Dialogue: 0,0:00:09.90,0:00:11.32,Caption,,0,0,0,,泡泡从杯底往上冒，
+Dialogue: 0,0:00:11.32,0:00:12.93,Caption,,0,0,0,,柠檬片也跟着浮起来。
+Dialogue: 0,0:00:12.93,0:00:15.07,Caption,,0,0,0,,镜头换到绿色果皮的柠檬片，
+Dialogue: 0,0:00:15.07,0:00:17.40,Caption,,0,0,0,,另一只杯子里也冒着细小气泡，
+Dialogue: 0,0:00:17.40,0:00:18.65,Caption,,0,0,0,,两种颜色换着泡。
+Dialogue: 0,0:00:18.65,0:00:20.20,Caption,,0,0,0,,看着一杯接一杯完成，
+Dialogue: 0,0:00:20.20,0:00:21.24,Caption,,0,0,0,,最后端起成品，
+Dialogue: 0,0:00:21.24,0:00:23.65,Caption,,0,0,0,,想喝的时候自己动手泡一杯就行
+Dialogue: 0,0:00:23.65,0:00:23.83,Caption,,0,0,0,,。

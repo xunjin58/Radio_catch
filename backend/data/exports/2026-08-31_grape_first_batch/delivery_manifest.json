@@ -1,0 +1,581 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": null,
+  "exports": [
+    {
+      "video_id": "RC-31080e7c29f9",
+      "source": "backend/data/exports/RC-31080e7c29f9.mp4",
+      "source_edl": [
+        {
+          "clip_id": "28f83d2c-794f-441d-815e-c68ed646052a",
+          "source_path": "backend/storage/clips/cc/cc01761475d5cc6b9d68e5369d77e1c5d88887e2ab17142ce25adf256d0f437b.mp4",
+          "start": 0.0,
+          "end": 10.999,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "8505d837-592a-40bb-b76b-93adc626437f",
+          "source_path": "backend/storage/clips/3e/3ef9725a4c824ed07401a2fc71896df0565e0ae74a45216882440235b30121cb.mp4",
+          "start": 0.0,
+          "end": 15.133,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-31_grape_first_batch/RC-31080e7c29f9.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-31_grape_first_batch/RC-31080e7c29f9.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-31_grape_first_batch/RC-31080e7c29f9.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-31_grape_first_batch/RC-31080e7c29f9.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-1.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-2.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-3.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-4.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-5.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-6.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-7.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-8.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-9.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-10.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-11.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-12.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-13.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-14.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-15.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-31080e7c29f9-16.png"
+      ],
+      "script": "如果你也喜欢葡萄，这种一串串挂在园里的画面，总让人想把日子过慢一点。下午茶不用准备得太复杂，洗好装一盘，自己追剧时吃几颗，家人聊天时也能顺手分享。忙完一天，给桌面添一点绿色，也给自己留一段慢慢吃水果的时间。不必等到周末，平常的一餐一茶，也值得有这样一点轻松的陪伴。不必把每一天安排得太满，慢一点，也很好。就这样也很好。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.694,
+          "text": "如果你也喜欢葡萄，"
+        },
+        {
+          "start": 1.694,
+          "end": 3.86,
+          "text": "这种一串串挂在园里的画面，"
+        },
+        {
+          "start": 3.86,
+          "end": 5.845,
+          "text": "总让人想把日子过慢一点。"
+        },
+        {
+          "start": 5.845,
+          "end": 7.831,
+          "text": "下午茶不用准备得太复杂，"
+        },
+        {
+          "start": 7.831,
+          "end": 8.733,
+          "text": "洗好装一盘，"
+        },
+        {
+          "start": 8.733,
+          "end": 10.177,
+          "text": "自己追剧时吃几颗，"
+        },
+        {
+          "start": 10.177,
+          "end": 12.163,
+          "text": "家人聊天时也能顺手分享。"
+        },
+        {
+          "start": 12.163,
+          "end": 14.328,
+          "text": "忙完一天，给桌面添一点绿色，"
+        },
+        {
+          "start": 14.328,
+          "end": 16.855,
+          "text": "也给自己留一段慢慢吃水果的时"
+        },
+        {
+          "start": 16.855,
+          "end": 17.036,
+          "text": "间。"
+        },
+        {
+          "start": 17.036,
+          "end": 18.119,
+          "text": "不必等到周末，"
+        },
+        {
+          "start": 18.119,
+          "end": 19.382,
+          "text": "平常的一餐一茶，"
+        },
+        {
+          "start": 19.382,
+          "end": 21.729,
+          "text": "也值得有这样一点轻松的陪伴。"
+        },
+        {
+          "start": 21.729,
+          "end": 23.714,
+          "text": "不必把每一天安排得太满，"
+        },
+        {
+          "start": 23.714,
+          "end": 24.797,
+          "text": "慢一点，也很好。"
+        },
+        {
+          "start": 24.797,
+          "end": 25.88,
+          "text": "就这样也很好。"
+        }
+      ],
+      "video_duration_seconds": 26.133,
+      "speech_duration_seconds": 25.63,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 25.88,
+      "effective_speech_speed": 1.25462,
+      "raw_to_coverage_speed": 1.25462,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "葡萄园与成串绿葡萄": {
+          "clip_ids": [
+            "28f83d2c-794f-441d-815e-c68ed646052a",
+            "8505d837-592a-40bb-b76b-93adc626437f"
+          ],
+          "shot_capabilities": [
+            "vineyard_grapes",
+            "grape_cluster"
+          ]
+        }
+      },
+      "product_facts": {
+        "葡萄": {
+          "value": "葡萄",
+          "source": "用户在本次任务中确认"
+        }
+      }
+    },
+    {
+      "video_id": "RC-4b3e50b27ea9",
+      "source": "backend/data/exports/RC-4b3e50b27ea9.mp4",
+      "source_edl": [
+        {
+          "clip_id": "0ae0b5d9-71c3-41a2-9140-20748c53453d",
+          "source_path": "backend/storage/clips/af/af8aae73819af1740ae1e70c380a84b8ef0c4eae3c11e98a662eada510ff2d31.mp4",
+          "start": 0.0,
+          "end": 23.2,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "b17e3ac1-9e91-4d62-b19f-0a5e2a5bd0ab",
+          "source_path": "backend/storage/clips/49/49e006e4f29366c96e1fee24ff1c477e85856e263185e42554b4e33fd55e9153.mp4",
+          "start": 0.0,
+          "end": 4.685,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-31_grape_first_batch/RC-4b3e50b27ea9.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-31_grape_first_batch/RC-4b3e50b27ea9.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-31_grape_first_batch/RC-4b3e50b27ea9.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-31_grape_first_batch/RC-4b3e50b27ea9.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-1.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-2.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-3.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-4.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-5.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-6.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-7.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-8.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-9.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-10.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-11.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-12.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-13.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-14.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-15.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-16.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-17.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-18.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-4b3e50b27ea9-19.png"
+      ],
+      "script": "今天想给家里添点水果，我会先想到葡萄。日常不用设计得太复杂，早上放一小盘，下午工作累了拿几颗，朋友来家里也能一起分享。家里常备一种水果，不是为了多讲究，而是想吃的时候，随手就有一个轻松的选择。不必专门留出一大段时间，平常的一顿饭后，顺手准备一点就够了。不用赶时间，也不用临时再去想要吃什么。忙起来的时候，这样的小安排也能让人放松下来。慢慢来，也不用着急。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.985,
+          "text": "今天想给家里添点水果，"
+        },
+        {
+          "start": 1.985,
+          "end": 3.199,
+          "text": "我会先想到葡萄。"
+        },
+        {
+          "start": 3.199,
+          "end": 4.934,
+          "text": "日常不用设计得太复杂，"
+        },
+        {
+          "start": 4.934,
+          "end": 5.975,
+          "text": "早上放一小盘，"
+        },
+        {
+          "start": 5.975,
+          "end": 7.536,
+          "text": "下午工作累了拿几颗，"
+        },
+        {
+          "start": 7.536,
+          "end": 9.444,
+          "text": "朋友来家里也能一起分享。"
+        },
+        {
+          "start": 9.444,
+          "end": 10.832,
+          "text": "家里常备一种水果，"
+        },
+        {
+          "start": 10.832,
+          "end": 12.047,
+          "text": "不是为了多讲究，"
+        },
+        {
+          "start": 12.047,
+          "end": 13.261,
+          "text": "而是想吃的时候，"
+        },
+        {
+          "start": 13.261,
+          "end": 15.169,
+          "text": "随手就有一个轻松的选择。"
+        },
+        {
+          "start": 15.169,
+          "end": 17.077,
+          "text": "不必专门留出一大段时间，"
+        },
+        {
+          "start": 17.077,
+          "end": 18.292,
+          "text": "平常的一顿饭后，"
+        },
+        {
+          "start": 18.292,
+          "end": 19.853,
+          "text": "顺手准备一点就够了。"
+        },
+        {
+          "start": 19.853,
+          "end": 20.721,
+          "text": "不用赶时间，"
+        },
+        {
+          "start": 20.721,
+          "end": 22.802,
+          "text": "也不用临时再去想要吃什么。"
+        },
+        {
+          "start": 22.802,
+          "end": 23.794,
+          "text": "忙起来的时候，"
+        },
+        {
+          "start": 23.794,
+          "end": 26.107,
+          "text": "这样的小安排也能让人放松下来"
+        },
+        {
+          "start": 26.107,
+          "end": 26.272,
+          "text": "。"
+        },
+        {
+          "start": 26.272,
+          "end": 27.66,
+          "text": "慢慢来，也不用着急。"
+        }
+      ],
+      "video_duration_seconds": 27.9,
+      "speech_duration_seconds": 27.41,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 27.66,
+      "effective_speech_speed": 1.1562,
+      "raw_to_coverage_speed": 1.1562,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "葡萄": {
+          "value": "葡萄",
+          "source": "用户在本次任务中确认"
+        }
+      }
+    },
+    {
+      "video_id": "RC-b62cf8dc8522",
+      "source": "backend/data/exports/RC-b62cf8dc8522.mp4",
+      "source_edl": [
+        {
+          "clip_id": "8505d837-592a-40bb-b76b-93adc626437f",
+          "source_path": "backend/storage/clips/3e/3ef9725a4c824ed07401a2fc71896df0565e0ae74a45216882440235b30121cb.mp4",
+          "start": 0.0,
+          "end": 15.133,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "0e2d7798-f8f5-4bb0-847c-9b6bd67fcf0f",
+          "source_path": "backend/storage/clips/a3/a375b51c17b11f5ec6728837fa47b72fd585ed5300e6484682d72b78141ffbaf.mp4",
+          "start": 0.0,
+          "end": 6.104,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        },
+        {
+          "clip_id": "2eef7dc3-8bec-43d9-8fbd-4b5ac0feef3d",
+          "source_path": "backend/storage/clips/02/02bffe5a8032763dd827e07e411af99527c5404bcf3eb80ebe4eba4f9d830f5b.mp4",
+          "start": 0.0,
+          "end": 6.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "葡萄"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-31_grape_first_batch/RC-b62cf8dc8522.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-31_grape_first_batch/RC-b62cf8dc8522.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-31_grape_first_batch/RC-b62cf8dc8522.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-31_grape_first_batch/RC-b62cf8dc8522.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-1.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-2.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-3.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-4.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-5.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-6.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-7.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-8.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-9.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-10.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-11.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-12.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-13.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-14.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-15.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-16.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-17.png",
+        "backend/data/exports/2026-08-31_grape_first_batch/caption_layers/RC-b62cf8dc8522-18.png"
+      ],
+      "script": "给家里备水果时，葡萄一直是很自然的一项。人多时装一盘放在桌上，大家聊天就能慢慢分享；一个人住，也可以分成小份，按自己的节奏吃。周末看电影、平时下班休息，都不用专门安排，给生活留一点有水果的空当就很好。不必追求特别的仪式感，日常一餐一茶之间，也能留住一点松弛。慢一点，也没有关系。不用把生活排得很满，留一点空当，慢慢吃水果也很舒服。照自己的节奏就很好。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.486,
+          "text": "给家里备水果时，"
+        },
+        {
+          "start": 1.486,
+          "end": 3.429,
+          "text": "葡萄一直是很自然的一项。"
+        },
+        {
+          "start": 3.429,
+          "end": 5.195,
+          "text": "人多时装一盘放在桌上，"
+        },
+        {
+          "start": 5.195,
+          "end": 6.961,
+          "text": "大家聊天就能慢慢分享；"
+        },
+        {
+          "start": 6.961,
+          "end": 8.903,
+          "text": "一个人住，也可以分成小份，"
+        },
+        {
+          "start": 8.903,
+          "end": 10.14,
+          "text": "按自己的节奏吃。"
+        },
+        {
+          "start": 10.14,
+          "end": 12.082,
+          "text": "周末看电影、平时下班休息，"
+        },
+        {
+          "start": 12.082,
+          "end": 13.318,
+          "text": "都不用专门安排，"
+        },
+        {
+          "start": 13.318,
+          "end": 15.791,
+          "text": "给生活留一点有水果的空当就很"
+        },
+        {
+          "start": 15.791,
+          "end": 15.968,
+          "text": "好。"
+        },
+        {
+          "start": 15.968,
+          "end": 17.734,
+          "text": "不必追求特别的仪式感，"
+        },
+        {
+          "start": 17.734,
+          "end": 19.146,
+          "text": "日常一餐一茶之间，"
+        },
+        {
+          "start": 19.146,
+          "end": 20.559,
+          "text": "也能留住一点松弛。"
+        },
+        {
+          "start": 20.559,
+          "end": 21.972,
+          "text": "慢一点，也没有关系。"
+        },
+        {
+          "start": 21.972,
+          "end": 23.561,
+          "text": "不用把生活排得很满，"
+        },
+        {
+          "start": 23.561,
+          "end": 24.444,
+          "text": "留一点空当，"
+        },
+        {
+          "start": 24.444,
+          "end": 26.034,
+          "text": "慢慢吃水果也很舒服。"
+        },
+        {
+          "start": 26.034,
+          "end": 27.623,
+          "text": "照自己的节奏就很好。"
+        }
+      ],
+      "video_duration_seconds": 27.866,
+      "speech_duration_seconds": 27.373,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 27.623,
+      "effective_speech_speed": 1.18687,
+      "raw_to_coverage_speed": 1.18687,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "sidechaincompress ratio=6 while voice is present",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {},
+      "product_facts": {
+        "葡萄": {
+          "value": "葡萄",
+          "source": "用户在本次任务中确认"
+        }
+      }
+    }
+  ],
+  "media_probe": {
+    "RC-31080e7c29f9": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "26.133000"
+      }
+    },
+    "RC-4b3e50b27ea9": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "27.900000"
+      }
+    },
+    "RC-b62cf8dc8522": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "27.866000"
+      }
+    }
+  }
+}

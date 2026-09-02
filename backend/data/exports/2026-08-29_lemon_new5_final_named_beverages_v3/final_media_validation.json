@@ -1,0 +1,96 @@
+{
+  "batch": "2026-08-29_lemon_new5_final_named_beverages_v3",
+  "all_passed": true,
+  "videos": {
+    "RC-f4737cfa9e36": {
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-f4737cfa9e36.mimo-final.mp4",
+      "duration_seconds": 21.967,
+      "max_volume_db": -5.8,
+      "checks": {
+        "h264": true,
+        "aac": true,
+        "vertical_1080x1920": true,
+        "fps_30": true,
+        "full_decode": true,
+        "voice_starts_within_0_3s": true,
+        "voice_ends_within_0_3s": true,
+        "voice_speed_1_0_to_1_2": true,
+        "single_line_cues": true,
+        "sequential_cues": true,
+        "no_audio_clipping": true
+      }
+    },
+    "RC-c17df470a8fb": {
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-c17df470a8fb.mimo-final.mp4",
+      "duration_seconds": 20.033,
+      "max_volume_db": -5.6,
+      "checks": {
+        "h264": true,
+        "aac": true,
+        "vertical_1080x1920": true,
+        "fps_30": true,
+        "full_decode": true,
+        "voice_starts_within_0_3s": true,
+        "voice_ends_within_0_3s": true,
+        "voice_speed_1_0_to_1_2": true,
+        "single_line_cues": true,
+        "sequential_cues": true,
+        "no_audio_clipping": true
+      }
+    },
+    "RC-9ac4c7583318": {
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9ac4c7583318.mimo-final.mp4",
+      "duration_seconds": 24.067,
+      "max_volume_db": -6.2,
+      "checks": {
+        "h264": true,
+        "aac": true,
+        "vertical_1080x1920": true,
+        "fps_30": true,
+        "full_decode": true,
+        "voice_starts_within_0_3s": true,
+        "voice_ends_within_0_3s": true,
+        "voice_speed_1_0_to_1_2": true,
+        "single_line_cues": true,
+        "sequential_cues": true,
+        "no_audio_clipping": true
+      }
+    },
+    "RC-9f03cb859154": {
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-9f03cb859154.mimo-final.mp4",
+      "duration_seconds": 22.433,
+      "max_volume_db": -5.8,
+      "checks": {
+        "h264": true,
+        "aac": true,
+        "vertical_1080x1920": true,
+        "fps_30": true,
+        "full_decode": true,
+        "voice_starts_within_0_3s": true,
+        "voice_ends_within_0_3s": true,
+        "voice_speed_1_0_to_1_2": true,
+        "single_line_cues": true,
+        "sequential_cues": true,
+        "no_audio_clipping": true
+      }
+    },
+    "RC-fb3315e86f47": {
+      "output": "backend/data/exports/2026-08-29_lemon_new5_final_named_beverages_v3/RC-fb3315e86f47.mimo-final.mp4",
+      "duration_seconds": 23.533,
+      "max_volume_db": -6.1,
+      "checks": {
+        "h264": true,
+        "aac": true,
+        "vertical_1080x1920": true,
+        "fps_30": true,
+        "full_decode": true,
+        "voice_starts_within_0_3s": true,
+        "voice_ends_within_0_3s": true,
+        "voice_speed_1_0_to_1_2": true,
+        "single_line_cues": true,
+        "sequential_cues": true,
+        "no_audio_clipping": true
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "speech_speed": 1.2,
+  "background_music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+  "voice_target_lufs": -16,
+  "background_target_lufs": -36,
+  "background_ducking_db": 6,
+  "exports": [
+    {
+      "video_id": "RC-7709992cdad8",
+      "source": "backend/data/exports/RC-7709992cdad8.mp4",
+      "output": "backend/data/exports/with_voice/RC-7709992cdad8.moli-captioned.mp4",
+      "raw_voice": "backend/data/exports/with_voice/RC-7709992cdad8.moli.raw.wav",
+      "voice_1p2": "backend/data/exports/with_voice/RC-7709992cdad8.moli.1p2.wav",
+      "voice_1p2_normalized": "backend/data/exports/with_voice/RC-7709992cdad8.moli.1p2.normalized.wav",
+      "captions": "backend/data/exports/with_voice/RC-7709992cdad8.moli.ass",
+      "caption_png_files": [
+        "backend/data/exports/with_voice/caption_png/RC-7709992cdad8-1.png",
+        "backend/data/exports/with_voice/caption_png/RC-7709992cdad8-2.png",
+        "backend/data/exports/with_voice/caption_png/RC-7709992cdad8-3.png"
+      ],
+      "video_duration_seconds": 21.433,
+      "voice_duration_seconds": 15.606,
+      "speech_start_seconds": 0.35,
+      "music_start_seconds": 0.0,
+      "script": "你看这杯里，青柠黄柠都已经切好了，水一倒，颜色马上就出来了。平时在家想喝点带柠檬香的饮品，拿两片放进去，再加点冰，做法一点都不复杂。喜欢这种随手泡、随手喝的朋友呀，今天可以带几颗回家，慢慢换着搭配。",
+      "cues": [
+        {
+          "start": 0.35,
+          "end": 5.014,
+          "text": "你看这杯里，青柠黄柠都已经切好了，水一倒，颜色马上就出来了。"
+        },
+        {
+          "start": 5.014,
+          "end": 10.754,
+          "text": "平时在家想喝点带柠檬香的饮品，拿两片放进去，再加点冰，做法一点都不复杂。"
+        },
+        {
+          "start": 10.754,
+          "end": 15.956,
+          "text": "喜欢这种随手泡、随手喝的朋友呀，今天可以带几颗回家，慢慢换着搭配。"
+        }
+      ]
+    },
+    {
+      "video_id": "RC-254024913df0",
+      "source": "backend/data/exports/RC-254024913df0.mp4",
+      "output": "backend/data/exports/with_voice/RC-254024913df0.moli-captioned.mp4",
+      "raw_voice": "backend/data/exports/with_voice/RC-254024913df0.moli.raw.wav",
+      "voice_1p2": "backend/data/exports/with_voice/RC-254024913df0.moli.1p2.wav",
+      "voice_1p2_normalized": "backend/data/exports/with_voice/RC-254024913df0.moli.1p2.normalized.wav",
+      "captions": "backend/data/exports/with_voice/RC-254024913df0.moli.ass",
+      "caption_png_files": [
+        "backend/data/exports/with_voice/caption_png/RC-254024913df0-1.png",
+        "backend/data/exports/with_voice/caption_png/RC-254024913df0-2.png",
+        "backend/data/exports/with_voice/caption_png/RC-254024913df0-3.png"
+      ],
+      "video_duration_seconds": 21.2,
+      "voice_duration_seconds": 15.474,
+      "speech_start_seconds": 0.35,
+      "music_start_seconds": 5.0,
+      "script": "哎呀，这片切开以后，里面的纹路看得清清楚楚，摆在盘子里也很有层次。黄柠檬、青柠檬都可以按自己喜欢的方式来搭，放进冰水里，整杯看着就清清爽爽。平常爱泡柠檬水的朋友，家里备上一些，想喝的时候切两片就行。",
+      "cues": [
+        {
+          "start": 0.35,
+          "end": 5.449,
+          "text": "哎呀，这片切开以后，里面的纹路看得清清楚楚，摆在盘子里也很有层次。"
+        },
+        {
+          "start": 5.449,
+          "end": 11.252,
+          "text": "黄柠檬、青柠檬都可以按自己喜欢的方式来搭，放进冰水里，整杯看着就清清爽爽。"
+        },
+        {
+          "start": 11.252,
+          "end": 15.824,
+          "text": "平常爱泡柠檬水的朋友，家里备上一些，想喝的时候切两片就行。"
+        }
+      ]
+    },
+    {
+      "video_id": "RC-948bd7cef384",
+      "source": "backend/data/exports/RC-948bd7cef384.mp4",
+      "output": "backend/data/exports/with_voice/RC-948bd7cef384.moli-captioned.mp4",
+      "raw_voice": "backend/data/exports/with_voice/RC-948bd7cef384.moli.raw.wav",
+      "voice_1p2": "backend/data/exports/with_voice/RC-948bd7cef384.moli.1p2.wav",
+      "voice_1p2_normalized": "backend/data/exports/with_voice/RC-948bd7cef384.moli.1p2.normalized.wav",
+      "captions": "backend/data/exports/with_voice/RC-948bd7cef384.moli.ass",
+      "caption_png_files": [
+        "backend/data/exports/with_voice/caption_png/RC-948bd7cef384-1.png",
+        "backend/data/exports/with_voice/caption_png/RC-948bd7cef384-2.png",
+        "backend/data/exports/with_voice/caption_png/RC-948bd7cef384-3.png"
+      ],
+      "video_duration_seconds": 20.666,
+      "voice_duration_seconds": 14.94,
+      "speech_start_seconds": 0.35,
+      "music_start_seconds": 10.0,
+      "script": "先把青柠切开，再加一片黄柠檬，杯子里的颜色立刻丰富起来了。倒水、加冰、放切片，几步就能做一杯，看画面就知道不费事。下班回家或者周末在家休息，想喝这种简单的自制饮品呀，就带几颗柠檬回去试着泡。",
+      "cues": [
+        {
+          "start": 0.35,
+          "end": 4.974,
+          "text": "先把青柠切开，再加一片黄柠檬，杯子里的颜色立刻丰富起来了。"
+        },
+        {
+          "start": 4.974,
+          "end": 9.065,
+          "text": "倒水、加冰、放切片，几步就能做一杯，看画面就知道不费事。"
+        },
+        {
+          "start": 9.065,
+          "end": 15.29,
+          "text": "下班回家或者周末在家休息，想喝这种简单的自制饮品呀，就带几颗柠檬回去试着泡。"
+        }
+      ]
+    },
+    {
+      "video_id": "RC-fdb6589020a6",
+      "source": "backend/data/exports/RC-fdb6589020a6.mp4",
+      "output": "backend/data/exports/with_voice/RC-fdb6589020a6.moli-captioned.mp4",
+      "raw_voice": "backend/data/exports/with_voice/RC-fdb6589020a6.moli.raw.wav",
+      "voice_1p2": "backend/data/exports/with_voice/RC-fdb6589020a6.moli.1p2.wav",
+      "voice_1p2_normalized": "backend/data/exports/with_voice/RC-fdb6589020a6.moli.1p2.normalized.wav",
+      "captions": "backend/data/exports/with_voice/RC-fdb6589020a6.moli.ass",
+      "caption_png_files": [
+        "backend/data/exports/with_voice/caption_png/RC-fdb6589020a6-1.png",
+        "backend/data/exports/with_voice/caption_png/RC-fdb6589020a6-2.png",
+        "backend/data/exports/with_voice/caption_png/RC-fdb6589020a6-3.png"
+      ],
+      "video_duration_seconds": 21.433,
+      "voice_duration_seconds": 15.339,
+      "speech_start_seconds": 0.35,
+      "music_start_seconds": 15.0,
+      "script": "你看，柠檬切成薄片之后，黄的、青的放在一起，层层叠叠特别有画面感。想泡水的时候不用准备太多，选两三片放进杯里，倒上冰水，自己喜欢怎么搭都可以。家里常做饮品的朋友呀，今天选几颗回去，随手就能做一杯。",
+      "cues": [
+        {
+          "start": 0.35,
+          "end": 5.344,
+          "text": "你看，柠檬切成薄片之后，黄的、青的放在一起，层层叠叠特别有画面感。"
+        },
+        {
+          "start": 5.344,
+          "end": 11.408,
+          "text": "想泡水的时候不用准备太多，选两三片放进杯里，倒上冰水，自己喜欢怎么搭都可以。"
+        },
+        {
+          "start": 11.408,
+          "end": 15.689,
+          "text": "家里常做饮品的朋友呀，今天选几颗回去，随手就能做一杯。"
+        }
+      ]
+    },
+    {
+      "video_id": "RC-6c28ea41c3b8",
+      "source": "backend/data/exports/RC-6c28ea41c3b8.mp4",
+      "output": "backend/data/exports/with_voice/RC-6c28ea41c3b8.moli-captioned.mp4",
+      "raw_voice": "backend/data/exports/with_voice/RC-6c28ea41c3b8.moli.raw.wav",
+      "voice_1p2": "backend/data/exports/with_voice/RC-6c28ea41c3b8.moli.1p2.wav",
+      "voice_1p2_normalized": "backend/data/exports/with_voice/RC-6c28ea41c3b8.moli.1p2.normalized.wav",
+      "captions": "backend/data/exports/with_voice/RC-6c28ea41c3b8.moli.ass",
+      "caption_png_files": [
+        "backend/data/exports/with_voice/caption_png/RC-6c28ea41c3b8-1.png",
+        "backend/data/exports/with_voice/caption_png/RC-6c28ea41c3b8-2.png",
+        "backend/data/exports/with_voice/caption_png/RC-6c28ea41c3b8-3.png"
+      ],
+      "video_duration_seconds": 21.733,
+      "voice_duration_seconds": 15.603,
+      "speech_start_seconds": 0.35,
+      "music_start_seconds": 20.0,
+      "script": "这一刀下去，柠檬片切得透透的，桌上黄柠檬和青柠都摆得满满当当。想做饮品时，先放切片，再倒水加冰，杯子一下就有了清爽的样子。平时喜欢自己泡一杯的朋友，可以按口味多放一片、少放一片，带几颗回家慢慢搭。",
+      "cues": [
+        {
+          "start": 0.35,
+          "end": 5.372,
+          "text": "这一刀下去，柠檬片切得透透的，桌上黄柠檬和青柠都摆得满满当当。"
+        },
+        {
+          "start": 5.372,
+          "end": 10.035,
+          "text": "想做饮品时，先放切片，再倒水加冰，杯子一下就有了清爽的样子。"
+        },
+        {
+          "start": 10.035,
+          "end": 15.953,
+          "text": "平时喜欢自己泡一杯的朋友，可以按口味多放一片、少放一片，带几颗回家慢慢搭。"
+        }
+      ]
+    }
+  ]
+}

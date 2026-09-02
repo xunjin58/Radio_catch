@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,3,8,0,2,96,96,250,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.35,0:00:05.34,Caption,,0,0,0,,你看，柠檬切成薄片之后，黄的、青的放\N在一起，层层叠叠特别有画面感。
+Dialogue: 0,0:00:05.34,0:00:11.41,Caption,,0,0,0,,想泡水的时候不用准备太多，选两三片放\N进杯里，倒上冰水，自己喜欢怎么搭都可\N以。
+Dialogue: 0,0:00:11.41,0:00:15.69,Caption,,0,0,0,,家里常做饮品的朋友呀，今天选几颗回去\N，随手就能做一杯。

@@ -1,0 +1,24 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:02.14,Caption,,0,0,0,,不是只有甜才叫好葡萄，
+Dialogue: 0,0:00:02.14,0:00:03.28,Caption,,0,0,0,,香气也很重要。
+Dialogue: 0,0:00:03.28,0:00:05.75,Caption,,0,0,0,,湖南阳光玫瑰一入口香甜脆爽，
+Dialogue: 0,0:00:05.75,0:00:07.07,Caption,,0,0,0,,后面还有玫瑰香，
+Dialogue: 0,0:00:07.07,0:00:08.78,Caption,,0,0,0,,吃着不是单一的甜味。
+Dialogue: 0,0:00:08.78,0:00:10.86,Caption,,0,0,0,,下午茶、饭后来几颗都合适。
+Dialogue: 0,0:00:10.86,0:00:13.14,Caption,,0,0,0,,每天现采现发，顺丰空运包邮，
+Dialogue: 0,0:00:13.14,0:00:15.22,Caption,,0,0,0,,喜欢这一口就点击小黄车，
+Dialogue: 0,0:00:15.22,0:00:16.93,Caption,,0,0,0,,给家里备点也很合适，
+Dialogue: 0,0:00:16.93,0:00:17.88,Caption,,0,0,0,,自己吃解馋，
+Dialogue: 0,0:00:17.88,0:00:19.39,Caption,,0,0,0,,和家人分享也合适，
+Dialogue: 0,0:00:19.39,0:00:20.53,Caption,,0,0,0,,平时吃也方便。

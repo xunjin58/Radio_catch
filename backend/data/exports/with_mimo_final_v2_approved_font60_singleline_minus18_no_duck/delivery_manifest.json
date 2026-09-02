@@ -1,0 +1,966 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": "backend/data/exports/with_mimo_final/mimo_vision_analysis.json",
+  "exports": [
+    {
+      "video_id": "RC-948bd7cef384",
+      "source": "backend/data/exports/RC-948bd7cef384.mp4",
+      "source_edl": [
+        {
+          "clip_id": "fb4a39dc-289c-437a-aacf-a8226c884c52",
+          "source_path": "backend/storage/clips/97/97142995a0f1874a713d040318d59368fd9d2f02a4b5b027cbf6b3b7fe6854ad.mp4",
+          "start": 2.5,
+          "end": 7.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d0272a14-6471-4309-b2c1-132591f69849",
+          "source_path": "backend/storage/clips/fa/fa4c06ba7a9b03c5f54063b8b95409192db612b57c0169052f90b534405a6788.mp4",
+          "start": 0.0,
+          "end": 3.7,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.067,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1daf5388-0d20-4016-873a-0958ff3d7db0",
+          "source_path": "backend/storage/clips/f6/f65dcdb68f107cdf943a7fcab4c0e73313cfb1b61451f3e22cb53cb4e11ee316.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "55a86bd9-f6a1-4a21-8cdf-d0245270078a",
+          "source_path": "backend/storage/clips/c1/c131742e3f2155e7c78666afbb5370d5c04341222c8f60d33c111bc21e397548.mp4",
+          "start": 0.0,
+          "end": 2.4,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-948bd7cef384.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2/RC-948bd7cef384.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-948bd7cef384.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-948bd7cef384.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-1.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-2.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-3.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-4.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-5.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-6.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-7.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-8.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-9.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-10.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-11.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-12.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-13.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-948bd7cef384-14.png"
+      ],
+      "script": "九块九两斤的广东香水柠檬，先往杯里放上柠檬片和冰块，再倒进透明饮品。你看这黄的青的都切好了，个头大，切开汁水也多，平时想泡着喝很方便。青柠从中间切开，切面也给你看，夏天不爱喝白水的，就能这样换着喝。黄柠檬冰杯在这儿，青柠那杯也端上来了。维C、多汁又不苦，想做柠檬饮的带两斤回去。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.219,
+          "text": "九块九两斤的广东香水柠檬，"
+        },
+        {
+          "start": 2.219,
+          "end": 4.187,
+          "text": "先往杯里放上柠檬片和冰块，"
+        },
+        {
+          "start": 4.187,
+          "end": 5.336,
+          "text": "再倒进透明饮品。"
+        },
+        {
+          "start": 5.336,
+          "end": 7.14,
+          "text": "你看这黄的青的都切好了，"
+        },
+        {
+          "start": 7.14,
+          "end": 8.617,
+          "text": "个头大，切开汁水也多，"
+        },
+        {
+          "start": 8.617,
+          "end": 10.093,
+          "text": "平时想泡着喝很方便。"
+        },
+        {
+          "start": 10.093,
+          "end": 11.241,
+          "text": "青柠从中间切开，"
+        },
+        {
+          "start": 11.241,
+          "end": 12.226,
+          "text": "切面也给你看，"
+        },
+        {
+          "start": 12.226,
+          "end": 13.538,
+          "text": "夏天不爱喝白水的，"
+        },
+        {
+          "start": 13.538,
+          "end": 14.686,
+          "text": "就能这样换着喝。"
+        },
+        {
+          "start": 14.686,
+          "end": 15.999,
+          "text": "黄柠檬冰杯在这儿，"
+        },
+        {
+          "start": 15.999,
+          "end": 17.803,
+          "text": "青柠那杯也端上来了。维C、"
+        },
+        {
+          "start": 17.803,
+          "end": 18.624,
+          "text": "多汁又不苦，"
+        },
+        {
+          "start": 18.624,
+          "end": 20.428,
+          "text": "想做柠檬饮的带两斤回去。"
+        }
+      ],
+      "video_duration_seconds": 20.666,
+      "speech_duration_seconds": 20.178,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.428,
+      "effective_speech_speed": 1.2774,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-7709992cdad8",
+      "source": "backend/data/exports/RC-7709992cdad8.mp4",
+      "source_edl": [
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 0.0,
+          "end": 9.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "953c18de-8b58-4107-9314-d33d88401f45",
+          "source_path": "backend/storage/clips/f7/f79f00c6898b084fea71d22681422c45d5c1a0e767ee1b2e9c7005a785885970.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "59f77c2c-1cc9-411b-a6d2-92a6d22f5a93",
+          "source_path": "backend/storage/clips/4f/4fff295f76d89fa48d501053eb5a4cac8040a6a26e365397bf2242d9372a7ffa.mp4",
+          "start": 0.0,
+          "end": 3.167,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e818285b-9ff9-4b98-a516-22ec5af7f5d5",
+          "source_path": "backend/storage/clips/16/16616c2b9f2f1ce15a86f1cd416033c3c375630a210f298254532bb7a8d0670a.mp4",
+          "start": 0.0,
+          "end": 2.233,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "dd7d3d1d-d67e-43d7-84bb-6194233ee279",
+          "source_path": "backend/storage/clips/78/783ea00f92c31b08d95bfe0858e928c7eaa4b54f79c54bf47494750e00774754.mp4",
+          "start": 0.0,
+          "end": 2.48,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "6855e4e6-0f79-44be-9413-db91c0970f54",
+          "source_path": "backend/storage/clips/5f/5fe41b07f787f843562c344b580c5e00b5f388b27d48773fca03ed9038c15ece.mp4",
+          "start": 0.0,
+          "end": 1.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-7709992cdad8.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-7709992cdad8.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-7709992cdad8.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-7709992cdad8.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-1.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-2.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-3.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-4.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-5.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-6.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-7.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-8.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-9.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-10.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-11.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-12.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-7709992cdad8-13.png"
+      ],
+      "script": "我现在买柠檬都是直接选这种，广东香水柠檬九块九两斤，个头真的不小。黄柠檬、青柠片放进杯里，倒入透明饮品，颜色慢慢就出来了。再挤点柠檬汁，看这个汁水就知道很足；平时切两片泡一泡，有维C，喝着也不苦。最后黄的青的都切开给你看，想在家做杯柠檬饮，带两斤回去慢慢泡就行。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.597,
+          "text": "我现在买柠檬都是直接选这种，"
+        },
+        {
+          "start": 2.597,
+          "end": 4.583,
+          "text": "广东香水柠檬九块九两斤，"
+        },
+        {
+          "start": 4.583,
+          "end": 5.667,
+          "text": "个头真的不小。"
+        },
+        {
+          "start": 5.667,
+          "end": 7.472,
+          "text": "黄柠檬、青柠片放进杯里，"
+        },
+        {
+          "start": 7.472,
+          "end": 8.556,
+          "text": "倒入透明饮品，"
+        },
+        {
+          "start": 8.556,
+          "end": 10.0,
+          "text": "颜色慢慢就出来了。"
+        },
+        {
+          "start": 10.0,
+          "end": 11.084,
+          "text": "再挤点柠檬汁，"
+        },
+        {
+          "start": 11.084,
+          "end": 12.889,
+          "text": "看这个汁水就知道很足；"
+        },
+        {
+          "start": 12.889,
+          "end": 14.875,
+          "text": "平时切两片泡一泡，有维C，"
+        },
+        {
+          "start": 14.875,
+          "end": 15.778,
+          "text": "喝着也不苦。"
+        },
+        {
+          "start": 15.778,
+          "end": 17.945,
+          "text": "最后黄的青的都切开给你看，"
+        },
+        {
+          "start": 17.945,
+          "end": 19.389,
+          "text": "想在家做杯柠檬饮，"
+        },
+        {
+          "start": 19.389,
+          "end": 21.195,
+          "text": "带两斤回去慢慢泡就行。"
+        }
+      ],
+      "video_duration_seconds": 21.433,
+      "speech_duration_seconds": 20.945,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 21.195,
+      "effective_speech_speed": 1.2535,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-254024913df0",
+      "source": "backend/data/exports/RC-254024913df0.mp4",
+      "source_edl": [
+        {
+          "clip_id": "10a54baf-3fe6-4f73-a6da-baeb35a76c2f",
+          "source_path": "backend/storage/clips/13/13dce00b87e8d88b4841c4c48527ca202eb3ad2b68bb00cef49924a6e0202e29.mp4",
+          "start": 0.0,
+          "end": 7.438,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f6f4d9c-a22d-49b4-bd06-11998b3aca88",
+          "source_path": "backend/storage/clips/f5/f56e4fd17a177716d321762c0efdf191772670a7c715d9a7381a4227f80679b4.mp4",
+          "start": 0.0,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "2a26bf0a-c396-465e-8640-3bda5f04f04c",
+          "source_path": "backend/storage/clips/6b/6bd25e49fb8e6d99d4bb62e00a9c340ab4addba071300565caba87e12d2d5c45.mp4",
+          "start": 0.0,
+          "end": 3.33,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "0e20d2c6-cd40-4a0e-b2fc-c40b2fc76c9f",
+          "source_path": "backend/storage/clips/20/20a87b9787d34f2ace00c79e49e23e15ae7d577e92e9fe21a00e145885b4b25a.mp4",
+          "start": 0.0,
+          "end": 2.567,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "74023cc3-6d7b-4f61-8042-e723edc8c7eb",
+          "source_path": "backend/storage/clips/55/55489a2d494a2011b162aa9673c3b1ee96e8a27fef3cb82f73365de06afdd7ac.mp4",
+          "start": 0.0,
+          "end": 2.56,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b001fbd0-35ee-454a-a744-735013eb3ea5",
+          "source_path": "backend/storage/clips/33/333df70a1c5dfb9f2966289a6911fca7649599d7b5db50987ada447148085ce3.mp4",
+          "start": 0.0,
+          "end": 2.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-254024913df0.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-254024913df0.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-254024913df0.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-254024913df0.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-1.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-2.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-3.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-4.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-5.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-6.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-7.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-8.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-9.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-10.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-11.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-12.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-13.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-14.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-254024913df0-15.png"
+      ],
+      "script": "喜欢喝柠檬水的，真的可以看看这个，广东香水柠檬九块九两斤，黄的青的搭着泡。你看这切片，个头大，纹理看得清楚，汁水足，维C也有。整个青柠、切开的黄柠檬都给你看，平时不爱喝白水，切两片随手放杯里就行。最后加冰、放进柠檬片，简简单单一杯。多汁不苦，夏天家里备两斤，想喝就自己泡。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.489,
+          "text": "喜欢喝柠檬水的，"
+        },
+        {
+          "start": 1.489,
+          "end": 2.906,
+          "text": "真的可以看看这个，"
+        },
+        {
+          "start": 2.906,
+          "end": 4.853,
+          "text": "广东香水柠檬九块九两斤，"
+        },
+        {
+          "start": 4.853,
+          "end": 6.092,
+          "text": "黄的青的搭着泡。"
+        },
+        {
+          "start": 6.092,
+          "end": 7.509,
+          "text": "你看这切片，个头大，"
+        },
+        {
+          "start": 7.509,
+          "end": 9.102,
+          "text": "纹理看得清楚，汁水足，"
+        },
+        {
+          "start": 9.102,
+          "end": 9.81,
+          "text": "维C也有。"
+        },
+        {
+          "start": 9.81,
+          "end": 10.518,
+          "text": "整个青柠、"
+        },
+        {
+          "start": 10.518,
+          "end": 12.289,
+          "text": "切开的黄柠檬都给你看，"
+        },
+        {
+          "start": 12.289,
+          "end": 13.528,
+          "text": "平时不爱喝白水，"
+        },
+        {
+          "start": 13.528,
+          "end": 15.298,
+          "text": "切两片随手放杯里就行。"
+        },
+        {
+          "start": 15.298,
+          "end": 16.892,
+          "text": "最后加冰、放进柠檬片，"
+        },
+        {
+          "start": 16.892,
+          "end": 18.662,
+          "text": "简简单单一杯。多汁不苦，"
+        },
+        {
+          "start": 18.662,
+          "end": 19.901,
+          "text": "夏天家里备两斤，"
+        },
+        {
+          "start": 19.901,
+          "end": 20.964,
+          "text": "想喝就自己泡。"
+        }
+      ],
+      "video_duration_seconds": 21.2,
+      "speech_duration_seconds": 20.714,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.964,
+      "effective_speech_speed": 1.16715,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-fdb6589020a6",
+      "source": "backend/data/exports/RC-fdb6589020a6.mp4",
+      "source_edl": [
+        {
+          "clip_id": "911a15cf-ee6f-4d4e-b544-e78798cac58c",
+          "source_path": "backend/storage/clips/72/721c76cf63852ab68e5f979d8dc04c6c60a4a4c7b5a4cb72227e3899d1c84349.mp4",
+          "start": 0.0,
+          "end": 5.088,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e049727d-cbfc-46ce-8f42-676fe2f9e229",
+          "source_path": "backend/storage/clips/4b/4bd315f66b2984e0e1d8a654f7d92f5278230fe057a5c4d8388c12167986af79.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1df8c120-5a92-46f2-a850-f38d2b7fa8b3",
+          "source_path": "backend/storage/clips/e1/e1eca94348fb8539e9ff677f41db3f4bf375450f8718f5509d634428e3f7c3e7.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "79fd073e-b0e7-4fcf-b3f2-b936879c8e35",
+          "source_path": "backend/storage/clips/89/89cb70c216bc95eca0de1ff4dcf67093ff520e19715d6674234a5356b4cf3bb1.mp4",
+          "start": 0.5,
+          "end": 3.33,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "a229d75f-84d7-4b87-9466-69b353af0b88",
+          "source_path": "backend/storage/clips/69/69b6267af160be680daebbec2c6701f0ff3ee838a17d279479d71c5d4b54ace6.mp4",
+          "start": 0.5,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "2fbabb07-fdd1-4788-ab3d-8e73f1bae85a",
+          "source_path": "backend/storage/clips/78/787a6bf942700301e4d4463656cb93484f31999dc844b256bb3a2f0f42e84339.mp4",
+          "start": 18.5,
+          "end": 21.0,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "05d89323-1bf7-4e17-a47c-9c819d45f6c9",
+          "source_path": "backend/storage/clips/66/66d8d77eb56c89ab27286e363c65fd98ec458fbed1dc0f71293727313552f986.mp4",
+          "start": 0.0,
+          "end": 1.3,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-fdb6589020a6.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-fdb6589020a6.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-fdb6589020a6.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-fdb6589020a6.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-1.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-2.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-3.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-4.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-5.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-6.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-7.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-8.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-9.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-10.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-11.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-12.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-fdb6589020a6-13.png"
+      ],
+      "script": "九块九两斤的广东香水柠檬，像这样一层层切好，光看着就很适合夏天泡饮。你看这整果个头也大，黄的青的家里换着泡，喝法一点都不单调。杯里已经放了切片，带冰一端，整杯看着特别清爽。黄柠檬的切面、整果都在这儿，多汁、有维C，泡着喝不苦。最后再倒进透明饮品，想做自己的柠檬饮，趁九块九两斤带回去慢慢喝。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.213,
+          "text": "九块九两斤的广东香水柠檬，"
+        },
+        {
+          "start": 2.213,
+          "end": 3.522,
+          "text": "像这样一层层切好，"
+        },
+        {
+          "start": 3.522,
+          "end": 5.322,
+          "text": "光看着就很适合夏天泡饮。"
+        },
+        {
+          "start": 5.322,
+          "end": 6.795,
+          "text": "你看这整果个头也大，"
+        },
+        {
+          "start": 6.795,
+          "end": 8.267,
+          "text": "黄的青的家里换着泡，"
+        },
+        {
+          "start": 8.267,
+          "end": 9.576,
+          "text": "喝法一点都不单调。"
+        },
+        {
+          "start": 9.576,
+          "end": 11.539,
+          "text": "杯里已经放了切片，带冰一端，"
+        },
+        {
+          "start": 11.539,
+          "end": 12.848,
+          "text": "整杯看着特别清爽。"
+        },
+        {
+          "start": 12.848,
+          "end": 14.812,
+          "text": "黄柠檬的切面、整果都在这儿，"
+        },
+        {
+          "start": 14.812,
+          "end": 16.448,
+          "text": "多汁、有维C，泡着喝不苦。"
+        },
+        {
+          "start": 16.448,
+          "end": 17.92,
+          "text": "最后再倒进透明饮品，"
+        },
+        {
+          "start": 17.92,
+          "end": 19.229,
+          "text": "想做自己的柠檬饮，"
+        },
+        {
+          "start": 19.229,
+          "end": 21.192,
+          "text": "趁九块九两斤带回去慢慢喝。"
+        }
+      ],
+      "video_duration_seconds": 21.433,
+      "speech_duration_seconds": 20.942,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 21.192,
+      "effective_speech_speed": 1.2535,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    },
+    {
+      "video_id": "RC-6c28ea41c3b8",
+      "source": "backend/data/exports/RC-6c28ea41c3b8.mp4",
+      "source_edl": [
+        {
+          "clip_id": "9d7fc6ea-290a-43b4-b996-1abd4d0e37c3",
+          "source_path": "backend/storage/clips/74/74ed5b8024118dfef6d29d425b9574e131526539f436b6aaca6d3f27d7f09e13.mp4",
+          "start": 0.0,
+          "end": 3.733,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "87afde80-9b5a-40c2-9d45-a93e18d4a107",
+          "source_path": "backend/storage/clips/2d/2d310d0c56965efac49d0d489543143ef7187d2956f2919d4ab5d252ffa35223.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "89f1dce5-c942-4e9b-b8fc-fb13069e090d",
+          "source_path": "backend/storage/clips/46/46a9ee43f20c462d231cc045722bbf0736fe04cf948823dc046d637316e8d884.mp4",
+          "start": 0.0,
+          "end": 2.867,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e263a06d-87db-4435-9785-823564b3b204",
+          "source_path": "backend/storage/clips/05/05b216d53ab4d666ddc778cdba103ca7d8f2069f4a5e087a6f698b7b9e75af5a.mp4",
+          "start": 0.0,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "4809c284-115c-430a-86c8-2c00dfcae364",
+          "source_path": "backend/storage/clips/80/807ff5181ba1c9907be3e2725656beec1407f468120bd5101567cff0472c5539.mp4",
+          "start": 0.0,
+          "end": 2.23,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "197c628f-53ef-4236-83be-45d801fa14e6",
+          "source_path": "backend/storage/clips/0c/0c922ac5faabdfc8c223707b384de4c307fce9627c6b70b346c5dccfd08df318.mp4",
+          "start": 0.0,
+          "end": 2.0,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-6c28ea41c3b8.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-6c28ea41c3b8.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-6c28ea41c3b8.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/RC-6c28ea41c3b8.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-1.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-2.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-3.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-4.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-5.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-6.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-7.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-8.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-9.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-10.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-11.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-12.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-13.png",
+        "backend/data/exports/with_mimo_final_v2_approved_font60_singleline_minus18_no_duck/caption_layers/RC-6c28ea41c3b8-14.png"
+      ],
+      "script": "这个广东香水柠檬我真想让你们看看，九块九两斤，黄的青的搭着泡都很好看。先把青柠片放杯里，倒进透明饮品，马上就有一杯柠檬饮的样子。再加一片黄柠檬，镜头一转整果都在这儿，个头大，拿来切片很方便。后面直接挤进杯里，汁水很足，有维C，平时喝着也不苦。黄的青的切片一摆，想自己泡的朋友，九块九两斤带回家慢慢做。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 2.486,
+          "text": "这个广东香水柠檬我真想让你们"
+        },
+        {
+          "start": 2.486,
+          "end": 3.604,
+          "text": "看看，九块九两斤，"
+        },
+        {
+          "start": 3.604,
+          "end": 5.36,
+          "text": "黄的青的搭着泡都很好看。"
+        },
+        {
+          "start": 5.36,
+          "end": 6.638,
+          "text": "先把青柠片放杯里，"
+        },
+        {
+          "start": 6.638,
+          "end": 7.596,
+          "text": "倒进透明饮品，"
+        },
+        {
+          "start": 7.596,
+          "end": 9.513,
+          "text": "马上就有一杯柠檬饮的样子。"
+        },
+        {
+          "start": 9.513,
+          "end": 10.631,
+          "text": "再加一片黄柠檬，"
+        },
+        {
+          "start": 10.631,
+          "end": 12.228,
+          "text": "镜头一转整果都在这儿，"
+        },
+        {
+          "start": 12.228,
+          "end": 13.825,
+          "text": "个头大，拿来切片很方便。"
+        },
+        {
+          "start": 13.825,
+          "end": 15.741,
+          "text": "后面直接挤进杯里，汁水很足，"
+        },
+        {
+          "start": 15.741,
+          "end": 17.338,
+          "text": "有维C，平时喝着也不苦。"
+        },
+        {
+          "start": 17.338,
+          "end": 18.616,
+          "text": "黄的青的切片一摆，"
+        },
+        {
+          "start": 18.616,
+          "end": 19.733,
+          "text": "想自己泡的朋友，"
+        },
+        {
+          "start": 19.733,
+          "end": 21.49,
+          "text": "九块九两斤带回家慢慢做。"
+        }
+      ],
+      "video_duration_seconds": 21.733,
+      "speech_duration_seconds": 21.24,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 21.49,
+      "effective_speech_speed": 1.27347,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14
+    }
+  ],
+  "media_probe": {
+    "RC-948bd7cef384": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.666000"
+      }
+    },
+    "RC-7709992cdad8": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.433000"
+      }
+    },
+    "RC-254024913df0": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.200000"
+      }
+    },
+    "RC-fdb6589020a6": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.433000"
+      }
+    },
+    "RC-6c28ea41c3b8": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "21.733000"
+      }
+    }
+  }
+}

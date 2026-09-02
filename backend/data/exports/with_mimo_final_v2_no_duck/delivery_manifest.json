@@ -1,0 +1,135 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": "backend/data/exports/with_mimo_final_v2/mimo_vision_analysis.json",
+  "exports": [
+    {
+      "video_id": "RC-948bd7cef384",
+      "source": "backend/data/exports/RC-948bd7cef384.mp4",
+      "source_edl": [
+        {
+          "clip_id": "fb4a39dc-289c-437a-aacf-a8226c884c52",
+          "source_path": "backend/storage/clips/97/97142995a0f1874a713d040318d59368fd9d2f02a4b5b027cbf6b3b7fe6854ad.mp4",
+          "start": 2.5,
+          "end": 7.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.73,
+          "speed": 1.0,
+          "role": "head",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "d0272a14-6471-4309-b2c1-132591f69849",
+          "source_path": "backend/storage/clips/fa/fa4c06ba7a9b03c5f54063b8b95409192db612b57c0169052f90b534405a6788.mp4",
+          "start": 0.0,
+          "end": 3.7,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.067,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "1daf5388-0d20-4016-873a-0958ff3d7db0",
+          "source_path": "backend/storage/clips/f6/f65dcdb68f107cdf943a7fcab4c0e73313cfb1b61451f3e22cb53cb4e11ee316.mp4",
+          "start": 0.0,
+          "end": 2.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "55a86bd9-f6a1-4a21-8cdf-d0245270078a",
+          "source_path": "backend/storage/clips/c1/c131742e3f2155e7c78666afbb5370d5c04341222c8f60d33c111bc21e397548.mp4",
+          "start": 0.0,
+          "end": 2.4,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/with_mimo_final_v2_no_duck/RC-948bd7cef384.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/with_mimo_final_v2/RC-948bd7cef384.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/with_mimo_final_v2_no_duck/RC-948bd7cef384.mimo.coverage.wav",
+      "captions": "backend/data/exports/with_mimo_final_v2_no_duck/RC-948bd7cef384.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/with_mimo_final_v2_no_duck/caption_layers/RC-948bd7cef384-1.png",
+        "backend/data/exports/with_mimo_final_v2_no_duck/caption_layers/RC-948bd7cef384-2.png",
+        "backend/data/exports/with_mimo_final_v2_no_duck/caption_layers/RC-948bd7cef384-3.png",
+        "backend/data/exports/with_mimo_final_v2_no_duck/caption_layers/RC-948bd7cef384-4.png"
+      ],
+      "script": "九块九两斤的广东香水柠檬，先往杯里放上柠檬片和冰块，再倒进透明饮品。你看这黄的青的都切好了，个头大，切开汁水也多，平时想泡着喝很方便。青柠从中间切开，切面也给你看，夏天不爱喝白水的，就能这样换着喝。黄柠檬冰杯在这儿，青柠那杯也端上来了。维C、多汁又不苦，想做柠檬饮的带两斤回去。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 5.336,
+          "text": "九块九两斤的广东香水柠檬，先往杯里放上柠檬片和冰块，再倒进透明饮品。"
+        },
+        {
+          "start": 5.336,
+          "end": 10.093,
+          "text": "你看这黄的青的都切好了，个头大，切开汁水也多，平时想泡着喝很方便。"
+        },
+        {
+          "start": 10.093,
+          "end": 14.686,
+          "text": "青柠从中间切开，切面也给你看，夏天不爱喝白水的，就能这样换着喝。"
+        },
+        {
+          "start": 14.686,
+          "end": 20.428,
+          "text": "黄柠檬冰杯在这儿，青柠那杯也端上来了。维C、多汁又不苦，想做柠檬饮的带两斤回去。"
+        }
+      ],
+      "video_duration_seconds": 20.666,
+      "speech_duration_seconds": 20.178,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.428,
+      "effective_speech_speed": 1.2774,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -25.49,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel"
+    }
+  ],
+  "media_probe": {
+    "RC-948bd7cef384": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.666000"
+      }
+    }
+  }
+}

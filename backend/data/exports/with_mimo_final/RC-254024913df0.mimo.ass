@@ -1,0 +1,16 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:05.43,Caption,,0,0,0,,哎呀，你看这个柠檬片切开以后，纹路清\N清楚楚的，摆在盘子里一层一层还挺好看\N。
+Dialogue: 0,0:00:05.43,0:00:10.92,Caption,,0,0,0,,广东香水柠檬黄的青的可以按自己喜欢的\N方式来搭，先把切片放进杯里，再倒上冰\N水。
+Dialogue: 0,0:00:10.92,0:00:16.26,Caption,,0,0,0,,镜头里最后这一杯颜色干干净净的，天气\N热的时候在家自己泡一杯，喝着也挺舒服\N。
+Dialogue: 0,0:00:16.26,0:00:20.96,Caption,,0,0,0,,平常爱研究自制饮品的朋友，带一些回家\N，切两片、加点冰，就能慢慢换着喝。

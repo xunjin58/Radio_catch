@@ -1,0 +1,29 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:01.58,Caption,,0,0,0,,想吃一串香甜脆爽、
+Dialogue: 0,0:00:01.58,0:00:03.57,Caption,,0,0,0,,看着就很有食欲的阳光玫瑰，
+Dialogue: 0,0:00:03.57,0:00:05.90,Caption,,0,0,0,,云南高海拔种植的这款可以看看
+Dialogue: 0,0:00:05.90,0:00:06.06,Caption,,0,0,0,,。
+Dialogue: 0,0:00:06.06,0:00:08.46,Caption,,0,0,0,,园里成串的葡萄和采摘画面都在
+Dialogue: 0,0:00:08.46,0:00:09.31,Caption,,0,0,0,,，平时自己吃、
+Dialogue: 0,0:00:09.31,0:00:11.02,Caption,,0,0,0,,下午茶或者家里来客人，
+Dialogue: 0,0:00:11.02,0:00:12.05,Caption,,0,0,0,,都能端上一盘。
+Dialogue: 0,0:00:12.05,0:00:13.42,Caption,,0,0,0,,每天现采摘、现发货，
+Dialogue: 0,0:00:13.42,0:00:14.44,Caption,,0,0,0,,广东阳江发货，
+Dialogue: 0,0:00:14.44,0:00:15.81,Caption,,0,0,0,,顺丰空运包邮到家。
+Dialogue: 0,0:00:15.81,0:00:18.03,Caption,,0,0,0,,一口咬下去是清甜脆爽的口感，
+Dialogue: 0,0:00:18.03,0:00:19.57,Caption,,0,0,0,,平时想吃水果的时候，
+Dialogue: 0,0:00:19.57,0:00:21.28,Caption,,0,0,0,,放在家里就能随时安排。
+Dialogue: 0,0:00:21.28,0:00:22.48,Caption,,0,0,0,,喜欢阳光玫瑰的，
+Dialogue: 0,0:00:22.48,0:00:24.53,Caption,,0,0,0,,点击下方小黄车，选一箱尝尝，
+Dialogue: 0,0:00:24.53,0:00:25.90,Caption,,0,0,0,,想吃时就不用再等。

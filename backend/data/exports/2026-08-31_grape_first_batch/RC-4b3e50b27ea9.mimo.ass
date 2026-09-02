@@ -1,0 +1,31 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:01.98,Caption,,0,0,0,,今天想给家里添点水果，
+Dialogue: 0,0:00:01.98,0:00:03.20,Caption,,0,0,0,,我会先想到葡萄。
+Dialogue: 0,0:00:03.20,0:00:04.93,Caption,,0,0,0,,日常不用设计得太复杂，
+Dialogue: 0,0:00:04.93,0:00:05.98,Caption,,0,0,0,,早上放一小盘，
+Dialogue: 0,0:00:05.98,0:00:07.54,Caption,,0,0,0,,下午工作累了拿几颗，
+Dialogue: 0,0:00:07.54,0:00:09.44,Caption,,0,0,0,,朋友来家里也能一起分享。
+Dialogue: 0,0:00:09.44,0:00:10.83,Caption,,0,0,0,,家里常备一种水果，
+Dialogue: 0,0:00:10.83,0:00:12.05,Caption,,0,0,0,,不是为了多讲究，
+Dialogue: 0,0:00:12.05,0:00:13.26,Caption,,0,0,0,,而是想吃的时候，
+Dialogue: 0,0:00:13.26,0:00:15.17,Caption,,0,0,0,,随手就有一个轻松的选择。
+Dialogue: 0,0:00:15.17,0:00:17.08,Caption,,0,0,0,,不必专门留出一大段时间，
+Dialogue: 0,0:00:17.08,0:00:18.29,Caption,,0,0,0,,平常的一顿饭后，
+Dialogue: 0,0:00:18.29,0:00:19.85,Caption,,0,0,0,,顺手准备一点就够了。
+Dialogue: 0,0:00:19.85,0:00:20.72,Caption,,0,0,0,,不用赶时间，
+Dialogue: 0,0:00:20.72,0:00:22.80,Caption,,0,0,0,,也不用临时再去想要吃什么。
+Dialogue: 0,0:00:22.80,0:00:23.79,Caption,,0,0,0,,忙起来的时候，
+Dialogue: 0,0:00:23.79,0:00:26.11,Caption,,0,0,0,,这样的小安排也能让人放松下来
+Dialogue: 0,0:00:26.11,0:00:26.27,Caption,,0,0,0,,。
+Dialogue: 0,0:00:26.27,0:00:27.66,Caption,,0,0,0,,慢慢来，也不用着急。

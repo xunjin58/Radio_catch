@@ -1,0 +1,1005 @@
+{
+  "voice": "茉莉",
+  "tts_model": "mimo-v2.5-tts",
+  "reviews": null,
+  "exports": [
+    {
+      "video_id": "RC-e4a0382f6690",
+      "source": "backend/data/exports/RC-e4a0382f6690.mp4",
+      "source_edl": [
+        {
+          "clip_id": "b001fbd0-35ee-454a-a744-735013eb3ea5",
+          "source_path": "backend/storage/clips/33/333df70a1c5dfb9f2966289a6911fca7649599d7b5db50987ada447148085ce3.mp4",
+          "start": 0.0,
+          "end": 6.067,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "00f20a5e-829a-45fe-89ab-14cf9ad71e0f",
+          "source_path": "backend/storage/clips/19/197910bfa5818703f2092009b44fd91e27dcd17331ba9d392bf2adc18d60b397.mp4",
+          "start": 0.0,
+          "end": 3.067,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "831eb7d1-cf55-4dad-98de-8ab002dc2d0f",
+          "source_path": "backend/storage/clips/0d/0d9bf93025e15e77c075ba0eb53c3f13820e2025889018f7d30f38e6fd26188d.mp4",
+          "start": 0.0,
+          "end": 5.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "fb4a39dc-289c-437a-aacf-a8226c884c52",
+          "source_path": "backend/storage/clips/97/97142995a0f1874a713d040318d59368fd9d2f02a4b5b027cbf6b3b7fe6854ad.mp4",
+          "start": 0.0,
+          "end": 7.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-e4a0382f6690.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-e4a0382f6690.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-e4a0382f6690.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-e4a0382f6690.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-1.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-2.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-3.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-4.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-5.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-6.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-7.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-8.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-9.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-10.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-11.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-12.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-13.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-e4a0382f6690-14.png"
+      ],
+      "script": "气泡水里加两片柠檬，夏天这一口比只喝白水有意思多了。酸香出来得很自然，冰过以后更清爽。不用准备太多东西，味道就很有层次。这个果子汁水足，做饮品不用费心调半天。广东香水柠檬现在九块九两斤，还是果园现摘现发。家里备着，下午想换个口味时，随手就能给自己做一杯，也不容易腻。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.98,
+          "text": "气泡水里加两片柠檬，"
+        },
+        {
+          "start": 1.98,
+          "end": 4.671,
+          "text": "夏天这一口比只喝白水有意思多"
+        },
+        {
+          "start": 4.671,
+          "end": 4.863,
+          "text": "了。"
+        },
+        {
+          "start": 4.863,
+          "end": 6.4,
+          "text": "酸香出来得很自然，"
+        },
+        {
+          "start": 6.4,
+          "end": 7.746,
+          "text": "冰过以后更清爽。"
+        },
+        {
+          "start": 7.746,
+          "end": 9.283,
+          "text": "不用准备太多东西，"
+        },
+        {
+          "start": 9.283,
+          "end": 10.629,
+          "text": "味道就很有层次。"
+        },
+        {
+          "start": 10.629,
+          "end": 11.974,
+          "text": "这个果子汁水足，"
+        },
+        {
+          "start": 11.974,
+          "end": 13.896,
+          "text": "做饮品不用费心调半天。"
+        },
+        {
+          "start": 13.896,
+          "end": 16.394,
+          "text": "广东香水柠檬现在九块九两斤，"
+        },
+        {
+          "start": 16.394,
+          "end": 17.932,
+          "text": "还是果园现摘现发。"
+        },
+        {
+          "start": 17.932,
+          "end": 20.238,
+          "text": "家里备着，下午想换个口味时，"
+        },
+        {
+          "start": 20.238,
+          "end": 22.16,
+          "text": "随手就能给自己做一杯，"
+        },
+        {
+          "start": 22.16,
+          "end": 23.121,
+          "text": "也不容易腻。"
+        }
+      ],
+      "video_duration_seconds": 25.133,
+      "speech_duration_seconds": 22.871,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.121,
+      "effective_speech_speed": 1.0,
+      "raw_to_coverage_speed": 0.92882,
+      "tail_blank_seconds": 2.003,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "气泡水": {
+          "clip_ids": [
+            "b001fbd0-35ee-454a-a744-735013eb3ea5"
+          ],
+          "shot_capabilities": [
+            "clear_drink",
+            "bubbles"
+          ]
+        },
+        "汁水多": {
+          "clip_ids": [
+            "e4373038-b1e9-43ba-9ef1-40a34f87f7b0"
+          ],
+          "shot_capabilities": [
+            "squeezing"
+          ]
+        }
+      },
+      "product_facts": {
+        "广东香水柠檬": "用户确认卖点池",
+        "九块九两斤": "用户确认卖点池",
+        "果园现摘现发": "用户确认卖点池"
+      }
+    },
+    {
+      "video_id": "RC-d8756448f999",
+      "source": "backend/data/exports/RC-d8756448f999.mp4",
+      "source_edl": [
+        {
+          "clip_id": "a229d75f-84d7-4b87-9466-69b353af0b88",
+          "source_path": "backend/storage/clips/69/69b6267af160be680daebbec2c6701f0ff3ee838a17d279479d71c5d4b54ace6.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "59f77c2c-1cc9-411b-a6d2-92a6d22f5a93",
+          "source_path": "backend/storage/clips/4f/4fff295f76d89fa48d501053eb5a4cac8040a6a26e365397bf2242d9372a7ffa.mp4",
+          "start": 0.0,
+          "end": 3.167,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.733,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f6f4d9c-a22d-49b4-bd06-11998b3aca88",
+          "source_path": "backend/storage/clips/f5/f56e4fd17a177716d321762c0efdf191772670a7c715d9a7381a4227f80679b4.mp4",
+          "start": 0.0,
+          "end": 3.0,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "55a86bd9-f6a1-4a21-8cdf-d0245270078a",
+          "source_path": "backend/storage/clips/c1/c131742e3f2155e7c78666afbb5370d5c04341222c8f60d33c111bc21e397548.mp4",
+          "start": 0.0,
+          "end": 6.933,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-d8756448f999.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-d8756448f999.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-d8756448f999.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-d8756448f999.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-1.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-2.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-3.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-4.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-5.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-6.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-7.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-8.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-9.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-10.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-11.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-12.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-d8756448f999-13.png"
+      ],
+      "script": "九块九买两斤柠檬，到手到底够用多久？平时泡水、做冷饮，几颗就能换出不少口味。这个广东香水柠檬个头很实在，皮也薄，无籽吃起来不用挑来挑去。维C高又是现摘现发，收到手慢慢用就好。周末做一大壶，大家都能喝。家里常做饭、也爱喝饮品的话，放一袋在冰箱里挺踏实，拿着也方便。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.628,
+          "text": "九块九买两斤柠檬，"
+        },
+        {
+          "start": 1.628,
+          "end": 3.007,
+          "text": "到手到底够用多久？"
+        },
+        {
+          "start": 3.007,
+          "end": 4.213,
+          "text": "平时泡水、做冷饮，"
+        },
+        {
+          "start": 4.213,
+          "end": 5.935,
+          "text": "几颗就能换出不少口味。"
+        },
+        {
+          "start": 5.935,
+          "end": 8.175,
+          "text": "这个广东香水柠檬个头很实在，"
+        },
+        {
+          "start": 8.175,
+          "end": 8.692,
+          "text": "皮也薄，"
+        },
+        {
+          "start": 8.692,
+          "end": 10.587,
+          "text": "无籽吃起来不用挑来挑去。"
+        },
+        {
+          "start": 10.587,
+          "end": 12.138,
+          "text": "维C高又是现摘现发，"
+        },
+        {
+          "start": 12.138,
+          "end": 13.516,
+          "text": "收到手慢慢用就好。"
+        },
+        {
+          "start": 13.516,
+          "end": 15.411,
+          "text": "周末做一大壶，大家都能喝。"
+        },
+        {
+          "start": 15.411,
+          "end": 17.478,
+          "text": "家里常做饭、也爱喝饮品的话，"
+        },
+        {
+          "start": 17.478,
+          "end": 19.201,
+          "text": "放一袋在冰箱里挺踏实，"
+        },
+        {
+          "start": 19.201,
+          "end": 20.063,
+          "text": "拿着也方便。"
+        }
+      ],
+      "video_duration_seconds": 20.3,
+      "speech_duration_seconds": 19.813,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.063,
+      "effective_speech_speed": 1.19596,
+      "raw_to_coverage_speed": 1.19596,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "大果": {
+          "clip_ids": [
+            "a229d75f-84d7-4b87-9466-69b353af0b88"
+          ],
+          "shot_capabilities": [
+            "whole_lemon",
+            "hand_holding"
+          ]
+        },
+        "皮薄": {
+          "clip_ids": [
+            "59f77c2c-1cc9-411b-a6d2-92a6d22f5a93"
+          ],
+          "shot_capabilities": [
+            "cut_surface"
+          ]
+        },
+        "无籽": {
+          "clip_ids": [
+            "59f77c2c-1cc9-411b-a6d2-92a6d22f5a93"
+          ],
+          "shot_capabilities": [
+            "cut_surface"
+          ]
+        }
+      },
+      "product_facts": {
+        "广东香水柠檬": "用户确认卖点池",
+        "九块九两斤": "用户确认卖点池",
+        "维C高": "用户确认卖点池",
+        "果园现摘现发": "用户确认卖点池"
+      }
+    },
+    {
+      "video_id": "RC-797096fc5780",
+      "source": "backend/data/exports/RC-797096fc5780.mp4",
+      "source_edl": [
+        {
+          "clip_id": "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d",
+          "source_path": "backend/storage/clips/82/8292f650c9f59261b67f738655dfdc025ee478b476ffc9c881deac7d2ada234e.mp4",
+          "start": 0.0,
+          "end": 9.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "fb4a39dc-289c-437a-aacf-a8226c884c52",
+          "source_path": "backend/storage/clips/97/97142995a0f1874a713d040318d59368fd9d2f02a4b5b027cbf6b3b7fe6854ad.mp4",
+          "start": 0.0,
+          "end": 7.367,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-797096fc5780.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-797096fc5780.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-797096fc5780.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-797096fc5780.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-1.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-2.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-3.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-4.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-5.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-6.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-7.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-8.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-9.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-10.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-11.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-12.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-797096fc5780-13.png"
+      ],
+      "script": "午后不想再点甜饮料，我现在更爱在冰箱留一杯柠檬水。酸香是清清爽爽的，喝完嘴里不会黏着甜味。这个柠檬泡水很合适，汁水也足，配冰水就很舒服。喝水这件事也会更容易坚持。广东香水柠檬两斤只要九块九，还是现摘现发。早餐后、忙完工作后，给自己留几分钟慢慢喝吧，整个人都松快些。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.703,
+          "text": "午后不想再点甜饮料，"
+        },
+        {
+          "start": 1.703,
+          "end": 3.963,
+          "text": "我现在更爱在冰箱留一杯柠檬水"
+        },
+        {
+          "start": 3.963,
+          "end": 4.125,
+          "text": "。"
+        },
+        {
+          "start": 4.125,
+          "end": 5.473,
+          "text": "酸香是清清爽爽的，"
+        },
+        {
+          "start": 5.473,
+          "end": 7.157,
+          "text": "喝完嘴里不会黏着甜味。"
+        },
+        {
+          "start": 7.157,
+          "end": 8.673,
+          "text": "这个柠檬泡水很合适，"
+        },
+        {
+          "start": 8.673,
+          "end": 10.527,
+          "text": "汁水也足，配冰水就很舒服。"
+        },
+        {
+          "start": 10.527,
+          "end": 12.548,
+          "text": "喝水这件事也会更容易坚持。"
+        },
+        {
+          "start": 12.548,
+          "end": 14.738,
+          "text": "广东香水柠檬两斤只要九块九，"
+        },
+        {
+          "start": 14.738,
+          "end": 15.749,
+          "text": "还是现摘现发。"
+        },
+        {
+          "start": 15.749,
+          "end": 17.097,
+          "text": "早餐后、忙完工作后，"
+        },
+        {
+          "start": 17.097,
+          "end": 18.95,
+          "text": "给自己留几分钟慢慢喝吧，"
+        },
+        {
+          "start": 18.95,
+          "end": 20.129,
+          "text": "整个人都松快些。"
+        }
+      ],
+      "video_duration_seconds": 20.367,
+      "speech_duration_seconds": 19.879,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.129,
+      "effective_speech_speed": 1.24832,
+      "raw_to_coverage_speed": 1.24832,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "泡水好喝": {
+          "clip_ids": [
+            "d9696fd7-127c-4bb6-bf12-307f9ab0fe2d"
+          ],
+          "shot_capabilities": [
+            "clear_drink",
+            "pouring"
+          ]
+        },
+        "汁水多": {
+          "clip_ids": [
+            "e4373038-b1e9-43ba-9ef1-40a34f87f7b0"
+          ],
+          "shot_capabilities": [
+            "squeezing"
+          ]
+        }
+      },
+      "product_facts": {
+        "广东香水柠檬": "用户确认卖点池",
+        "九块九两斤": "用户确认卖点池",
+        "果园现摘现发": "用户确认卖点池"
+      }
+    },
+    {
+      "video_id": "RC-c6265ded8ca4",
+      "source": "backend/data/exports/RC-c6265ded8ca4.mp4",
+      "source_edl": [
+        {
+          "clip_id": "f828b232-85c7-4604-87ac-399b09390111",
+          "source_path": "backend/storage/clips/f6/f6d8a3429f7baba999b9c0d060c5b6b81cc484dd8ec479f8d92bd0f67e06c936.mp4",
+          "start": 0.0,
+          "end": 5.9,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "b001fbd0-35ee-454a-a744-735013eb3ea5",
+          "source_path": "backend/storage/clips/33/333df70a1c5dfb9f2966289a6911fca7649599d7b5db50987ada447148085ce3.mp4",
+          "start": 0.0,
+          "end": 6.067,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "197c628f-53ef-4236-83be-45d801fa14e6",
+          "source_path": "backend/storage/clips/0c/0c922ac5faabdfc8c223707b384de4c307fce9627c6b70b346c5dccfd08df318.mp4",
+          "start": 0.0,
+          "end": 4.653,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-c6265ded8ca4.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-c6265ded8ca4.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-c6265ded8ca4.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-c6265ded8ca4.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-1.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-2.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-3.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-4.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-5.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-6.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-7.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-8.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-9.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-10.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-11.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-c6265ded8ca4-12.png"
+      ],
+      "script": "吃完火锅嘴里有点腻时，我会想喝点带柠檬香的冰饮。可乐里加一点酸香，味道更有层次；想轻一点，换成气泡水也很合适。味道有变化，也不怕重复。这个果子汁水足，做一杯不必放太多。按杯买饮料常常十几块，在家备这份九块九两斤的广东香水柠檬，晚餐后想喝就有，更不容易腻。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.999,
+          "text": "吃完火锅嘴里有点腻时，"
+        },
+        {
+          "start": 1.999,
+          "end": 4.099,
+          "text": "我会想喝点带柠檬香的冰饮。"
+        },
+        {
+          "start": 4.099,
+          "end": 5.498,
+          "text": "可乐里加一点酸香，"
+        },
+        {
+          "start": 5.498,
+          "end": 7.248,
+          "text": "味道更有层次；想轻一点，"
+        },
+        {
+          "start": 7.248,
+          "end": 8.822,
+          "text": "换成气泡水也很合适。"
+        },
+        {
+          "start": 8.822,
+          "end": 10.572,
+          "text": "味道有变化，也不怕重复。"
+        },
+        {
+          "start": 10.572,
+          "end": 11.796,
+          "text": "这个果子汁水足，"
+        },
+        {
+          "start": 11.796,
+          "end": 13.196,
+          "text": "做一杯不必放太多。"
+        },
+        {
+          "start": 13.196,
+          "end": 14.946,
+          "text": "按杯买饮料常常十几块，"
+        },
+        {
+          "start": 14.946,
+          "end": 17.395,
+          "text": "在家备这份九块九两斤的广东香"
+        },
+        {
+          "start": 17.395,
+          "end": 19.144,
+          "text": "水柠檬，晚餐后想喝就有，"
+        },
+        {
+          "start": 19.144,
+          "end": 20.019,
+          "text": "更不容易腻。"
+        }
+      ],
+      "video_duration_seconds": 20.267,
+      "speech_duration_seconds": 19.769,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 20.019,
+      "effective_speech_speed": 1.22226,
+      "raw_to_coverage_speed": 1.22226,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "可乐": {
+          "clip_ids": [
+            "f828b232-85c7-4604-87ac-399b09390111"
+          ],
+          "shot_capabilities": [
+            "dark_drink"
+          ]
+        },
+        "气泡水": {
+          "clip_ids": [
+            "b001fbd0-35ee-454a-a744-735013eb3ea5"
+          ],
+          "shot_capabilities": [
+            "clear_drink",
+            "bubbles"
+          ]
+        },
+        "汁水多": {
+          "clip_ids": [
+            "e4373038-b1e9-43ba-9ef1-40a34f87f7b0"
+          ],
+          "shot_capabilities": [
+            "squeezing"
+          ]
+        }
+      },
+      "product_facts": {
+        "广东香水柠檬": "用户确认卖点池",
+        "九块九两斤": "用户确认卖点池"
+      }
+    },
+    {
+      "video_id": "RC-05115c235b4f",
+      "source": "backend/data/exports/RC-05115c235b4f.mp4",
+      "source_edl": [
+        {
+          "clip_id": "a229d75f-84d7-4b87-9466-69b353af0b88",
+          "source_path": "backend/storage/clips/69/69b6267af160be680daebbec2c6701f0ff3ee838a17d279479d71c5d4b54ace6.mp4",
+          "start": 0.0,
+          "end": 3.467,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "e4373038-b1e9-43ba-9ef1-40a34f87f7b0",
+          "source_path": "backend/storage/clips/ce/ce6b2108ba171207cbbe92d3e7d86be7e9d717d536073c8ae31bc97d47ee3de9.mp4",
+          "start": 0.0,
+          "end": 3.633,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "911a15cf-ee6f-4d4e-b544-e78798cac58c",
+          "source_path": "backend/storage/clips/72/721c76cf63852ab68e5f979d8dc04c6c60a4a4c7b5a4cb72227e3899d1c84349.mp4",
+          "start": 0.0,
+          "end": 5.088,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "5f1b7053-45fb-4df6-b344-c936ed59dacd",
+          "source_path": "backend/storage/clips/e0/e01678f616924ae08f26a22b2abe1c3daa3ff0079b7dc583acfbe4dc94ce455f.mp4",
+          "start": 0.0,
+          "end": 3.733,
+          "speed": 1.0,
+          "role": "tail",
+          "dish": "柠檬"
+        },
+        {
+          "clip_id": "10a54baf-3fe6-4f73-a6da-baeb35a76c2f",
+          "source_path": "backend/storage/clips/13/13dce00b87e8d88b4841c4c48527ca202eb3ad2b68bb00cef49924a6e0202e29.mp4",
+          "start": 0.0,
+          "end": 7.438,
+          "speed": 1.0,
+          "role": "middle",
+          "dish": "柠檬"
+        }
+      ],
+      "output": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-05115c235b4f.mimo-final.mp4",
+      "raw_voice": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-05115c235b4f.mimo.raw.wav",
+      "voice_audio": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-05115c235b4f.mimo.coverage.wav",
+      "captions": "backend/data/exports/2026-08-30_lemon_fresh_uncut/RC-05115c235b4f.mimo.ass",
+      "caption_layers": [
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-1.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-2.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-3.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-4.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-5.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-6.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-7.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-8.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-9.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-10.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-11.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-12.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-13.png",
+        "backend/data/exports/2026-08-30_lemon_fresh_uncut/caption_layers/RC-05115c235b4f-14.png"
+      ],
+      "script": "喜欢浓一点柠檬香的，可以把这份广东香水柠檬记下来。果子个头大，汁水也足，做饮品时香气会更明显。九块九两斤，不是只够喝一两次的分量，放在家里可以慢慢搭配。早上泡一杯，下午换一种搭配，几天都不会觉得重复。现摘现发，自己喝、朋友来家里招待都方便。夏天想过得清爽一点，从冰箱里备几颗开始。",
+      "cues": [
+        {
+          "start": 0.25,
+          "end": 1.841,
+          "text": "喜欢浓一点柠檬香的，"
+        },
+        {
+          "start": 1.841,
+          "end": 4.317,
+          "text": "可以把这份广东香水柠檬记下来"
+        },
+        {
+          "start": 4.317,
+          "end": 4.494,
+          "text": "。"
+        },
+        {
+          "start": 4.494,
+          "end": 6.154,
+          "text": "果子个头大，汁水也足，"
+        },
+        {
+          "start": 6.154,
+          "end": 8.0,
+          "text": "做饮品时香气会更明显。"
+        },
+        {
+          "start": 8.0,
+          "end": 8.922,
+          "text": "九块九两斤，"
+        },
+        {
+          "start": 8.922,
+          "end": 10.952,
+          "text": "不是只够喝一两次的分量，"
+        },
+        {
+          "start": 10.952,
+          "end": 12.797,
+          "text": "放在家里可以慢慢搭配。"
+        },
+        {
+          "start": 12.797,
+          "end": 15.011,
+          "text": "早上泡一杯，下午换一种搭配，"
+        },
+        {
+          "start": 15.011,
+          "end": 16.672,
+          "text": "几天都不会觉得重复。"
+        },
+        {
+          "start": 16.672,
+          "end": 17.963,
+          "text": "现摘现发，自己喝、"
+        },
+        {
+          "start": 17.963,
+          "end": 19.808,
+          "text": "朋友来家里招待都方便。"
+        },
+        {
+          "start": 19.808,
+          "end": 21.469,
+          "text": "夏天想过得清爽一点，"
+        },
+        {
+          "start": 21.469,
+          "end": 23.13,
+          "text": "从冰箱里备几颗开始。"
+        }
+      ],
+      "video_duration_seconds": 23.367,
+      "speech_duration_seconds": 22.88,
+      "speech_start_seconds": 0.25,
+      "speech_end_seconds": 23.13,
+      "effective_speech_speed": 1.16152,
+      "raw_to_coverage_speed": 1.16152,
+      "tail_blank_seconds": 0.0,
+      "voice_name": "茉莉",
+      "tts_model": "mimo-v2.5-tts",
+      "music": "backend/assets/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3",
+      "music_license_reference": "用户确认：现有商业轻快曲可用于本项目",
+      "music_volume_db": -18.0,
+      "ducking": "disabled by user request; fixed background level remains below voice target",
+      "subtitle_style": "white text, black outline, no panel",
+      "subtitle_font": "Cheese Foam Oolong Song",
+      "subtitle_font_size_px": 60,
+      "subtitle_max_chars_per_line": 14,
+      "fact_evidence_mapping": {
+        "大果": {
+          "clip_ids": [
+            "a229d75f-84d7-4b87-9466-69b353af0b88"
+          ],
+          "shot_capabilities": [
+            "whole_lemon",
+            "hand_holding"
+          ]
+        },
+        "汁水多": {
+          "clip_ids": [
+            "e4373038-b1e9-43ba-9ef1-40a34f87f7b0"
+          ],
+          "shot_capabilities": [
+            "squeezing"
+          ]
+        }
+      },
+      "product_facts": {
+        "广东香水柠檬": "用户确认卖点池",
+        "九块九两斤": "用户确认卖点池",
+        "果园现摘现发": "用户确认卖点池",
+        "浓柠檬香": "用户确认卖点池"
+      }
+    }
+  ],
+  "media_probe": {
+    "RC-e4a0382f6690": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "25.133000"
+      }
+    },
+    "RC-d8756448f999": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.300000"
+      }
+    },
+    "RC-797096fc5780": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.367000"
+      }
+    },
+    "RC-c6265ded8ca4": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "20.267000"
+      }
+    },
+    "RC-05115c235b4f": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "format": {
+        "duration": "23.367000"
+      }
+    }
+  }
+}

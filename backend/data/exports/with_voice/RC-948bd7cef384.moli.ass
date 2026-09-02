@@ -1,0 +1,15 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Source Han Sans CN,54,&H00FFFFFF,&H000000FF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,3,8,0,2,96,96,250,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.35,0:00:04.97,Caption,,0,0,0,,先把青柠切开，再加一片黄柠檬，杯子里\N的颜色立刻丰富起来了。
+Dialogue: 0,0:00:04.97,0:00:09.06,Caption,,0,0,0,,倒水、加冰、放切片，几步就能做一杯，\N看画面就知道不费事。
+Dialogue: 0,0:00:09.06,0:00:15.29,Caption,,0,0,0,,下班回家或者周末在家休息，想喝这种简\N单的自制饮品呀，就带几颗柠檬回去试着\N泡。

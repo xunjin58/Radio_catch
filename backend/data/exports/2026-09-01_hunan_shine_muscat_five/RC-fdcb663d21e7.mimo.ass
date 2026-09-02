@@ -1,0 +1,25 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Cheese Foam Oolong Song,60,&H00FFFFFF,&H000000FF,&H00101010,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,84,84,210,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.25,0:00:01.36,Caption,,0,0,0,,很多人买葡萄，
+Dialogue: 0,0:00:01.36,0:00:03.20,Caption,,0,0,0,,最在意的其实不是包装，
+Dialogue: 0,0:00:03.20,0:00:04.30,Caption,,0,0,0,,而是新不新鲜。
+Dialogue: 0,0:00:04.30,0:00:06.70,Caption,,0,0,0,,湖南阳光玫瑰每天现采摘现发，
+Dialogue: 0,0:00:06.70,0:00:08.18,Caption,,0,0,0,,顺丰空运包邮到家。
+Dialogue: 0,0:00:08.18,0:00:09.84,Caption,,0,0,0,,香甜脆爽，还有玫瑰香，
+Dialogue: 0,0:00:09.84,0:00:12.42,Caption,,0,0,0,,自己吃或者给家里人尝尝都合适
+Dialogue: 0,0:00:12.42,0:00:13.71,Caption,,0,0,0,,，冰箱里备上一份，
+Dialogue: 0,0:00:13.71,0:00:15.00,Caption,,0,0,0,,下午嘴馋就能吃，
+Dialogue: 0,0:00:15.00,0:00:17.21,Caption,,0,0,0,,周末追剧或下午茶都很搭呀，
+Dialogue: 0,0:00:17.21,0:00:18.13,Caption,,0,0,0,,平时也能吃。
+Dialogue: 0,0:00:18.13,0:00:19.42,Caption,,0,0,0,,想吃新鲜葡萄的，
+Dialogue: 0,0:00:19.42,0:00:20.53,Caption,,0,0,0,,去小黄车看看。
