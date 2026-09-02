@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import json
+import subprocess
 import time
 from pathlib import Path
 from typing import Any
@@ -24,10 +25,12 @@ class IntelligenceError(RuntimeError):
 SYSTEM_PROMPT = """你是短视频商品素材标注助手。只输出 JSON，不能输出 Markdown。
 返回字段：summary(string), segment_role(head|middle|tail), dish(string数组), actions(string数组),
 visual_hooks(string数组), audio_hooks(string数组), commerce_roles(string数组：hook|product_proof|usage|cta), shot_type(string), climax_time(number),
-usable_range({start:number,end:number}), quality_score(0-1), confidence(0-1)。
+usable_range({start:number,end:number}), quality_score(0-1), confidence(0-1), shot_capabilities(string数组)。
+shot_capabilities 只可从当前菜品给出的受控枚举中选择；仅标注画面中可见且确定的能力，不能根据业务背景、商品常识或不可见细节推断。
 不确定时降低 confidence，禁止编造不可见内容。业务背景是标签用途说明，不是视频事实，也不能覆盖以上约束。"""
 
 COMMERCE_ROLES = {"hook", "product_proof", "usage", "cta"}
+SHOT_CAPABILITIES_PATH = Path(__file__).resolve().parents[1] / "prompts" / "shot_capabilities.json"
 
 GEMINI_RESPONSE_SCHEMA = {
     "type": "OBJECT",
@@ -39,6 +42,7 @@ GEMINI_RESPONSE_SCHEMA = {
         "visual_hooks": {"type": "ARRAY", "items": {"type": "STRING"}},
         "audio_hooks": {"type": "ARRAY", "items": {"type": "STRING"}},
         "commerce_roles": {"type": "ARRAY", "items": {"type": "STRING", "enum": sorted(COMMERCE_ROLES)}},
+        "shot_capabilities": {"type": "ARRAY", "items": {"type": "STRING"}},
         "shot_type": {"type": "STRING"},
         "climax_time": {"type": "NUMBER"},
         "usable_range": {
@@ -51,7 +55,7 @@ GEMINI_RESPONSE_SCHEMA = {
     },
     "required": [
         "summary", "segment_role", "dish", "actions", "visual_hooks", "audio_hooks", "commerce_roles", "shot_type",
-        "climax_time", "usable_range", "quality_score", "confidence",
+        "climax_time", "usable_range", "quality_score", "confidence", "shot_capabilities",
     ],
 }
 
@@ -147,6 +151,87 @@ def _record_usage(session: Session, config: ModelConfig, started: float, status:
     ))
 
 
+def _shot_capability_catalog() -> dict[str, dict[str, Any]]:
+    """Read the version-controlled capability vocabulary without duplicating it in code."""
+    try:
+        payload = json.loads(SHOT_CAPABILITIES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    dishes = payload.get("dishes") if isinstance(payload, dict) else None
+    return dishes if isinstance(dishes, dict) else {}
+
+
+def _known_clip_dish(clip: Clip) -> str | None:
+    catalog = _shot_capability_catalog()
+    fallback: str | None = None
+    for analysis in reversed(list(clip.analyses or [])):
+        tags = analysis.tags if isinstance(analysis.tags, dict) else {}
+        dish = tags.get("dish")
+        value = dish[0] if isinstance(dish, list) and dish and isinstance(dish[0], str) else dish
+        if not isinstance(value, str) or not value:
+            continue
+        if value in catalog:
+            return value
+        fallback = fallback or value
+    return fallback
+
+
+def _allowed_shot_capabilities(clip: Clip, parsed_dishes: Any = None) -> list[str]:
+    catalog = _shot_capability_catalog()
+    candidates: list[str] = []
+    if isinstance(parsed_dishes, list):
+        candidates.extend(item for item in parsed_dishes if isinstance(item, str))
+    known_dish = _known_clip_dish(clip)
+    if known_dish:
+        candidates.append(known_dish)
+    for dish in candidates:
+        config = catalog.get(dish)
+        values = config.get("capabilities") if isinstance(config, dict) else None
+        if isinstance(values, list):
+            return [item for item in values if isinstance(item, str)]
+    return []
+
+
+def _shot_capability_prompt(clip: Clip) -> str:
+    catalog = _shot_capability_catalog()
+    known_dish = _known_clip_dish(clip)
+    if known_dish and isinstance(catalog.get(known_dish), dict):
+        values = catalog[known_dish].get("capabilities", [])
+        return f"当前素材菜品提示：{known_dish}。shot_capabilities 可选枚举：{json.dumps(values, ensure_ascii=False)}。"
+    options = {
+        dish: config.get("capabilities", [])
+        for dish, config in catalog.items() if isinstance(config, dict)
+    }
+    return (
+        "当前素材没有已知菜品提示。先从画面识别 dish；仅当识别出的菜品存在于下列词表时才填写 "
+        f"shot_capabilities，否则输出空数组。词表：{json.dumps(options, ensure_ascii=False)}。"
+    )
+
+
+def _native_video_failure_diagnostic(clip: Clip) -> str:
+    """Perform local media inspection only after a native-provider failure.
+
+    This never extracts frames or persists media data.  It distinguishes a
+    locally damaged source from a provider/model failure without exposing a
+    request body, Base64 payload, or credential.
+    """
+    path = Path(clip.file_path)
+    if not path.is_file():
+        return "本地诊断：原始视频文件不存在"
+    command = ["ffmpeg", "-v", "error", "-xerror", "-i", str(path), "-map", "0:v:0", "-f", "null", "-"]
+    try:
+        completed = subprocess.run(command, capture_output=True, text=True, timeout=90, check=False)
+    except FileNotFoundError:
+        return "本地诊断：未安装 FFmpeg，无法检查原视频"
+    except subprocess.TimeoutExpired:
+        return "本地诊断：FFmpeg 解码检查超时"
+    if completed.returncode == 0:
+        return "本地诊断：原视频可完整解码；请检查 MiMo 模型、媒体限制或服务端状态"
+    detail = (completed.stderr or completed.stdout).strip().splitlines()
+    summary = detail[-1] if detail else "FFmpeg 无法完整解码该原视频"
+    return f"本地诊断：原视频解码失败（{summary[:300]}）"
+
+
 def _parse(content: str, clip: Clip) -> dict[str, Any]:
     try:
         value = json.loads(content)
@@ -154,6 +239,19 @@ def _parse(content: str, clip: Clip) -> dict[str, Any]:
         raise IntelligenceError("模型没有返回有效 JSON") from exc
     if not isinstance(value, dict):
         raise IntelligenceError("模型响应必须是 JSON 对象")
+    raw_dishes = value.get("dish")
+    if isinstance(raw_dishes, list):
+        dishes = [item for item in raw_dishes if isinstance(item, str)]
+    elif isinstance(raw_dishes, str):
+        dishes = [raw_dishes]
+    else:
+        dishes = []
+    # A reviewed clip already belongs to a known capability catalog.  Keep that
+    # label when re-analysing it so a provider's more specific scene name (for
+    # example “柠檬水”) cannot silently remove it from the same-dish pool.
+    known_dish = _known_clip_dish(clip)
+    if known_dish in _shot_capability_catalog():
+        dishes = [known_dish]
     duration = clip.duration_seconds or 0
     usable = value.get("usable_range") or {"start": 0, "end": duration}
     try:
@@ -168,11 +266,20 @@ def _parse(content: str, clip: Clip) -> dict[str, Any]:
     commerce_roles = list(dict.fromkeys(
         item for item in raw_commerce_roles if isinstance(item, str) and item in COMMERCE_ROLES
     ))
+    raw_capabilities = value.get("shot_capabilities")
+    if not isinstance(raw_capabilities, list):
+        raw_capabilities = []
+    allowed_capabilities = set(_allowed_shot_capabilities(clip, dishes))
+    shot_capabilities = list(dict.fromkeys(
+        item for item in raw_capabilities if isinstance(item, str) and item in allowed_capabilities
+    ))
     return {
         "summary": str(value.get("summary", ""))[:2000], "segment_role": role,
         "tags": {
-            **{key: value.get(key, []) for key in ("dish", "actions", "visual_hooks", "audio_hooks", "shot_type")},
+            **{key: value.get(key, []) for key in ("actions", "visual_hooks", "audio_hooks", "shot_type")},
+            "dish": dishes,
             "commerce_roles": commerce_roles,
+            "shot_capabilities": shot_capabilities,
         },
         "climax_time": _number(value.get("climax_time"), min(max(duration / 2, 0), duration)),
         "usable_range": usable, "quality_score": _score(value.get("quality_score")), "confidence": _score(value.get("confidence")),
@@ -200,8 +307,11 @@ async def understand_clip(session: Session, clip_id: str, mode: str = "auto") ->
     return await _understand_openai_frames(session, clip, config, mode)
 
 
-def _system_prompt(session: Session) -> str:
-    return f"{SYSTEM_PROMPT}\n\n项目业务背景（只作标签用途说明，不可视为视频事实）：\n{get_business_context(session)}"
+def _system_prompt(session: Session, clip: Clip) -> str:
+    return (
+        f"{SYSTEM_PROMPT}\n\n{_shot_capability_prompt(clip)}"
+        f"\n\n项目业务背景（只作标签用途说明，不可视为视频事实）：\n{get_business_context(session)}"
+    )
 
 
 async def _understand_gemini_video(session: Session, clip: Clip, config: ModelConfig, mode: str) -> ClipAnalysis:
@@ -213,7 +323,7 @@ async def _understand_gemini_video(session: Session, clip: Clip, config: ModelCo
     try:
         mime, encoded, size = _native_video_data(clip, config.max_native_media_bytes)
         request = {
-            "system_instruction": {"parts": [{"text": _system_prompt(session)}]},
+            "system_instruction": {"parts": [{"text": _system_prompt(session, clip)}]},
             "contents": [{"role": "user", "parts": [
                 {"text": f"素材时长 {clip.duration_seconds or 0:.2f}s。请直接分析该原始视频及其内嵌音轨。"},
                 {"inline_data": {"mime_type": mime, "data": encoded}},
@@ -234,9 +344,10 @@ async def _understand_gemini_video(session: Session, clip: Clip, config: ModelCo
         parsed = _parse(_gemini_response_text(response.json()), clip)
     except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
         error = f"HTTP {exc.response.status_code}" if isinstance(exc, httpx.HTTPStatusError) else type(exc).__name__
-        _record_usage(session, config, started, "failed", error)
+        diagnostic = _native_video_failure_diagnostic(clip)
+        _record_usage(session, config, started, "failed", f"{error}; {diagnostic}")
         session.commit()
-        raise IntelligenceError(f"模型理解失败：{error}") from exc
+        raise IntelligenceError(f"模型理解失败：{error}。{diagnostic}") from exc
     evidence = [{
         "source": "native_video", "mime_type": mime, "file_size_bytes": size,
         "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
@@ -275,7 +386,7 @@ async def _understand_mimo_video(session: Session, clip: Clip, config: ModelConf
         request: dict[str, Any] = {
             "model": config.model_name,
             "messages": [
-                {"role": "system", "content": _system_prompt(session)},
+                {"role": "system", "content": _system_prompt(session, clip)},
                 {"role": "user", "content": content},
             ],
             "temperature": 0.1,
@@ -296,9 +407,10 @@ async def _understand_mimo_video(session: Session, clip: Clip, config: ModelConf
         parsed = _parse(raw, clip)
     except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError, IntelligenceError) as exc:
         error = f"HTTP {exc.response.status_code}" if isinstance(exc, httpx.HTTPStatusError) else type(exc).__name__
-        _record_usage(session, config, started, "failed", error)
+        diagnostic = _native_video_failure_diagnostic(clip)
+        _record_usage(session, config, started, "failed", f"{error}; {diagnostic}")
         session.commit()
-        raise IntelligenceError(f"模型理解失败：{error}") from exc
+        raise IntelligenceError(f"模型理解失败：{error}。{diagnostic}") from exc
     evidence = [{
         "source": "mimo_native_video", "mime_type": mime, "file_size_bytes": size,
         "duration_seconds": clip.duration_seconds, "has_audio": clip.has_audio,
@@ -323,7 +435,7 @@ async def _understand_openai_frames(session: Session, clip: Clip, config: ModelC
     # portable default is evidence images; 'auto' records this transparent fallback.
     if mode == "native" and not config.supports_native_video:
         raise IntelligenceError("当前模型未启用原生视频能力")
-    request = {"model": config.model_name, "messages": [{"role": "system", "content": _system_prompt(session)}, {"role": "user", "content": content}], "temperature": 0.1}
+    request = {"model": config.model_name, "messages": [{"role": "system", "content": _system_prompt(session, clip)}, {"role": "user", "content": content}], "temperature": 0.1}
     if config.supports_structured_json: request["response_format"] = {"type": "json_object"}
     started = time.perf_counter()
     try:

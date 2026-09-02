@@ -157,6 +157,61 @@ class RemixPlanningTests(unittest.TestCase):
         with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), self.assertRaisesRegex(RemixPlanningError, "图片输入"):
             asyncio.run(plan_remix(self.session, dish="柠檬", requested_count=1, target_duration_seconds=22))
 
+    def test_script_facts_are_sent_to_planner_and_checked_against_selected_capabilities(self) -> None:
+        clip = self.add_clip(1)
+        analysis = self.session.scalar(select(ClipAnalysis).where(ClipAnalysis.clip_id == clip.id))
+        analysis.tags = {**analysis.tags, "shot_capabilities": ["squeezing"]}
+        self.session.commit()
+        self.add_config(); FakeAsyncClient.calls = []
+        FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": json.dumps({
+            "strategies": [{"id": "proof", "name": "挤汁", "reason": "可见挤汁", "allocation": 1}],
+            "variants": [{"strategy_id": "proof", "reason": "展示", "clips": [{"clip_id": clip.id}]}],
+            "uncovered_facts": ["无籽"],
+        }, ensure_ascii=False)}}]})
+        with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), patch("app.remix_planning.httpx.AsyncClient", FakeAsyncClient):
+            plan = asyncio.run(plan_remix(
+                self.session, dish="柠檬", requested_count=1, target_duration_seconds=22,
+                script_facts=["汁水多", "无籽"],
+            ))
+        instruction = FakeAsyncClient.calls[-1]["json"]["messages"][1]["content"][0]["text"]
+        self.assertIn("汁水多", instruction)
+        self.assertEqual(plan["uncovered_facts"], ["无籽"])
+
+    def test_each_variant_must_cover_all_script_facts(self) -> None:
+        first, second = self.add_clip(1, "挤汁"), self.add_clip(2, "切面")
+        analyses = self.session.scalars(select(ClipAnalysis).order_by(ClipAnalysis.clip_id)).all()
+        analyses[0].tags = {**analyses[0].tags, "shot_capabilities": ["squeezing"]}
+        analyses[1].tags = {**analyses[1].tags, "shot_capabilities": ["cut_surface"]}
+        self.session.commit(); self.add_config()
+        FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": json.dumps({
+            "strategies": [{"id": "proof", "name": "证明", "reason": "测试", "allocation": 2}],
+            "variants": [
+                {"strategy_id": "proof", "reason": "只挤汁", "clips": [{"clip_id": first.id}]},
+                {"strategy_id": "proof", "reason": "只切面", "clips": [{"clip_id": second.id}]},
+            ],
+        }, ensure_ascii=False)}}]})
+        with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), patch("app.remix_planning.httpx.AsyncClient", FakeAsyncClient):
+            plan = asyncio.run(plan_remix(
+                self.session, dish="柠檬", requested_count=2, target_duration_seconds=22,
+                script_facts=["汁水多", "无籽"],
+            ))
+        self.assertEqual(plan["planned_count"], 0)
+        self.assertEqual(plan["uncovered_facts"], ["汁水多", "无籽"])
+
+    def test_legacy_tags_can_supply_a_cautious_fact_coverage_fallback(self) -> None:
+        clip = self.add_clip(1, "挤汁")
+        self.add_config()
+        FakeAsyncClient.response = FakeResponse({"choices": [{"message": {"content": json.dumps({
+            "strategies": [{"id": "legacy", "name": "旧标签", "reason": "摘要含挤汁", "allocation": 1}],
+            "variants": [{"strategy_id": "legacy", "reason": "展示", "clips": [{"clip_id": clip.id}]}],
+        }, ensure_ascii=False)}}]})
+        with patch.dict(os.environ, {"RADIO_CATCH_STORAGE_DIR": str(self.storage)}), patch("app.remix_planning.httpx.AsyncClient", FakeAsyncClient):
+            plan = asyncio.run(plan_remix(
+                self.session, dish="柠檬", requested_count=1, target_duration_seconds=22, script_facts=["汁水多"],
+            ))
+        self.assertEqual(plan["planned_count"], 1)
+        self.assertEqual(plan["uncovered_facts"], [])
+
     def test_remix_plan_endpoint_exposes_planning_result(self) -> None:
         from app.database import get_session
         app = FastAPI(); app.include_router(workflow_router); app.dependency_overrides[get_session] = lambda: self.session
@@ -164,7 +219,7 @@ class RemixPlanningTests(unittest.TestCase):
         with TestClient(app) as client, patch("app.workflow_routes.plan_remix", AsyncMock(return_value=expected)) as planner:
             response = client.post("/api/remix-plans", json={"name": "测试", "dish": "柠檬", "requested_count": 2, "target_duration_seconds": 22})
         self.assertEqual(response.status_code, 200); self.assertEqual(response.json()["planned_count"], 1)
-        planner.assert_awaited_once_with(self.session, dish="柠檬", requested_count=2, target_duration_seconds=22.0)
+        planner.assert_awaited_once_with(self.session, dish="柠檬", requested_count=2, target_duration_seconds=22.0, script_facts=None)
 
 
 if __name__ == "__main__":

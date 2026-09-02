@@ -22,7 +22,7 @@ from .media import (
 def _http_error(exc: Exception) -> HTTPException:
     if isinstance(exc, FFmpegUnavailable):
         return HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc))
-    return HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc))
+    return HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail=str(exc))
 
 
 def _get_clip_or_404(repository: Any, clip_id: str) -> Any:
@@ -137,16 +137,11 @@ def create_media_router(
             raise _http_error(exc) from exc
         finally:
             await file.close()
-        if duplicate:
-            return {"duplicate": True, "clip": public_clip(clip), "job": None}
-        clip_id = object_value(clip, "id", "clip_id")
-        if service.get_clip(clip_id) is None:
-            # Useful for intentionally simple repository implementations; the
-            # SQLAlchemy adapter takes the fresh-session branch above.
-            job = job_service.submit(clip_id, lambda progress: service.process_clip(clip, progress))
-        else:
-            job = queue_processing(service, clip_id)
-        return {"duplicate": False, "clip": public_clip(clip), "job": job.to_dict()}
+        # Native-video models, including MiMo, should receive the original
+        # upload first.  Frame extraction stays available on the explicit
+        # ``/process`` route for non-native workflows or failure inspection,
+        # but is no longer an automatic import-time prerequisite.
+        return {"duplicate": duplicate, "clip": public_clip(clip), "job": None}
 
     @router.post("/clips/{clip_id}/process", status_code=status.HTTP_202_ACCEPTED)
     def reprocess_clip(clip_id: str) -> dict[str, Any]:

@@ -4,14 +4,18 @@
 
 ## 常用流程
 
-### 1. 导入并等待媒体处理
+### 1. 导入素材（MiMo 优先）
 
 ```bash
 curl -F 'file=@/absolute/path/clip.mp4' http://127.0.0.1:8001/api/media/imports
-curl http://127.0.0.1:8001/api/media/jobs/<job_id>
 ```
 
-当任务 `state` 为 `succeeded` 时，素材的缩略图与关键帧已就绪。相同文件会返回 `duplicate: true`，不会创建重复素材。
+导入只保存原视频并读取必要的媒体头信息，不会自动抽帧或生成缩略图；返回中的 `job` 为 `null`。相同文件会返回 `duplicate: true`，不会创建重复素材。使用 MiMo 原生配置时可直接进入下一步。若需为 OpenAI 兼容的关键帧模型或人工排查生成证据帧，再显式调用：
+
+```bash
+curl -X POST http://127.0.0.1:8001/api/media/clips/<clip_id>/process
+curl http://127.0.0.1:8001/api/media/jobs/<job_id>
+```
 
 ### 1a. 查看素材原视频
 
@@ -34,6 +38,8 @@ curl -X POST http://127.0.0.1:8001/api/clips/<clip_id>/analyze \
   -H 'content-type: application/json' -d '{"mode":"auto"}'
 ```
 
+对 MiMo/Gemini 原生视频理解，接口会先直接发送原视频。若模型返回失败，响应会附带一次本地 FFmpeg 全量解码诊断：本地也无法完整解码时，说明源文件可能损坏；本地可完整解码时，应检查模型配置、媒体大小限制或供应商状态。该诊断不生成关键帧，也不保存原视频 Base64、请求体或密钥。
+
 模型配置读取接口只返回 `api_key_masked`，不会返回原始密钥。
 
 ### 2a. 设置商家业务背景
@@ -47,7 +53,7 @@ curl -X PATCH http://127.0.0.1:8001/api/project-settings \
   -d '{"business_context":"我是柠檬商家；只标注视频或音频中可证实的信息，并为可见镜头标注带货角色。"}'
 ```
 
-素材分析的 `tags.commerce_roles` 可能包含 `hook`（开场吸引）、`product_proof`（品质展示）、`usage`（使用场景）和 `cta`（明确行动引导）。人工审核可删除不具备画面或音频证据的角色。
+素材分析的 `tags.commerce_roles` 可能包含 `hook`（开场吸引）、`product_proof`（品质展示）、`usage`（使用场景）和 `cta`（明确行动引导）。`tags.shot_capabilities` 只会保留 `backend/prompts/shot_capabilities.json` 中、与已识别菜品匹配的可见能力；人工审核可删除不具备画面或音频证据的角色或能力。
 
 ### 兔子 API Gemini 3 原生视频配置
 
@@ -102,10 +108,10 @@ curl -X PATCH http://127.0.0.1:8001/api/clips/<clip_id>/metadata \
 ```bash
 curl -X POST http://127.0.0.1:8001/api/remix-plans \
   -H 'content-type: application/json' \
-  -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":22}'
+  -d '{"name":"柠檬切片展示","dish":"柠檬","requested_count":5,"target_duration_seconds":22,"script_facts":["汁水多","无籽"]}'
 ```
 
-响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；规划请求只选择和排列候选中的 `clip_id`，每个入选素材都会完整保留，系统不支持截取或变速。响应和最终 EDL 仍展示服务端写入的 `start: 0`、`end: 原片时长`、`speed: 1` 以便追溯。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
+响应中的 `strategies` 是少量叙事结构，`variants` 是实际可导出的 EDL；规划请求只选择和排列候选中的 `clip_id`，每个入选素材都会完整保留，系统不支持截取或变速。`script_facts` 只放需要画面能力佐证的断言；价格、产地等用户确认商品事实应在后期 `product_facts` 记录来源。响应的 `uncovered_facts` 非空时，必须改写对应断言或补充素材，不得送入 TTS。响应和最终 EDL 仍展示服务端写入的 `start: 0`、`end: 原片时长`、`speed: 1` 以便追溯。若素材不足，`planned_count` 可以小于 `requested_count`，并通过 `shortfall_reason` 说明原因；客户端确认后，将 `variants[].clips` 作为既有 `POST /api/experiments` 的 variants 提交。规划响应和 Experiment 快照不含图片 Base64 或原始视频内容。
 
 创建实验的 `variants[].clips` 只需提供审核通过的 `clip_id`。响应中的每个成片都有唯一 `video_id`；随后调用 `POST /api/renders/<render_id>/run` 执行完整原片拼接导出。
 
@@ -121,7 +127,7 @@ curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/download
 
 ### 4a. MiMo 音画后期交付
 
-基础 Render 不能直接作为默认交付。后期操作者先从 `GET /api/renders/<render_id>` 读取 `video_id` 和完整 `edit_decision_list`，再依照 [MiMo 音画后期流程](mimo-postproduction.md)创建独立输出目录。流程使用已启用的 MiMo 原生配置进行 2 fps、`media_resolution=default` 的视频审核，并要求 JSON 形式的分段画面事实；审核连接与 TTS 均只在运行时从加密的 `ModelConfig` 读取凭据。
+基础 Render 不能直接作为默认交付。后期操作者先从 `GET /api/renders/<render_id>` 读取 `video_id` 和完整 `edit_decision_list`，再依照 [MiMo 音画后期流程](mimo-postproduction.md)创建独立输出目录。文案先由素材能力和商品卖点池起草、选片、渲染，再按实测时长定稿。`mimo_postprocess.py --analyze-only` 可使用已启用的 MiMo 原生配置进行 2 fps、`media_resolution=default` 的可选成片复核；审核连接与 TTS 均只在运行时从加密的 `ModelConfig` 读取凭据。
 
 交付目录的 manifest 至少要包含以下字段，供后续复查或平台数据回溯：
 
@@ -130,11 +136,30 @@ curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/download
 | `video_id` / `source_edl` | 基础成片标识及完整镜头 EDL。 |
 | `vision_review` | 不含视频 Base64 的 MiMo 分段画面事实文件。 |
 | `script` / `cues` | 经事实审核的口播全文与逐句时间轴。 |
+| `fact_evidence_mapping` / `product_facts` | 事实断言到基础 EDL 切片的证据，以及用户确认商品卖点的来源。 |
 | `tts` | 模型、音色、风格、实际语速和对应音频路径。 |
 | `music` | 本地授权素材路径、授权来源/凭证引用、音量和 ducking 参数。 |
 | `output` / `media_probe` | 后期 MP4 路径及 FFprobe、响度和解码验证结果。 |
 
-该流程不新增 HTTP 接口；Base64 请求体、原视频内容和 API Key 绝不能写入 manifest、日志或响应。
+Agent 后期成功后会自动回写原 `Render`，基础 MP4 和 EDL 不会被覆盖。Web 通过下列只读接口优先展示最终版；最终文件缺失时会回退基础 Render：
+
+```bash
+curl -I http://127.0.0.1:8001/api/renders/<render_id>/delivery-video
+curl -I http://127.0.0.1:8001/api/renders/<render_id>/delivery-thumbnail
+curl -OJ http://127.0.0.1:8001/api/renders/<render_id>/delivery-download
+curl http://127.0.0.1:8001/api/renders/<render_id>/delivery-manifest
+```
+
+后期命令必须为每批提供已获授权的音乐和授权引用（也可预先配置环境变量 `RADIO_CATCH_POSTPROCESS_MUSIC_PATH`、`RADIO_CATCH_POSTPROCESS_MUSIC_LICENSE_REFERENCE`）：
+
+```bash
+backend/.venv/bin/python backend/scripts/mimo_postprocess.py \
+  --batch <batch_name> --scripts-json /absolute/path/confirmed_scripts.json \
+  --music-path /absolute/path/licensed.mp3 \
+  --music-license-reference '素材库条目或用户确认记录'
+```
+
+`RADIO_CATCH_EXPORT_DIR` 同时控制基础 Render、后期与最终交付媒体接口的根目录。Base64 请求体、原视频内容和 API Key 绝不能写入 manifest、日志或响应。
 
 ### 5. 导入平台数据
 

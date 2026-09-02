@@ -178,6 +178,12 @@ class Render(Timestamped, Base):
     title: Mapped[Optional[str]] = mapped_column(String(300), nullable=True)
     status: Mapped[str] = mapped_column(String(32), default="queued", nullable=False, index=True)
     output_path: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    # The base Render remains immutable after its FFmpeg export.  Agent-run
+    # post-production is tracked separately so the final delivery can be
+    # displayed without losing the reproducible source EDL.
+    delivery_output_path: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    delivery_manifest: Mapped[Optional[dict[str, Any]]] = mapped_column(JSON, nullable=True)
+    delivered_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     duration_seconds: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
     width: Mapped[int] = mapped_column(Integer, default=1080, nullable=False)
     height: Mapped[int] = mapped_column(Integer, default=1920, nullable=False)

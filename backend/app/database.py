@@ -57,12 +57,23 @@ def init_db() -> None:
 
 def _migrate_sqlite_schema() -> None:
     """Apply small, additive SQLite migrations for existing local databases."""
-    if engine.dialect.name != "sqlite" or "model_configs" not in inspect(engine).get_table_names():
+    if engine.dialect.name != "sqlite":
         return
-    columns = {column["name"] for column in inspect(engine).get_columns("model_configs")}
-    if "max_native_media_bytes" not in columns:
+    tables = set(inspect(engine).get_table_names())
+    if "model_configs" in tables:
+        columns = {column["name"] for column in inspect(engine).get_columns("model_configs")}
+        if "max_native_media_bytes" not in columns:
+            with engine.begin() as connection:
+                connection.exec_driver_sql(
+                    "ALTER TABLE model_configs ADD COLUMN max_native_media_bytes "
+                    "INTEGER NOT NULL DEFAULT 104857600"
+                )
+    if "renders" in tables:
+        columns = {column["name"] for column in inspect(engine).get_columns("renders")}
         with engine.begin() as connection:
-            connection.exec_driver_sql(
-                "ALTER TABLE model_configs ADD COLUMN max_native_media_bytes "
-                "INTEGER NOT NULL DEFAULT 104857600"
-            )
+            if "delivery_output_path" not in columns:
+                connection.exec_driver_sql("ALTER TABLE renders ADD COLUMN delivery_output_path TEXT")
+            if "delivery_manifest" not in columns:
+                connection.exec_driver_sql("ALTER TABLE renders ADD COLUMN delivery_manifest JSON")
+            if "delivered_at" not in columns:
+                connection.exec_driver_sql("ALTER TABLE renders ADD COLUMN delivered_at DATETIME")

@@ -25,11 +25,13 @@ MAX_PLANNER_CANDIDATES = 24
 MAX_IMAGES_PER_CANDIDATE = 4  # one thumbnail plus up to three evidence frames
 PLANNER_IMAGE_MAX_EDGE = 512
 PLANNER_IMAGE_MAX_BYTES = 256 * 1024
+SHOT_CAPABILITIES_PATH = Path(__file__).resolve().parents[1] / "prompts" / "shot_capabilities.json"
 
 PLANNER_SYSTEM_PROMPT = """你是短视频混剪规划师。基于候选素材的结构化标签、摘要和静态画面，规划可实际执行的短视频 EDL。
 标签用于硬约束和筛选，摘要与画面用于判断视觉差异。不得编造素材 ID、画面内容、时间区间或卖点。
 先识别少量自然成立的叙事策略，再为每种策略产出不同的具体变体。相同策略可以替换同一叙事槽位的不同素材；素材不足时可使用同菜品、叙事功能相近但展示方式不同的镜头补位。不要为了凑数量输出完全相同的 EDL。
 每条变体总时长必须在 20 到 60 秒之间，时长按候选素材的完整原视频 `duration_seconds` 相加。每个素材一旦入选就必须完整保留；不得截取、变速或输出时间区间。只输出 JSON。
+当请求带有 `script_facts` 时，它们是必须由画面能力支持的事实断言。所选 clips 的 `tags.shot_capabilities` 必须覆盖每个断言对应的能力；旧素材没有该字段时，才可谨慎以 actions、visual_hooks 和 summary 的明确匹配作回退，拿不准就列入 `uncovered_facts`。无法覆盖的断言必须逐项列入 `uncovered_facts`，不要臆造证据。没有 `script_facts` 时忽略此规则。
 输出对象必须包含 `strategies` 和 `variants`；每个 `variants` 项必须直接包含 `strategy_id`、`reason` 和 `clips`。`clips` 是按播放顺序排列的对象数组，每项只用候选中原样给出的 `clip_id`。不得改用 `structure`、`title`、`target_duration` 或 `total_duration` 代替 `clips`，也不得只描述镜头而不列出片段。"""
 
 PLANNER_RESPONSE_SCHEMA = {
@@ -66,6 +68,7 @@ PLANNER_RESPONSE_SCHEMA = {
             },
         },
         "shortfall_reason": {"type": "STRING"},
+        "uncovered_facts": {"type": "ARRAY", "items": {"type": "STRING"}},
     },
     "required": ["strategies", "variants"],
 }
@@ -218,6 +221,90 @@ def _candidate_text(item: dict[str, Any]) -> str:
     return json.dumps(payload, ensure_ascii=False)
 
 
+def _fact_capability_mapping(dish: str) -> dict[str, list[str]]:
+    try:
+        payload = json.loads(SHOT_CAPABILITIES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    dishes = payload.get("dishes") if isinstance(payload, dict) else None
+    config = dishes.get(dish) if isinstance(dishes, dict) else None
+    mapping = config.get("fact_capability_mapping") if isinstance(config, dict) else None
+    if not isinstance(mapping, dict):
+        return {}
+    return {
+        str(fact): [item for item in values if isinstance(item, str)]
+        for fact, values in mapping.items() if isinstance(values, list)
+    }
+
+
+def _legacy_fact_evidence_terms(dish: str) -> dict[str, list[str]]:
+    try:
+        payload = json.loads(SHOT_CAPABILITIES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    dishes = payload.get("dishes") if isinstance(payload, dict) else None
+    config = dishes.get(dish) if isinstance(dishes, dict) else None
+    terms = config.get("legacy_evidence_terms") if isinstance(config, dict) else None
+    if not isinstance(terms, dict):
+        return {}
+    return {
+        str(fact): [item for item in values if isinstance(item, str)]
+        for fact, values in terms.items() if isinstance(values, list)
+    }
+
+
+def _normalize_script_facts(script_facts: list[str] | None) -> list[str]:
+    if script_facts is None:
+        return []
+    return list(dict.fromkeys(
+        fact.strip() for fact in script_facts if isinstance(fact, str) and fact.strip()
+    ))
+
+
+def _uncovered_facts_for_clips(
+    dish: str, script_facts: list[str], clips: list[dict[str, Any]], candidates: list[dict[str, Any]],
+) -> list[str]:
+    """Return visual assertions not covered by one concrete EDL variant."""
+    candidate_by_id = {str(item["id"]): item for item in candidates}
+    selected_capabilities: set[str] = set()
+    legacy_items: list[dict[str, Any]] = []
+    for clip in clips:
+        item = candidate_by_id.get(str(clip.get("clip_id")))
+        tags = item.get("tags") if isinstance(item, dict) and isinstance(item.get("tags"), dict) else {}
+        capabilities = tags.get("shot_capabilities") if isinstance(tags, dict) else []
+        if isinstance(capabilities, list):
+            selected_capabilities.update(item for item in capabilities if isinstance(item, str))
+        if isinstance(item, dict) and not capabilities:
+            legacy_items.append(item)
+    mapping = _fact_capability_mapping(dish)
+    legacy_text = "\n".join(
+        json.dumps({"summary": item.get("summary"), "tags": item.get("tags")}, ensure_ascii=False) for item in legacy_items
+    )
+    fallback_terms = _legacy_fact_evidence_terms(dish)
+    return [
+        fact for fact in script_facts
+        if not set(mapping.get(fact, [])).intersection(selected_capabilities)
+        and not any(term in legacy_text for term in fallback_terms.get(fact, []))
+    ]
+
+
+def _variants_with_fact_coverage(
+    dish: str, script_facts: list[str], variants: list[dict[str, Any]], candidates: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Keep only EDLs that individually cover every requested visual assertion."""
+    if not script_facts:
+        return variants, []
+    valid: list[dict[str, Any]] = []
+    missing: set[str] = set()
+    for variant in variants:
+        uncovered = _uncovered_facts_for_clips(dish, script_facts, variant.get("clips", []), candidates)
+        if uncovered:
+            missing.update(uncovered)
+        else:
+            valid.append(variant)
+    return valid, [fact for fact in script_facts if fact in missing]
+
+
 def _clean_json(value: Any) -> dict[str, Any]:
     if not isinstance(value, str):
         raise RemixPlanningError("规划模型没有返回 JSON 文本")
@@ -241,10 +328,11 @@ def _record_usage(session: Session, config: ModelConfig, started: float, status:
     ))
 
 
-async def _call_model(session: Session, config: ModelConfig, dish: str, requested_count: int, target_duration_seconds: float, candidates: list[dict[str, Any]]) -> dict[str, Any]:
+async def _call_model(session: Session, config: ModelConfig, dish: str, requested_count: int, target_duration_seconds: float, candidates: list[dict[str, Any]], script_facts: list[str]) -> dict[str, Any]:
     instruction = (
         f"目标菜品：{dish}。请求生成 {requested_count} 条实际变体，目标时长约 {target_duration_seconds:.1f} 秒。候选素材的画面紧跟在各自素材说明之后。"
         f"项目业务背景（只作标签用途说明，不可视为视频事实）：{get_business_context(session)}"
+        + (f"\n必须覆盖的事实断言（仅限需画面能力佐证的断言）：{json.dumps(script_facts, ensure_ascii=False)}。" if script_facts else "")
     )
     started = time.perf_counter()
     try:
@@ -339,13 +427,24 @@ def _normalize_plan(session: Session, dish: str, requested_count: int, raw: dict
     return strategies, variants, shortfall[:1000] if shortfall else None
 
 
-async def plan_remix(session: Session, *, dish: str, requested_count: int, target_duration_seconds: float) -> dict[str, Any]:
+async def plan_remix(session: Session, *, dish: str, requested_count: int, target_duration_seconds: float, script_facts: list[str] | None = None) -> dict[str, Any]:
     config = _planner_model(session)
     candidate_count, candidates = _candidate_pool(session, dish)
     if not candidates:
         raise RemixPlanningError("该菜品没有已审核且具备可用区间的素材")
-    raw = await _call_model(session, config, dish, requested_count, target_duration_seconds, candidates)
+    normalized_facts = _normalize_script_facts(script_facts)
+    raw = await _call_model(session, config, dish, requested_count, target_duration_seconds, candidates, normalized_facts)
     strategies, variants, shortfall = _normalize_plan(session, dish, requested_count, raw)
+    variants, uncovered_facts = _variants_with_fact_coverage(dish, normalized_facts, variants, candidates)
+    if normalized_facts and not variants:
+        shortfall = "没有可同时覆盖全部事实断言的 EDL；请改写断言或补充素材。"
+    strategy_counts = {variant["strategy_id"]: 0 for variant in variants}
+    for variant in variants:
+        strategy_counts[variant["strategy_id"]] += 1
+    strategies = [
+        {**strategy, "allocation": strategy_counts[strategy["id"]]}
+        for strategy in strategies if strategy["id"] in strategy_counts
+    ]
     return {
         "candidate_count": candidate_count, "included_candidate_count": len(candidates),
         "excluded_candidate_count": max(0, candidate_count - len(candidates)),
@@ -353,4 +452,5 @@ async def plan_remix(session: Session, *, dish: str, requested_count: int, targe
         "requested_count": requested_count, "planned_count": len(variants), "target_duration_seconds": target_duration_seconds,
         "strategies": strategies, "variants": variants, "shortfall_reason": shortfall,
         "planner_model_config_id": config.id,
+        "uncovered_facts": uncovered_facts,
     }

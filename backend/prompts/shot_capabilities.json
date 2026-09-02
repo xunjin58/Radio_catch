@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "dishes": {
+    "柠檬": {
+      "capabilities": [
+        "whole_lemon",
+        "lemon_slices",
+        "cut_surface",
+        "cutting",
+        "squeezing",
+        "hand_holding",
+        "clear_drink",
+        "dark_drink",
+        "bubbles",
+        "finished_cup",
+        "soaking",
+        "pouring",
+        "ice",
+        "plating",
+        "yellow_lemon",
+        "green_lemon",
+        "mixed_lemon"
+      ],
+      "fact_capability_mapping": {
+        "无籽": ["cut_surface"],
+        "皮薄": ["cut_surface"],
+        "汁水多": ["squeezing"],
+        "爆汁": ["squeezing"],
+        "大果": ["whole_lemon", "hand_holding"],
+        "个头大": ["whole_lemon", "hand_holding"],
+        "气泡水": ["clear_drink", "bubbles"],
+        "可乐": ["dark_drink"],
+        "跟奶茶店没差": ["finished_cup"],
+        "泡水好喝": ["soaking", "pouring"]
+      },
+      "legacy_evidence_terms": {
+        "无籽": ["切面", "切开", "切片"],
+        "皮薄": ["切面", "切开", "切片"],
+        "汁水多": ["挤", "汁"],
+        "爆汁": ["挤", "汁"],
+        "大果": ["整果", "手持", "拿着"],
+        "个头大": ["整果", "手持", "拿着"],
+        "气泡水": ["气泡", "透明"],
+        "可乐": ["可乐", "深色"],
+        "跟奶茶店没差": ["成品", "杯"],
+        "泡水好喝": ["泡", "倒", "入杯"]
+      }
+    },
+    "葡萄": {
+      "capabilities": [
+        "vineyard_grapes",
+        "grape_cluster",
+        "harvesting",
+        "bagged_grapes",
+        "boxed_grapes",
+        "closeup_grapes",
+        "hand_touching"
+      ],
+      "fact_capability_mapping": {
+        "葡萄园与成串绿葡萄": ["vineyard_grapes", "grape_cluster"],
+        "葡萄近景": ["closeup_grapes"],
+        "葡萄园": ["vineyard_grapes"],
+        "成串葡萄": ["grape_cluster"],
+        "采摘葡萄": ["harvesting"],
+        "套袋葡萄": ["bagged_grapes"],
+        "整箱葡萄": ["boxed_grapes"]
+      },
+      "legacy_evidence_terms": {
+        "葡萄园与成串绿葡萄": ["葡萄园", "葡萄串"],
+        "葡萄近景": ["近景", "果粒"],
+        "葡萄园": ["葡萄园"],
+        "成串葡萄": ["葡萄串"],
+        "采摘葡萄": ["采摘", "剪下"],
+        "套袋葡萄": ["套袋"],
+        "整箱葡萄": ["箱", "整箱"]
+      }
+    }
+  }
+}

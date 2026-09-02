@@ -404,11 +404,25 @@ class LocalMediaService:
         report(35, "Selecting adaptive evidence frames")
         times = self.adaptive_timestamps(source_path, metadata["duration"], max_frames=max_frames)
         frames: list[dict[str, Any]] = []
+        failed_timestamps: list[float] = []
         for index, timestamp in enumerate(times, start=1):
             destination = asset_dir / f"frame_{index:02d}.png"
-            self._extract_frame(source_path, timestamp, destination)
+            try:
+                self._extract_frame(source_path, timestamp, destination)
+            except MediaProcessingError as exc:
+                # Some uploads have a decodable opening followed by damaged H.264
+                # frames.  Preserve the evidence that could be decoded instead of
+                # rejecting the whole clip, while retaining the failed timestamps
+                # so later review can keep them out of a usable range.
+                failed_timestamps.append(round(timestamp, 3))
+                logger.warning("Skipping undecodable evidence frame for %s at %.3fs: %s", source_path.name, timestamp, exc)
+                continue
             frames.append({"time": round(timestamp, 3), "path": str(destination)})
             report(35 + int(index / max(1, len(times)) * 55), f"Extracting evidence frame {index}/{len(times)}")
+        if not frames:
+            raise MediaProcessingError("FFmpeg could not extract any evidence frames from this video.")
+        if failed_timestamps:
+            metadata = {**metadata, "undecodable_evidence_timestamps": failed_timestamps}
         values = {"status": "ready", "thumbnail_path": str(thumbnail), "keyframes": frames, "metadata": metadata, "error_message": None}
         updated = self.repository.update_clip(clip, values)
         save_evidence = getattr(self.repository, "save_evidence_frames", None)

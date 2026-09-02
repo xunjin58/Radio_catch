@@ -11,6 +11,7 @@ import argparse
 import base64
 import json
 import math
+import os
 import re
 import subprocess
 import sys
@@ -28,12 +29,13 @@ load_dotenv(ROOT / ".env")
 sys.path.insert(0, str(BACKEND))
 
 from app.database import SessionLocal  # noqa: E402
-from app.models import ModelConfig, Render  # noqa: E402
+from app.models import ModelConfig, Render, utcnow  # noqa: E402
 from app.security import decrypt_api_key  # noqa: E402
 
-EXPORTS = ROOT / "backend/data/exports"
+EXPORTS = Path(os.getenv("RADIO_CATCH_EXPORT_DIR", ROOT / "backend/data/exports")).expanduser()
 OUTPUT = EXPORTS / "with_mimo_final_v2"
-MUSIC = Path("/Users/xunjin/Desktop/vibe/yaoyi/music/echoes_of_lumen-upbeat-music-happy-commercial-586975.mp3")
+DEFAULT_MUSIC_PATH = os.getenv("RADIO_CATCH_POSTPROCESS_MUSIC_PATH")
+DEFAULT_MUSIC_LICENSE_REFERENCE = os.getenv("RADIO_CATCH_POSTPROCESS_MUSIC_LICENSE_REFERENCE")
 CAPTION_FONT_NAME = "Cheese Foam Oolong Song"
 CAPTION_FONT_SIZE_PX = 60
 CAPTION_MAX_CHARS_PER_LINE = 14
@@ -138,6 +140,89 @@ def source_edl(video_id: str) -> list[dict[str, Any]]:
         return list(render.edit_decision_list or [])
 
 
+def _script_sentences(script: str) -> list[str]:
+    sentences = [part.strip() for part in re.split(r"(?<=[。！？!?])", script) if part.strip()]
+    return sentences or [script.strip()]
+
+
+SHOT_NARRATION_PATTERNS = (
+    r"(?:画面|镜头|视频|片段)(?:里|中|上|下)?(?:有|是|都|正在|出现|展示|带到|拍到|包括|给你看)",
+    r"(?:采摘|切开|倒进|放进|挤进|拿起|掰开|摆上|端上)\s*(?:画面|镜头|视频|片段)",
+    r"(?:镜头|画面)一转",
+    r"(?:我现在|先|再|然后|后面|最后)\s*(?:把|将)?.{0,8}(?:拿起|切开|倒进|放进|挤进|掰开|摆上|端上)",
+)
+
+
+def validate_script_first_voiceover(video_id: str, script: str) -> None:
+    """Reject shot-by-shot narration before the text can be synthesized."""
+    for pattern in SHOT_NARRATION_PATTERNS:
+        match = re.search(pattern, script)
+        if match:
+            raise RuntimeError(
+                f"{video_id} 的口播含镜头/动作解说“{match.group(0)}”；"
+                "请改成商品事实、价值对比或消费场景，并将可见事实留在 evidence 中校验"
+            )
+
+
+def parse_script_entry(video_id: str, value: Any) -> dict[str, Any]:
+    """Accept legacy text entries and the Script-First evidence-aware format."""
+    if isinstance(value, str):
+        script = value.strip()
+        entry: dict[str, Any] = {
+            "id": video_id, "script": script, "sentences": _script_sentences(script),
+            "fact_assertions": [], "evidence": {}, "product_facts": {},
+        }
+    elif isinstance(value, dict):
+        script = value.get("script")
+        facts = value.get("fact_assertions", [])
+        evidence = value.get("evidence", {})
+        product_facts = value.get("product_facts", {})
+        if not isinstance(script, str) or not script.strip():
+            raise RuntimeError(f"{video_id} 缺少口播全文")
+        if not isinstance(facts, list) or not all(isinstance(fact, str) and fact.strip() for fact in facts):
+            raise RuntimeError(f"{video_id} 的 fact_assertions 必须是非空字符串数组")
+        if not isinstance(evidence, dict):
+            raise RuntimeError(f"{video_id} 的 evidence 必须是对象")
+        if not isinstance(product_facts, dict):
+            raise RuntimeError(f"{video_id} 的 product_facts 必须是对象")
+        normalized_facts = list(dict.fromkeys(fact.strip() for fact in facts))
+        entry = {
+            "id": video_id, "script": script.strip(), "sentences": _script_sentences(script),
+            "fact_assertions": normalized_facts, "evidence": evidence, "product_facts": product_facts,
+        }
+    else:
+        raise RuntimeError(f"{video_id} 缺少口播全文")
+    if not entry["script"]:
+        raise RuntimeError(f"{video_id} 缺少口播全文")
+    validate_script_first_voiceover(video_id, str(entry["script"]))
+    return entry
+
+
+def fact_evidence_mapping(
+    video_id: str, fact_assertions: list[str], evidence: dict[str, Any], edl: list[dict[str, Any]],
+) -> dict[str, dict[str, list[str]]]:
+    """Validate that every visual assertion traces to a clip in the base EDL."""
+    available_clip_ids = {str(item.get("clip_id")) for item in edl if isinstance(item, dict) and item.get("clip_id")}
+    mapping: dict[str, dict[str, list[str]]] = {}
+    for fact in fact_assertions:
+        raw = evidence.get(fact)
+        if isinstance(raw, list):
+            clip_ids, capabilities = raw, []
+        elif isinstance(raw, dict):
+            clip_ids = raw.get("clip_ids", raw.get("supporting_clip_ids", []))
+            capabilities = raw.get("shot_capabilities", [])
+        else:
+            raise RuntimeError(f"{video_id} 的事实断言“{fact}”缺少切片证据")
+        if not isinstance(clip_ids, list) or not all(isinstance(item, str) and item for item in clip_ids):
+            raise RuntimeError(f"{video_id} 的事实断言“{fact}”缺少有效 clip_ids")
+        if not set(clip_ids).issubset(available_clip_ids):
+            raise RuntimeError(f"{video_id} 的事实断言“{fact}”引用了不在基础 EDL 中的切片")
+        if not isinstance(capabilities, list) or not all(isinstance(item, str) and item for item in capabilities):
+            raise RuntimeError(f"{video_id} 的事实断言“{fact}”shot_capabilities 无效")
+        mapping[fact] = {"clip_ids": list(dict.fromkeys(clip_ids)), "shot_capabilities": list(dict.fromkeys(capabilities))}
+    return mapping
+
+
 def parse_json_content(content: str) -> dict[str, Any]:
     try:
         return json.loads(content)
@@ -157,8 +242,10 @@ def review_video(config: ModelConfig, video_id: str, source: Path) -> dict[str, 
     if len(data_url.encode("ascii")) > 50 * 1024 * 1024:
         raise RuntimeError(f"{video_id} 的 MiMo Base64 请求超过 50 MiB")
     prompt = (
-        "逐段查看这条约 21 秒的竖屏柠檬饮品视频。只报告画面可直接验证的事实，"
-        "不要从业务背景推断价格、产地、无籽、营养或功效。返回 JSON："
+        "逐段查看这条竖屏商品视频。只报告口播可用的粗粒度事实："
+        "可见商品和包装、可辨认场景、稳定可见的外观状态，以及明确动作；"
+        "不要报告需要特写放大的微观细节，也不要从业务背景推断价格、产地、品种、口感、营养或功效。"
+        "动作只用于校验事实，不能要求口播逐镜头解说。返回 JSON："
         "{overall_summary:string,segments:[{start:number,end:number,visual_facts:[string],narrative_role:string}],"
         "safe_copy_facts:[string],avoid_claims:[string]}。时间段覆盖完整视频。"
     )
@@ -306,9 +393,17 @@ def produce_video(
     source: Path,
     config: ModelConfig,
     *,
+    music_path: Path,
+    music_license_reference: str,
     duck_music: bool,
     music_volume_db: float,
     raw_voice_source: Path | None = None,
+    min_effective_speech_speed: float = 1.08,
+    max_effective_speech_speed: float = 1.34,
+    max_tail_blank_seconds: float = 0.0,
+    fact_assertions: list[str] | None = None,
+    evidence: dict[str, Any] | None = None,
+    product_facts: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     duration = probe_duration(source)
     raw_voice = raw_voice_source if raw_voice_source and raw_voice_source.is_file() else OUTPUT / f"{video_id}.mimo.raw.wav"
@@ -316,14 +411,39 @@ def produce_video(
     captions = OUTPUT / f"{video_id}.mimo.ass"
     rendered = OUTPUT / f"{video_id}.mimo-final.mp4"
     script = "".join(sentences)
+    target_voice_duration = duration - 0.5
+    # 早期字数预算：按茉莉 TTS 实测约 4.6 字符/秒（含标点）预估，避免 TTS 后才因超速失败。
+    # 规则见 backend/prompts/copywriting_xiaohongshu.md（20s 片有效字数约 100–108）。
+    estimated_speed = len(script) / 4.6 / target_voice_duration
+    if not min_effective_speech_speed <= estimated_speed <= max_effective_speech_speed:
+        print(
+            f"[warn] {video_id} 预估语速 {estimated_speed:.2f}×（全文 {len(script)} 字符），"
+            f"超出 {min_effective_speech_speed:.2f}–{max_effective_speech_speed:.2f}×；"
+            f"若 TTS 实测仍超限将失败，建议精简到约 "
+            f"{int(max_effective_speech_speed * target_voice_duration * 4.6)} 字符（含标点）以内",
+            file=sys.stderr,
+        )
     if not raw_voice.is_file():
         synthesize_tts(config, script, raw_voice)
     raw_duration = probe_duration(raw_voice)
-    target_voice_duration = duration - 0.5
     speed = raw_duration / target_voice_duration
-    if not 1.08 <= speed <= 1.34:
-        raise RuntimeError(f"{video_id} 的口播长度无法在 1.2×基准附近覆盖视频（实际 {speed:.3f}×）")
-    run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(raw_voice), "-af", f"atempo={speed:.6f},loudnorm=I=-16:LRA=7:TP=-1.5", "-ar", "48000", "-c:a", "pcm_s16le", str(voice)])
+    applied_speed = speed
+    tail_blank_seconds = 0.0
+    if not min_effective_speech_speed <= speed <= max_effective_speech_speed:
+        # A short, explicit tail hold is preferable to speeding up or trimming
+        # a selected source clip.  It is opt-in per batch and bounded by the
+        # delivery rule, so it cannot silently hide a materially short script.
+        tail_blank_seconds = duration - (0.25 + raw_duration)
+        # Container and FFprobe timestamps differ by a few milliseconds; this
+        # tolerance does not turn the user-facing 2-second cap into a longer hold.
+        if 0 < tail_blank_seconds <= max_tail_blank_seconds + 0.05:
+            applied_speed = 1.0
+        else:
+            raise RuntimeError(
+                f"{video_id} 的口播长度无法在 {min_effective_speech_speed:.2f}×–"
+                f"{max_effective_speech_speed:.2f}×范围内覆盖视频（实际 {speed:.3f}×）"
+            )
+    run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(raw_voice), "-af", f"atempo={applied_speed:.6f},loudnorm=I=-16:LRA=7:TP=-1.5", "-ar", "48000", "-c:a", "pcm_s16le", str(voice)])
     speech_duration = probe_duration(voice)
     speech_start = 0.25
     cues = write_ass(captions, sentences, speech_start, speech_start + speech_duration)
@@ -347,7 +467,7 @@ def produce_video(
     )
     command = [
         "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(source), "-i", str(voice),
-        "-stream_loop", "-1", "-i", str(MUSIC),
+        "-stream_loop", "-1", "-i", str(music_path),
     ]
     for layer in caption_layers:
         command.extend(["-loop", "1", "-framerate", "30", "-i", str(layer)])
@@ -357,17 +477,46 @@ def produce_video(
         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", str(rendered),
     ])
     run(command)
+    edl = source_edl(video_id)
+    fact_assertions = fact_assertions or []
+    evidence_mapping = fact_evidence_mapping(video_id, fact_assertions, evidence or {}, edl)
     return {
-        "video_id": video_id, "source": str(source), "source_edl": source_edl(video_id), "output": str(rendered), "raw_voice": str(raw_voice),
+        "video_id": video_id, "source": str(source), "source_edl": edl, "output": str(rendered), "raw_voice": str(raw_voice),
         "voice_audio": str(voice), "captions": str(captions), "caption_layers": [str(path) for path in caption_layers], "script": script, "cues": cues,
         "video_duration_seconds": round(duration, 3), "speech_duration_seconds": round(speech_duration, 3),
         "speech_start_seconds": speech_start, "speech_end_seconds": round(speech_start + speech_duration, 3),
-        "effective_speech_speed": round(speed, 5), "voice_name": "茉莉",
-        "tts_model": "mimo-v2.5-tts", "music": str(MUSIC), "music_license_reference": "用户确认：现有商业轻快曲可用于本项目", "music_volume_db": music_volume_db,
+        "effective_speech_speed": round(applied_speed, 5), "raw_to_coverage_speed": round(speed, 5),
+        "tail_blank_seconds": round(max(0.0, tail_blank_seconds), 3), "voice_name": "茉莉",
+        "tts_model": "mimo-v2.5-tts", "music": str(music_path), "music_license_reference": music_license_reference, "music_volume_db": music_volume_db,
         "ducking": ducking, "subtitle_style": "white text, black outline, no panel",
         "subtitle_font": CAPTION_FONT_NAME, "subtitle_font_size_px": CAPTION_FONT_SIZE_PX,
         "subtitle_max_chars_per_line": CAPTION_MAX_CHARS_PER_LINE,
+        "fact_evidence_mapping": evidence_mapping, "product_facts": product_facts or {},
     }
+
+
+def persist_delivery_records(deliveries: list[dict[str, Any]]) -> None:
+    """Attach complete Agent deliveries to their immutable base Renders.
+
+    Only final files under the configured export root are persisted.  The JSON
+    records deliberately contain no model credentials or Base64 request data.
+    """
+    export_root = EXPORTS.resolve()
+    with SessionLocal() as session:
+        for delivery in deliveries:
+            video_id = str(delivery["video_id"])
+            output = Path(str(delivery["output"])).resolve()
+            if export_root not in output.parents or not output.is_file():
+                raise RuntimeError(f"{video_id} 的最终交付文件不在导出目录内")
+            render = session.scalar(select(Render).where(Render.video_id == video_id))
+            if render is None:
+                raise RuntimeError(f"找不到基础 Render：{video_id}")
+            if render.status != "completed":
+                raise RuntimeError(f"基础 Render 尚未完成：{video_id}")
+            render.delivery_output_path = str(output)
+            render.delivery_manifest = delivery
+            render.delivered_at = utcnow()
+        session.commit()
 
 
 def main() -> None:
@@ -376,12 +525,49 @@ def main() -> None:
     parser.add_argument("--analyze-only", action="store_true")
     parser.add_argument("--use-existing-reviews", action="store_true")
     parser.add_argument("--batch", default="with_mimo_final_v2")
-    parser.add_argument("--video-id", choices=[str(item["id"]) for item in VIDEOS])
+    parser.add_argument("--video-id", help="基础 Render 的 video_id；内置批次以外的成片需同时传入 --sentence。")
+    parser.add_argument("--sentence", action="append", help="一条经画面事实审核的口播句；可重复传入。")
+    parser.add_argument("--scripts-json", help="已确认口播 JSON：兼容 {video_id: 口播全文}，也支持含 script、fact_assertions、evidence、product_facts 的对象；与 --video-id/--sentence 互斥。")
+    parser.add_argument("--music-path", default=DEFAULT_MUSIC_PATH, help="本批已获授权背景音乐的本地路径；也可设置 RADIO_CATCH_POSTPROCESS_MUSIC_PATH。")
+    parser.add_argument("--music-license-reference", default=DEFAULT_MUSIC_LICENSE_REFERENCE, help="音乐授权记录或用户确认引用；也可设置 RADIO_CATCH_POSTPROCESS_MUSIC_LICENSE_REFERENCE。")
     parser.add_argument("--no-ducking", action="store_true")
     parser.add_argument("--music-volume-db", type=float, default=-25.49)
+    parser.add_argument("--min-effective-speech-speed", type=float, default=1.08)
+    parser.add_argument("--max-effective-speech-speed", type=float, default=1.34)
+    parser.add_argument("--max-tail-blank-seconds", type=float, default=0.0)
     parser.add_argument("--reuse-raw-voice-from-batch")
     parser.add_argument("--reuse-reviews-from-batch")
     args = parser.parse_args()
+    if not 0.5 <= args.min_effective_speech_speed <= args.max_effective_speech_speed <= 2.0:
+        raise RuntimeError("人声有效语速范围必须介于 0.5×–2.0×")
+    if not 0.0 <= args.max_tail_blank_seconds <= 2.0:
+        raise RuntimeError("片尾留白最多 2 秒")
+    if args.video_id and not re.fullmatch(r"RC-[A-Za-z0-9]+", args.video_id):
+        raise RuntimeError("video_id 格式无效")
+    if args.sentence and not args.video_id:
+        raise RuntimeError("--sentence 需要与 --video-id 一起使用")
+    if args.scripts_json:
+        if args.video_id or args.sentence:
+            raise RuntimeError("--scripts-json 与 --video-id/--sentence 互斥")
+        scripts_path = Path(args.scripts_json)
+        if not scripts_path.is_file():
+            raise RuntimeError("--scripts-json 文件不存在")
+        scripts = json.loads(scripts_path.read_text(encoding="utf-8"))
+        if not isinstance(scripts, dict) or not scripts:
+            raise RuntimeError("--scripts-json 必须是 {video_id: 口播全文} JSON")
+        selected_videos = []
+        for video_id, text in scripts.items():
+            if not re.fullmatch(r"RC-[A-Za-z0-9]+", str(video_id)):
+                raise RuntimeError(f"video_id 格式无效：{video_id}")
+            selected_videos.append(parse_script_entry(str(video_id), text))
+    else:
+        selected_videos = [item for item in VIDEOS if args.video_id is None or item["id"] == args.video_id]
+        if args.video_id and not selected_videos:
+            if not args.sentence:
+                raise RuntimeError("非内置 video_id 必须提供至少一句经审核的 --sentence")
+            selected_videos = [{"id": args.video_id, "sentences": args.sentence, "fact_assertions": [], "evidence": {}, "product_facts": {}}]
+        elif args.sentence:
+            selected_videos = [{**item, "sentences": args.sentence} for item in selected_videos]
     batch = Path(args.batch)
     if batch.name != args.batch or args.batch in {"", "."}:
         raise RuntimeError("批次名必须是 exports 下的单层目录名")
@@ -406,8 +592,6 @@ def main() -> None:
     if args.use_existing_reviews and source_review_path:
         raise RuntimeError("只能选择当前批次审核或复用另一批次审核")
     OUTPUT = EXPORTS / batch
-    if not MUSIC.is_file():
-        raise RuntimeError("已选背景音乐不存在")
     OUTPUT.mkdir(parents=True, exist_ok=True)
     config = get_mimo_config()
     review_path = OUTPUT / "mimo_vision_analysis.json"
@@ -418,9 +602,8 @@ def main() -> None:
     elif source_review_path:
         reviews = json.loads(source_review_path.read_text(encoding="utf-8"))
         review_path = source_review_path
-    else:
+    elif args.analyze_only or not args.scripts_json:
         reviews = {}
-        selected_videos = [item for item in VIDEOS if args.video_id is None or item["id"] == args.video_id]
         for item in selected_videos:
             video_id = str(item["id"])
             source = EXPORTS / f"{video_id}.mp4"
@@ -429,26 +612,52 @@ def main() -> None:
             reviews[video_id] = review_video(config, video_id, source)
             print(f"MiMo reviewed {video_id}")
         review_path.write_text(json.dumps(reviews, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    else:
+        # Script-First batches can skip full-render MiMo review; it remains an
+        # explicit --analyze-only or reuse option for final visual verification.
+        reviews = {}
+        review_path = None
     if args.analyze_only:
         return
-    selected_videos = [item for item in VIDEOS if args.video_id is None or item["id"] == args.video_id]
+    if not args.music_path:
+        raise RuntimeError("请通过 --music-path 或 RADIO_CATCH_POSTPROCESS_MUSIC_PATH 指定已获授权背景音乐")
+    if not args.music_license_reference or not args.music_license_reference.strip():
+        raise RuntimeError("请通过 --music-license-reference 记录音乐授权来源")
+    music_path = Path(args.music_path).expanduser().resolve()
+    if not music_path.is_file():
+        raise RuntimeError("已选背景音乐不存在")
     deliveries = [
         produce_video(
             str(item["id"]),
             list(item["sentences"]),
             EXPORTS / f"{item['id']}.mp4",
             config,
+            music_path=music_path,
+            music_license_reference=args.music_license_reference.strip(),
             duck_music=not args.no_ducking,
             music_volume_db=args.music_volume_db,
             raw_voice_source=(EXPORTS / source_batch / f"{item['id']}.mimo.raw.wav") if source_batch else None,
+            min_effective_speech_speed=args.min_effective_speech_speed,
+            max_effective_speech_speed=args.max_effective_speech_speed,
+            max_tail_blank_seconds=args.max_tail_blank_seconds,
+            fact_assertions=list(item.get("fact_assertions", [])),
+            evidence=dict(item.get("evidence", {})),
+            product_facts=dict(item.get("product_facts", {})),
         )
         for item in selected_videos
     ]
     validation = {entry["video_id"]: probe_streams(Path(entry["output"])) for entry in deliveries}
-    (OUTPUT / "delivery_manifest.json").write_text(json.dumps({
-        "voice": "茉莉", "tts_model": "mimo-v2.5-tts", "reviews": str(review_path), "exports": deliveries,
+    for entry in deliveries:
+        entry["media_probe"] = validation[entry["video_id"]]
+    manifest_path = OUTPUT / "delivery_manifest.json"
+    manifest_path.write_text(json.dumps({
+        "voice": "茉莉", "tts_model": "mimo-v2.5-tts", "reviews": str(review_path) if review_path else None, "exports": deliveries,
         "media_probe": validation,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    for entry in deliveries:
+        entry["batch"] = batch.name
+        entry["batch_manifest"] = str(manifest_path)
+    persist_delivery_records(deliveries)
     print(f"completed {len(deliveries)} MiMo final deliveries")
 
 

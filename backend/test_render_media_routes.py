@@ -105,6 +105,37 @@ class RenderMediaRouteTests(unittest.TestCase):
         self.assertEqual(self.client.get(f"/api/renders/{escaped.id}/video").status_code, 404)
         self.assertEqual(self.client.get(f"/api/renders/missing/thumbnail").status_code, 404)
 
+    def test_agent_delivery_is_preferred_by_metadata_and_served_separately(self) -> None:
+        base = self.export_root / "RC-1.mp4"
+        final = self.export_root / "batch" / "RC-1.mimo-final.mp4"
+        final.parent.mkdir()
+        base.write_bytes(b"base-render")
+        final.write_bytes(b"final-delivery")
+        render = self.add_render(base)
+        render.delivery_output_path = str(final)
+        render.delivery_manifest = {
+            "script": "这是一条完成的口播。",
+            "cues": [{"start": 0.25, "end": 1.2, "text": "完成口播"}],
+            "media_probe": {"streams": []},
+            "video_duration_seconds": 12,
+        }
+        self.session.commit()
+
+        metadata = self.client.get(f"/api/renders/{render.id}")
+        self.assertEqual(metadata.status_code, 200)
+        self.assertEqual(metadata.json()["final_delivery"]["status"], "available")
+        self.assertEqual(metadata.json()["final_delivery"]["script"], "这是一条完成的口播。")
+
+        video = self.client.get(f"/api/renders/{render.id}/delivery-video")
+        self.assertEqual(video.status_code, 200)
+        self.assertEqual(video.content, b"final-delivery")
+        download = self.client.get(f"/api/renders/{render.id}/delivery-download")
+        self.assertEqual(download.status_code, 200)
+        self.assertEqual(download.content, b"final-delivery")
+        manifest = self.client.get(f"/api/renders/{render.id}/delivery-manifest")
+        self.assertEqual(manifest.status_code, 200)
+        self.assertEqual(manifest.json()["script"], "这是一条完成的口播。")
+
 
 class RenderThumbnailGenerationTests(unittest.TestCase):
     def test_generation_overwrites_an_existing_cover_at_fifteen_percent(self) -> None:

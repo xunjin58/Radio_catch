@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.config_routes import test_connection
 from app.database import Base
-from app.intelligence import GEMINI_RESPONSE_SCHEMA, IntelligenceError, _gemini_response_text, understand_clip
+from app.intelligence import GEMINI_RESPONSE_SCHEMA, IntelligenceError, _gemini_response_text, _known_clip_dish, _parse, understand_clip
 from app.models import Clip, ClipAnalysis, ModelConfig, ModelTaskAssignment, ModelUsage
 from app.project_routes import DEFAULT_BUSINESS_CONTEXT, get_project_settings, update_project_settings
 from app.schemas import ProjectSettingsUpdate, TestConnectionRequest
@@ -123,7 +123,7 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(inline["mime_type"], "video/mp4")
         self.assertEqual(inline["data"], base64.b64encode(b"video-with-audio").decode("ascii"))
         self.assertEqual(call["json"]["generationConfig"]["responseMimeType"], "application/json")
-        self.assertIn("销售新鲜柠檬", call["json"]["system_instruction"]["parts"][0]["text"])
+        self.assertIn(DEFAULT_BUSINESS_CONTEXT, call["json"]["system_instruction"]["parts"][0]["text"])
         self.assertIn("commerce_roles", call["json"]["generationConfig"]["responseSchema"]["required"])
         self.assertEqual(row.mode, "native_video")
         self.assertEqual(row.tags["commerce_roles"], ["hook", "product_proof"])
@@ -141,6 +141,30 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(updated.business_context, "只标注可见的柠檬切片。")
         self.assertEqual(get_project_settings(self.session).business_context, "只标注可见的柠檬切片。")
         self.assertIn("commerce_roles", GEMINI_RESPONSE_SCHEMA["properties"])
+        self.assertIn("shot_capabilities", GEMINI_RESPONSE_SCHEMA["properties"])
+
+    def test_parse_keeps_only_dish_capabilities_from_the_controlled_vocabulary(self) -> None:
+        clip = self.add_clip()
+        self.session.add(ClipAnalysis(clip_id=clip.id, tags={"dish": ["柠檬"]}))
+        self.session.commit()
+        parsed = _parse('''{
+          "summary":"切开并挤汁","segment_role":"middle","dish":["柠檬"],
+          "actions":[],"visual_hooks":[],"audio_hooks":[],"commerce_roles":[],
+          "shot_type":"特写","climax_time":1,"usable_range":{"start":0,"end":2},
+          "quality_score":0.8,"confidence":0.9,
+          "shot_capabilities":["cut_surface","squeezing","invented_capability","cut_surface"]
+        }''', clip)
+        self.assertEqual(parsed["tags"]["shot_capabilities"], ["cut_surface", "squeezing"])
+        self.assertEqual(parsed["tags"]["dish"], ["柠檬"])
+
+    def test_known_dish_prefers_an_existing_controlled_catalog_label(self) -> None:
+        clip = self.add_clip()
+        self.session.add_all([
+            ClipAnalysis(clip_id=clip.id, tags={"dish": ["柠檬"]}),
+            ClipAnalysis(clip_id=clip.id, tags={"dish": ["柠檬水"]}),
+        ])
+        self.session.commit(); self.session.refresh(clip)
+        self.assertEqual(_known_clip_dish(clip), "柠檬")
 
     def test_gemini_over_limit_fails_without_frame_fallback(self) -> None:
         self.add_config("gemini", max_native_media_bytes=3)
@@ -184,7 +208,7 @@ class GeminiIntelligenceTests(unittest.TestCase):
         with patch("app.intelligence.httpx.AsyncClient", FakeAsyncClient):
             row = asyncio.run(understand_clip(self.session, clip.id))
         self.assertEqual(FakeAsyncClient.calls[-1]["url"], "https://api.example.test/v1/chat/completions")
-        self.assertIn("销售新鲜柠檬", FakeAsyncClient.calls[-1]["json"]["messages"][0]["content"])
+        self.assertIn(DEFAULT_BUSINESS_CONTEXT, FakeAsyncClient.calls[-1]["json"]["messages"][0]["content"])
         self.assertEqual(row.mode, "adaptive_frames")
         self.assertEqual(row.review_status, "needs_review")
         self.assertEqual(self.session.get(Clip, clip.id).review_status, "needs_review")
@@ -217,7 +241,7 @@ class GeminiIntelligenceTests(unittest.TestCase):
         self.assertEqual(video["video_url"]["url"], f"data:video/mp4;base64,{base64.b64encode(b'video-with-audio').decode('ascii')}")
         self.assertEqual(video["fps"], 2)
         self.assertEqual(call["json"]["response_format"], {"type": "json_object"})
-        self.assertIn("销售新鲜柠檬", call["json"]["messages"][0]["content"])
+        self.assertIn(DEFAULT_BUSINESS_CONTEXT, call["json"]["messages"][0]["content"])
         self.assertEqual(row.mode, "native_video")
         self.assertEqual(row.evidence_frames[0]["source"], "mimo_native_video")
         self.assertNotIn("data", row.evidence_frames[0])

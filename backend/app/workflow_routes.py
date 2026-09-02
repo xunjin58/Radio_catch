@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any, Literal, Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -74,13 +74,27 @@ class RemixPlanRequest(BaseModel):
     dish: str = Field(min_length=1, max_length=120)
     requested_count: int = Field(ge=1, le=10)
     target_duration_seconds: float = Field(default=22.0, ge=20.0, le=60.0)
+    script_facts: Optional[list[str]] = Field(default=None, max_length=100)
 
 
 def _error(exc: WorkflowError) -> HTTPException:
-    return HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc))
+    return HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail=str(exc))
 
 
 def _serialize_render(render: Render) -> dict[str, Any]:
+    final_delivery: dict[str, Any] | None = None
+    if render.delivery_output_path:
+        output = Path(render.delivery_output_path).resolve()
+        available = EXPORT_DIR.resolve() in output.parents and output.is_file()
+        manifest = render.delivery_manifest or {}
+        final_delivery = {
+            "status": "available" if available else "missing",
+            "delivered_at": render.delivered_at,
+            "script": manifest.get("script"),
+            "cues": manifest.get("cues", []),
+            "media_probe": manifest.get("media_probe"),
+            "duration_seconds": manifest.get("video_duration_seconds"),
+        }
     return {
         "id": render.id,
         "video_id": render.video_id,
@@ -89,6 +103,7 @@ def _serialize_render(render: Render) -> dict[str, Any]:
         "title": render.title,
         "status": render.status,
         "output_path": render.output_path,
+        "final_delivery": final_delivery,
         "duration_seconds": render.duration_seconds,
         "width": render.width,
         "height": render.height,
@@ -229,10 +244,10 @@ async def create_remix_plan_endpoint(
     try:
         return await plan_remix(
             session, dish=payload.dish, requested_count=payload.requested_count,
-            target_duration_seconds=payload.target_duration_seconds,
+            target_duration_seconds=payload.target_duration_seconds, script_facts=payload.script_facts,
         )
     except RemixPlanningError as exc:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc)) from exc
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail=str(exc)) from exc
 
 
 @router.get("/renders")
@@ -274,6 +289,24 @@ def _get_completed_render(render_id: str, session: Session) -> tuple[Render, Pat
     return render, _completed_render_output(render)
 
 
+def _completed_delivery_output(render: Render) -> Path:
+    """Resolve an Agent-produced final delivery without exposing local paths."""
+    if render.status != "completed" or not render.delivery_output_path:
+        raise HTTPException(status_code=409, detail="尚无最终交付版")
+    output = Path(render.delivery_output_path).resolve()
+    export_root = EXPORT_DIR.resolve()
+    if export_root not in output.parents or not output.is_file():
+        raise HTTPException(status_code=404, detail="最终交付文件不存在")
+    return output
+
+
+def _get_completed_delivery(render_id: str, session: Session) -> tuple[Render, Path]:
+    render = session.get(Render, render_id)
+    if render is None:
+        raise HTTPException(status_code=404, detail="成片不存在")
+    return render, _completed_delivery_output(render)
+
+
 @router.get("/renders/{render_id}/video")
 def play_render(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
     """Stream a completed local render for the in-app player."""
@@ -304,6 +337,47 @@ def download_render(render_id: str, session: Session = Depends(get_session)) -> 
     """Download a completed local render without exposing arbitrary file paths."""
     render, output = _get_completed_render(render_id, session)
     return FileResponse(output, media_type="video/mp4", filename=f"{render.video_id}.mp4")
+
+
+@router.get("/renders/{render_id}/delivery-video")
+def play_delivery(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Stream the Agent-produced voiced, captioned final delivery."""
+    _, output = _get_completed_delivery(render_id, session)
+    return FileResponse(output, media_type="video/mp4")
+
+
+@router.get("/renders/{render_id}/delivery-thumbnail")
+def delivery_thumbnail(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Return a cover for the final delivery, generating it only inside exports."""
+    render, output = _get_completed_delivery(render_id, session)
+    thumbnail = render_thumbnail_path(output).resolve()
+    export_root = EXPORT_DIR.resolve()
+    if export_root not in thumbnail.parents:
+        raise HTTPException(status_code=404, detail="最终交付封面不可用")
+    if not thumbnail.is_file():
+        try:
+            thumbnail = create_render_thumbnail(output, render.duration_seconds).resolve()
+        except Exception as exc:
+            raise HTTPException(status_code=404, detail="最终交付封面不可用") from exc
+    if not thumbnail.is_file():
+        raise HTTPException(status_code=404, detail="最终交付封面不可用")
+    return FileResponse(thumbnail, media_type="image/jpeg")
+
+
+@router.get("/renders/{render_id}/delivery-download")
+def download_delivery(render_id: str, session: Session = Depends(get_session)) -> FileResponse:
+    """Download the final delivery while retaining the base Render separately."""
+    render, output = _get_completed_delivery(render_id, session)
+    return FileResponse(output, media_type="video/mp4", filename=f"{render.video_id}.mimo-final.mp4")
+
+
+@router.get("/renders/{render_id}/delivery-manifest")
+def delivery_manifest(render_id: str, session: Session = Depends(get_session)) -> JSONResponse:
+    """Expose the persisted, secret-free delivery record for traceability."""
+    render, _ = _get_completed_delivery(render_id, session)
+    if not render.delivery_manifest:
+        raise HTTPException(status_code=404, detail="最终交付清单不存在")
+    return JSONResponse(render.delivery_manifest)
 
 
 @router.get("/jobs")

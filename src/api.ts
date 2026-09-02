@@ -8,6 +8,11 @@ export type Clip = {
 export type Render = {
   id: string; video_id: string; experiment_id: string | null; dish: string; title: string | null
   status: string; output_path: string | null; duration_seconds: number | null
+  final_delivery: null | {
+    status: 'available' | 'missing'; delivered_at: string | null; script: string | null
+    cues: Array<{ start: number; end: number; text: string }>; media_probe: Record<string, unknown> | null
+    duration_seconds: number | null
+  }
   edit_decision_list: Array<{ clip_id: string; start: number; end: number; speed: number; role: string }>
   width: number; height: number; experiment_values: Record<string, unknown>
   published_at: string | null; created_at: string; updated_at: string
@@ -50,7 +55,11 @@ export const api = {
   runRender: (id: string) => request<Render>(`/renders/${id}/run`, { method: 'POST' }),
   renderVideoUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/video`,
   renderThumbnailUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/thumbnail`,
-  renderDownloadUrl: (id: string) => `${origin}/api/renders/${id}/download`,
+  renderDownloadUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/download`,
+  deliveryVideoUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/delivery-video`,
+  deliveryThumbnailUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/delivery-thumbnail`,
+  deliveryDownloadUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/delivery-download`,
+  deliveryManifestUrl: (id: string) => `${origin}/api/renders/${encodeURIComponent(id)}/delivery-manifest`,
   metrics: (file: File) => { const data = new FormData(); data.append('file', file); return request<unknown>('/metrics/import', { method: 'POST', body: data }) },
   patterns: () => request<{ sample_size: number; global_score: number | null; patterns: Pattern[]; message?: string }>('/analysis/patterns'),
   recommendations: () => request<{ recommendations: Array<{ suggestion: string; reason: string }> }>('/analysis/recommendations'),

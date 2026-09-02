@@ -5,6 +5,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 from uuid import uuid4
 
 from fastapi import FastAPI
@@ -68,6 +69,26 @@ class MediaVideoRouteTests(unittest.TestCase):
         self.assertEqual(partial.status_code, 206)
         self.assertEqual(partial.content, b"local")
         self.assertEqual(partial.headers["content-range"], "bytes 0-4/11")
+
+    def test_import_does_not_automatically_queue_frame_processing(self) -> None:
+        path = self.storage_root / "clips" / "clip.mp4"
+        path.parent.mkdir()
+        path.write_bytes(b"local-video")
+        clip = self.add_clip(path)
+
+        with (
+            mock.patch.object(self.service, "import_upload", return_value=(clip, False)),
+            mock.patch.object(self.jobs, "submit") as submit,
+        ):
+            response = self.client.post(
+                "/api/media/imports",
+                files={"file": ("clip.mp4", b"upload", "video/mp4")},
+            )
+
+        self.assertEqual(response.status_code, 202)
+        self.assertFalse(response.json()["duplicate"])
+        self.assertIsNone(response.json()["job"])
+        submit.assert_not_called()
 
     def test_missing_clip_returns_404(self) -> None:
         response = self.client.get("/api/media/clips/not-a-clip/video")
