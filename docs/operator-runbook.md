@@ -18,9 +18,21 @@
 ```bash
 npm run dev:api
 npm run dev
+npm run build
+```
+
+`npm run dev:api` 会按系统选用 `backend/.venv/bin/python`（macOS/Linux）或 `backend\.venv\Scripts\python.exe`（Windows）。Windows PowerShell 可用下列命令做健康检查：
+
+```powershell
+Invoke-RestMethod http://127.0.0.1:8001/api/health
+Invoke-RestMethod http://127.0.0.1:8001/api/media/health
+```
+
+macOS/Linux 可使用：
+
+```bash
 curl http://127.0.0.1:8001/api/health
 curl http://127.0.0.1:8001/api/media/health
-npm run build
 ```
 
 `/api/media/health` 会返回 FFmpeg 和 FFprobe 的可用性。需要系统 PATH 中存在两个可执行文件。素材导入只读取必要的文件头信息；默认不再自动生成缩略图或关键帧，MiMo 原生理解会直接使用原视频。

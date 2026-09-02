@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:api": "cd backend && .venv/bin/python run.py",
+    "dev:api": "node scripts/run-api.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },

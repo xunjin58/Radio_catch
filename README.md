@@ -4,7 +4,18 @@
 
 ## 启动
 
-首次安装依赖：
+首次安装依赖。Windows 使用 PowerShell：
+
+```powershell
+cd <project-root>
+npm install
+
+py -3 -m venv backend\.venv
+.\backend\.venv\Scripts\python.exe -m pip install -r .\backend\requirements.txt
+Copy-Item .env.example .env
+```
+
+macOS/Linux 使用：
 
 ```bash
 cd <project-root>
@@ -13,9 +24,11 @@ npm install
 cd <project-root>/backend
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
+cd ..
+cp .env.example .env
 ```
 
-在项目根目录分别启动 API 和前端：
+在项目根目录分别启动 API 和前端（`npm run dev:api` 已兼容 Windows、macOS 和 Linux）：
 
 ```bash
 npm run dev:api
@@ -44,5 +57,6 @@ npm run dev
 - [架构](docs/architecture.md)：组件、数据模型和处理状态。
 - [集成指南](docs/integration-guide.md)：API 使用、数据格式和错误处理。
 - [运维手册](docs/operator-runbook.md)：启动、配置、验证和排障。
+- [首次使用与对话流程](docs/first-use-agent-guide.md)：首次安装、MiMo 配置、真实素材验证与对话式批量制作流程。
 - [MiMo 音画后期流程](docs/mimo-postproduction.md)：原生看片、TTS、配乐、字幕与交付追溯。
 - [交接说明](docs/handoff.md)：已完成范围与下一步工作。
