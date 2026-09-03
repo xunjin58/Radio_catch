@@ -12,7 +12,7 @@ flowchart LR
   API --> Export["1080×1920 MP4 导出"]
 ```
 
-前端通过 Vite 的 `/api` 代理访问本地 API。后端默认监听 `127.0.0.1:8001`，可通过 `RADIO_CATCH_API_PORT` 调整；所有素材、关键帧、缩略图和导出文件都保存在本机。Agent 负责后期执行，Web 只展示基础 Render 或 Agent 已回写的最终交付版。
+前端通过 Vite 的 `/api` 代理访问本地 API。后端默认监听 `127.0.0.1:8001`，可通过 `RADIO_CATCH_API_PORT` 调整；所有素材、关键帧、缩略图、标签库和导出文件都保存在本机。设置 `RADIO_CATCH_PROJECT_DIR` 后，它们统一收敛到一个项目文件夹：`radio_catch.db`（标签与 EDL）、`media/`（原片与派生帧）、`exports/`（基础成片、后期资产与 manifest）。将完整项目文件夹复制到另一台电脑时，API 启动仅对该文件夹内真实存在的文件自动重定位历史绝对路径。Agent 负责后期执行，Web 只展示基础 Render 或 Agent 已回写的最终交付版。
 
 ## 媒体与理解流程
 
@@ -34,7 +34,7 @@ OpenAI 兼容模型继续使用可移植的关键帧理解，须由显式素材�
 
 | 实体 | 作用 |
 | --- | --- |
-| `ProjectSettings` | 项目级商家业务背景；不保存模型连接信息或密钥。 |
+| `ProjectSettings` | 项目级商家业务背景；不保存模型连接信息或密钥。项目目录由启动环境变量 `RADIO_CATCH_PROJECT_DIR` 决定。 |
 | `ModelConfig` / `ModelTaskAssignment` / `ModelUsage` | 加密的模型配置、任务路由与调用记录；原生媒体上限按配置保存。 |
 | `Clip` / `ClipAnalysis` | 原始视频与可追溯的媒体证据、AI/人工标签；`Clip.review_status` 是当前审核决策，每次重识别的新分析继承该决策。 |
 | `BackgroundTask` | 可查询的持久化工作流任务。 |

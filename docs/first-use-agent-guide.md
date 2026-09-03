@@ -32,7 +32,7 @@ ffmpeg -version
 ffprobe -version
 ```
 
-将 `.env.example` 复制为 `.env`，并将 `RADIO_CATCH_SECRET_KEY` 替换为仅本机保存的长随机值。模型 API Key 不写入 `.env`、终端命令、聊天、README 或其他文档；它只能通过 Web 的“模型与接口”页面保存到本地加密的 `ModelConfig` 中。
+将 `.env.example` 复制为 `.env`，并将 `RADIO_CATCH_SECRET_KEY` 替换为仅本机保存的长随机值。建议同时设置一个项目文件夹，例如 `RADIO_CATCH_PROJECT_DIR=D:\RadioCatch\lemon-september`；该文件夹会包含 `radio_catch.db` 标签库、`media` 素材/派生帧和 `exports` 成片/manifest，便于整体备份和迁移。模型 API Key 不写入 `.env`、终端命令、聊天、README 或其他文档；它只能通过 Web 的“模型与接口”页面保存到本地加密的 `ModelConfig` 中。
 
 分别打开两个 PowerShell 窗口，并在项目根目录运行。`npm run dev:api` 会自动选用 Windows 的 `backend\.venv\Scripts\python.exe`；在 macOS/Linux 会选用 `backend/.venv/bin/python`：
 
@@ -57,7 +57,7 @@ Invoke-RestMethod http://127.0.0.1:8001/api/media/health
 
 在 Web 的“模型与接口”中选择“添加 MiMo 视频”，只在该表单中粘贴 Token Plan API Key。预设应使用协议 `mimo` 和模型 `mimo-v2.5`，并设为活动配置；如需作为默认素材理解模型，也设为默认。
 
-MiMo 原生视频理解只接受 MP4、MOV、AVI 或 WMV。单条原文件应不超过 37 MB；系统会在发送前再次校验编码后的 Base64 data URL 不超过 50 MB。素材、数据库和导出均保留在本机的 `backend/storage/` 与 `backend/data/`，不应提交到版本控制。
+MiMo 原生视频理解只接受 MP4、MOV、AVI 或 WMV。单条原文件应不超过 37 MB；系统会在发送前再次校验编码后的 Base64 data URL 不超过 50 MB。设置项目文件夹后，素材、数据库和导出均保留在其中，不应提交到版本控制。
 
 保存后，告诉 Agent“配置完成”。Agent 会先测试连接。连接测试只验证模型列表可访问，不能替代真实视频验证。
 

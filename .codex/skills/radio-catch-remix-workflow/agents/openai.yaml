@@ -1,0 +1,6 @@
+interface:
+  display_name: "Radio Catch 混剪流程"
+  short_description: "先审文案，再受控生成可追溯混剪"
+  default_prompt: "使用 $radio-catch-remix-workflow：生成 5 个柠檬混剪视频，每个 25 秒以内，先给我文案审核。"
+policy:
+  allow_implicit_invocation: true

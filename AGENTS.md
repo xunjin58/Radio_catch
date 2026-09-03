@@ -3,6 +3,8 @@
 - 前端位于 `src/`，使用 Vite + React + TypeScript；后端位于 `backend/app/`，使用 FastAPI + SQLAlchemy。
 - 默认运行命令为 `npm run dev` 和 `npm run dev:api`；前端固定监听 `localhost:5174`，后端默认监听 8001，可用 `RADIO_CATCH_API_PORT` 调整，依赖安装在 `backend/.venv`。
 - SQLite、上传素材、抽帧和导出文件均为本地运行时数据，位于 `backend/data/`、`backend/storage/`，不得提交。
+- 设置 `RADIO_CATCH_PROJECT_DIR` 时，标签库、上传素材、派生帧、基础/最终成片和 manifest 必须统一落在该项目文件夹的 `radio_catch.db`、`media/` 与 `exports/`；不得再写入分散的默认目录。旧工作区迁移必须先复制、校验并在副本中改写路径，未经用户明确要求不得删除旧数据。
+- 用户以“生成 N 个某品类混剪、时长不超过 T 秒”下达生产指令时，使用项目 Skill `radio-catch-remix-workflow`；默认先返回等数量的待审文案，不得在用户明确通过前选片、生成 TTS/字幕或渲染。
 - 模型 API Key 只能经 `ModelConfig` 的加密字段保存；不得写入前端、响应日志、README 或测试输出。
 - 商家业务背景只能保存在 `ProjectSettings.business_context`，不得与模型密钥混存；背景仅说明标签用途，不能作为产地、价格、甜度、农残等不可见卖点的证据。
 - 原生媒体适配器不得记录或持久化 Base64 请求体、原始视频内容或 API Key；媒体大小限制必须在发送前于本地校验。

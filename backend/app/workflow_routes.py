@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from typing import Any, Literal, Optional
 
@@ -15,6 +14,7 @@ from sqlalchemy.orm import Session
 from .database import get_session
 from .models import Clip, Experiment, Job, PlatformMetric, Render
 from .remix_planning import RemixPlanningError, plan_remix
+from .project_paths import project_paths
 from .workflow import (
     WorkflowError,
     analyze_patterns,
@@ -31,7 +31,7 @@ from .workflow import (
 
 
 router = APIRouter(prefix="/api", tags=["workflow"])
-EXPORT_DIR = Path(os.getenv("RADIO_CATCH_EXPORT_DIR", Path(__file__).resolve().parents[1] / "data" / "exports"))
+EXPORT_DIR = project_paths().export_root
 
 
 class ClipReviewRequest(BaseModel):

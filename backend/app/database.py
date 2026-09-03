@@ -2,18 +2,18 @@
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from typing import Generator
 
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine, inspect, select
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
+from .project_paths import database_url, project_paths
 
-BACKEND_DIR = Path(__file__).resolve().parents[1]
-DEFAULT_DATABASE_PATH = BACKEND_DIR / "data" / "radio_catch.db"
-DATABASE_URL = os.getenv("RADIO_CATCH_DATABASE_URL", f"sqlite:///{DEFAULT_DATABASE_PATH}")
+
+DEFAULT_DATABASE_PATH = project_paths().database_path
+DATABASE_URL = database_url()
 
 if DATABASE_URL.startswith("sqlite:///"):
     # Do not require a manual bootstrap step for the local-first default.
@@ -53,6 +53,7 @@ def init_db() -> None:
 
     Base.metadata.create_all(bind=engine)
     _migrate_sqlite_schema()
+    _rebase_project_runtime_paths()
 
 
 def _migrate_sqlite_schema() -> None:
@@ -77,3 +78,81 @@ def _migrate_sqlite_schema() -> None:
                 connection.exec_driver_sql("ALTER TABLE renders ADD COLUMN delivery_manifest JSON")
             if "delivered_at" not in columns:
                 connection.exec_driver_sql("ALTER TABLE renders ADD COLUMN delivered_at DATETIME")
+
+
+def _rebased_file_path(value: str, *, media_root: Path, export_root: Path) -> str:
+    """Rebase a copied project's old machine-specific absolute path when safe.
+
+    Path strings in historical SQLite records are absolute.  When a complete
+    project folder is copied to another OS, look only for recognised runtime
+    directory boundaries and update a value only if the matching local file
+    really exists.  This never turns the database into an arbitrary file-path
+    resolver.
+    """
+    normalized = value.replace("\\", "/")
+    for marker, target_root in (("/media/", media_root), ("/storage/", media_root), ("/exports/", export_root)):
+        if marker not in normalized:
+            continue
+        relative_parts = [part for part in normalized.rsplit(marker, 1)[1].split("/") if part]
+        candidate = target_root.joinpath(*relative_parts)
+        if candidate.is_file():
+            return str(candidate)
+    return value
+
+
+def _rebase_json_paths(value: object, *, media_root: Path, export_root: Path) -> object:
+    if isinstance(value, str):
+        return _rebased_file_path(value, media_root=media_root, export_root=export_root)
+    if isinstance(value, list):
+        return [_rebase_json_paths(item, media_root=media_root, export_root=export_root) for item in value]
+    if isinstance(value, dict):
+        return {
+            key: _rebase_json_paths(item, media_root=media_root, export_root=export_root)
+            for key, item in value.items()
+        }
+    return value
+
+
+def _rebase_project_runtime_paths() -> None:
+    """Make a copied ``RADIO_CATCH_PROJECT_DIR`` usable on the current machine."""
+    paths = project_paths()
+    if not paths.uses_project_root:
+        return
+
+    from .models import Clip, ClipAnalysis, Render
+
+    changed = False
+    with SessionLocal() as session:
+        for clip in session.scalars(select(Clip)).all():
+            rebased = _rebased_file_path(clip.file_path, media_root=paths.media_root, export_root=paths.export_root)
+            if rebased != clip.file_path:
+                clip.file_path = rebased
+                changed = True
+        for analysis in session.scalars(select(ClipAnalysis)).all():
+            tags = _rebase_json_paths(analysis.tags, media_root=paths.media_root, export_root=paths.export_root)
+            frames = _rebase_json_paths(analysis.evidence_frames, media_root=paths.media_root, export_root=paths.export_root)
+            if tags != analysis.tags:
+                analysis.tags = tags
+                changed = True
+            if frames != analysis.evidence_frames:
+                analysis.evidence_frames = frames
+                changed = True
+        for render in session.scalars(select(Render)).all():
+            for attribute in ("output_path", "delivery_output_path"):
+                value = getattr(render, attribute)
+                if not value:
+                    continue
+                rebased = _rebased_file_path(value, media_root=paths.media_root, export_root=paths.export_root)
+                if rebased != value:
+                    setattr(render, attribute, rebased)
+                    changed = True
+            edl = _rebase_json_paths(render.edit_decision_list, media_root=paths.media_root, export_root=paths.export_root)
+            manifest = _rebase_json_paths(render.delivery_manifest, media_root=paths.media_root, export_root=paths.export_root)
+            if edl != render.edit_decision_list:
+                render.edit_decision_list = edl
+                changed = True
+            if manifest != render.delivery_manifest:
+                render.delivery_manifest = manifest
+                changed = True
+        if changed:
+            session.commit()

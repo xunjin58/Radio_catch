@@ -30,9 +30,10 @@ sys.path.insert(0, str(BACKEND))
 
 from app.database import SessionLocal  # noqa: E402
 from app.models import ModelConfig, Render, utcnow  # noqa: E402
+from app.project_paths import project_paths  # noqa: E402
 from app.security import decrypt_api_key  # noqa: E402
 
-EXPORTS = Path(os.getenv("RADIO_CATCH_EXPORT_DIR", ROOT / "backend/data/exports")).expanduser()
+EXPORTS = project_paths().export_root
 OUTPUT = EXPORTS / "with_mimo_final_v2"
 DEFAULT_MUSIC_PATH = os.getenv("RADIO_CATCH_POSTPROCESS_MUSIC_PATH")
 DEFAULT_MUSIC_LICENSE_REFERENCE = os.getenv("RADIO_CATCH_POSTPROCESS_MUSIC_LICENSE_REFERENCE")

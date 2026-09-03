@@ -39,6 +39,8 @@ npm run dev
 
 复制 `.env.example` 为 `.env` 后，可设置加密密钥、SQLite 路径、媒体目录和导出目录。模型密钥在界面/API 内配置，不应写入 `.env` 或提交到版本控制。
 
+推荐设置 `RADIO_CATCH_PROJECT_DIR`，例如 `D:\RadioCatch\lemon-september`。系统会将这个项目的标签数据库、原始素材/派生帧和所有交付物分别保存为 `radio_catch.db`、`media/` 和 `exports/`，可整体备份或迁移到另一台电脑。旧工作区可通过 `backend/scripts/migrate_to_project_folder.py --project-dir <目标目录>` 复制并收敛；确认新目录正常后才使用 `--move` 清理旧运行时数据。
+
 ## 已实现
 
 - 本地视频上传、SHA-256 去重与 FFprobe 文件头元数据；MiMo/Gemini 原生模型优先直接理解原视频，不在导入时自动抽帧。
@@ -50,7 +52,7 @@ npm run dev
 - 文案先行的后期链路：受控 `shot_capabilities` 词表、`script_facts` 选片校验、`uncovered_facts` 回退，以及可追溯事实→切片证据与商品事实的交付 manifest；成片级 MiMo 看片仅作可选复核。
 - 抖音 CSV 数据按 `video_id` 导入、重复更新、72 小时/低样本保护下的候选规律与已验证规律。
 
-视频和数据库默认保存在 `backend/storage/` 与 `backend/data/`，均为本地文件并已忽略版本控制。
+未设置项目根目录时，视频和数据库默认保存在 `backend/storage/` 与 `backend/data/`，均为本地文件并已忽略版本控制。
 
 ## 文档
 

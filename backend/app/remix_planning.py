@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import base64
 import json
-import os
 import subprocess
 import time
 from pathlib import Path
@@ -17,6 +16,7 @@ from sqlalchemy.orm import Session
 from .intelligence import _gemini_response_text
 from .models import Clip, ModelConfig, ModelTaskAssignment, ModelUsage
 from .project_routes import get_business_context
+from .project_paths import project_paths
 from .security import decrypt_api_key
 from .workflow import WorkflowError, serialize_clip, validate_manifest
 
@@ -94,7 +94,7 @@ def _planner_model(session: Session) -> ModelConfig:
 
 
 def _storage_root() -> Path:
-    return Path(os.getenv("RADIO_CATCH_STORAGE_DIR", Path(__file__).resolve().parents[1] / "storage")).resolve()
+    return project_paths().media_root
 
 
 def _safe_local_image(path: Any) -> Path | None:

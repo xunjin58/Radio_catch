@@ -2,7 +2,7 @@
 
 本流程把已完成的基础 Render 转成可交付成片。它适用于需要 MiMo 原生看片、MiMo TTS、配乐和同步字幕的本地后期；不会修改基础 Render、原片、模型配置或 EDL。成功后，脚本会将最终 MP4、无秘密的 manifest 摘要和交付时间回写到原 Render，供 Web 优先展示。
 
-可复用后期实现必须位于受版本控制的 `backend/scripts/`；当前参考实现为 `backend/scripts/mimo_postprocess.py` 与 `backend/scripts/render_caption_layers.py`。交付批次、音频、字幕图层和 manifest 仅写入 `backend/data/exports/<批次名>/`，不将运行时副本作为唯一实现来源。
+可复用后期实现必须位于受版本控制的 `backend/scripts/`；当前参考实现为 `backend/scripts/mimo_postprocess.py` 与 `backend/scripts/render_caption_layers.py`。设置 `RADIO_CATCH_PROJECT_DIR` 后，交付批次、音频、字幕图层和 manifest 仅写入 `<项目>/exports/<批次名>/`；未设置时沿用 `backend/data/exports/<批次名>/`。不将运行时副本作为唯一实现来源。
 
 ## 1. 输入与安全边界
 
@@ -12,7 +12,7 @@
 
 ## 2. 标准作业
 
-1. **预检和追溯**：用 FFprobe 记录源片时长、尺寸、帧率和音轨；从 Render 保存 `video_id` 与完整 EDL。创建 `RADIO_CATCH_EXPORT_DIR/<批次名>/`，绝不覆盖源片。
+1. **预检和追溯**：用 FFprobe 记录源片时长、尺寸、帧率和音轨；从 Render 保存 `video_id` 与完整 EDL。创建 `RADIO_CATCH_PROJECT_DIR/exports/<批次名>/`（或显式 `RADIO_CATCH_EXPORT_DIR`），绝不覆盖源片。
 2. **文案先行与配片**：从已审核素材的 `shot_capabilities` 汇总和用户确认卖点池起草一段连续安利；不再按镜头逐句播报，也不解说画面动作。动作只作事实校验，口播要补足为什么值得、和什么比、什么场景会想吃/喝。将需画面证据的事实断言传入 planner，所选 EDL 必须覆盖这些能力；未覆盖的 `uncovered_facts` 必须改写或补素材。`--scripts-json` 在请求 TTS 前会拒绝“画面/镜头里有什么”“镜头一转”“某动作画面”等镜头解说；应改成商品事实、价值对比或消费场景。每条入选素材均须完整播放，不能为 TTS 时长截取、加速或缩短镜头，更不能以仓促的短镜头替代收尾；时长不匹配时先改文案，允许且仅允许在全片末尾额外保留 1–2 秒留白/静默，并在 EDL 与 manifest 标明。价格、产地等用户确认商品事实在 manifest 的 `product_facts` 记录来源。按基础 Render 的实测时长精修定稿。
 3. **可选 MiMo 看片**：`mimo_postprocess.py --analyze-only` 可用 `mimo-v2.5`、2 fps、`media_resolution=default` 做成片复核，输出覆盖全片的粗粒度事实 JSON；不保存原请求。它不是文案和 TTS 的必经前置。
 4. **MiMo TTS**：使用 `mimo-v2.5-tts` 和用户指定音色；默认茉莉、1.2×基准、自然口语语气。以实测音频为准扩写/压缩文案，默认开头与片尾各保留不超过 0.3 秒安全余量。若用户明确允许且文案自然时长不足，可用 `--max-tail-blank-seconds` 在**完整视频**的片尾保留至多 2 秒无旁白留白；不能借此截取、加速或缩短任何素材。茉莉实测约 4.3–4.8 有效字/秒（含标点约 4.9–5.6 字符/秒），20s 成片有效字数约 100–108；常规实测语速必须落在 1.08×–1.34×，超出即精简重写（后期脚本会在 TTS 前按字数预估并预警）。

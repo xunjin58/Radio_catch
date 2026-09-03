@@ -2,6 +2,25 @@
 
 基础地址：`http://127.0.0.1:8001`。交互式接口定义位于 `/docs`；如设置了 `RADIO_CATCH_API_PORT`，请替换为对应端口。
 
+## 项目文件夹
+
+推荐在启动 API 前设置 `RADIO_CATCH_PROJECT_DIR`。系统会在该文件夹内统一保存 `radio_catch.db`（素材标签、审核、EDL）、`media/`（原视频和派生帧）及 `exports/`（基础成片、后期文件和 manifest）。这样整个项目可以作为一个文件夹备份或迁移；首次在另一台电脑启动时，系统会对已存在于该项目文件夹内的素材、标签证据、EDL 和交付路径做安全重定位。模型 Key 仍只存储在数据库的加密字段中，迁移到另一台电脑后应重新保存 Key。
+
+旧工作区可先在项目根目录运行以下命令；默认复制而非删除旧文件，确认新项目正常后才可附加 `--move`：
+
+```bash
+backend/.venv/bin/python backend/scripts/migrate_to_project_folder.py \
+  --project-dir /absolute/path/to/radio-catch-project
+```
+
+Windows PowerShell 示例：
+
+```powershell
+.\backend\.venv\Scripts\python.exe .\backend\scripts\migrate_to_project_folder.py `
+  --project-dir D:\RadioCatch\lemon-september
+$env:RADIO_CATCH_PROJECT_DIR = 'D:\RadioCatch\lemon-september'
+```
+
 ## 常用流程
 
 ### 1. 导入素材（MiMo 优先）
@@ -25,7 +44,7 @@ curl http://127.0.0.1:8001/api/media/jobs/<job_id>
 curl -I http://127.0.0.1:8001/api/media/clips/<clip_id>/video
 ```
 
-接口仅接受已登记的 `clip_id`，并在服务端确认原文件仍在 `RADIO_CATCH_STORAGE_DIR` 内；不会暴露、返回或接受任意本地文件路径。素材不存在、文件已删除或记录指向存储目录外时返回 `404`。
+接口仅接受已登记的 `clip_id`，并在服务端确认原文件仍在项目 `media/`（或显式 `RADIO_CATCH_STORAGE_DIR`）内；不会暴露、返回或接受任意本地文件路径。素材不存在、文件已删除或记录指向存储目录外时返回 `404`。
 
 ### 2. 配置模型并理解素材
 
@@ -159,7 +178,7 @@ backend/.venv/bin/python backend/scripts/mimo_postprocess.py \
   --music-license-reference '素材库条目或用户确认记录'
 ```
 
-`RADIO_CATCH_EXPORT_DIR` 同时控制基础 Render、后期与最终交付媒体接口的根目录。Base64 请求体、原视频内容和 API Key 绝不能写入 manifest、日志或响应。
+`RADIO_CATCH_PROJECT_DIR/exports`（或显式的 `RADIO_CATCH_EXPORT_DIR`）同时控制基础 Render、后期与最终交付媒体接口的根目录。Base64 请求体、原视频内容和 API Key 绝不能写入 manifest、日志或响应。
 
 ### 5. 导入平台数据
 

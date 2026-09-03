@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import os
 from contextlib import asynccontextmanager
-from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,11 +15,11 @@ from .media_routes import create_media_router
 from .models import Clip
 from .intelligence_routes import router as intelligence_router
 from .project_routes import router as project_settings_router
+from .project_paths import project_paths
 from .workflow_routes import router as workflow_router
 
 
-BACKEND_ROOT = Path(__file__).resolve().parents[1]
-STORAGE_ROOT = Path(os.getenv("RADIO_CATCH_STORAGE_DIR", BACKEND_ROOT / "storage"))
+STORAGE_ROOT = project_paths().media_root
 
 
 def repository() -> SQLAlchemyClipRepository:
